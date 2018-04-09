@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	
+	<!-- properties 파일을 읽어오는 객체 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="/WEB-INF/database.properties"/>
+	</bean>
+	
+	<!-- properties 파일에 설정된 정보를 dataSource 설정하기 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${driver}"/>
+		<property name="url" value="${url}"/>
+		<property name="username" value="${user}"/>
+		<property name="password" value="${password}"/>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:com/jhta/mybatis/mybatis-config.xml"/>
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+		
+	<context:component-scan base-package="com.jhta.delivery">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- java mail -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"/>
+		<property name="port" value="587"/>
+		<property name="defaultEncoding" value="utf-8"/>
+		<property name="username" value="deliveryjhta@gmail.com"/>
+		<property name="password" value="delivery1234!"/>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean class="com.jhta.delivery.mail.SimpleMailSender">
+		<property name="mailSender" ref="mailSender"/>
+	</bean>
+</beans>
