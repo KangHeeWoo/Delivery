@@ -17,6 +17,12 @@
 	<tr><td>비밀번호<input type="password" name="mem_pwd"></td></tr>
 	<tr><td>비밀번호확인<input type="password" name="mem_pwd2"></td></tr>
 	<tr><td>생년월일<input type="date" name="mem_birth" ></td></tr>
+	<tr><td>성별
+		<select name="sex" style="width : 150px">
+			<option value="남자">남자</option>
+			<option value="여자">여자</option>
+		</select>
+	</td></tr>
 	<tr><td>전화번호<input type="text" name="mem_phone"></td></tr>
 	<tr><td>닉네임<input type="text" name="mem_nick"><span id="nick_comfirm"></span></td></tr>
 	<tr><td><input type="text" id="sample5_address" placeholder="주소" width="100" readonly="readonly" name="mem_addr"></td></tr>
@@ -95,7 +101,10 @@
                     }
                 });
             }
-        }).open({autoClose : false});
+        }).open({
+        	popupName : '주소 찾기',
+            autoClose: true
+        });
     }
 </script>
 

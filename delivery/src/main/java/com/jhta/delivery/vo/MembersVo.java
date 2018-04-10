@@ -13,31 +13,8 @@ public class MembersVo {
 	private String mem_phone;
 	private Date mem_regd;
 	private String mem_nick;
+	private String mem_sex;
 	private int gra_num;
-
-	public MembersVo() {
-		super();
-	}
-	@Override
-	public String toString() {
-		return "MembersVo [mem_num=" + mem_num + ", mem_email=" + mem_email + ", mem_name=" + mem_name + ", mem_pwd="
-				+ mem_pwd + ", mem_birth=" + mem_birth + ", mem_addr=" + mem_addr + ", mem_phone=" + mem_phone
-				+ ", mem_regd=" + mem_regd + ", mem_nick=" + mem_nick + ", gra_num=" + gra_num + "]";
-	}
-	public MembersVo(int mem_num, String mem_email, String mem_name, String mem_pwd, Date mem_birth, String mem_addr,
-			String mem_phone, Date mem_regd, String mem_nick, int gra_num) {
-		super();
-		this.mem_num = mem_num;
-		this.mem_email = mem_email;
-		this.mem_name = mem_name;
-		this.mem_pwd = mem_pwd;
-		this.mem_birth = mem_birth;
-		this.mem_addr = mem_addr;
-		this.mem_phone = mem_phone;
-		this.mem_regd = mem_regd;
-		this.mem_nick = mem_nick;
-		this.gra_num = gra_num;
-	}
 	public int getMem_num() {
 		return mem_num;
 	}
@@ -92,12 +69,39 @@ public class MembersVo {
 	public void setMem_nick(String mem_nick) {
 		this.mem_nick = mem_nick;
 	}
+	public String getMem_sex() {
+		return mem_sex;
+	}
+	public void setMem_sex(String mem_sex) {
+		this.mem_sex = mem_sex;
+	}
 	public int getGra_num() {
 		return gra_num;
 	}
 	public void setGra_num(int gra_num) {
 		this.gra_num = gra_num;
 	}
-	
-	
+	public MembersVo(int mem_num, String mem_email, String mem_name, String mem_pwd, Date mem_birth, String mem_addr,
+			String mem_phone, Date mem_regd, String mem_nick, String mem_sex, int gra_num) {
+		super();
+		this.mem_num = mem_num;
+		this.mem_email = mem_email;
+		this.mem_name = mem_name;
+		this.mem_pwd = mem_pwd;
+		this.mem_birth = mem_birth;
+		this.mem_addr = mem_addr;
+		this.mem_phone = mem_phone;
+		this.mem_regd = mem_regd;
+		this.mem_nick = mem_nick;
+		this.mem_sex = mem_sex;
+		this.gra_num = gra_num;
+	}
+	public MembersVo() {}
+	@Override
+	public String toString() {
+		return "MembersVo [mem_num=" + mem_num + ", mem_email=" + mem_email + ", mem_name=" + mem_name + ", mem_pwd="
+				+ mem_pwd + ", mem_birth=" + mem_birth + ", mem_addr=" + mem_addr + ", mem_phone=" + mem_phone
+				+ ", mem_regd=" + mem_regd + ", mem_nick=" + mem_nick + ", mem_sex=" + mem_sex + ", gra_num=" + gra_num
+				+ "]";
+	}
 }
