@@ -83,7 +83,8 @@
                 // 주소 정보를 해당 필드에 넣는다.
                 document.getElementById("sample5_address").value = fullAddr;
                 // 주소로 상세 정보를 검색
-                geocoder.addressSearch(data.address, function(results, status) {
+                
+                /* geocoder.addressSearch(data.address, function(results, status) {
                     // 정상적으로 검색이 완료됐으면
                     if (status === daum.maps.services.Status.OK) {
 
@@ -99,10 +100,11 @@
                         // 마커를 결과값으로 받은 위치로 옮긴다.
                         marker.setPosition(coords)
                     }
-                });
+                }); */
             }
         }).open({
-        	popupName : 'findAddr'
+        	popupName : 'findAddr',
+        	autoClose : true
         });
     }
 </script>
