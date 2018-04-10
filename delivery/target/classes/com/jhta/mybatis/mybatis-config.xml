@@ -5,9 +5,11 @@
 <configuration>
 	<typeAliases>
 		<!-- Aliases 추가 -->
+		<typeAlias type="com.jhta.delivery.vo.MembersVo" alias="members"/>
 	</typeAliases>
 	
 	<mappers>
 		<!-- Mapper 파일 추가 -->
+		<mapper resource="com/jhta/mybatis/MembersMapper.xml"/>
 	</mappers>
 </configuration>
