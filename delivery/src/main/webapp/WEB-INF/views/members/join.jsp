@@ -102,8 +102,7 @@
                 });
             }
         }).open({
-        	popupName : '주소 찾기',
-            autoClose: true
+        	popupName : 'findAddr'
         });
     }
 </script>
