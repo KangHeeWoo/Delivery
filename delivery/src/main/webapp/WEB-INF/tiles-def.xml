@@ -8,5 +8,8 @@
 	</definition>
 	<definition name=".members.*" extends=".main">
 		<put-attribute name="main" value="/WEB-INF/views/members/{1}.jsp"/>
-	</definition>	
+	</definition>
+	<definition name=".admin.*" extends=".main">
+		<put-attribute name="main" value="/WEB-INF/views/admin/{1}.jsp"/>
+	</definition>
 </tiles-definitions>
