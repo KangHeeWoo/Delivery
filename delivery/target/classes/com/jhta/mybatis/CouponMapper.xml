@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.CoupunMapper">
-	<insert id="addcoupon">
-		
+	<insert id="addcoupon" parameterType="coupon">
+		insert into coupon values(0, #{cou_type}, #{cou_start}, #{cou_end})
 	</insert>
-	<insert id="issuecoupon">
-	
+	<insert id="issuecoupon" parameterType="hashmap">
+		insert into coupon_issue values(0, #{cou_num}, #{mem_num})
 	</insert>
-	<insert id="usecoupon">
-	
+	<insert id="usecoupon" parameterType="hashmap">
+		insert into coupon_uselist values(0, #{cou_iss_num}, #{ord_num})
 	</insert>
 </mapper>
