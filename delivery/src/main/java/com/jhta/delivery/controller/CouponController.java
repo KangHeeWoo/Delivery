@@ -28,22 +28,27 @@ public class CouponController {
 		int getIsuCount = service.getIsuCount();
 		int getUseCount = service.getUseCount();
 		
+		System.out.println(getCouCount);
+		System.out.println(getIsuCount);
+		System.out.println(getUseCount);
+		
 		PageUtil couPage = new PageUtil(cNum, 10, 10, getCouCount);
 		PageUtil isuPage = new PageUtil(iNum, 10, 10, getIsuCount);
 		PageUtil usePage = new PageUtil(uNum, 10, 10, getUseCount);
 		
 		map.put("c_startRow", couPage.getStartRow());
-		map.put("c_endRow", couPage.getStartRow());
+		map.put("c_endRow", couPage.getEndRow());
 		map.put("i_startRow", isuPage.getStartRow());
-		map.put("i_endRow", isuPage.getStartRow());
+		map.put("i_endRow", isuPage.getEndRow());
 		map.put("u_startRow", usePage.getStartRow());
-		map.put("u_endRow", usePage.getStartRow());
+		map.put("u_endRow", usePage.getEndRow());
 		
 		List<CouponVo> couList = service.couponList(map);
 		List<CouponIssueVo> couIssList = service.couponIssueList(map);
 		List<CouponUseVo> couUseList = service.couponUseList(map);
 		
 		System.out.println("couList : " + couList);
+		System.out.println(couList.size());
 		System.out.println("couIssList : " + couIssList);
 		System.out.println("couUseList : " + couUseList);
 		
@@ -57,11 +62,18 @@ public class CouponController {
 		model.addAttribute("cou_list", couList);
 		model.addAttribute("cou_ise_list", couIssList);
 		model.addAttribute("cou_use_list", couUseList);
+		
 		return ".admin.coupon";
 	}
 	
-	@RequestMapping(value="/admin/addcoupon", method=RequestMethod.POST)
-	public String addCouponOk() {
-		return "";
+	@RequestMapping(value="/admin/addcoupon")
+	public String addCouponOk(CouponVo vo) {
+		try {
+			service.addCoupon(vo);
+			return "redirect:/admin/coupon";
+		}catch (Exception e) {
+			e.printStackTrace();
+			return "redirect:/admin/coupon";
+		}
 	}
 }

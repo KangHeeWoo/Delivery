@@ -15,16 +15,16 @@ import com.jhta.delivery.vo.CouponVo;
 public class CouponService {
 	@Autowired private CouponDao dao;
 	
-	public int addCoupon(String type) {
-		return dao.addCoupon(type);
+	public int addCoupon(CouponVo vo) {
+		return dao.addCoupon(vo);
 	}
 	
 	public int issueCoupon(CouponIssueVo vo) {
 		return dao.issueCoupon(vo);
 	}
 	
-	public int usecoupon(HashMap<String, Integer> map) {
-		return dao.usecoupon(map);
+	public int usecoupon(CouponUseVo vo) {
+		return dao.usecoupon(vo);
 	}
 	
 	public List<CouponVo> couponList(HashMap<String, Integer> map){
@@ -36,6 +36,7 @@ public class CouponService {
 	public List<CouponUseVo> couponUseList(HashMap<String, Integer> map){
 		return dao.couponUseList(map);
 	}
+	
 	public int getCouCount() {
 		return dao.getCouCount();
 	}

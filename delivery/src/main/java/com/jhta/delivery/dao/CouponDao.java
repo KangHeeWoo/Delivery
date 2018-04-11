@@ -16,16 +16,16 @@ public class CouponDao {
 	@Autowired private SqlSession session;
 	private final String NAMESPACE = "com.jhta.mybatis.CoupunMapper";
 	
-	public int addCoupon(String type) {
-		return session.insert(NAMESPACE + ".addcoupon", type);
+	public int addCoupon(CouponVo vo) {
+		return session.insert(NAMESPACE + ".addcoupon", vo);
 	}
 	
 	public int issueCoupon(CouponIssueVo vo) {
 		return session.insert(NAMESPACE + ".issuecoupon", vo);
 	}
 	
-	public int usecoupon(HashMap<String, Integer> map) {
-		return session.insert(NAMESPACE + ".usecoupon", map);
+	public int usecoupon(CouponUseVo vo) {
+		return session.insert(NAMESPACE + ".usecoupon", vo);
 	}
 	
 	public List<CouponVo> couponList(HashMap<String, Integer> map){
