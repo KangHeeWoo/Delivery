@@ -30,16 +30,13 @@ public class HomeController {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String loginOk(String who_email,String email, String pwd) {
 		HashMap<String, String> map=new HashMap<String, String>();
-		map.put("who_email", who_email);
-		map.put("email",email);
 		if(who_email.equals("mem_email")) {
+			map.put("mem_email", email);
+			map.put("mem_email",email);
 			int n=memService.logincheck(map);
 		}else if(who_email.equals("sel_email")) {
 			int m=selService.logincheck(map);
 		}
-		
-		
-		
 		return ".login";
 	}
 }

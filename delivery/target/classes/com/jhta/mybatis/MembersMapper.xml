@@ -9,7 +9,7 @@
 	<select id="emailcheck" parameterType="String" resultType="members">
 		select * from members where mem_email=#{mem_email}
 	</select>
-	<select id="logincheck" parameterType="hash" resultType="members">
+	<select id="logincheck" parameterType="hashmap" resultType="members">
 		select * from members where mem_email=#{mem_email} and mem_pwd=#{mem_pwd}
 	</select>
 	<select id="nickcheck" parameterType="String" resultType="members">
