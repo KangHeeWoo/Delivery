@@ -10,7 +10,7 @@ private MailSender mailSender;
 		this.mailSender = mailSender;
 	}
 	
-	public boolean sendMial(String title, String msg, String toEmail, String fromEmail) {
+	public boolean sendMail(String title, String msg, String toEmail, String fromEmail) {
 		try {
 			SimpleMailMessage mailMsg = new SimpleMailMessage();
 			mailMsg.setSubject(title);
