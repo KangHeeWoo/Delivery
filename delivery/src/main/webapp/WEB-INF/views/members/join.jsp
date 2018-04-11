@@ -113,7 +113,6 @@
 						name="mem_phone" placeholder="-를 빼고 입력해주세요.">
 				</div>
 			</div>
-
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputPhone">성별</label>
 				<div class="col-sm-6">
