@@ -32,8 +32,8 @@
 										
 										<!-- 라디오 첵크값에 따른 아이디 검사 -->
 										<form class="form" role="form" method="post" action="<c:url value='/login'/>" id="login-nav">
-										<input type="radio" name="joinradio" value="mem_email"> 민족가입
-										<input type="radio" name="joinradio" value="sel_email"> 사장님 가입<br><br>
+										<input type="radio" name="joinradio" value="mem_email"> 우리민족  
+										<input type="radio" name="joinradio" value="sel_email"> 사장님 <br><br>
 											<div class="form-group">
 												<label class="sr-only" for="exampleInputEmail2">이메일</label> 
 												<!-- 이메일값 넘기기 -->

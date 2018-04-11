@@ -28,14 +28,22 @@ public class HomeController {
 		return ".login";
 	}
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String loginOk(String who_email,String email, String pwd) {
+	public String loginOk(String joinradio,String email, String pwd) {
 		HashMap<String, String> map=new HashMap<String, String>();
-		if(who_email.equals("mem_email")) {
+		
+		int n=0;
+		int m=0;
+		if(joinradio.equals("mem_email")) {
 			map.put("mem_email", email);
-			map.put("mem_email",email);
-			int n=memService.logincheck(map);
-		}else if(who_email.equals("sel_email")) {
-			int m=selService.logincheck(map);
+			map.put("mem_pwd",pwd);
+			n=memService.logincheck(map);
+		}else if(joinradio.equals("sel_email")) {
+			map.put("sel_email", email);
+			map.put("sel_pwd",pwd);
+			m=selService.logincheck(map);
+		}
+		if(n>0 || m>0) {
+			return ".main";
 		}
 		return ".login";
 	}
