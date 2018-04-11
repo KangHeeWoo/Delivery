@@ -15,4 +15,14 @@ public class MembersService {
 	public int insert(MembersVo vo) {
 		return dao.insert(vo);
 	}
+	public int emailcheck(String mem_email) {
+		MembersVo vo=dao.emailcheck(mem_email);
+		if(vo!=null) return 1;
+		else return -1; 
+	}
+	public int nickcheck(String mem_nick) {
+		MembersVo vo=dao.nickcheck(mem_nick);
+		if(vo!=null) return 1;
+		else return -1; 
+	}
 }

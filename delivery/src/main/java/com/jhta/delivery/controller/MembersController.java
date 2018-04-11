@@ -46,14 +46,31 @@ public class MembersController {
 	@ResponseBody
 	public String email(String mem_email, String email_num) {
 		System.out.println("email:"+mem_email+",email_num:"+email_num);
-		
-		boolean n=simpleMailSender.sendMail("배달의 백성民 인증", "인증번호를 가입란에 입력해주세요.\n"+ email_num , mem_email, "deliveryjhta@gmail.com");
-		System.out.println("메일갓니"+n);
-		
 		JSONObject ob=new JSONObject();
-		ob.put("result", n);
-		
-		
+
+		int m=service.emailcheck(mem_email);
+		if(m<0) {
+			boolean n=simpleMailSender.sendMail("배달의 백성民 인증", "인증번호를 가입란에 입력해주세요.\n"+ email_num , mem_email, "deliveryjhta@gmail.com");
+			System.out.println("메일갓니"+n);
+			
+			ob.put("result", n);
+			
+		}else {
+			ob.put("result", false);
+		}
+
+		return ob.toString();
+	}
+	@RequestMapping(value="/member/nick",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String email(String inputNick) {
+		System.out.println("inputNick:"+inputNick);
+		JSONObject ob=new JSONObject();
+
+		int m=service.nickcheck(inputNick);
+		if(m<0) ob.put("result",true);
+		else ob.put("result", false);
+	
 		return ob.toString();
 	}
 	

@@ -6,4 +6,10 @@
 	<insert id="insert" parameterType="members">
 		insert into members values(0,#{mem_email},#{mem_name},#{mem_pwd},#{mem_birth},#{mem_addr},#{mem_phone},sysdate,#{mem_nick},3, #{mem_sex})
 	</insert>
+	<select id="emailcheck" parameterType="String" resultType="members">
+		select * from members where mem_email=#{mem_email}
+	</select>
+	<select id="nickcheck" parameterType="String" resultType="members">
+		select * from members where mem_nick=#{mem_nick}
+	</select>
 </mapper>    

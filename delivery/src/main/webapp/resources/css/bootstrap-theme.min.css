@@ -163,7 +163,10 @@
 
 .btn-warning.active, .btn-warning:active {
 	background-color: #eb9316;
-	border-color: #e38d13
+	border-color: #e38d13;
+	width: 40px;
+	height: 30px;
+	
 }
 
 .btn-warning.disabled, .btn-warning:disabled, .btn-warning[disabled] {
