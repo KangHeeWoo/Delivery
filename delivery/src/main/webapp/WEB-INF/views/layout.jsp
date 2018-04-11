@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.3.1.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
-<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css?ver=1'/>">
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap-theme.min.css'/>">
 <link href="<c:url value='/resources/css/agency.min.css'/>" rel="stylesheet">
 

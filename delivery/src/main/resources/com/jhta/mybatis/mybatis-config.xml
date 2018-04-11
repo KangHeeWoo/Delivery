@@ -6,6 +6,7 @@
 	<typeAliases>
 		<!-- Aliases 추가 -->
 		<typeAlias type="com.jhta.delivery.vo.MembersVo" alias="members"/>
+		<typeAlias type="com.jhta.delivery.vo.SellerVo" alias="seller"/>
 		<typeAlias type="com.jhta.delivery.vo.CouponIssueVo" alias="c_issue"/>
 		<typeAlias type="com.jhta.delivery.vo.CouponVo" alias="coupon"/>
 		<typeAlias type="com.jhta.delivery.vo.CouponUseVo" alias="c_use"/>
@@ -15,5 +16,6 @@
 		<!-- Mapper 파일 추가 -->
 		<mapper resource="com/jhta/mybatis/MembersMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/CouponMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/SellerMapper.xml"/>
 	</mappers>
 </configuration>

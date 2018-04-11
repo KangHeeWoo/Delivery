@@ -1,6 +1,8 @@
 package com.jhta.delivery.dao;
 
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,5 +24,7 @@ public class MembersDao {
 	public MembersVo nickcheck(String mem_nick) {
 		return session.selectOne(NAMESPACE+".nickcheck", mem_nick);
 	}
-
+	public MembersVo logincheck(HashMap<String, String> map) {
+		return session.selectOne(NAMESPACE+".logincheck", map);
+	}
 }

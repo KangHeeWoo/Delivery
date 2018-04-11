@@ -8,8 +8,8 @@
 
     <!-- Header -->
     <header class="masthead">
-      <div class="container">
-        <div class="intro-text">
+      <div class="container" >
+        <div class="intro-text" >
           <div class="intro-lead-in">느림의 미학 킥보드...</div>
           <div class="intro-heading text-uppercase">배달의 백성民</div>
           <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">주문하기</a>

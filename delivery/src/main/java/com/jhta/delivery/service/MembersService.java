@@ -1,5 +1,7 @@
 package com.jhta.delivery.service;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,11 @@ public class MembersService {
 	}
 	public int nickcheck(String mem_nick) {
 		MembersVo vo=dao.nickcheck(mem_nick);
+		if(vo!=null) return 1;
+		else return -1; 
+	}
+	public int logincheck(HashMap<String, String> map) {
+		MembersVo vo=dao.logincheck(map);
 		if(vo!=null) return 1;
 		else return -1; 
 	}

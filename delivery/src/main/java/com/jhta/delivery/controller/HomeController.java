@@ -1,11 +1,19 @@
 package com.jhta.delivery.controller;
 
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.jhta.delivery.service.MembersService;
+import com.jhta.delivery.service.SellerService;
+
 @Controller
 public class HomeController {
+	@Autowired private MembersService memService;
+	@Autowired private SellerService selService;
 	
 	@RequestMapping("/")
 	public String home() {
@@ -19,5 +27,19 @@ public class HomeController {
 	public String login() {
 		return ".login";
 	}
-	
+	@RequestMapping(value="/login",method=RequestMethod.POST)
+	public String loginOk(String who_email,String email, String pwd) {
+		HashMap<String, String> map=new HashMap<String, String>();
+		map.put("who_email", who_email);
+		map.put("email",email);
+		if(who_email.equals("mem_email")) {
+			int n=memService.logincheck(map);
+		}else if(who_email.equals("sel_email")) {
+			int m=selService.logincheck(map);
+		}
+		
+		
+		
+		return ".login";
+	}
 }
