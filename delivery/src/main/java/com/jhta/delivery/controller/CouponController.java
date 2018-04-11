@@ -14,7 +14,7 @@ public class CouponController {
 	
 	@RequestMapping(value="/addcoupon", method=RequestMethod.GET)
 	public String addCoupon() {
-		return "";
+		return ".admin.coupon";
 	}
 	
 	@RequestMapping(value="/addcoupon", method=RequestMethod.POST)
