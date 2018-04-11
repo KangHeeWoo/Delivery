@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.CoupunMapper">
-	<insert id="addcoupon" parameterType="coupon">
-		insert into coupon values(0, #{cou_type}, #{cou_start}, #{cou_end})
+	<insert id="addcoupon" parameterType="string">
+		insert into coupon values(0, #{cou_type})
 	</insert>
-	<insert id="issuecoupon" parameterType="hashmap">
-		insert into coupon_issue values(0, #{cou_num}, #{mem_num})
+	<insert id="issuecoupon" parameterType="c_issue">
+		insert into coupon_issue values(0, #{cou_num}, #{mem_num}, #{cou_start}, #{cou_end})
 	</insert>
 	<insert id="usecoupon" parameterType="hashmap">
 		insert into coupon_uselist values(0, #{cou_iss_num}, #{ord_num})
 	</insert>
+	<select id="cou_list" resultType="coupon" parameterType="hashmap">
+		select * from
+			(select b.*, rownum rnum from
+				(select * from coupon order by cou_num desc)b)
+		<![CDATA[where rnum >= ${c_startRow} and rnum <= ${c_endRow}]]>
+	</select>
+	<select id="cou_isu_list" resultType="c_issue" parameterType="hashmap">
+		select * from
+			(select b.*, rownum rnum from
+				(select * from coupon_issue order by cou_iss_num desc)b)
+		<![CDATA[where rnum >= ${i_startRow} and rnum <= ${i_endRow}]]>
+	</select>
+	<select id="cou_use_list" resultType="c_use" parameterType="hashmap">
+		select * from
+			(select b.*, rownum rnum from
+				(select * from coupon_uselist order by cou_use_num desc)b)
+		<![CDATA[where rnum >= ${u_startRow} and rnum <= ${u_endRow}]]>
+	</select>
+	<select id="getCouCount" resultType="int">
+		select NVL(count(*), 0) from coupon
+	</select>
+	<select id="getIsuCount"  resultType="int">
+		select NVL(count(*), 0) from coupon_issue
+	</select>
+	<select id="getUseCount"  resultType="int">
+		select NVL(count(*), 0) from coupon_uselist
+	</select>
 </mapper>

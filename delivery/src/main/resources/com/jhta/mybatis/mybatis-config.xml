@@ -6,7 +6,9 @@
 	<typeAliases>
 		<!-- Aliases 추가 -->
 		<typeAlias type="com.jhta.delivery.vo.MembersVo" alias="members"/>
+		<typeAlias type="com.jhta.delivery.vo.CouponIssueVo" alias="c_issue"/>
 		<typeAlias type="com.jhta.delivery.vo.CouponVo" alias="coupon"/>
+		<typeAlias type="com.jhta.delivery.vo.CouponUseVo" alias="c_use"/>
 	</typeAliases>
 	
 	<mappers>
