@@ -27,7 +27,7 @@ public class MembersController {
        binder.registerCustomEditor(Date.class, dateEditor);
     }
 	
-	@RequestMapping(value="/join",method=RequestMethod.GET)
+	@RequestMapping(value="/members",method=RequestMethod.GET)
 	public String join() {
 		return ".members.join";
 	}

@@ -13,8 +13,9 @@
           	메뉴
           <i class="fa fa-bars"></i>
         </button>
-          <div align="right" style="display: inline-block; margin-left: 1000px;">
+          <div align="right" style="display: inline-block; margin-left: 500px;">
 			<a href="<c:url value='/join'/>">회원가입</a>
+			<a href="<c:url value='/login'/>">로그인</a>
 		  </div>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
