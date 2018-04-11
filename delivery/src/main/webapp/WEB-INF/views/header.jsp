@@ -15,6 +15,7 @@
         </button>
           <div align="right" style="display: inline-block; margin-left: 500px;">
 			<a href="<c:url value='/join'/>">회원가입</a>
+			<a href="<c:url value='/addrsearch'/>">주소검색</a>
 			
 			
 			

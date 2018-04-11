@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatix.StoresMapper">
+	<select id="mypositionList" parameterType="string" resultType="hashmap">
+		select * from stores where sto_num in(
+			select sto_num from able_loaction where able_loc=#{able_loc});
+	</select>
+</mapper>
