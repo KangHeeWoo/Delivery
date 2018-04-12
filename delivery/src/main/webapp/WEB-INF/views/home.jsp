@@ -328,8 +328,8 @@
 	var mapContainer = null;
 	var mapOption = null;
 	var map = null;
-	
 	var myAddr=null;
+	var searchAddr=null;
 
 	function getMap() {
 		mapContainer = document.getElementById('map'); // 지도를 표시할 div 
@@ -370,7 +370,8 @@
 					// 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
 					infowindow.setContent(content);
 					infowindow.open(map, marker);
-
+					
+					$("#sample5_address").val(myAddr);
 				}
 			});
 		});
@@ -450,18 +451,16 @@
 		}
 	}
 	function saveAddr(){
-		var searchAddr=document.getElementById("sample5_address").value;
-		if(!(searchAddr == null || searchAddr=="")){
-			myAddr=searchAddr;
-		}
-		if(!(myAddr == null || myAddr == '')){
+		searchAddr=document.getElementById("sample5_address").value;
+		
+		if(!(searchAddr == null || searchAddr == '')){
 			$.ajax({
 				url:"<c:url value='/myAddr'/>",
-				data:{myAddr:myAddr},
+				data:{searchAddr:searchAddr},
 				dataType:"json",
 				success:function(data){
 					//alert("myAddr:"+myAddr+"searchAddr:"+searchAddr);
-					alert("'"+myAddr + "'가 내 주소로 지정되었습니다.");
+					alert("'"+searchAddr + "'가 내 주소로 지정되었습니다.");
 				}
 			});
 		}else{
@@ -473,7 +472,7 @@
 		var cat = $(".cat");
 		console.log(n);
 		
-		location.href ="<c:url value='/myposition?cat_num="+cat+"&able_loc="+myAddr+"'/>";
+		location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+searchAddr+"'/>";
 	}
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
