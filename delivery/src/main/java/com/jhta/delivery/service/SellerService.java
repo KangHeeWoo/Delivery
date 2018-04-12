@@ -16,11 +16,20 @@ import com.jhta.delivery.vo.SellerVo;
 public class SellerService {
 	@Autowired private SellerDao dao;
 	
+	public int emailcheck(String sel_email) {
+		SellerVo vo=dao.eamilcheck(sel_email);
+				
+		if(vo!=null) return 1;
+		else return -1; 
+	}
 
 	public int logincheck(HashMap<String, String> map) {
 		SellerVo vo=dao.logincheck(map);
 		if(vo!=null) return 1;
 		else return -1; 
+	}
+	public int insert(SellerVo vo) {
+		return dao.insert(vo);
 	}
 
 }

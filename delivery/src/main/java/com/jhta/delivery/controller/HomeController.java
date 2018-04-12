@@ -25,14 +25,14 @@ public class HomeController {
 	public String join() {
 		return ".join";
 	}
-	@RequestMapping(value="/logout",method=RequestMethod.GET)
-	public String logout(HttpSession session) {
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public String login(HttpSession session) {
 		session.invalidate();
 		return ".main";
 	}
-	@RequestMapping(value="/login",method=RequestMethod.GET)
-	public String login() {
-		return ".login";
+	@RequestMapping(value="/logout",method=RequestMethod.GET)
+	public String logout() {
+		return ".main";
 	}
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String loginOk(String joinradio,String email, String pwd,HttpSession session) {

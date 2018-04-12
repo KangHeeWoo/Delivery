@@ -9,6 +9,9 @@
 	<definition name=".members.*" extends=".main">
 		<put-attribute name="main" value="/WEB-INF/views/members/{1}.jsp"/>
 	</definition>
+	<definition name=".seller.*" extends=".main">
+		<put-attribute name="main" value="/WEB-INF/views/seller/{1}.jsp"/>
+	</definition>
 	<definition name=".admin.*" extends=".main">
 		<put-attribute name="main" value="/WEB-INF/views/admin/{1}.jsp"/>
 	</definition>
