@@ -25,6 +25,7 @@ public class SellerController {
 	
 	@RequestMapping("/seller/main")
 	public String main() {
+		
 		return ".seller";
 	}
 	
