@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.jhta.delivery.vo.CouponIssueVo;
 import com.jhta.delivery.vo.CouponUseVo;
 import com.jhta.delivery.vo.CouponVo;
+import com.jhta.delivery.vo.MembersVo;
 
 @Repository
 public class CouponDao {
@@ -45,5 +46,9 @@ public class CouponDao {
 	}
 	public int getUseCount() {
 		return session.selectOne(NAMESPACE + ".getUseCount");
+	}
+	
+	public MembersVo searchMem(String email) {
+		return session.selectOne(NAMESPACE + ".searchMem", email);
 	}
 }

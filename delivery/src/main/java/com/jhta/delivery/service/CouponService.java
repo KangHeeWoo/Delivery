@@ -10,6 +10,7 @@ import com.jhta.delivery.dao.CouponDao;
 import com.jhta.delivery.vo.CouponIssueVo;
 import com.jhta.delivery.vo.CouponUseVo;
 import com.jhta.delivery.vo.CouponVo;
+import com.jhta.delivery.vo.MembersVo;
 
 @Service
 public class CouponService {
@@ -45,5 +46,9 @@ public class CouponService {
 	}
 	public int getUseCount() {
 		return dao.getUseCount();
+	}
+	
+	public MembersVo searchMem(String email) {
+		return dao.searchMem(email);
 	}
 }

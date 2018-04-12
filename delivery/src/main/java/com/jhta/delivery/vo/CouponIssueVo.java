@@ -10,6 +10,7 @@ public class CouponIssueVo {
 	public Date cou_end;
 	public String cou_type;
 	public String mem_email;
+	
 	public int getCou_iss_num() {
 		return cou_iss_num;
 	}
@@ -32,12 +33,12 @@ public class CouponIssueVo {
 		return cou_start;
 	}
 	public void setCou_start(Date cou_start) {
-		this.cou_start = cou_start;
+		this.cou_start = cou_start;	
 	}
 	public Date getCou_end() {
 		return cou_end;
 	}
-	public void setCou_end(Date cou_end) {
+	public void setCou_end(Date cou_end) {		
 		this.cou_end = cou_end;
 	}
 	public String getCou_type() {

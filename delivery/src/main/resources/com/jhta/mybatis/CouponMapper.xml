@@ -20,7 +20,8 @@
 	<select id="cou_isu_list" resultType="c_issue" parameterType="hashmap">
 		select * from
 			(select b.*, rownum rnum from
-				(select * from coupon_issue order by cou_iss_num desc)b)
+				(select i.*, m.mem_email, c.cou_type from coupon_issue i, members m, coupon c 
+				where i.mem_num=m.mem_num and c.cou_num=i.cou_num order by cou_iss_num desc)b)
 		<![CDATA[where rnum >= #{i_startRow} and rnum <= #{i_endRow}]]>
 	</select>
 	<select id="cou_use_list" resultType="c_use" parameterType="hashmap">
@@ -38,5 +39,9 @@
 	</select>
 	<select id="getUseCount"  resultType="int">
 		select NVL(count(*), 0) from coupon_uselist
+	</select>
+	
+	<select id="searchMem" resultType="members" parameterType="string">
+		select * from members where mem_email = #{val}
 	</select>
 </mapper>
