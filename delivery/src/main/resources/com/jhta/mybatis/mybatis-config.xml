@@ -11,6 +11,8 @@
 		<typeAlias type="com.jhta.delivery.vo.CouponVo" alias="coupon"/>
 		<typeAlias type="com.jhta.delivery.vo.CouponUseVo" alias="c_use"/>
 		<typeAlias type="com.jhta.delivery.vo.StoresVo" alias="stores"/>
+		<typeAlias type="com.jhta.delivery.vo.OrdersVo" alias="orders"/>
+		<typeAlias type="com.jhta.delivery.vo.OrderListVo" alias="orderlist"/>
 	</typeAliases>
 	
 	<mappers>
@@ -19,5 +21,6 @@
 		<mapper resource="com/jhta/mybatis/CouponMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/SellerMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/StoresMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/OrdersMapper.xml"/>
 	</mappers>
 </configuration>
