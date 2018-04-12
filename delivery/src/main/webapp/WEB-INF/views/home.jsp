@@ -93,7 +93,7 @@
           </div>
         </div>
         <div class="row text-center">
-        <a href="#">
+        <a href="<c:url value='/'/>">
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>

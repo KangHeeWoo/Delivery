@@ -36,12 +36,12 @@ public class MyPositionController {
 		JSONObject ob=new JSONObject();
 		System.out.println("myAddr:"+myAddr + ",searchAddr:" + searchAddr);
 		try {
-			if(myAddr!=null && myAddr!="") {
+			if(myAddr!=null && !myAddr.equals("")) {
 				session.setAttribute("myAddr", myAddr);
 				ob.put("result", true);
 				System.out.println("myAddr技记技记");				
 			}
-			if(searchAddr!=null && searchAddr!="") {
+			if(searchAddr!=null && !searchAddr.equals("")) {
 				session.setAttribute("searchAddr", searchAddr);
 				ob.put("result", true);
 				System.out.println("searchAddr技记技记");	
