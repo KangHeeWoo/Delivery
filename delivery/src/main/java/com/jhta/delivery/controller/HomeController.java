@@ -88,6 +88,9 @@ public class HomeController {
 			n=memService.logincheck(map);
 			if(n>0) {
 				session.setAttribute("email", email);
+				
+				if(email.equals("admin")) return ".admin";
+				
 				return ".main";
 			}
 		}else if(joinradio.equals("sel_email")) {
