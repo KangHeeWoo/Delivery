@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.OrdersMapper">
-	
+	<select id="getOrderCnt" parameterType="int" resultType="int">
+		select nvl(count(*), 0) from orders where sto_num=#{sto_num}
+	</select>
+	<select id="order" parameterType="hashmap" resultType="orders">
+		select * from 
+		(select o.*, rownum rnum from
+		(select o.*, p.PAY_TYPE_NAME  from orders o, pay_type p 
+		where o.sto_num=#{stoNum} and o.pay_type_num = p.pay_type_num
+		order by ord_num desc)o)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
+	</select>
+	<select id="orderList" parameterType="int" resultType="orderlist">
+		select o.*, m.MEN_NAME from order_list o, menu m 
+		where o.ord_num=#{val} and o.men_num = m.men_num
+	</select>
+	<update id="setOrdState" parameterType="hashmap">
+		update orders set ord_state=#{ord_state} where ord_num=#{ord_num}
+	</update>
 </mapper>
