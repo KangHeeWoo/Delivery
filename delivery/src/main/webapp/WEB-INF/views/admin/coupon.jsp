@@ -187,6 +187,11 @@
 	$("#btnadd").click(function() {
 		var cou_type = $("#cou_type").val();
 		var dis_price = $("#dis_price").val();
+		
+		if(cou_type == '' || dis_price == ''){
+			alert('모든 항목을 입력해주세요.');
+			return;
+		}
 
 		location.href = "<c:url value='/admin/addcoupon?cou_type=" + cou_type + "&dis_price=" + dis_price + "' />";
 	});
@@ -197,10 +202,10 @@
 		var cou_start = $("#cou_start").val();
 		var cou_end = $("#cou_end").val();
 		
-		console.log(cou_num);
-		console.log(mem_num);
-		console.log(cou_start);
-		console.log(cou_end);
+		if(cou_num == '' || mem_num == null || cou_start == '' || cou_end == ''){
+			alert('모든 항목을 입력해주세요.');
+			return;
+		}
 		
 		if(new Date(cou_start) <= new Date()){
 			alert('시작일은 현재 날짜보다 빠를 수 없습니다.');

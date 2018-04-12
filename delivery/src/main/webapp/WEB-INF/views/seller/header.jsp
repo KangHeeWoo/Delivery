@@ -10,6 +10,8 @@
 		<img src="<c:url value='/resources/images/로고-pn.png'/>" id="mainlogo">
 	</div>
     
+    <h1>판매자 메뉴 수정</h1>
+    
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">		

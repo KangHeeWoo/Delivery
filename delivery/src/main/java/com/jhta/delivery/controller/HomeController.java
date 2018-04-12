@@ -99,7 +99,7 @@ public class HomeController {
 			m=selService.logincheck(map);
 			if(m>0) {
 				session.setAttribute("email", email);
-				return ".seller.main";
+				return ".seller";
 			}
 		}
 		

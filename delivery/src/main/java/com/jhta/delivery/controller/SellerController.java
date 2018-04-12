@@ -23,7 +23,10 @@ public class SellerController {
 	@Autowired private SimpleMailSender simpleMailSender;
 	@Autowired private SellerService service;
 	
-	
+	@RequestMapping("/seller/main")
+	public String main() {
+		return ".seller";
+	}
 	
 	@RequestMapping(value="/seller",method=RequestMethod.GET)
 	public String join() {
