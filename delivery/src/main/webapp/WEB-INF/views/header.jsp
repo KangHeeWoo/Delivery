@@ -144,4 +144,8 @@
 	  });
 	  
   }
+  
+	$("#mainlogo").click(function(){
+		location.href = "<c:url value='/' />";
+	});
   </script>
