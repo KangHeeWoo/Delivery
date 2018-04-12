@@ -70,7 +70,7 @@
 				<div class="col-sm-6">
 					<input class="form-control" id="inputPassword" type="password"
 						placeholder="Password" onkeyup="pwd1()">
-					<p class="help-block" id="pwd1">숫자, 특수문자 포함 8자 이상</p>
+					<p class="help-block" id="pwd1">영문, 숫자, 특수문자 포함 8자 이상</p>
 				</div>
 			</div>
 			<div class="form-group">
