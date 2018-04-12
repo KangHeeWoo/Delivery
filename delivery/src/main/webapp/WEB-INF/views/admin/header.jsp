@@ -19,7 +19,7 @@
           <i class="fa fa-bars"></i>
         </button>
         
-		<a href="<c:url value='/logout'/>" class="dropdown-toggle" data-toggle="dropdown">로그아웃</a>
+		<a href="<c:url value='/logout'/>">로그아웃</a>
 		
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">

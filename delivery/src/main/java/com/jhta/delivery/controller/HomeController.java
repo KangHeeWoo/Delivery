@@ -89,7 +89,7 @@ public class HomeController {
 			if(n>0) {
 				session.setAttribute("email", email);
 				
-				if(email.equals("admin")) return ".admin";
+				if(email.equals("admin@admin")) return ".admin";
 				
 				return ".main";
 			}
