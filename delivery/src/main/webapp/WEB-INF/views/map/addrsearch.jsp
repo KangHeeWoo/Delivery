@@ -9,17 +9,16 @@
 </head>
 <body>
 	<div class="form-group">
-				<div class="col-sm-6">
-					<div class="input-group">
-						<input type="text" class="form-control" id="sample5_address"
-							placeholder="주소" width="100" readonly="readonly" name="mem_addr">
-						<span class="input-group-btn">
-							<input type="button" class="btn btn-success"
-								onclick="sample5_execDaumPostcode()" value="주소검색">
-						</span>
-					</div>
-				</div>
+		<div class="col-sm-6">
+			<div class="input-group">
+				<input type="text" class="form-control" id="sample5_address"
+					placeholder="주소" width="100" readonly="readonly" name="mem_addr">
+				<span class="input-group-btn">							<input type="button" class="btn btn-success"
+					onclick="sample5_execDaumPostcode()" value="주소검색">
+				</span>
 			</div>
+		</div>
+	</div>
 	<div id="map"
 		style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
 

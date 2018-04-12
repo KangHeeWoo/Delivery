@@ -57,17 +57,30 @@
           <div class="intro-heading text-uppercase">배달의 백성民</div>
           <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">주문하기</a>
         </div>
-        <div class="map_wrap">
-				<div id="map"
-					style="width: 100%; height: 100%; position: relative; overflow: hidden;">
+        <div class="form-group">
+			<div class="col-sm-6">
+				<div class="input-group">
+					<input type="text" class="form-control" id="sample5_address"
+						placeholder="주소검색을 눌러 주소를 입력해 주세요" width="100" readonly="readonly" name="mem_addr">
+					<span class="input-group-btn">							<input type="button" class="btn btn-success"
+						onclick="sample5_execDaumPostcode()" value="주소검색">
+					</span>
 				</div>
-				<div class="hAddr">
-					<span class="title">지도중심기준 행정동 주소정보</span> <span id="centerAddr"></span>
-				</div>
-				<br>
-				<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-					href="#services" onclick="saveAddr()">이 주소가 확실합니다!</a>
 			</div>
+		</div>
+		<br>
+		<br>
+        <div class="map_wrap">
+			<div id="map"
+				style="width: 100%; height: 100%; position: relative; overflow: hidden;">
+			</div>
+			<div class="hAddr">
+				<span class="title">지도중심기준 행정동 주소정보</span> <span id="centerAddr"></span>
+			</div>
+			<br>
+			<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+				href="#services" onclick="saveAddr()">이 주소가 확실합니다!</a>
+		</div>
       </div>
     </header>
 
@@ -80,13 +93,16 @@
           </div>
         </div>
         <div class="row text-center">
+        <a href="#">
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">한식</h4>            
+            <h4 class="service-heading">한식</h4>           
           </div>
+        </a>
+        <a href="#"> 
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -94,6 +110,8 @@
             </span>
             <h4 class="service-heading">중식</h4>            
           </div>
+        </a>
+        <a href="#"> 
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -101,6 +119,8 @@
             </span>
             <h4 class="service-heading">일식</h4>           
           </div>
+        </a>
+        <a href="#"> 
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -108,6 +128,8 @@
             </span>
             <h4 class="service-heading">치킨</h4>           
           </div>
+        </a>
+        <a href="#"> 
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -115,6 +137,8 @@
             </span>
             <h4 class="service-heading">피자</h4>           
           </div>
+        </a>
+        <a href="#">
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -122,6 +146,8 @@
             </span>
             <h4 class="service-heading">중국집</h4>           
           </div>
+        </a>
+        <a href="#">
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -129,6 +155,8 @@
             </span>
             <h4 class="service-heading">족발·보쌈</h4>            
           </div>
+         </a>
+         <a href="#">
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -136,6 +164,8 @@
             </span>
             <h4 class="service-heading">야식</h4>            
           </div>
+        </a>
+        <a href="#">
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -143,6 +173,8 @@
             </span>
             <h4 class="service-heading">카페·디저트</h4>       
           </div>
+        </a>
+        <a href="#">
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -150,6 +182,8 @@
             </span>
             <h4 class="service-heading">도시락</h4>
           </div>
+        </a>
+        <a href="#">
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -157,6 +191,8 @@
             </span>
             <h4 class="service-heading">패스트푸드</h4>     
           </div>
+        </a>
+        <a href="#">
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -164,6 +200,7 @@
             </span>
             <h4 class="service-heading">찜·탕</h4>     
           </div>
+        </a>
         </div>
       </div>
     </section>
@@ -424,13 +461,19 @@
 		}
 	}
 	function saveAddr(){
-		if(myAddr != null){
+		var searchAddr=document.getElementById("sample5_address").value;
+		if(!((myAddr == null || myAddr == '') && (searchAddr == null || searchAddr==""))){
 			$.ajax({
 				url:"<c:url value='/myAddr'/>",
-				data:{myAddr:myAddr},
+				data:{myAddr:myAddr,searchAddr:searchAddr},
 				dataType:"json",
-				success:function(data){					
-					alert("'"+myAddr + "'가 내 주소로 지정되었습니다.");
+				success:function(data){
+					//alert("myAddr:"+myAddr+"searchAddr:"+searchAddr);
+					if(!(myAddr==null || myAddr=="")){
+						alert("'"+myAddr + "'가 내 주소로 지정되었습니다.");
+					}else if(!(searchAddr==null || searchAddr=="")){						
+						alert("'"+searchAddr + "'가 내 주소로 지정되었습니다.");						
+					}
 				}
 			});
 			
@@ -439,4 +482,78 @@
 		}
 	}
 </script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=00c0bb384860705065e4de2f7b7b454&libraries=services"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+		mapOption = {
+			center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+			level : 5
+		// 지도의 확대 레벨
+		};
+
+		//지도를 미리 생성
+		var map = new daum.maps.Map(mapContainer, mapOption);
+		//주소-좌표 변환 객체를 생성
+		var geocoder = new daum.maps.services.Geocoder();
+		//마커를 미리 생성
+		var marker = new daum.maps.Marker({
+			position : new daum.maps.LatLng(37.537187, 127.005476),
+			map : map
+		});
+		function sample5_execDaumPostcode() {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+							var fullAddr = data.address; // 최종 주소 변수
+							var extraAddr = ''; // 조합형 주소 변수
+
+							// 기본 주소가 도로명 타입일때 조합한다.
+							if (data.addressType === 'R') {
+								//법정동명이 있을 경우 추가한다.
+								if (data.bname !== '') {
+									extraAddr += data.bname;
+								}
+								// 건물명이 있을 경우 추가한다.
+								if (data.buildingName !== '') {
+									extraAddr += (extraAddr !== '' ? ', '
+											+ data.buildingName
+											: data.buildingName);
+								}
+								// 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+								fullAddr += (extraAddr !== '' ? ' ('
+										+ extraAddr + ')' : '');
+							}
+
+							// 주소 정보를 해당 필드에 넣는다.
+							document.getElementById("sample5_address").value = fullAddr;
+							// 주소로 상세 정보를 검색
+
+							/* geocoder.addressSearch(data.address, function(results, status) {
+							    // 정상적으로 검색이 완료됐으면
+							    if (status === daum.maps.services.Status.OK) {
+
+							        var result = results[0]; //첫번째 결과의 값을 활용
+
+							        // 해당 주소에 대한 좌표를 받아서
+							        var coords = new daum.maps.LatLng(result.y, result.x);
+							        // 지도를 보여준다.
+							        mapContainer.style.display = "block";
+							        map.relayout();
+							        // 지도 중심을 변경한다.
+							        map.setCenter(coords);
+							        // 마커를 결과값으로 받은 위치로 옮긴다.
+							        marker.setPosition(coords)
+							    }
+							}); */
+						}
+					}).open({
+				popupName : 'findAddr',
+				autoClose : true
+			});
+		}
+	</script>
    

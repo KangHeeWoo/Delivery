@@ -32,12 +32,20 @@ public class MyPositionController {
 	}
 	@RequestMapping(value="/myAddr",produces="application/json;charset=utf-8")
 	@ResponseBody
-	public String myAddr(String myAddr,HttpSession session) {
+	public String myAddr(String myAddr,String searchAddr,HttpSession session) {
 		JSONObject ob=new JSONObject();
+		System.out.println("myAddr:"+myAddr + ",searchAddr:" + searchAddr);
 		try {
-			session.setAttribute("myAddr", myAddr);
-			ob.put("result", true);
-			//System.out.println("技记技记");
+			if(myAddr!=null && myAddr!="") {
+				session.setAttribute("myAddr", myAddr);
+				ob.put("result", true);
+				System.out.println("myAddr技记技记");				
+			}
+			if(searchAddr!=null && searchAddr!="") {
+				session.setAttribute("searchAddr", searchAddr);
+				ob.put("result", true);
+				System.out.println("searchAddr技记技记");	
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 			ob.put("result", false);
