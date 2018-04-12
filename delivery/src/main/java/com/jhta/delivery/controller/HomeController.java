@@ -39,9 +39,10 @@ public class HomeController {
 		int m=selService.emailcheck(emailcheck);
 		if(m>0 || n>0) {
 			ob.put("result",true);
-		}
-		ob.put("result",false);
+		}else {
+			ob.put("result",false);
 		
+		}
 		return ob.toString();
 	}
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
