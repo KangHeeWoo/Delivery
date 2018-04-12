@@ -1,5 +1,6 @@
 package com.jhta.delivery.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,7 +14,7 @@ public class StoresDao {
 	@Autowired private SqlSession session;
 	private final String NAMESPACE = "com.jhta.mybatis.StoresMapper";
 	
-	public List<StoresVo> myPositionList(String able_loc){
-		return session.selectList(NAMESPACE+".mypositionList", able_loc);
+	public List<StoresVo> myPositionList(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE+".mypositionList", map);
 	}
 }

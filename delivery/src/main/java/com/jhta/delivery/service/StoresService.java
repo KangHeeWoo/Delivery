@@ -1,5 +1,6 @@
 package com.jhta.delivery.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import com.jhta.delivery.vo.StoresVo;
 public class StoresService {
 	@Autowired private StoresDao dao;
 	
-	public List<StoresVo> myPositionList(String able_loc){
-		return dao.myPositionList(able_loc);
+	public List<StoresVo> myPositionList(HashMap<String, Object> map){
+		return dao.myPositionList(map);
 	}
 }

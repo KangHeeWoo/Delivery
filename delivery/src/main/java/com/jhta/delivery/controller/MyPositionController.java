@@ -1,5 +1,6 @@
 package com.jhta.delivery.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -19,32 +20,29 @@ import com.jhta.delivery.vo.StoresVo;
 public class MyPositionController {
 	@Autowired private StoresService service;
 	
-	@RequestMapping(value = "/myposition", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/myposition", method = RequestMethod.GET)
 	public String myposition() {
 		return ".map.myposition";
-	}
-	@RequestMapping(value = "/myposition", method = RequestMethod.POST)
-	public ModelAndView myPositionList(String able_loc) {
+	}*/
+	@RequestMapping("/myposition")
+	public ModelAndView myPositionList(HashMap<String, Object> map,HttpSession session) {
 		ModelAndView mv = new ModelAndView("map/mylist");
-		List<StoresVo> list=service.myPositionList(able_loc);
+		System.out.println(session.getAttribute("myAddr")); 
+
+		List<StoresVo> list=service.myPositionList(map);
 		mv.addObject("list",list);
 		return mv;
 	}
 	@RequestMapping(value="/myAddr",produces="application/json;charset=utf-8")
 	@ResponseBody
-	public String myAddr(String myAddr,String searchAddr,HttpSession session) {
+	public String myAddr(String myAddr,HttpSession session) {
 		JSONObject ob=new JSONObject();
-		System.out.println("myAddr:"+myAddr + ",searchAddr:" + searchAddr);
+		System.out.println("myAddr:"+myAddr);
 		try {
 			if(myAddr!=null && !myAddr.equals("")) {
 				session.setAttribute("myAddr", myAddr);
 				ob.put("result", true);
 				System.out.println("myAddr技记技记");				
-			}
-			if(searchAddr!=null && !searchAddr.equals("")) {
-				session.setAttribute("searchAddr", searchAddr);
-				ob.put("result", true);
-				System.out.println("searchAddr技记技记");	
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

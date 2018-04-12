@@ -93,114 +93,103 @@
           </div>
         </div>
         <div class="row text-center">
-        <a href="<c:url value='/'/>">
-          <div class="col-md-4">
+          <div class="col-md-4" onclick="getlist(1)">
+          	<input type="hidden" class="cat" value="0">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">한식</h4>           
           </div>
-        </a>
-        <a href="#"> 
-          <div class="col-md-4">
+        
+          <div class="col-md-4" onclick="getlist(2)">
+          	<input type="hidden" class="cat" value="분식">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">중식</h4>            
+            <h4 class="service-heading">분식</h4>            
           </div>
-        </a>
-        <a href="#"> 
-          <div class="col-md-4">
+          <div class="col-md-4" onclick="getlist(3)">
+          	<input type="hidden" class="cat" value="일식">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">일식</h4>           
           </div>
-        </a>
-        <a href="#"> 
-          <div class="col-md-4">
+          <div class="col-md-4" onclick="getlist(4)">
+          	<input type="hidden" class="cat" value="치킨">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">치킨</h4>           
           </div>
-        </a>
-        <a href="#"> 
-          <div class="col-md-4">
+          <div class="col-md-4" onclick="getlist(5)">
+          	<input type="hidden" class="cat" value="피자">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">피자</h4>           
           </div>
-        </a>
-        <a href="#">
-          <div class="col-md-4">
+          <div class="col-md-4" onclick="getlist(6)">
+         	<input type="hidden" class="cat" value="중국집">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">중국집</h4>           
           </div>
-        </a>
-        <a href="#">
-          <div class="col-md-4">
+          <div class="col-md-4" onclick="getlist(7)">
+          	<input type="hidden" class="cat" value="족발·보쌈">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">족발·보쌈</h4>            
           </div>
-         </a>
-         <a href="#">
-          <div class="col-md-4">
+          <div class="col-md-4" onclick="getlist(8)">
+          	<input type="hidden" class="cat" value="야식">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">야식</h4>            
           </div>
-        </a>
-        <a href="#">
-          <div class="col-md-4">
+          <div class="col-md-4" onclick="getlist(9)">
+          	<input type="hidden" class="cat" value="카페·디저트">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">카페·디저트</h4>       
           </div>
-        </a>
-        <a href="#">
-          <div class="col-md-4">
+          <div class="col-md-4" onclick="getlist(10)">
+          	<input type="hidden" class="cat" value="도시락">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">도시락</h4>
           </div>
-        </a>
-        <a href="#">
-          <div class="col-md-4">
+          <div class="col-md-4" onclick="getlist(11)">
+          	<input type="hidden" class="cat" value="패스트푸드">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">패스트푸드</h4>     
           </div>
-        </a>
-        <a href="#">
-          <div class="col-md-4">
+          <div class="col-md-4" onclick="getlist(12)">
+          	<input type="hidden" class="cat" value="찜,탕">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">찜·탕</h4>     
           </div>
-        </a>
         </div>
       </div>
     </section>
@@ -462,24 +451,29 @@
 	}
 	function saveAddr(){
 		var searchAddr=document.getElementById("sample5_address").value;
-		if(!((myAddr == null || myAddr == '') && (searchAddr == null || searchAddr==""))){
+		if(!(searchAddr == null || searchAddr=="")){
+			myAddr=searchAddr;
+		}
+		if(!(myAddr == null || myAddr == '')){
 			$.ajax({
 				url:"<c:url value='/myAddr'/>",
-				data:{myAddr:myAddr,searchAddr:searchAddr},
+				data:{myAddr:myAddr},
 				dataType:"json",
 				success:function(data){
 					//alert("myAddr:"+myAddr+"searchAddr:"+searchAddr);
-					if(!(myAddr==null || myAddr=="")){
-						alert("'"+myAddr + "'가 내 주소로 지정되었습니다.");
-					}else if(!(searchAddr==null || searchAddr=="")){						
-						alert("'"+searchAddr + "'가 내 주소로 지정되었습니다.");						
-					}
+					alert("'"+myAddr + "'가 내 주소로 지정되었습니다.");
 				}
 			});
-			
 		}else{
 			alert("내 주소를 선택해주세요.");
 		}
+	}
+	
+	function getlist(n){
+		var cat = $(".cat");
+		console.log(n);
+		
+		location.href ="<c:url value='/myposition?cat_num="+cat+"&able_loc="+myAddr+"'/>";
 	}
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
