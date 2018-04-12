@@ -1,6 +1,7 @@
 package com.jhta.delivery.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.json.JSONObject;
@@ -14,16 +15,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.delivery.mail.SimpleMailSender;
+import com.jhta.delivery.service.CouponService;
 import com.jhta.delivery.service.MembersService;
+import com.jhta.delivery.vo.CouponIssueVo;
 import com.jhta.delivery.vo.MembersVo;
 
 @Controller
 public class MembersController {
 	@Autowired private SimpleMailSender simpleMailSender;
 	@Autowired private MembersService service;
+	@Autowired private CouponService couponService;
+	
 	@InitBinder
     public void InitBinder(WebDataBinder binder) {
-       CustomDateEditor dateEditor=new CustomDateEditor(new SimpleDateFormat("yyyy-mm-dd"), true);
+       CustomDateEditor dateEditor=new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true);
        binder.registerCustomEditor(Date.class, dateEditor);
     }
 	
@@ -38,6 +43,14 @@ public class MembersController {
 		vo.setMem_addr(mem_addr);
 		
 		service.insert(vo);
+		
+		MembersVo mem = couponService.searchMem(vo.getMem_email());
+		Calendar today = Calendar.getInstance();
+		Calendar nextMon = Calendar.getInstance();
+		
+		nextMon.set(Calendar.MONTH, today.get(Calendar.MONTH) + 1);
+		
+		couponService.issueCoupon(new CouponIssueVo(0, 41, mem.getMem_num(), today.getTime(), nextMon.getTime(), null, null));
 		
 		return ".main";
 	}
