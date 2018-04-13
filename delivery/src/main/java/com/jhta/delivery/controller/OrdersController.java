@@ -19,6 +19,7 @@ import com.jhta.delivery.vo.OrdersVo;
 public class OrdersController {
 	@Autowired private OrdersService service;
 	
+	
 	@RequestMapping("/seller/orderlist")
 	public String orderList(@RequestParam(name="stoNum", defaultValue="1")int stoNum, 
 			@RequestParam(name="pageNum", defaultValue="1")int pageNum,Model model) {
