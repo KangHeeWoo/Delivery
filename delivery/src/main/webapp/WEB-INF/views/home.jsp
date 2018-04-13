@@ -33,12 +33,14 @@
 	background: rgba(255, 255, 255, 0.8);
 	z-index: 1;
 	padding: 5px;
+	color:black;
 }
 
 #centerAddr {
 	display: block;
 	margin-top: 2px;
 	font-weight: normal;
+	color:black;
 }
 
 .bAddr {
@@ -46,6 +48,7 @@
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
+	color:black;
 }
 </style>
 
