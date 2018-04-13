@@ -16,6 +16,7 @@ public class SellerDao {
 	private final String NAMESPACE = "com.jhta.mybatis.SellerMapper";
 	
 	public SellerVo eamilcheck(String sel_email) {
+		//System.out.println(sel_email);
 		return session.selectOne(NAMESPACE+".emailcheck", sel_email);
 	}
 	public SellerVo logincheck(HashMap<String, String> map) {

@@ -12,6 +12,4 @@
 	<insert id="insert" parameterType="seller">
 		insert into seller values(0,#{sel_email},#{sel_name},#{sel_pwd},#{sel_addr},#{sel_phone},sysdate,6)
 	</insert>
-	
-	
 </mapper>    
