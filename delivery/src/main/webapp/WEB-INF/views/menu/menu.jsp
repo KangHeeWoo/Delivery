@@ -16,7 +16,10 @@
 	-moz-border-radius: 16px;
 	-webkit-border-radius: 16px
 }
-.menu_list{
+.mt-list-item{
+	list-style: none;
+}
+.mt-list-item .done{
 	list-style: none;
 }
 </style>
@@ -247,7 +250,7 @@ img#wpstats {
 											role="tablist" aria-multiselectable="true">
 											<div class="list-todo-line"></div>
 											<ul>
-												<li class="menu_list">
+												<li class="mt-list-item">
 													<div class="list-todo-item dark">
 														<a class="list-toggle-container" data-toggle="collapse"
 															data-parent="#accordion1" onclick=" " href="#task-1"
@@ -258,7 +261,7 @@ img#wpstats {
 														</a>
 														<div class="task-list panel-collapse collapse in" id="task-1">
 															<ul>
-																<li class="menu_list">
+																<li class="task-list-item done">
 																	<div class="task-content">
 																		<h4 class="uppercase bold">
 																			<a href="javascript:;">메뉴1</a>
@@ -266,7 +269,7 @@ img#wpstats {
 																		<p>가격 / 개수 / 담기</p>
 																	</div>
 																</li>
-																<li class="menu_list">
+																<li class="task-list-item done">
 																	<div class="task-content">
 																		<h4 class="uppercase bold">
 																			<a href="javascript:;">메뉴2</a>
@@ -278,38 +281,6 @@ img#wpstats {
 														</div>
 													</div>
 												</li>
-												<li class="menu_list">
-													<div class="list-todo-item dark">
-														<a class="list-toggle-container" data-toggle="collapse"
-															data-parent="#accordion1" href="#task-2"
-															aria-expanded="false">
-															<div class="list-toggle done uppercase">
-																<div class="list-toggle-title bold">사이드메뉴</div>
-															</div>
-														</a>
-														<div class="task-list panel-collapse collapse" id="task-2">
-															<ul>
-																<li class="menu_list">
-																	<div class="task-content">
-																		<h4 class="uppercase bold">
-																			<a href="javascript:;">메뉴1</a>
-																		</h4>
-																		<p>가격 / 개수 / 담기</p>
-																	</div>
-																</li>
-																<li class="menu_list">
-																	<div class="task-content">
-																		<h4 class="uppercase bold">
-																			<a href="javascript:;">메뉴2</a>
-																		</h4>
-																		<p>가격 / 개수 / 담기</p>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</li>
-
 											</ul>
 										</div>
 									</div>

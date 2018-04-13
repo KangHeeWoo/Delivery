@@ -132,20 +132,24 @@
 		
 		if(currentValue == '배달완료'){
 			alert('이미 배달완료된 항목은 변경할 수 없습니다.');
+			setSelect(state);
 			return;
 		}else if(currentValue == '배달중'){
 			if(changeValue != '배달완료'){
 				alert('배달중인 항목은 배달완료 외의 상태로 변경할 수 없습니다.');
+				setSelect(state);
 				return;	
 			}
 		}else if(currentValue == '조리중'){
 			if(changeValue != '배달중'){
 				alert('조리중인 항목은 배달중 외의 상태로 변경할 수 없습니다.');
+				setSelect(state);
 				return;	
 			}
 		}else{
 			if(changeValue != '조리중'){
 				alert('주문접수인 항목은 조리중 외의 상태로 변경할 수 없습니다.');
+				setSelect(state);
 				return;	
 			}
 		}
@@ -164,10 +168,14 @@
 				}
 			});
 		}else{
-			for(var i=0; i<state.length;i++){
-				if(state[i].value == currentValue){
-					state[i].selected = 'selected';
-				}
+			setSelect(state);
+		}
+	}
+	
+	function setSelect(state){
+		for(var i=0; i<state.length;i++){
+			if(state[i].value == currentValue){
+				state[i].selected = 'selected';
 			}
 		}
 	}
