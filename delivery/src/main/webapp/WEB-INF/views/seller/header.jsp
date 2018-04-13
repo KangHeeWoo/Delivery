@@ -18,30 +18,27 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="admin-menu" href="#">회원관리&nbsp;</a>
-            </li>
-            <li class="nav-item">
               <a class="admin-menu" href="#">매장관리&nbsp;</a>
             </li>
             <li class="nav-item">
-              <a class="admin-menu" href="#">매출관리&nbsp;</a>
+              <a class="admin-menu" href="#">메뉴관리&nbsp;</a>
             </li>
             <li class="nav-item">
-              <a class="admin-menu" href="<c:url value='/admin/coupon' />">쿠폰관리&nbsp;</a>
+              <a class="admin-menu" href="#">리뷰관리&nbsp;</a>
             </li>
             <li class="nav-item">
-              <a class="admin-menu" href="#">광고관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/seller/orderlist' />">주문관리&nbsp;</a>
             </li>
             <li class="nav-item">
-              <a class="admin-menu" href="#">QnA관리&nbsp;</a>
+              <a class="admin-menu" href="#">광고신청&nbsp;</a>
             </li>
             <li class="nav-item">
-              <a class="admin-menu" href="#">공지관리&nbsp;</a>
+              <a class="admin-menu" href="#">1:1문의&nbsp;</a>
             </li>
             <li class="nav-item">
-              <a class="admin-menu" href="#">이벤트관리&nbsp;</a>
+              <a class="admin-menu" href="#">자유게시판&nbsp;</a>
             </li>
-             <li class="nav-item">
+            <li class="nav-item">
               <a class="admin-menu" href="<c:url value='/logout'/>">로그아웃&nbsp;</a>
             </li>
           </ul>

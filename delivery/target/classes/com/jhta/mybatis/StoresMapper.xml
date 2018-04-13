@@ -9,4 +9,10 @@
 		where s.cat_num=c.cat_num and c.cat_num=#{cat_num} and s.sto_state='승인'
 		and s.sto_num in(select sto_num from able_location where able_loc=#{able_loc})
 	</select>
+	<select id="minStoNum" parameterType="int" resultType="int">
+		select nvl(min(sto_num), 0) from stores where sel_num = #{sel_num} and sto_state='승인'
+	</select>
+	<select id="stoList" parameterType="int" resultType="stores">
+		select * from stores where sel_num = #{sel_num} and sto_state='승인'
+	</select>
 </mapper>

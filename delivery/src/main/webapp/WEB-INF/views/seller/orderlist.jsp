@@ -16,6 +16,12 @@
 </style>
 <div id="order_list">
 	<!-- 판매자 매장 리스트중 선택 기능 필요 -->
+	<h4>매장 선택</h4>
+	<select onchange="selStore(event)">
+		<c:forEach var="store" items="${sto_list }">
+			<option value="${store.sto_num }" ${store.sto_num == sto_num?"selected='selected'":"" }>${store.sto_name }</option>
+		</c:forEach>
+	</select>
 	<table class="table">
 		<thead>
 			<tr>
@@ -40,13 +46,12 @@
 					<td>${order.ord_addr }</td>
 					<td>${order.pay_type_name }</td>
 					<td>
-						<select class="order_state">
+						<select class="order_state" onclick="getCurrentValue(event, ${order.ord_num })" onchange="getChangeValue(event, ${order.ord_num })">
 							<option value="주문접수" ${order.ord_state == '주문접수'? "selected='selected'" : ''}>주문접수</option>
 							<option value="조리중" ${order.ord_state == '조리중'? "selected='selected'" : ''}>조리중</option>
 							<option value="배달중" ${order.ord_state == '배달중'? "selected='selected'" : ''}>배달중</option>
 							<option value="배달완료" ${order.ord_state == '배달완료'? "selected='selected'" : ''}>배달완료</option>
 						</select>
-						<input type="button" value="적용" id="btn_state">
 					</td>
 				</tr>
 			</c:forEach>
@@ -59,7 +64,7 @@
 					<span style="color: black;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/seller/orderlist?pageNum=${i }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/seller/orderlist?pageNum=${i }&stoNum=${sto_num }' />"><span style="color: #555;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
@@ -74,24 +79,96 @@
 				</tr>
 			</thead>
 			<tbody id="orderInfo">
-				<!-- 데이터 추가 후 리스트 뿌려지는거 확인 -->
 			</tbody>
 		</table>
 	</div>
 </div>
 <script>
-	function getOrderInfo(n){
-		$("#orderList").css({display : "block"});
-		
+	function selStore(e){
+		var stoNum = $(e.target).val(); 
+
+		location.href = "<c:url value='/seller/orderlist?stoNum=" + stoNum + "' />";
+	}
+
+	function getOrderInfo(n){		
 		$.ajax({
 			url : "<c:url value='/seller/orderInfo' />",
 			data : {ordNum : n},
 			dataType : "json",
 			success : function(data){
-				console.log(data);
+				$("#orderList").css({display : "block"});
+				
+				var orderInfo = $("#orderInfo");
+				orderInfo.html("");
+				var list = data;
+				
+				for(var i=0;i<list.length;i++){
+					var tr = $("<tr></tr>");
+					var menu = $("<td></td>");
+					var cnt = $("<td></td>");
+					
+					menu.html(list[i].men_name);
+					cnt.html(list[i].ord_cnt);
+					tr.append(menu);
+					tr.append(cnt);					
+					orderInfo.append(tr);
+				}
 			}, error : function(){
 				alert('데이터 조회 실패');
 			}
 		});
+	}
+	
+	var currentValue;
+	var changeValue;
+	
+	function getCurrentValue(e, n){
+		currentValue = $(e.target).val();
+	}
+	
+	function getChangeValue(e, n){
+		var state = e.target;
+		changeValue = $(state).val();
+		
+		if(currentValue == '배달완료'){
+			alert('이미 배달완료된 항목은 변경할 수 없습니다.');
+			return;
+		}else if(currentValue == '배달중'){
+			if(changeValue != '배달완료'){
+				alert('배달중인 항목은 배달완료 외의 상태로 변경할 수 없습니다.');
+				return;	
+			}
+		}else if(currentValue == '조리중'){
+			if(changeValue != '배달중'){
+				alert('조리중인 항목은 배달중 외의 상태로 변경할 수 없습니다.');
+				return;	
+			}
+		}else{
+			if(changeValue != '조리중'){
+				alert('주문접수인 항목은 조리중 외의 상태로 변경할 수 없습니다.');
+				return;	
+			}
+		}
+		
+		var setState = confirm(currentValue + " 상태를 " + changeValue + " 상태로 변경하시겠습니까?");
+		
+		if(setState){
+			$.ajax({
+				url : "<c:url value='/seller/setOrderState' />",
+				data : {ord_state : changeValue, ord_num : n},
+				dataType : "text",
+				success : function(data){
+					console.log(data);
+				}, error : function(){
+					alert("상태 변경 실패");
+				}
+			});
+		}else{
+			for(var i=0; i<state.length;i++){
+				if(state[i].value == currentValue){
+					state[i].selected = 'selected';
+				}
+			}
+		}
 	}
 </script>

@@ -31,5 +31,8 @@ public class SellerService {
 	public int insert(SellerVo vo) {
 		return dao.insert(vo);
 	}
-
+	
+	public SellerVo getSeller(String sel_email) {
+		return dao.eamilcheck(sel_email);
+	}
 }

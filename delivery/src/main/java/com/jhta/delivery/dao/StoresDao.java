@@ -17,4 +17,12 @@ public class StoresDao {
 	public List<StoresVo> myPositionList(HashMap<String, Object> map){
 		return session.selectList(NAMESPACE+".myPositionList", map);
 	}
+	
+	public int minStoNum(int sel_num) {
+		return session.selectOne(NAMESPACE + ".minStoNum", sel_num);
+	}
+	
+	public List<StoresVo> stoList(int sel_num){
+		return session.selectList(NAMESPACE + ".stoList", sel_num);
+	}
 }

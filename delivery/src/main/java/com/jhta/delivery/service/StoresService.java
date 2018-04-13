@@ -16,4 +16,12 @@ public class StoresService {
 	public List<StoresVo> myPositionList(HashMap<String, Object> map){
 		return dao.myPositionList(map);
 	}
+	
+	public int minStoNum(int sel_num) {
+		return dao.minStoNum(sel_num);
+	}
+	
+	public List<StoresVo> stoList(int sel_num){
+		return dao.stoList(sel_num);
+	}
 }
