@@ -41,7 +41,7 @@ public class AdminChartController {
 	}
 	@RequestMapping("/chart")
 	public ModelAndView Chart1(@RequestParam(defaultValue="0")int year,@RequestParam(defaultValue="0")int month) {
-		ModelAndView mv=new ModelAndView("admin/chart");
+		ModelAndView mv=new ModelAndView(".admin.chart");
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		Calendar cd = Calendar.getInstance();
 		int md=0;
