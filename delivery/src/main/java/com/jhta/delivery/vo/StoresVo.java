@@ -16,10 +16,10 @@ public class StoresVo {
 	private String sto_state;
 	private int sel_num;
 	private int cat_num;
-	
+	private String sto_img;
 	public StoresVo() {}
 
-	public StoresVo(int sto_num, String sto_name, String sto_regnum, String sto_addr, String sto_phone, Date sto_regd,
+	public StoresVo(String sto_img,int sto_num, String sto_name, String sto_regnum, String sto_addr, String sto_phone, Date sto_regd,
 			Date sto_open, Date sto_close, String sto_holiday, String sto_intro, String sto_state, int sel_num,
 			int cat_num) {
 		super();
@@ -36,8 +36,15 @@ public class StoresVo {
 		this.sto_state = sto_state;
 		this.sel_num = sel_num;
 		this.cat_num = cat_num;
+		this.sto_img = sto_img;
+	}
+	public String getSto_img() {
+		return sto_img;
 	}
 
+	public void setSto_img(String sto_img) {
+		this.sto_img = sto_img;
+	}
 	public int getSto_num() {
 		return sto_num;
 	}

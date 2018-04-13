@@ -14,10 +14,12 @@
 		<typeAlias type="com.jhta.delivery.vo.OrdersVo" alias="orders"/>
 		<typeAlias type="com.jhta.delivery.vo.OrderListVo" alias="orderlist"/>
 		<typeAlias type="com.jhta.delivery.vo.StoreslistVo" alias="storeslist"/>
-		<typeAlias type="com.jhta.delivery.vo.StoreMenuVo" alias="storemenu"/>
+		<typeAlias type="com.jhta.delivery.vo.MenuVo" alias="menu"/>
 		<typeAlias type="com.jhta.delivery.vo.QnAVo" alias="qna"/>
 	</typeAliases>
 	
+
+
 	<mappers>
 		<!-- Mapper 파일 추가 -->
 		<mapper resource="com/jhta/mybatis/MembersMapper.xml"/>
@@ -27,5 +29,6 @@
 		<mapper resource="com/jhta/mybatis/OrdersMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/ChartMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/QnAMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/MenuMapper.xml"/>
 	</mappers>
 </configuration>

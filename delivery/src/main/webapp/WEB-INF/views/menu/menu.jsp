@@ -158,7 +158,7 @@ img#wpstats {
 		<section class="module module-super-small">
 			<div class="container product-main-content">
 				<nav class="woocommerce-breadcrumb">
-					<a href="#">카테고리</a>&nbsp;&#47;&nbsp;<a href="#">가게명</a>
+					<a href="#">카테고리</a>&nbsp;&#47;&nbsp;<a href="#">${stovo.sto_name}</a>
 				</nav>
 				<div id="product-70"
 					class="post-70 product type-product status-publish has-post-thumbnail product_cat-clothing product_cat-tshirt first instock sale shipping-taxable purchasable product-type-simple">
@@ -171,7 +171,7 @@ img#wpstats {
 								data-thumb="https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2-150x150.jpg"
 								class="woocommerce-product-gallery__image">
 								<a href="#"> <img width="600" height="800"
-									src="<c:url value='/resources/images/stores/죽이야기.jpg'/>"
+									src="<c:url value='/resources/images/stores/${stovo.sto_img}'/>"
 									class="wp-post-image" alt="" title="Shop_Isle_2" /></a>
 								<!-- data-src="https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2.jpg"
 									data-large_image="<c:url value='/resources/images/stores/죽이야기.jpg'/>"	data-large_image_width="900" data-large_image_height="1350"	srcset="https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2.jpg 900w, https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2-200x300.jpg 200w, https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2-768x1152.jpg 768w, https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2-683x1024.jpg 683w, https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2-600x900.jpg 600w"
@@ -180,7 +180,7 @@ img#wpstats {
 						</figure>
 					</div>
 					<div class="summary entry-summary">
-						<h1 class="product_title entry-title">가게명(controller)</h1>
+						<h1 class="product_title entry-title">${stovo.sto_name}</h1>
 						<div class="woocommerce-product-rating">
 							<div class="star-rating">
 								<span style="width: 30%">Rated <strong class="rating">1.50</strong>
@@ -193,9 +193,7 @@ img#wpstats {
 						<br>
 						<div class="woocommerce-product-details__short-description">
 							<p>
-								....매장소개글 불러오기 ......환자들만 먹는다고 생각했던 죽이 이제는 전국민에게 사랑받는 음식이 되었습니다.<br>죽이야기는
-								전통 음식의 현대화에 앞장서며, 죽 뿐만 아니라 디저트에도 웰빙 음식문화를 추구합니다. 상큼하고 진한 매실의 맛과
-								향이 살아있는 항아리 매실, 비타민이 풍부한 항아리 오미자 건강음료로 죽 카페로의 변화를 시도하였습니다.
+								${stovo.sto_intro}
 							</p>
 						</div>
 						<br>
