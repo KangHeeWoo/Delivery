@@ -469,9 +469,8 @@
 	}
 	
 	function getlist(n){
-		var cat = $(".cat");
+		//var cat = $(".cat");
 		console.log(n);
-		
 		location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+searchAddr+"'/>";
 	}
 </script>

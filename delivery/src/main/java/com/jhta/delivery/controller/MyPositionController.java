@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,24 +26,25 @@ public class MyPositionController {
 		return ".map.myposition";
 	}*/
 	@RequestMapping("/myposition")
-	public ModelAndView myPositionList(HashMap<String, Object> map,HttpSession session) {
-		ModelAndView mv = new ModelAndView("map/mylist");
-		System.out.println(session.getAttribute("myAddr")); 
-
+	public String myPositionList(int cat_num,String able_loc,Model model) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		System.out.println("controller:"+cat_num+","+able_loc);
+		map.put("cat_num", cat_num);
+		map.put("able_loc", able_loc);
 		List<StoresVo> list=service.myPositionList(map);
-		mv.addObject("list",list);
-		return mv;
+		model.addAttribute("list",list);
+		return ".map.mylist";
 	}
 	@RequestMapping(value="/myAddr",produces="application/json;charset=utf-8")
 	@ResponseBody
-	public String myAddr(String myAddr,HttpSession session) {
+	public String myAddr(String searchAddr,HttpSession session) {
 		JSONObject ob=new JSONObject();
-		System.out.println("myAddr:"+myAddr);
+		//System.out.println("searchAddr:"+searchAddr);
 		try {
-			if(myAddr!=null && !myAddr.equals("")) {
-				session.setAttribute("myAddr", myAddr);
+			if(searchAddr!=null && !searchAddr.equals("")) {
+				session.setAttribute("searchAddr", searchAddr);
 				ob.put("result", true);
-				System.out.println("myAddr技记技记");				
+				//System.out.println("myAddr技记技记");				
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -50,8 +52,8 @@ public class MyPositionController {
 		}		
 		return ob.toString();
 	}
-	@RequestMapping(value="/addrsearch",method=RequestMethod.GET)
+	/*@RequestMapping(value="/addrsearch",method=RequestMethod.GET)
 	public String join() {
 		return ".map.addrsearch";
-	}
+	}*/
 }
