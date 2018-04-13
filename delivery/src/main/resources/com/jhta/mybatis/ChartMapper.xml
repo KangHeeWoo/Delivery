@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.ChartMapper">
+	<select id="getfee" parameterType="string" resultType="int">
+ 		select NVL(SUM(ord_comm),0) from orders 
+ 		<![CDATA[where ord_time >= to_date(#{date} || ' 00:00', 'yyyymmdd hh24:mi') and ord_time <= to_date(#{date} || ' 23:59', 'yyyymmdd hh24:mi')]]>
+	</select>
+	<select id="mainfee" parameterType="string" resultType="int">
+ 		select NVL(SUM(main_ads_price),0) from main_ads_entry 
+ 		<![CDATA[where main_ads_regd >= to_date(#{date} || ' 00:00', 'yyyymmdd hh24:mi') and main_ads_regd <= to_date(#{date} || ' 23:59', 'yyyymmdd hh24:mi')]]>
+	</select>
+	<select id="topfee" parameterType="string" resultType="int">
+ 		select NVL(SUM(top_ads_price),0) from top_ads_entry 
+ 		<![CDATA[where top_ads_regd >= to_date(#{date} || ' 00:00', 'yyyymmdd hh24:mi') and top_ads_regd <= to_date(#{date} || ' 23:59', 'yyyymmdd hh24:mi')]]>
+	</select>
+</mapper>

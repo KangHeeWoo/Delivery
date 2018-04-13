@@ -22,5 +22,6 @@
 		<mapper resource="com/jhta/mybatis/SellerMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/StoresMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/OrdersMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/ChartMapper.xml"/>
 	</mappers>
 </configuration>
