@@ -6,7 +6,7 @@
 	<select id="myPositionList" parameterType="hashmap" resultType="stores">
 		select s.*
 		from stores s, category c
-		where s.cat_num=c.cat_num and c.cat_num=#{cat_num} 
+		where s.cat_num=c.cat_num and c.cat_num=#{cat_num} and s.sto_state='승인'
 		and s.sto_num in(select sto_num from able_location where able_loc=#{able_loc})
 	</select>
 </mapper>
