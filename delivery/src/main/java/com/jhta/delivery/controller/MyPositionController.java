@@ -28,7 +28,6 @@ public class MyPositionController {
 	@RequestMapping("/myposition")
 	public String myPositionList(int cat_num,String able_loc,Model model) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		System.out.println("controller:"+cat_num+","+able_loc);
 		map.put("cat_num", cat_num);
 		map.put("able_loc", able_loc);
 		List<StoresVo> list=service.myPositionList(map);

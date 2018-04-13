@@ -14,7 +14,6 @@ public class StoresService {
 	@Autowired private StoresDao dao;
 	
 	public List<StoresVo> myPositionList(HashMap<String, Object> map){
-		System.out.println("service:" + map);
 		return dao.myPositionList(map);
 	}
 }
