@@ -14,6 +14,7 @@
 		<typeAlias type="com.jhta.delivery.vo.OrdersVo" alias="orders"/>
 		<typeAlias type="com.jhta.delivery.vo.OrderListVo" alias="orderlist"/>
 		<typeAlias type="com.jhta.delivery.vo.StoreslistVo" alias="storeslist"/>
+		<typeAlias type="com.jhta.delivery.vo.StoreMenuVo" alias="storemenu"/>
 	</typeAliases>
 	
 	<mappers>

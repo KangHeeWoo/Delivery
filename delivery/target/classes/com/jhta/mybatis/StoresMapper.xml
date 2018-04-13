@@ -15,4 +15,7 @@
 	<select id="stoList" parameterType="int" resultType="stores">
 		select * from stores where sel_num = #{sel_num} and sto_state='승인'
 	</select>
+	<select id="storemenu" resultType="storemenu" parameterType="int">
+		select sto_name,s.sto_num,sto_intro,m.men_name,m.men_price from stores s,(select * from menu where men_state='가능')m where s.sto_num=m.sto_num and s.sto_num=#{sto_num}
+	</select>
 </mapper>

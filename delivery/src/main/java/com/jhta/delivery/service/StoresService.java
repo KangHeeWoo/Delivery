@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.delivery.dao.StoresDao;
+import com.jhta.delivery.vo.StoreMenuVo;
 import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.StoreslistVo;
 
@@ -24,5 +25,8 @@ public class StoresService {
 	
 	public List<StoresVo> stoList(int sel_num){
 		return dao.stoList(sel_num);
+	}
+	public List<StoreMenuVo> storeMenu(int sto_num){
+		return dao.storeMenu(sto_num);
 	}
 }
