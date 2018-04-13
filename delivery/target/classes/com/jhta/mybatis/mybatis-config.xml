@@ -15,6 +15,7 @@
 		<typeAlias type="com.jhta.delivery.vo.OrderListVo" alias="orderlist"/>
 		<typeAlias type="com.jhta.delivery.vo.StoreslistVo" alias="storeslist"/>
 		<typeAlias type="com.jhta.delivery.vo.StoreMenuVo" alias="storemenu"/>
+		<typeAlias type="com.jhta.delivery.vo.QnAVo" alias="qna"/>
 	</typeAliases>
 	
 	<mappers>
@@ -25,5 +26,6 @@
 		<mapper resource="com/jhta/mybatis/StoresMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/OrdersMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/ChartMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/QnAMapper.xml"/>
 	</mappers>
 </configuration>
