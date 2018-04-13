@@ -23,6 +23,5 @@
 		<mapper resource="com/jhta/mybatis/StoresMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/OrdersMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/ChartMapper.xml"/>
-		<mapper resource="com/jhta/mybaits/GradeMapper.xml"/>
 	</mappers>
 </configuration>
