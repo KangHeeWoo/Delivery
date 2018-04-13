@@ -62,9 +62,11 @@
 				<div class="input-group">
 					<input type="text" class="form-control" id="sample5_address"
 						placeholder="주소검색을 눌러 주소를 입력해 주세요" width="100" readonly="readonly" name="mem_addr">
-					<span class="input-group-btn">							<input type="button" class="btn btn-success"
+					<span class="input-group-btn">							
+					<input type="button" class="btn btn-success"
 						onclick="sample5_execDaumPostcode()" value="주소검색">
 					</span>
+					<input type="text" class="form-control" id="detail_address" placeholder="상세 주소를 입력해 주세요" width="100" >
 				</div>
 			</div>
 		</div>
@@ -322,14 +324,17 @@
     </section>
    </div> 
    <script type="text/javascript">
-	var latitude = 37.566826;
-	var longitude = 126.9786567;
+	var latitude = 37.572871536629854;
+	var longitude = 126.991934519897;
 
 	var mapContainer = null;
 	var mapOption = null;
 	var map = null;
 	var myAddr=null;
 	var searchAddr=null;
+	var sido=null;
+	var sigungu=null;
+	var bname=null;
 
 	function getMap() {
 		mapContainer = document.getElementById('map'); // 지도를 표시할 div 
@@ -362,7 +367,14 @@
 							+ '<span class="title">법정동 주소정보</span>'
 							+ detailAddr + '</div>';
 							
-
+					/* console.log(result[0].address.region_1depth_name);
+					console.log(result[0].address.region_2depth_name);
+					console.log(result[0].address.region_3depth_name); */
+					
+					sido=result[0].address.region_1depth_name;
+					sigungu=result[0].address.region_2depth_name;
+					bname=result[0].address.region_3depth_name;
+					
 					// 마커를 클릭한 위치에 표시합니다 
 					marker.setPosition(mouseEvent.latLng);
 					marker.setMap(map);
@@ -371,7 +383,7 @@
 					infowindow.setContent(content);
 					infowindow.open(map, marker);
 					
-					$("#sample5_address").val(myAddr);
+					$("#sample5_address").val(result[0].address.address_name);
 				}
 			});
 		});
@@ -451,16 +463,17 @@
 		}
 	}
 	function saveAddr(){
-		searchAddr=document.getElementById("sample5_address").value;
+		myAddr=document.getElementById("sample5_address").value;
+		myAddr +=" " + document.getElementById("detail_address").value;
 		
-		if(!(searchAddr == null || searchAddr == '')){
+		if(!(myAddr == null || myAddr == '' || myAddr ==' ')){
 			$.ajax({
 				url:"<c:url value='/myAddr'/>",
 				data:{searchAddr:searchAddr},
 				dataType:"json",
 				success:function(data){
 					//alert("myAddr:"+myAddr+"searchAddr:"+searchAddr);
-					alert("'"+searchAddr + "'가 내 주소로 지정되었습니다.");
+					alert("'"+myAddr + "'가 내 주소로 지정되었습니다.");
 				}
 			});
 		}else{
@@ -469,9 +482,11 @@
 	}
 	
 	function getlist(n){
-		//var cat = $(".cat");
-		console.log(n);
-		location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+searchAddr+"'/>";
+		searchAddr=sido+" "+sigungu+" "+bname;
+		alert("배달가능지역:"+searchAddr);
+		alert("내 주소:" + myAddr);
+		
+		location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+searchAddr+"&myAddr="+myAddr+"'/>";
 	}
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -500,9 +515,15 @@
 						oncomplete : function(data) {
 							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
 							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+							sido=data.sido;
+							sigungu=data.sigungu;
+							bname=data.bname;
+							/* console.log(data.sido);
+							console.log(data.sigungu);
+							console.log(data.bname); */
 							var fullAddr = data.address; // 최종 주소 변수
 							var extraAddr = ''; // 조합형 주소 변수
-
+							//console.log(data.address);
 							// 기본 주소가 도로명 타입일때 조합한다.
 							if (data.addressType === 'R') {
 								//법정동명이 있을 경우 추가한다.
@@ -521,6 +542,7 @@
 							}
 
 							// 주소 정보를 해당 필드에 넣는다.
+							
 							document.getElementById("sample5_address").value = fullAddr;
 							// 주소로 상세 정보를 검색
 

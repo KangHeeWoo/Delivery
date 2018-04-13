@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jhta.delivery.service.StoresService;
 import com.jhta.delivery.vo.StoresVo;
+import com.jhta.delivery.vo.StoreslistVo;
 
 @Controller
 public class MyPositionController {
@@ -26,11 +27,13 @@ public class MyPositionController {
 		return ".map.myposition";
 	}*/
 	@RequestMapping("/myposition")
-	public String myPositionList(int cat_num,String able_loc,Model model) {
+	public String myPositionList(int cat_num,String able_loc,String myAddr,Model model,HttpSession session) {
+		session.setAttribute("myAddr", myAddr);
+		System.out.println("controller myAddr:"+ myAddr);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("cat_num", cat_num);
 		map.put("able_loc", able_loc);
-		List<StoresVo> list=service.myPositionList(map);
+		List<StoreslistVo> list=service.myPositionList(map);
 		model.addAttribute("list",list);
 		return ".map.mylist";
 	}

@@ -8,12 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.jhta.delivery.dao.StoresDao;
 import com.jhta.delivery.vo.StoresVo;
+import com.jhta.delivery.vo.StoreslistVo;
 
 @Service
 public class StoresService {
 	@Autowired private StoresDao dao;
 	
-	public List<StoresVo> myPositionList(HashMap<String, Object> map){
+	public List<StoreslistVo> myPositionList(HashMap<String, Object> map){
 		return dao.myPositionList(map);
 	}
 	
