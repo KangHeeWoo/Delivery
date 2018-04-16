@@ -27,4 +27,7 @@ public class MembersDao {
 	public MembersVo logincheck(HashMap<String, String> map) {
 		return session.selectOne(NAMESPACE+".logincheck", map);
 	}
+	public int mem_num(String mem_email) {
+		return session.selectOne(NAMESPACE+".mem_num", mem_email);
+	}
 }

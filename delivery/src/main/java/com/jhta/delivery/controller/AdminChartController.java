@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jhta.delivery.service.ChartService;
+import com.jhta.delivery.service.PeventService;
 
 @Controller
 public class AdminChartController {
 	@Autowired private ChartService service;
+	@Autowired private PeventService service1;
 	@RequestMapping(value="/adminchart",produces="application/json;charset=utf-8")
 	@ResponseBody
 	public HashMap<String, Object> Chart(int selyear,int selmonth,int md) {
@@ -40,7 +42,17 @@ public class AdminChartController {
 		return map;
 	}
 	@RequestMapping("/chart")
-	public ModelAndView Chart1(@RequestParam(defaultValue="0")int year,@RequestParam(defaultValue="0")int month) {
+	public ModelAndView Chart1(@RequestParam(defaultValue="0")int year,@RequestParam(defaultValue="0")int month,
+			@RequestParam(defaultValue="-1")int goggio, @RequestParam(defaultValue="-1")int biyack, @RequestParam(defaultValue="-1")int al) {
+		if(goggio == -1) {
+			goggio=service1.getinfo("²¿³¢¿À");
+			biyack=service1.getinfo("»ß¾à");
+			al=service1.getinfo("¾Ë");
+		}else {
+			service1.update(goggio, "²¿³¢¿À");
+			service1.update(biyack, "»ß¾à");
+			service1.update(al, "¾Ë");
+		}
 		ModelAndView mv=new ModelAndView(".admin.chart");
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		Calendar cd = Calendar.getInstance();
@@ -58,6 +70,9 @@ public class AdminChartController {
 		map.put("selyear", year);
 		map.put("selmonth", month);
 		map.put("md",md);
+		map.put("goggio1",goggio);
+		map.put("biyack1",biyack);
+		map.put("al1",al);
 		mv.addObject("map",map);
 		return mv;
 	}

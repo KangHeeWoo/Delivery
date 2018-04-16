@@ -604,7 +604,19 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 	}
 	
 	function bookmark(sto_num){
-		alert("즐겨찾기에 등록되었습니다.");
+		
+		$.ajax({
+			url:"<c:url value='/menu/bookmark'/>",
+			data: {sto_num:sto_num},
+			dataType: "json",
+			success:function(data){
+				if(data.result)alert("즐겨찾기에 등록되었습니다.");
+				else alert("이미 등록되어있는 매장입니다.");
+			},error:function(){
+				console.log("즐겨찾기 제이슨 에러다");
+			}
+		});
+		
 		
 	}
 </script>
