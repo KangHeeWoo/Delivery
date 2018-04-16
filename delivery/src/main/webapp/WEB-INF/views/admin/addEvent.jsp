@@ -21,7 +21,7 @@
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td><input type="text" name="eve_cont"></td>
+					<td><textarea rows="5" cols="30" name="eve_cont"></textarea></td>
 				</tr>
 				<tr>
 					<th>이미지</th>
@@ -39,10 +39,33 @@
 
 <script>
 	function setData(){
+		var check = true;
+		
+		if(frm.eve_title.value == '') check = false;
+		if(frm.eve_sDate.value == '') check = false;
+		if(frm.eve_sTime.value == '') check = false;
+		if(frm.eve_eDate.value == '') check = false;
+		if(frm.eve_eTime.value == '') check = false;
+		if(frm.eve_cont.value == '') check = false;
+		if(frm.img.value == '') check = false;
+		
+		if(!check){
+			alert("모든 항목을 입력해주세요.");
+			return false;
+		}
+		
 		frm.eve_start.value = frm.eve_sDate.value + " " + frm.eve_sTime.value;
 		frm.eve_end.value = frm.eve_eDate.value + " " + frm.eve_eTime.value;
+
 		
-		console.log(frm.eve_start.value);
-		console.log(frm.eve_end.value);
+		if(new Date(frm.eve_start.value) <= new Date()){
+			alert('시작일은 현재 날짜보다 빠를 수 없습니다.');
+			return false;
+		}
+		
+		if(new Date(frm.eve_start.value) >= new Date(frm.eve_end.value)){
+			alert('종료일은 시작일보다 빠를 수 없습니다.');
+			return false;
+		}
 	}
 </script>

@@ -1,22 +1,30 @@
 package com.jhta.delivery.controller;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.delivery.service.EventService;
 import com.jhta.delivery.util.PageUtil;
+import com.jhta.delivery.vo.EventEntryVo;
 import com.jhta.delivery.vo.EventVo;
 
 @Controller
@@ -54,8 +62,37 @@ public class AdminEventController {
 	}
 	
 	@RequestMapping(value="/admin/addEvent", method=RequestMethod.POST)
-	public String addEventOk(EventVo vo) {
+	public String addEventOk(EventVo vo, MultipartFile img, HttpSession session) {
+		String uploadPath = session.getServletContext().getRealPath("/resources/images/event");
+		String orgFileName = img.getOriginalFilename();
+		String saveFileName = UUID.randomUUID() + "_" + orgFileName;
+		vo.setEve_img(saveFileName);
+		
+		try {
+			InputStream is = img.getInputStream();
+			FileOutputStream fos = new FileOutputStream(uploadPath + "\\" + saveFileName);
+			FileCopyUtils.copy(is, fos);
+			
+			service.addEvent(vo);
+						
+			return "redirect:/admin/event";
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "redirect:/admin/event";
+		}		
+	}
+	
+	@RequestMapping("/admin/detailevent")
+	public String detailEvent(int num, Model model) {
+		EventVo vo = service.detailEvent(num);
+		List<EventEntryVo> list = service.entryList(num);
+		
 		System.out.println(vo);
-		return "redirect:/admin/event";
+		System.out.println(list);
+		
+		model.addAttribute("event", vo);
+		model.addAttribute("entry", list);
+		
+		return ".admin.detailEvent";
 	}
 }

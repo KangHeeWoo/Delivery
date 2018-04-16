@@ -11,13 +11,13 @@
 		select nvl(count(*), 0) from event
 	</select>
 	<select id="detailEvent" parameterType="int" resultType="event">
-		select * from event where eve_num = ${num}
+		select * from event where eve_num = #{num}
 	</select>
 	<select id="entryList" parameterType="int" resultType="eventEntry">
-		select * from event where eve_num = ${num}
+		select e.*, m.mem_email from event_entry e, members m where e.mem_num=m.mem_num and eve_num = #{num}
 	</select>
 	<insert id="addEvent" parameterType="event">
 		insert into event
-		values(0, #{eve_title}, #{eve_cont}, #{eve_img}, ${eve_start}, #{eve_end}, sysdate)
+		values(0, #{eve_title}, #{eve_cont}, #{eve_img}, #{eve_start}, #{eve_end}, sysdate)
 	</insert>
 </mapper>

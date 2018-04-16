@@ -24,7 +24,7 @@ public class EventDao {
 	}
 	
 	public EventVo detailEvent(int num) {
-		return session.selectOne(NAMESPACE + "detailEvent", num);
+		return session.selectOne(NAMESPACE + ".detailEvent", num);
 	}
 	
 	public List<EventEntryVo> entryList(int num){
