@@ -17,11 +17,11 @@
 	-webkit-border-radius: 16px
 }
 
-.mt-list-item {
+.main_menu {
 	list-style: none;
 }
 
-.mt-list-item .done {
+.main_menu ul .sub_menu {
 	list-style: none;
 }
 </style>
@@ -119,7 +119,7 @@ img#wpstats {
 }
 </style>
 <noscript>
-	<style>
+<style>
 .woocommerce-product-gallery {
 	opacity: 1 !important
 }
@@ -209,7 +209,6 @@ img#wpstats {
 						<!-- 메뉴 list
 
 							  -->
-
 							<div
 								class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab"
 								id="tab-description" role="tabpanel"
@@ -217,62 +216,21 @@ img#wpstats {
 								<h2>MENU</h2>
 								<p>${stovo.sto_intro}</p>
 						 <div class="portlet-body">
-                                        <div class="mt-element-list">
-                                  
-                                            <div class="mt-list-container list-todo" id="accordion1" role="tablist" aria-multiselectable="true">
-                                                <div class="list-todo-line"></div>
-                                                <ul>
-                                                    <li class="mt-list-item">
-                                                       
-                                                        <div class="list-todo-item dark">
-                                                            <a class="list-toggle-container" data-toggle="collapse" data-parent="#accordion1" onclick=" " href="#task-1" aria-expanded="false">
-                                                                <div class="list-toggle done uppercase">
-                                                                    <div class="list-toggle-title bold">메뉴</div>
-                                              
-                                                                </div>
-                                                            </a>
-                                                            <div class="task-list panel-collapse collapse in" id="task-1">
-                                                                <ul>
-                                                                    <li class="task-list-item done">
-                                         
-                                                                        <div class="task-content">
-                                                                            <h4 class="uppercase bold">
-                                                                                <a href="javascript:;">메뉴1</a>
-                                                                            </h4>
-                                                                            <p>메뉴명 가격 수량 </p>
-                                                                        </div>
-                                                                    </li>
-                                                                    
-                                                                    
-                                                                </ul>
-                                                                <div class="task-footer bg-grey">
-                                                                    <div class="row">
-                                                                        <div class="col-xs-6">
-                                                                            <a class="task-trash" href="javascript:;">
-                                                                            
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="col-xs-6">
-                                                                            <a class="task-add" href="javascript:;">
-                                                                                
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> 
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    
-                                                </ul>
-                                            </div>
-                                            </div>
-                                            </div>
+                                        <div class="mt-element-list">                          
+                                            <ul>
+                                            	<li class="main_menu">메뉴
+                                            		<div>
+	                                            		<ul>
+	                                            			<li class="sub_menu">
+	                                            				<h4>메뉴1</h4>
+	                                            				<p>메뉴명 가격 수량</p>
+	                                            			</li>
+	                                            		</ul>
+                                            		</div>
+                                            	</li>
+                                            </ul>
+                                     </div>
 							</div>
-							
-							
-                                            
-
-
 
 						<!-- 리뷰관련작성페이지!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 						<div
@@ -603,3 +561,8 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 	
 	observer.observe(b, config);
 }, false);</script> <!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1523574740 -->
+<script type="text/javascript">
+	$(".main_menu").on('click', function(){
+		$(this).children("div").stop().slideToggle();
+	});
+</script>
