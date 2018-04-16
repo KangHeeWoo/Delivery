@@ -22,8 +22,12 @@
 		<beans:property name="order" value="2"/>
 	</beans:bean>
 	
-	<!-- 타일즈 설정 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 최대업로드 사이즈 설정(바이트 단위) -->
+		<beans:property name="maxUploadSize" value="52242880"/>
+	</beans:bean>
 	
+	<!-- 타일즈 설정 -->
 	<beans:bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<beans:property name="definitions">
 			<beans:list>
