@@ -34,5 +34,6 @@
 		<mapper resource="com/jhta/mybatis/QnAMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/MenuMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/EventMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/PeventMapper.xml"/>
 	</mappers>
 </configuration>

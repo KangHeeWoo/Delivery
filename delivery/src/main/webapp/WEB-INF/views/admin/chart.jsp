@@ -13,7 +13,7 @@
        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
   <body>
-
+<div style="margin-left: 100px;">
     <h4>매출 통계</h4>
     <form method="get" action="<c:url value='/chart'/>">
     <select name="year" size="1">
@@ -37,6 +37,7 @@
  	</select>
  	<input type="submit" value="조회">
  	</form>
+ 	</div>
  	<script type="text/javascript">
 	var select=document.getElementsByName("year")[0];
 	for(var i=0; i<select.options.length;i++){
@@ -51,6 +52,67 @@
 		}
 	}
 </script>
+ 	<div align="right" style="margin-right: 100px;">
+ 	<h4>등급별 적립포인트</h4>
+ 	<form method="get" action="<c:url value='/chart'/>">
+꼬끼오등급 적립포인트 :
+<select name="goggio">
+<option value="0">0%</option>
+<option value="1">1%</option>
+<option value="3">3%</option>
+<option value="5">5%</option>
+<option value="10">10%</option>
+<option value="20">20%</option>
+<option value="50">50%</option>
+</select><br>
+<script type="text/javascript">
+	var select2=document.getElementsByName("goggio")[0];
+	for(var i=0; i<select2.options.length;i++){
+		if(select2.options[i].value=='${map.goggio1}'){
+			select2.options[i].selected=true;
+		}
+	}
+</script>
+삐약등급 적립포인트 :
+<select name="biyack">
+<option value="0">0%</option>
+<option value="1">1%</option>
+<option value="3">3%</option>
+<option value="5">5%</option>
+<option value="10">10%</option>
+<option value="20">20%</option>
+<option value="50">50%</option>
+</select><br>
+<script type="text/javascript">
+	var select3=document.getElementsByName("biyack")[0];
+	for(var i=0; i<select3.options.length;i++){
+		if(select3.options[i].value=='${map.biyack1}'){
+			select3.options[i].selected=true;
+		}
+	}
+</script>
+알등급 적립포인트 :
+<select name="al">
+<option value="0">0%</option>
+<option value="1">1%</option>
+<option value="3">3%</option>
+<option value="5">5%</option>
+<option value="10">10%</option>
+<option value="20">20%</option>
+<option value="50">50%</option>
+</select><br><br>
+<script type="text/javascript">
+	var select4=document.getElementsByName("al")[0];
+	for(var i=0; i<select4.options.length;i++){
+		if(select4.options[i].value=='${map.al1}'){
+			select4.options[i].selected=true;
+		}
+	}
+</script>
+<input type="submit" value="적용">
+</form>
+</div>
+ 	
     <div id="Line_Controls_Chart">
       <!-- 라인 차트 생성할 영역 -->
           <div id="lineChartArea" style="padding:0px 20px 0px 0px;"></div>
