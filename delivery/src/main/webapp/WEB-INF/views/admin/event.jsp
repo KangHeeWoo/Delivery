@@ -44,7 +44,7 @@
 		</c:forEach>
 	</div>
 	<div align="right" style="width: 100%">
-		<a href="#">신규 이벤트 등록</a>
+		<a href="<c:url value='/admin/addEvent' />">신규 이벤트 등록</a>
 	</div>
 </div>
 <script>
