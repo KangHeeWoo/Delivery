@@ -102,6 +102,7 @@
 		          	<c:otherwise>
 		          	<!--  로그인 했을때 -->
 		          		<a href="<c:url value='/logout'/>" >로그아웃</a>
+		          		<a href="<c:url value='/mypage'/>" >마이페이지</a>
 		          	</c:otherwise>
 		          </c:choose>
         <div class="collapse navbar-collapse" id="navbarResponsive">

@@ -119,7 +119,7 @@ img#wpstats {
 }
 </style>
 <noscript>
-<style>
+	<style>
 .woocommerce-product-gallery {
 	opacity: 1 !important
 }
@@ -174,16 +174,17 @@ img#wpstats {
 						<div class="woocommerce-product-details__short-description">
 							<p>${stovo.sto_intro}</p>
 						</div>
-						<br> <br> <br> <br> <br>
+						<br> <br> <br> <br> <br> <span id="cart"></span>
+						<span id="total"></span>
+
+
 						<form class="cart"
 							action="https://demo.themeisle.com/shop-isle/product/usa-tshirt/"
 							method="post" enctype='multipart/form-data'>
 							<div class="quantity">
 								<div class="screen-reader-text">
 									<div class="yith-wcwl-add-button show" style="display: block">
-										<a href="/shop-isle/product/usa-tshirt/?add_to_wishlist=70"
-											rel="nofollow" data-product-id="70"
-											data-product-type="simple" class="add_to_wishlist"> 즐겨찾기</a>
+										<a href="#" rel="nofollow" data-product-id="70" data-product-type="simple" class="add_to_wishlist" onclick="bookmark(${stovo.sto_num})"> 즐겨찾기</a>
 										<img
 											src="https://s20206.pcdn.co/shop-isle/wp-content/plugins/yith-woocommerce-wishlist/assets/images/wpspin_light.gif"
 											class="ajax-loading" alt="loading" width="16" height="16"
@@ -198,7 +199,7 @@ img#wpstats {
 								class="single_add_to_cart_button button alt">배달 시작하기</button>
 						</form>
 					</div>
-							
+
 					<div class="woocommerce-tabs wc-tabs-wrapper">
 						<ul class="tabs wc-tabs" role="tablist">
 							<li class="description_tab" id="tab-title-description" role="tab"
@@ -209,28 +210,39 @@ img#wpstats {
 						<!-- 메뉴 list
 
 							  -->
-							<div
-								class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab"
-								id="tab-description" role="tabpanel"
-								aria-labelledby="tab-title-description">
-								<h2>MENU</h2>
-								<p>${stovo.sto_intro}</p>
-						 <div class="portlet-body">
-                                        <div class="mt-element-list">                          
-                                            <ul>
-                                            	<li class="main_menu">메뉴
-                                            		<div>
-	                                            		<ul>
-	                                            			<li class="sub_menu">
-	                                            				<h4>메뉴1</h4>
-	                                            				<p>메뉴명 가격 수량</p>
-	                                            			</li>
-	                                            		</ul>
-                                            		</div>
-                                            	</li>
-                                            </ul>
-                                     </div>
+						<div
+							class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab"
+							id="tab-description" role="tabpanel"
+							aria-labelledby="tab-title-description">
+							<h2>MENU</h2>
+							<p>${stovo.sto_intro}</p>
+							<div class="portlet-body">
+								<div class="mt-element-list">
+									<ul>
+										<li class="main_menu"><h4>메뉴</h4>
+											<div>
+												<ul>
+
+
+													<c:forEach var="menu" items="${menulist }">
+														<li class="sub_menu">
+															<h5>&lt; ${menu.men_name } &gt;</h5>
+															<p>
+																가격 : ${menu.men_price }원 <input type="number" id="quantity_5ad3b3016dce0" class="input-text qty text"
+																	step="1" min="1" max="" name="quantity" value="1"
+																	title="Qty" size="4" pattern="[0-9]*"
+																	inputmode="numeric" aria-labelledby="" />
+																<input type="button" value="담기" onclick="addmenu(${menu.men_num},${menu.men_price },'${menu.men_name }', event)">
+													</p></li>
+										</c:forEach>
+
+
+									</ul>
+								</div>
+								</li>
+								</ul>
 							</div>
+						</div>
 
 						<!-- 리뷰관련작성페이지!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 						<div
@@ -397,108 +409,109 @@ img#wpstats {
 										them!","itemReviewed":{"@type":"Product","name":"USA
 										Tshirt"},"reviewRating":{"@type":"rating","ratingValue":"5"},"author":{"@type":"Person","name":"CoenJacobs"}}]}]}
 									</script>
-										<div class="pswp" tabindex="-1" role="dialog"
-											aria-hidden="true">
-											<div class="pswp__bg"></div>
-											<div class="pswp__scroll-wrap">
-												<div class="pswp__container">
-													<div class="pswp__item"></div>
-													<div class="pswp__item"></div>
-													<div class="pswp__item"></div>
-												</div>
-												<div class="pswp__ui pswp__ui--hidden">
-													<div class="pswp__top-bar">
-														<div class="pswp__counter"></div>
-														<button class="pswp__button pswp__button--close"
-															aria-label="Close (Esc)"></button>
-														<button class="pswp__button pswp__button--share"
-															aria-label="Share"></button>
-														<button class="pswp__button pswp__button--fs"
-															aria-label="Toggle fullscreen"></button>
-														<button class="pswp__button pswp__button--zoom"
-															aria-label="Zoom in/out"></button>
-														<div class="pswp__preloader">
-															<div class="pswp__preloader__icn">
-																<div class="pswp__preloader__cut">
-																	<div class="pswp__preloader__donut"></div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div
-														class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-														<div class="pswp__share-tooltip"></div>
-													</div>
-													<button class="pswp__button pswp__button--arrow--left"
-														aria-label="Previous (arrow left)"></button>
-													<button class="pswp__button pswp__button--arrow--right"
-														aria-label="Next (arrow right)"></button>
-													<div class="pswp__caption">
-														<div class="pswp__caption__center"></div>
-													</div>
-												</div>
-											</div>
-										</div> <script type='text/javascript'
-											src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201815'></script>
-										<script type='text/javascript'>/* <![CDATA[ */ var wc_add_to_cart_params = {"ajax_url":"\/shop-isle\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/demo.themeisle.com\/shop-isle\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/demo.themeisle.com\/shop-isle\/cart\/","is_cart":"","cart_redirect_after_add":"no"}; /* ]]> */</script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.3.3'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/zoom/jquery.zoom.min.js?ver=1.7.15'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider.min.js?ver=2.6.1'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js?ver=4.1.1'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default.min.js?ver=4.1.1'></script>
-										<script type='text/javascript'>/* <![CDATA[ */ var wc_single_product_params = {"i18n_required_rating_text":"Please select a rating","review_rating_required":"yes","flexslider":{"rtl":false,"animation":"slide","smoothHeight":true,"directionNav":false,"controlNav":"thumbnails","slideshow":false,"animationSpeed":500,"animationLoop":false,"allowOneSlide":false},"zoom_enabled":"1","zoom_options":[],"photoswipe_enabled":"1","photoswipe_options":{"shareEl":false,"closeOnScroll":false,"history":false,"hideAnimationDuration":0,"showAnimationDuration":0},"flexslider_enabled":"1"}; /* ]]> */</script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js?ver=3.3.3'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>
-										<script type='text/javascript'>/* <![CDATA[ */ var woocommerce_params = {"ajax_url":"\/shop-isle\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/demo.themeisle.com\/shop-isle\/?wc-ajax=%%endpoint%%"}; /* ]]> */</script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.3.3'></script>
-										<script type='text/javascript'>/* <![CDATA[ */ var wc_cart_fragments_params = {"ajax_url":"\/shop-isle\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/demo.themeisle.com\/shop-isle\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_4a2a279da48e324c2f1df87526babcad","fragment_name":"wc_fragments_4a2a279da48e324c2f1df87526babcad"}; /* ]]> */</script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.3.3'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto.min.js?ver=3.1.6'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min.js?ver=1.2.0'></script>
-										<script type='text/javascript'>/* <![CDATA[ */ var yith_wcwl_l10n = {"ajax_url":"\/shop-isle\/wp-admin\/admin-ajax.php","redirect_to_cart":"no","multi_wishlist":"","hide_add_button":"1","is_user_logged_in":"","ajax_loader_url":"https:\/\/demo.themeisle.com\/shop-isle\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif","remove_from_wishlist_after_add_to_cart":"yes","labels":{"cookie_disabled":"We are sorry, but this feature is available only if cookies are enabled on your browser.","added_to_cart_message":"<div class=\"woocommerce-message\">Product correctly added to cart<\/div>"},"actions":{"add_to_wishlist_action":"add_to_wishlist","remove_from_wishlist_action":"remove_from_wishlist","move_to_another_wishlist_action":"move_to_another_wishlsit","reload_wishlist_and_adding_elem_action":"reload_wishlist_and_adding_elem"}}; /* ]]> */</script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.yith-wcwl.js?ver=2.2.1'></script>
-										<script type='text/javascript'
-											src='https://secure.gravatar.com/js/gprofiles.js?ver=2018Apraa'></script>
-										<script type='text/javascript'>/* <![CDATA[ */ var WPGroHo = {"my_hash":""}; /* ]]> */</script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.9.5'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/bootstrap/js/bootstrap.min.js?ver=20120208'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/vendor/jquery.mb.YTPlayer.min.js?ver=20120208'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/vendor/jqBootstrapValidation.min.js?ver=20120208'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/vendor/jquery.magnific-popup.min.js?ver=20120208'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/vendor/jquery.fitvids.min.js?ver=20120208'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/vendor/owl.carousel.min.js?ver=2.1.8'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/custom.js?ver=20120208'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/js/navigation.min.js?ver=20120208'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/js/skip-link-focus-fix.min.js?ver=20130118'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-includes/js/comment-reply.min.js?ver=4.9.5'></script>
-										<script type='text/javascript'
-											src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-includes/js/wp-embed.min.js?ver=4.9.5'></script>
-										<style id="shop_isle_footer_css" type="text/css">
+	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="pswp__bg"></div>
+		<div class="pswp__scroll-wrap">
+			<div class="pswp__container">
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+			</div>
+			<div class="pswp__ui pswp__ui--hidden">
+				<div class="pswp__top-bar">
+					<div class="pswp__counter"></div>
+					<button class="pswp__button pswp__button--close"
+						aria-label="Close (Esc)"></button>
+					<button class="pswp__button pswp__button--share" aria-label="Share"></button>
+					<button class="pswp__button pswp__button--fs"
+						aria-label="Toggle fullscreen"></button>
+					<button class="pswp__button pswp__button--zoom"
+						aria-label="Zoom in/out"></button>
+					<div class="pswp__preloader">
+						<div class="pswp__preloader__icn">
+							<div class="pswp__preloader__cut">
+								<div class="pswp__preloader__donut"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+					<div class="pswp__share-tooltip"></div>
+				</div>
+				<button class="pswp__button pswp__button--arrow--left"
+					aria-label="Previous (arrow left)"></button>
+				<button class="pswp__button pswp__button--arrow--right"
+					aria-label="Next (arrow right)"></button>
+				<div class="pswp__caption">
+					<div class="pswp__caption__center"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type='text/javascript'
+		src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201815'></script>
+	<script type='text/javascript'>/* <![CDATA[ */ var wc_add_to_cart_params = {"ajax_url":"\/shop-isle\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/demo.themeisle.com\/shop-isle\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/demo.themeisle.com\/shop-isle\/cart\/","is_cart":"","cart_redirect_after_add":"no"}; /* ]]> */</script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.3.3'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/zoom/jquery.zoom.min.js?ver=1.7.15'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider.min.js?ver=2.6.1'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js?ver=4.1.1'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default.min.js?ver=4.1.1'></script>
+	<script type='text/javascript'>/* <![CDATA[ */ var wc_single_product_params = {"i18n_required_rating_text":"Please select a rating","review_rating_required":"yes","flexslider":{"rtl":false,"animation":"slide","smoothHeight":true,"directionNav":false,"controlNav":"thumbnails","slideshow":false,"animationSpeed":500,"animationLoop":false,"allowOneSlide":false},"zoom_enabled":"1","zoom_options":[],"photoswipe_enabled":"1","photoswipe_options":{"shareEl":false,"closeOnScroll":false,"history":false,"hideAnimationDuration":0,"showAnimationDuration":0},"flexslider_enabled":"1"}; /* ]]> */</script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js?ver=3.3.3'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>
+	<script type='text/javascript'>/* <![CDATA[ */ var woocommerce_params = {"ajax_url":"\/shop-isle\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/demo.themeisle.com\/shop-isle\/?wc-ajax=%%endpoint%%"}; /* ]]> */</script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.3.3'></script>
+	<script type='text/javascript'>/* <![CDATA[ */ var wc_cart_fragments_params = {"ajax_url":"\/shop-isle\/wp-admin\/admin-ajax.php","wc_ajax_url":"https:\/\/demo.themeisle.com\/shop-isle\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_4a2a279da48e324c2f1df87526babcad","fragment_name":"wc_fragments_4a2a279da48e324c2f1df87526babcad"}; /* ]]> */</script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.3.3'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto.min.js?ver=3.1.6'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min.js?ver=1.2.0'></script>
+	<script type='text/javascript'>/* <![CDATA[ */ var yith_wcwl_l10n = {"ajax_url":"\/shop-isle\/wp-admin\/admin-ajax.php","redirect_to_cart":"no","multi_wishlist":"","hide_add_button":"1","is_user_logged_in":"","ajax_loader_url":"https:\/\/demo.themeisle.com\/shop-isle\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif","remove_from_wishlist_after_add_to_cart":"yes","labels":{"cookie_disabled":"We are sorry, but this feature is available only if cookies are enabled on your browser.","added_to_cart_message":"<div class=\"woocommerce-message\">Product correctly added to cart<\/div>"},"actions":{"add_to_wishlist_action":"add_to_wishlist","remove_from_wishlist_action":"remove_from_wishlist","move_to_another_wishlist_action":"move_to_another_wishlsit","reload_wishlist_and_adding_elem_action":"reload_wishlist_and_adding_elem"}}; /* ]]> */</script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.yith-wcwl.js?ver=2.2.1'></script>
+	<script type='text/javascript'
+		src='https://secure.gravatar.com/js/gprofiles.js?ver=2018Apraa'></script>
+	<script type='text/javascript'>/* <![CDATA[ */ var WPGroHo = {"my_hash":""}; /* ]]> */</script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.9.5'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/bootstrap/js/bootstrap.min.js?ver=20120208'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/vendor/jquery.mb.YTPlayer.min.js?ver=20120208'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/vendor/jqBootstrapValidation.min.js?ver=20120208'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/vendor/jquery.magnific-popup.min.js?ver=20120208'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/vendor/jquery.fitvids.min.js?ver=20120208'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/vendor/owl.carousel.min.js?ver=2.1.8'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/assets/js/custom.js?ver=20120208'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/js/navigation.min.js?ver=20120208'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/themes/shop-isle/js/skip-link-focus-fix.min.js?ver=20130118'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-includes/js/comment-reply.min.js?ver=4.9.5'></script>
+	<script type='text/javascript'
+		src='https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-includes/js/wp-embed.min.js?ver=4.9.5'></script>
+
+
+<style id="shop_isle_footer_css" type="text/css">
 .wr-megamenu-container.bg-tr {
 	background: transparent !important
 }
@@ -513,11 +526,13 @@ img#wpstats {
 		background: rgba(10, 10, 10, .9) !important
 	}
 }
-</style> <script type='text/javascript' src='https://stats.wp.com/e-201815.js'
-											async='async' defer='defer'></script> <script
-											type='text/javascript'>_stq = window._stq || [];
+</style>
+	<script type='text/javascript' src='https://stats.wp.com/e-201815.js'
+		async='async' defer='defer'></script>
+	<script type='text/javascript'>_stq = window._stq || [];
 	_stq.push([ 'view', {v:'ext',j:'1:5.8',blog:'111710483',post:'70',tz:'0',srv:'demo.themeisle.com'} ]);
-	_stq.push([ 'clickTrackerInit', '111710483', '70' ]);</script> <script>(function(w, d){
+	_stq.push([ 'clickTrackerInit', '111710483', '70' ]);</script>
+	<script>(function(w, d){
 	var b = d.getElementsByTagName("body")[0];
 	var s = d.createElement("script"); s.async = true;
 	var v = !("IntersectionObserver" in w) ? "8.5.2" : "10.3.5";
@@ -560,9 +575,36 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 	var config = { childList: true, subtree: true };
 	
 	observer.observe(b, config);
-}, false);</script> <!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1523574740 -->
-<script type="text/javascript">
-	$(".main_menu").on('click', function(){
+}, false);</script>
+	<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1523574740 -->
+	<script type="text/javascript">
+	
+	
+	
+	/* $(".main_menu").on('click', function(){
 		$(this).children("div").stop().slideToggle();
-	});
+	}); */
+	
+	
+	
+	var price="";
+	var sum=0;
+	function addmenu(men_num,men_price,men_name,event){
+		var cnt=$(event.target).prev().val();
+
+		console.log(cnt);
+		
+		
+		price+=men_name+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+men_price*cnt+"<br>";
+		sum+=men_price*cnt;
+		//console.log("sum"+sum);
+		$("#cart").html(price);
+		
+		$("#total").html("<br><h4>총 액 : " + sum+" 원</h4>");
+	}
+	
+	function bookmark(sto_num){
+		alert("즐겨찾기에 등록되었습니다.");
+		
+	}
 </script>

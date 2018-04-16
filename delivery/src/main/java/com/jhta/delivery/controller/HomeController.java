@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,6 +51,11 @@ public class HomeController {
 		System.out.println("로그아웃오니");
 		session.invalidate();
 		return "redirect:/";
+	}
+	@RequestMapping(value="/mypage",method=RequestMethod.GET)
+	public String mypage(HttpSession session,Model model) {
+		model.addAttribute("mem_email", session.getAttribute("email"));
+		return ".members.mypage";
 	}
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String loginOk(String joinradio,String email, String pwd,HttpSession session,boolean idcheckBox,HttpServletRequest request,HttpServletResponse response) {
