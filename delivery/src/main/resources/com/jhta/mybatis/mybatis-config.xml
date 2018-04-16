@@ -17,6 +17,7 @@
 		<typeAlias type="com.jhta.delivery.vo.MenuVo" alias="menu"/>
 		<typeAlias type="com.jhta.delivery.vo.QnAVo" alias="qna"/>
 		<typeAlias type="com.jhta.delivery.vo.AnswerVo" alias="answer"/>
+		<typeAlias type="com.jhta.delivery.vo.EventVo" alias="event"/>
 	</typeAliases>
 	
 
@@ -31,5 +32,6 @@
 		<mapper resource="com/jhta/mybatis/ChartMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/QnAMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/MenuMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/EventMapper.xml"/>
 	</mappers>
 </configuration>
