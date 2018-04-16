@@ -10,8 +10,10 @@ public class QnAVo {
 	private int mem_num;
 	
 	private AnswerVo answers;
+	
+	public QnAVo() {}
 
-	public QnAVo(int qna_num, String qna_title, String qna_cont, Date qna_date, int mem_num, AnswerVo answer) {
+	public QnAVo(int qna_num, String qna_title, String qna_cont, Date qna_date, int mem_num, AnswerVo answers) {
 		super();
 		this.qna_num = qna_num;
 		this.qna_title = qna_title;
@@ -68,7 +70,4 @@ public class QnAVo {
 	public void setAnswers(AnswerVo answers) {
 		this.answers = answers;
 	}
-	
-	
-	
 }

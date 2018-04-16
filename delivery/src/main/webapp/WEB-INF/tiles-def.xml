@@ -35,6 +35,9 @@
 	<definition name=".map.*" extends=".main">
 		<put-attribute name="main" value="/WEB-INF/views/map/{1}.jsp"/>
 	</definition>
+	<definition name=".qna.*" extends=".main">
+		<put-attribute name="main" value="/WEB-INF/views/qna/{1}.jsp"/>
+	</definition>
 	<definition name=".*" extends=".main">
 		<put-attribute name="main" value="/WEB-INF/views/{1}.jsp"/>
 	</definition>

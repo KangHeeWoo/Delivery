@@ -32,4 +32,8 @@ public class MembersService {
 		if(vo!=null) return 1;
 		else return -1; 
 	}
+	
+	public MembersVo getinfo(String mem_email) {
+		return dao.emailcheck(mem_email);
+	}
 }
