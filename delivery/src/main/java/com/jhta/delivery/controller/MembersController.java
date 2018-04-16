@@ -37,6 +37,12 @@ public class MembersController {
 		return ".members.join";
 	}
 	
+	@RequestMapping("/members/bookmark")
+	public String bookmark() {
+		return ".members.bookmark";
+	}
+	
+	
 	@RequestMapping(value="/join",method=RequestMethod.POST)
 	public String insert(MembersVo vo, String mem_addr2) {
 		String mem_addr=vo.getMem_addr()+mem_addr2;

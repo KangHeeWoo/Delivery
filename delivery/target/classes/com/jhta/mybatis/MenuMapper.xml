@@ -3,8 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.MenuMapper">
-	<select id="menulist" parameterType="int" resultType="menu">
- 		select * from menu where sto_num=#{sto_num} and men_state='가능'
-	</select>
+   <select id="menulist" parameterType="int" resultType="menu">
+       select * from menu where sto_num=#{sto_num} and men_state='가능'
+   </select>
 
 </mapper>
