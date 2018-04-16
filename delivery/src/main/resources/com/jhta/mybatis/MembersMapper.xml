@@ -15,7 +15,7 @@
 	<select id="nickcheck" parameterType="String" resultType="members">
 		select * from members where mem_nick=#{mem_nick}
 	</select>
-	<select id="mem_num" parameterType="String">
+	<select id="mem_num" parameterType="String" resultType="members">
 		select mem_num from members where mem_email=#{mem_email}
 	</select>
 </mapper>    

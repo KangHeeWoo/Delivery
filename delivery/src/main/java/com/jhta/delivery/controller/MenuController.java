@@ -18,6 +18,7 @@ import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.MenuService;
 import com.jhta.delivery.service.StoresService;
 import com.jhta.delivery.vo.BookMarkVo;
+import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.StoresVo;
 
@@ -47,7 +48,8 @@ public class MenuController {
 		String mem_email=(String)session.getAttribute("email");
 		
 		System.out.println("sessionID"+mem_email);
-		int mem_num=memservice.emailcheck(mem_email);
+		MembersVo vo=memservice.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
 		
 		//존재하는지 검사
 		HashMap<String, Object> map=new HashMap<String, Object>();
@@ -55,8 +57,8 @@ public class MenuController {
 		map.put("sto_num", sto_num);
 		int m=bservice.numCheck(map);
 		if(m>0) {
-			BookMarkVo vo=new BookMarkVo(0, mem_num, sto_num);
-			bservice.insert(vo);
+			BookMarkVo bvo=new BookMarkVo(0, mem_num, sto_num);
+			bservice.insert(bvo);
 			ob.put("result", true);
 		}else {
 			ob.put("result", false);

@@ -20,8 +20,8 @@ public class BookMarkDao {
 		return session.insert(NAMESPACE+".insert", vo);
 	}
 	
-	public List<StoresVo> booklist(HashMap<String, Object> map) {
-		return session.selectList(NAMESPACE+".booklist", map);
+	public List<StoresVo> booklist(int mem_num) {
+		return session.selectList(NAMESPACE+".booklist", mem_num);
 	}
 	public BookMarkVo numCheck(HashMap<String, Object> map) {
 		return session.selectOne(NAMESPACE+".numCheck", map);

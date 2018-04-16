@@ -3,11 +3,15 @@ package com.jhta.delivery.controller;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,16 +19,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.delivery.mail.SimpleMailSender;
+import com.jhta.delivery.service.BookMarkService;
 import com.jhta.delivery.service.CouponService;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.vo.CouponIssueVo;
 import com.jhta.delivery.vo.MembersVo;
+import com.jhta.delivery.vo.StoresVo;
 
 @Controller
 public class MembersController {
 	@Autowired private SimpleMailSender simpleMailSender;
 	@Autowired private MembersService service;
 	@Autowired private CouponService couponService;
+	@Autowired private BookMarkService bservice;
 	
 	@InitBinder
     public void InitBinder(WebDataBinder binder) {
@@ -38,7 +45,15 @@ public class MembersController {
 	}
 	
 	@RequestMapping("/members/bookmark")
-	public String bookmark() {
+	public String bookmark(HttpSession session,Model model) {
+		String mem_email=(String)session.getAttribute("email");
+		System.out.println("sessionMem_email"+mem_email);
+		
+		MembersVo vo=service.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		List<StoresVo> list=bservice.booklist(mem_num);
+		model.addAttribute("booklist", list);
+		
 		return ".members.bookmark";
 	}
 	
