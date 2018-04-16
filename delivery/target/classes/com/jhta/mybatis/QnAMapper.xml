@@ -26,10 +26,14 @@
 		select NVL(count(*),0) cnt from qna
 	</select>
 	
-	<select id="myqna" resultMap="qnalist" parameterType="int">
-		select q.qna_title, q.qna_date, a.qna_ans_title, a.qna_ans_regd, m.mem_nick
-		from qna q,qna_answer a, members m
-		where q.qna_num=a.qna_num and q.mem_num=m.mem_num and m.mem_num=#{mem_num}
+	<select id="myqna" resultMap="qnalist" parameterType="int">	
+	select q.qna_title, q.qna_date, a.qna_ans_title, a.qna_ans_regd, q.qna_num
+		from qna q,qna_answer a
+		where q.qna_num=a.qna_num(+) and q.mem_num=#{mem_num}
+	</select>
+	
+	<select id="detail" parameterType="int" resultType="qna">
+		select * from qna where qna_num=#{qna_num}
 	</select>
 	
 </mapper>

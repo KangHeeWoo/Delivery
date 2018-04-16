@@ -1,6 +1,5 @@
 package com.jhta.delivery.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +17,8 @@ public class QnAService {
 	}
 	public List<QnAVo> qnalist(int mem_num){
 		return dao.qnalist(mem_num);
+	}
+	public QnAVo detail(int qna_num) {
+		return dao.detail(qna_num);
 	}
 }

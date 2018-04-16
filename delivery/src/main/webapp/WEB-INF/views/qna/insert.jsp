@@ -23,8 +23,8 @@
 				1:1 질문 <small>QnA</small>
 			</h1>
 		</div>
-		<form class="form-horizontal" action="<c:url value='/qna/insert'/>" method="post">
-			<input type="hidden" name="mem_num" value="${vo.mem_num }">
+		<form class="form-horizontal" action="<c:url value='/qna/insertOk'/>" method="post">
+			<input type="hidden" name="mem_num" value="${mem_num}">
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputtitle">제목</label>
 				<div class="col-sm-6">

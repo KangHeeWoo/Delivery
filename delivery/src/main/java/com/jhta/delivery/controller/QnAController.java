@@ -31,7 +31,10 @@ public class QnAController {
 	}
 	
 	@RequestMapping("/qna/insert")
-	public String insert(int mem_num) {
+	public String insert(HttpSession session,Model model) {
+		String email=(String)session.getAttribute("email");
+		MembersVo vo = mservice.getinfo(email);
+		model.addAttribute("mem_num",vo.getMem_num());
 		return ".qna.insert";
 	}
 	@RequestMapping("/qna/insertOk")
@@ -39,10 +42,17 @@ public class QnAController {
 		try {
 			System.out.println(vo);
 			service.insert(vo);
-			return ".qna.list";
+			return "redirect:/qna/list";
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 			return "error";
 		}
+	}
+	@RequestMapping("/qna/detail")
+	public String detail(int qna_num,Model model) {
+		QnAVo vo = service.detail(qna_num);
+		System.out.println("qna_num:" + qna_num);
+		model.addAttribute("vo",vo);
+		return ".qna.detail";
 	}
 }

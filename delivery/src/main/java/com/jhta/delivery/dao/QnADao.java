@@ -1,6 +1,5 @@
 package com.jhta.delivery.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,5 +18,8 @@ public class QnADao {
 	}
 	public List<QnAVo> qnalist(int mem_num){
 		return session.selectList(NAMESPACE + ".myqna",mem_num);
+	}
+	public QnAVo detail(int qna_num) {
+		return session.selectOne(NAMESPACE + ".detail",qna_num);
 	}
 }
