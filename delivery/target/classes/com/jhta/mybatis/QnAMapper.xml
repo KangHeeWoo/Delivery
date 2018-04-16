@@ -3,5 +3,14 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.QnAMapper">
+	<insert id="insert" parameterType="qna">
+		insert into qna values(0,#{qna_title},#{qna_cont},sysdate,#{mem_num})
+	</insert>
+	<select id="count" resultType="int">
+		select NVL(count(*),0) cnt from qna
+	</select>
+	<resultMap type="qna" id="qnalist">
+		<collection property="answers" ofType="answer"></collection>
+	</resultMap>
 
 </mapper>

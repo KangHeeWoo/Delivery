@@ -16,6 +16,7 @@
 		<typeAlias type="com.jhta.delivery.vo.StoreslistVo" alias="storeslist"/>
 		<typeAlias type="com.jhta.delivery.vo.MenuVo" alias="menu"/>
 		<typeAlias type="com.jhta.delivery.vo.QnAVo" alias="qna"/>
+		<typeAlias type="com.jhta.delivery.vo.AnswerVo" alias="answer"/>
 	</typeAliases>
 	
 

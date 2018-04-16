@@ -9,15 +9,16 @@ public class QnAVo {
 	private Date qna_date;
 	private int mem_num;
 	
-	public QnAVo () {}
+	private AnswerVo answers;
 
-	public QnAVo(int qna_num, String qna_title, String qna_cont, Date qna_date, int mem_num) {
+	public QnAVo(int qna_num, String qna_title, String qna_cont, Date qna_date, int mem_num, AnswerVo answer) {
 		super();
 		this.qna_num = qna_num;
 		this.qna_title = qna_title;
 		this.qna_cont = qna_cont;
 		this.qna_date = qna_date;
 		this.mem_num = mem_num;
+		this.answers = answers;
 	}
 
 	public int getQna_num() {
@@ -59,4 +60,15 @@ public class QnAVo {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
+
+	public AnswerVo getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(AnswerVo answers) {
+		this.answers = answers;
+	}
+	
+	
+	
 }
