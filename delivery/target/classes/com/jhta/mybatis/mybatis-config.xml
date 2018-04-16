@@ -18,6 +18,7 @@
 		<typeAlias type="com.jhta.delivery.vo.QnAVo" alias="qna"/>
 		<typeAlias type="com.jhta.delivery.vo.AnswerVo" alias="answer"/>
 		<typeAlias type="com.jhta.delivery.vo.EventVo" alias="event"/>
+		<typeAlias type="com.jhta.delivery.vo.EventEntryVo" alias="eventEntry"/>
 	</typeAliases>
 	
 
