@@ -36,7 +36,7 @@ public class MembersService {
 	public MembersVo getinfo(String mem_email) {
 		return dao.emailcheck(mem_email);
 	}
-	public int mem_num(String mem_email) {
+	public MembersVo mem_num(String mem_email) {
 		return dao.mem_num(mem_email);
 	}
 }

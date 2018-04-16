@@ -16,8 +16,8 @@ public class BookMarkService {
 	public int insert(BookMarkVo vo) {
 		return dao.insert(vo);
 	}
-	public List<StoresVo> booklist(HashMap<String, Object> map){
-		return dao.booklist(map);
+	public List<StoresVo> booklist(int mem_num){
+		return dao.booklist(mem_num);
 	}
 	public int numCheck(HashMap<String, Object> map) {
 		BookMarkVo vo=dao.numCheck(map);
