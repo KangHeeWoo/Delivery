@@ -13,7 +13,7 @@
 	<select id="detailEvent" parameterType="int" resultType="event">
 		select * from event where eve_num = ${num}
 	</select>
-	<select id="entryList" parameterType="int" resultType="event">
+	<select id="entryList" parameterType="int" resultType="eventEntry">
 		select * from event where eve_num = ${num}
 	</select>
 	<insert id="addEvent" parameterType="event">
