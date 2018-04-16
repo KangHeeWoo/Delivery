@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.BookMarkMapper">
+	<insert id="insert" parameterType="bookmark">
+ 		insert into bookmark values(0,#{mem_num},#{sto_num})
+	</insert>
+	<select id="booklist" parameterType="hashmap" resultType="stores">
+		select s.sto_name,s.sto_addr,s.sto_phone,s.sto_open,s.sto_close from stores s,(select sto_num from bookmark where mem_num=#{mem_num})b where s.sto_num=b.sto_num and b.sto_num=#{sto_num}
+	</select>
+	<select id="numCheck" parameterType="hashmap" resultType="bookmark">
+		select * from bookmark where sto_num=#{sto_num} and mem_num=#{mem_num}
+	</select>
+</mapper>
