@@ -119,7 +119,6 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#">My배맥</a>
             </li>
-         
           </ul>
         </div>
       </div>

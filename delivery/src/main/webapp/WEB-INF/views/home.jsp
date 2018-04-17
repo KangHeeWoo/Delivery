@@ -12,7 +12,7 @@
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e62d111f7ae02205a9444c872d9a9085&libraries=services,clusterer,drawing"></script>
   <div id="page-top">
   
-  <style>
+<style>
 .map_wrap {
 	position: relative;
 	width: 100%;
