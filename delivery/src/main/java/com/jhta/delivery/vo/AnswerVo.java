@@ -9,6 +9,12 @@ public class AnswerVo {
 	private Date qna_ans_regd;
 	private int qna_num;
 	
+	@Override
+	public String toString() {
+		return "AnswerVo [qna_ans_num=" + qna_ans_num + ", qna_ans_title=" + qna_ans_title + ", qna_ans_cont="
+				+ qna_ans_cont + ", qna_ans_regd=" + qna_ans_regd + ", qna_num=" + qna_num + "]";
+	}
+
 	public AnswerVo() {}
 
 	public AnswerVo(int qna_ans_num, String qna_ans_title, String qna_ans_cont, Date qna_ans_regd, int qna_num) {

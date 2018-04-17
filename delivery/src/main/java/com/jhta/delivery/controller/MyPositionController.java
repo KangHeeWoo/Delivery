@@ -11,10 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jhta.delivery.service.StoresService;
+import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.StoreslistVo;
 
@@ -27,14 +29,25 @@ public class MyPositionController {
 		return ".map.myposition";
 	}*/
 	@RequestMapping("/myposition")
-	public String myPositionList(int cat_num,String able_loc,String myAddr,Model model,HttpSession session) {
+	public String myPositionList(@RequestParam(value="pageNum",defaultValue="1")int pageNum, int cat_num,String able_loc,String myAddr,Model model,HttpSession session) {
 		session.setAttribute("myAddr", myAddr);
-		System.out.println("controller myAddr:"+ myAddr);
+		
+		int getCount=service.getCount();
+		
+		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
+		System.out.println("pu.getEndRow():"+ pu.getEndRow());
+		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("cat_num", cat_num);
 		map.put("able_loc", able_loc);
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow", pu.getEndRow());
+		
 		List<StoreslistVo> list=service.myPositionList(map);
 		model.addAttribute("list",list);
+		model.addAttribute("pu",pu);
+		model.addAttribute("cat_num",cat_num);
+		model.addAttribute("able_loc",able_loc);
 		return ".map.mylist";
 	}
 	@RequestMapping(value="/myAddr",produces="application/json;charset=utf-8")

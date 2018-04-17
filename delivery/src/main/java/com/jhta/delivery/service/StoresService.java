@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.delivery.dao.StoresDao;
+import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.StoreslistVo;
@@ -28,5 +29,8 @@ public class StoresService {
 	}
 	public StoresVo stoName(int sto_num) {
 		return dao.stoName(sto_num);
+	}
+	public int getCount() {
+		return dao.getCount();
 	}
 }

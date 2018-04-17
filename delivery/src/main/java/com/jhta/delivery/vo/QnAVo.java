@@ -8,19 +8,16 @@ public class QnAVo {
 	private String qna_cont;
 	private Date qna_date;
 	private int mem_num;
+	/*private String qna_ans_title;
+	private Date qna_ans_regd;
+	private String qna_ans_cont;*/
 	
 	private AnswerVo answers;
-	
-	public QnAVo() {}
 
-	public QnAVo(int qna_num, String qna_title, String qna_cont, Date qna_date, int mem_num, AnswerVo answers) {
-		super();
-		this.qna_num = qna_num;
-		this.qna_title = qna_title;
-		this.qna_cont = qna_cont;
-		this.qna_date = qna_date;
-		this.mem_num = mem_num;
-		this.answers = answers;
+	@Override
+	public String toString() {
+		return "QnAVo [qna_num=" + qna_num + ", qna_title=" + qna_title + ", qna_cont=" + qna_cont + ", qna_date="
+				+ qna_date + ", mem_num=" + mem_num + ", answers=" + answers + "]";
 	}
 
 	public int getQna_num() {
@@ -70,4 +67,20 @@ public class QnAVo {
 	public void setAnswers(AnswerVo answers) {
 		this.answers = answers;
 	}
+
+	public QnAVo(int qna_num, String qna_title, String qna_cont, Date qna_date, int mem_num, AnswerVo answers) {
+		super();
+		this.qna_num = qna_num;
+		this.qna_title = qna_title;
+		this.qna_cont = qna_cont;
+		this.qna_date = qna_date;
+		this.mem_num = mem_num;
+		this.answers = answers;
+	}
+
+	public QnAVo() {
+		super();
+	}
+	
+	
 }
