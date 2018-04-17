@@ -119,6 +119,9 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="<c:url value='/mypage' />">My배맥</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#">자유게시판</a>
+            </li>
           </ul>
         </div>
       </div>
