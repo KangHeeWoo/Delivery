@@ -68,7 +68,24 @@ public class MembersController {
 		
 		return ".members.bookmark";
 	}
-	
+	@RequestMapping(value="/members/bookDel")
+	public String bookDel(int sto_num,HttpSession session) {
+		System.out.println("stoNUm"+sto_num);
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo memvo=service.mem_num(mem_email);
+		int mem_num=memvo.getMem_num();
+		
+		System.out.println(mem_num);
+		
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("mem_num", mem_num);
+		map.put("sto_num",sto_num);
+		
+		System.out.println(map);
+		
+		bservice.bookDel(map);
+		return "redirect:/members/bookmark";
+	}
 	
 	@RequestMapping(value="/join",method=RequestMethod.POST)
 	public String insert(MembersVo vo, String mem_addr2) {

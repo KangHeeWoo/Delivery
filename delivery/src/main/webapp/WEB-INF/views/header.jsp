@@ -102,7 +102,7 @@
 		          	<c:otherwise>
 		          	<!--  로그인 했을때 -->
 		          		<a href="<c:url value='/logout'/>" >로그아웃</a>
-		          		<a href="<c:url value='/mypage'/>" >마이페이지</a>
+		          		
 		          	</c:otherwise>
 		          </c:choose>
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -117,7 +117,7 @@
               <a class="nav-link js-scroll-trigger" href="#">장바구니</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#">My배맥</a>
+              <a class="nav-link js-scroll-trigger" href="<c:url value='/mypage'/>">My배맥</a>
             </li>
          
           </ul>

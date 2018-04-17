@@ -27,4 +27,7 @@ public class BookMarkService {
 		if(vo!=null)return -1;
 		return 1;
 	}
+	public int bookDel(HashMap<String, Object> map) {
+		return dao.bookDel(map);
+	}
 }
