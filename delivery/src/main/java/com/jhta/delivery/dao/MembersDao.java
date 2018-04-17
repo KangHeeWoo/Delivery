@@ -2,6 +2,7 @@ package com.jhta.delivery.dao;
 
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,17 @@ public class MembersDao {
 	}
 	public MembersVo mem_num(String mem_email) {
 		return session.selectOne(NAMESPACE+".mem_num", mem_email);
+	}
+	public int getCount() {
+		return session.selectOne(NAMESPACE+".count");
+	}
+	public List<MembersVo> list(HashMap<String, Object> map) {
+		return session.selectList(NAMESPACE+".list",map);
+	}
+	public int getCounts(HashMap<String, Object> map1) {
+		return session.selectOne(NAMESPACE+".counts",map1); 
+	}
+	public List<MembersVo> searchList(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE+".searchList",map);
 	}
 }

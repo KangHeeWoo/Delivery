@@ -18,4 +18,51 @@
 	<select id="mem_num" parameterType="String" resultType="members">
 		select mem_num from members where mem_email=#{mem_email}
 	</select>
+	<select id="count" resultType="int">
+		select NVL(count(*),0) cnt from members where mem_num!=26
+	</select>
+	<select id="list" parameterType="hashmap" resultType="members">
+	  select * from
+	  (
+		  select aa.*,rownum rnum from
+		  (
+		    select * from members where mem_num!=26 order by mem_regd desc
+		  )aa
+	  )
+	 <![CDATA[ where mem_num!=26 and rnum>=#{startRow} and rnum<=#{endRow}  ]]> 
+	</select>
+	<select id="counts" resultType="int" parameterType="hashmap">
+		select NVL(count(*),0) cnt from members 
+		<where>
+		<if test="search=='name'">
+			mem_num!=26 and mem_name  like '%'||#{word}||'%' 
+		</if>
+		<if test="search=='nick'">
+			mem_num!=26 and mem_nick  like '%'||#{word}||'%' 
+		</if>
+		<if test="search=='email'">
+			mem_num!=26 and mem_email  like '%'||#{word}||'%' 
+		</if>
+		</where>
+	</select>
+	<select id="searchList" parameterType="hashmap" resultType="members">
+	  select * from
+	  (
+		  select aa.*,rownum rnum from
+		  (
+		  select * from members
+		  <if test="search=='name'">
+		    where mem_num!=26 and mem_name like '%'||#{word}||'%'
+		  </if>
+		  <if test="search=='nick'">
+		    where mem_num!=26 and mem_nick like '%'||#{word}||'%'
+		  </if>
+		  <if test="search=='email'">
+		    where mem_num!=26 and mem_email like '%'||#{word}||'%'
+		  </if>
+		  order by mem_regd desc
+		  )aa
+	  )
+	 <![CDATA[ where mem_num!=26 and rnum>=#{startRow} and rnum<=#{endRow}  ]]>
+	</select>
 </mapper>    

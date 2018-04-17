@@ -1,6 +1,7 @@
 package com.jhta.delivery.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,17 @@ public class MembersService {
 	}
 	public MembersVo mem_num(String mem_email) {
 		return dao.mem_num(mem_email);
+	}
+	public int getCount() {
+		return dao.getCount();
+	}
+	public List<MembersVo> list(HashMap<String, Object> map) {
+		return dao.list(map);
+	}
+	public int getCounts(HashMap<String, Object> map1) {
+		return dao.getCounts(map1);
+	}
+	public List<MembersVo> searchList(HashMap<String, Object> map){
+		return dao.searchList(map);
 	}
 }
