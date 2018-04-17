@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 <h4>즐겨찾기</h4>
 <table class="table" style="width:1000px; margin: auto; ">
 	<thead>
@@ -34,6 +36,90 @@
 		</c:choose>
 	</c:forEach>
 </div>
+<table id="table_id" class="display">
+    <thead>
+        <tr>
+            <th>이름</th>
+            <th>성별</th>
+            <th>나이</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        <tr>
+            <td>유재희</td>
+            <td>여자</td>
+            <td>21</td>
+            
+        </tr>
+        
+    </tbody>
+</table>
 <script>
 	function bookpage(num){
 		location.href="<c:url value='/menu/menu?sto_num="+num+"'/>";
@@ -42,4 +128,15 @@
 		location.href="<c:url value='/members/bookDel?sto_num="+sto_num+"'/>";
 		
 	}
+	$(document).ready( function () {
+	    $('#table_id').DataTable({
+	    	 "language": {
+	             "lengthMenu": "보여준다 _MENU_ records per page",
+	             "zeroRecords": "Nothing found - sorry",
+	             "info": "Showing page _PAGE_ of _PAGES_",
+	             "infoEmpty": "No records available",
+	             "infoFiltered": "(filtered from _MAX_ total records)"
+	         }
+	    });
+	} );
 </script>
