@@ -6,10 +6,13 @@
 	<insert id="insert" parameterType="bookmark">
  		insert into bookmark values(0,#{mem_num},#{sto_num})
 	</insert>
-	<select id="booklist" parameterType="int" resultType="stores">
-		select s.sto_name,s.sto_addr,s.sto_phone,s.sto_open,s.sto_close from stores s,(select sto_num from bookmark where mem_num=#{mem_num})b where s.sto_num=b.sto_num
+	<select id="booklist" parameterType="hashmap" resultType="stores">
+		select * from(select rownum rnum,s.sto_name,s.sto_addr,s.sto_phone,s.sto_open,s.sto_close from stores s,(select sto_num from bookmark where mem_num=#{mem_num})b where s.sto_num=b.sto_num)<![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow} ]]>
 	</select>
 	<select id="numCheck" parameterType="hashmap" resultType="bookmark">
 		select * from bookmark where sto_num=#{sto_num} and mem_num=#{mem_num}
+	</select>
+	<select id="count" resultType="int" parameterType="int">
+		select NVL(count(*),0) cnt from bookmark where mem_num=#{mem_num}
 	</select>
 </mapper>

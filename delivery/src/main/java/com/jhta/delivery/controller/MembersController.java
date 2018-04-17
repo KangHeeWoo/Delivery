@@ -3,6 +3,7 @@ package com.jhta.delivery.controller;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -16,12 +17,14 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.BookMarkService;
 import com.jhta.delivery.service.CouponService;
 import com.jhta.delivery.service.MembersService;
+import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.CouponIssueVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.StoresVo;
@@ -45,14 +48,23 @@ public class MembersController {
 	}
 	
 	@RequestMapping("/members/bookmark")
-	public String bookmark(HttpSession session,Model model) {
-		String mem_email=(String)session.getAttribute("email");
-		System.out.println("sessionMem_email"+mem_email);
+	public String bookmark(HttpSession session,Model model,@RequestParam(value="pageNum",defaultValue="1")int pageNum) {
+		HashMap<String, Object> map=new HashMap<String, Object>();
 		
+		String mem_email=(String)session.getAttribute("email");
 		MembersVo vo=service.mem_num(mem_email);
 		int mem_num=vo.getMem_num();
-		List<StoresVo> list=bservice.booklist(mem_num);
+		
+		int totalRowCount=bservice.getCount(mem_num);
+		PageUtil pu=new PageUtil(pageNum, 10, 10, totalRowCount);
+		map.put("mem_num", mem_num);
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow", pu.getEndRow());
+			
+		
+		List<StoresVo> list=bservice.booklist(map);
 		model.addAttribute("booklist", list);
+		model.addAttribute("pu", pu);
 		
 		return ".members.bookmark";
 	}
