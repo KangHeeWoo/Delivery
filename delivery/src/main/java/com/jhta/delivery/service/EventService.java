@@ -26,11 +26,23 @@ public class EventService {
 		return dao.detailEvent(num);
 	}
 	
-	public List<EventEntryVo> entryList(int num){
-		return dao.entryList(num);
+	public List<EventEntryVo> entryList(HashMap<String, Object> map){
+		return dao.entryList(map);
 	}
 	
 	public int addEvent(EventVo vo) {
 		return dao.addEvent(vo);
+	}
+	
+	public int getEntCount(int num) {
+		return dao.getEntCount(num);
+	}
+	
+	public int winProsess(HashMap<String, Object> map) {
+		return dao.winProsess(map);
+	}
+	
+	public int loseProsess(HashMap<String, Object> map) {
+		return dao.loseProsess(map);
 	}
 }

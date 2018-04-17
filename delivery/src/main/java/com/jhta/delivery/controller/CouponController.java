@@ -53,6 +53,7 @@ public class CouponController {
 		map.put("u_endRow", usePage.getEndRow());
 		
 		List<CouponVo> couList = service.couponList(map);
+		List<CouponVo> allCouList = service.allCouponList();
 		List<CouponIssueVo> couIssList = service.couponIssueList(map);
 		List<CouponUseVo> couUseList = service.couponUseList(map);
 		
@@ -60,6 +61,7 @@ public class CouponController {
 		model.addAttribute("isuPage", isuPage);
 		model.addAttribute("usePage", usePage);
 		model.addAttribute("cou_list", couList);
+		model.addAttribute("allCouList", allCouList);
 		model.addAttribute("cou_ise_list", couIssList);
 		model.addAttribute("cou_use_list", couUseList);
 		
@@ -80,8 +82,7 @@ public class CouponController {
 	@RequestMapping("admin/issuecoupon")
 	public String issueCoupon(CouponIssueVo vo) {
 		try {
-			System.out.println(vo);
-			//service.issueCoupon(vo);
+			service.issueCoupon(vo);
 			return "redirect:/admin/coupon";
 		}catch (Exception e) {
 			e.printStackTrace();

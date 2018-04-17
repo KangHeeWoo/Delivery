@@ -124,7 +124,7 @@
 			<tr>
 				<th>쿠폰종류</th>
 				<td><select id="iss_cou_type">
-						<c:forEach var="cou" items="${cou_list }">
+						<c:forEach var="cou" items="${allCouList }">
 							<option value="${cou.cou_num }">${cou.cou_type }</option>
 						</c:forEach>
 				</select></td>
