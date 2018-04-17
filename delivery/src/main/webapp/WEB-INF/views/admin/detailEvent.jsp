@@ -7,6 +7,10 @@
 		width : 800px;
 		margin : auto;
 	}
+	#win_row span{
+		margin-left: 30px;
+		font-size: 15px;
+	}
 </style>
 <div id="detail_event">
 	<fmt:formatDate value="${event.eve_start }" var="start" pattern="yyyy-MM-dd HH:mm"/>
@@ -14,7 +18,7 @@
 	<fmt:formatDate value="${event.eve_regd }" var="regd" pattern="yyyy-MM-dd HH:mm"/>
 	<table class="table">
 		<thead>
-			<tr><th colspan="2">${event.eve_title }</th></tr>
+			<tr><th colspan="2">제목 : ${event.eve_title }</th></tr>
 		</thead>
 		<tbody>
 			<tr>
@@ -37,11 +41,70 @@
 		</thead>
 		<tbody>
 			<c:forEach var="entry" items="${entry }">
+				<c:set var="win" value="${entry.eve_win }"/>
 				<tr>
-					<th>${entry.eve_ent_num }</th><th>${entry.eve_win }</th><th>${event.mem_email }</th>
+					<td>${entry.eve_ent_num }</td><td>${entry.eve_win }</td><td>${entry.mem_email }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<div align="center" style="width: 100%">
+		<c:forEach var="i" begin="${pu.startPageNum }"	end="${pu.endPageNum }">
+			<c:choose>
+				<c:when test="${i == pu.pageNum }">
+					<span style="color: black;">[${i }]</span>
+				</c:when>
+				<c:otherwise>
+					<a href="<c:url value='/admin/coupon?num=${event.eve_num }&pageNum=${i }' />"><span style="color: #555;">[${i }]</span></a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</div>
+	<br><br>
 	<!-- 당첨처리 추가 : 몇명, 어떤거 지급  -->
+	<div>
+		<form method="post" action="<c:url value='/admin/winpro' />" onsubmit="return checkEntCnt(${pu.totalRowCount})">
+			<input type="hidden" name="num" value="${event.eve_num }">
+			<h4>이벤트 추첨하기</h4>
+			<div id="win_row">
+				<span>지급 쿠폰 :  
+					<select name="win_pro">
+						<c:forEach var="cou" items="${cou_list }">
+							<option value="${cou.cou_num }">${cou.cou_type }</option>
+						</c:forEach>
+					</select>
+				</span>
+				<span>당첨 인원 : <input type="number" id="win_cnt" name="win_cnt" value="10"></span>
+				<input type="submit" value="추첨">
+			</div>
+		</form>
+	</div>
 </div>
+
+<script>
+	function checkEntCnt(entCnt){
+		var winCnt = $("#win_cnt").val();
+		
+		console.log(entCnt);
+		console.log(winCnt);
+		
+		if(winCnt > entCnt){
+			alert("응모인원보다 당첨인원이 더 많습니다.");
+			return false;
+		}
+		
+		var endDate = '${end }';
+		
+		if(new Date() <= new Date(endDate)){
+			alert("아직 진행중인 이벤트 입니다.");	
+			return false;
+		}		
+		
+		var state = '${win}';
+		
+		if(state != '응모'){
+			alert("이미 추첨 완료된 이벤트 입니다.");
+			return false;
+		}
+	}	
+</script>

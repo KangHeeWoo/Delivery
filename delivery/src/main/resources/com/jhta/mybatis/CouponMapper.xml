@@ -11,6 +11,10 @@
 		insert into coupon_uselist values(0, #{cou_iss_num}, #{ord_num})
 	</insert>
 	
+	<select id="all_cou_list" resultType="coupon">
+		select * from coupon order by cou_num desc
+	</select>
+	
 	<select id="cou_list" resultType="coupon" parameterType="hashmap">
 		select * from
 			(select b.*, rownum rnum from

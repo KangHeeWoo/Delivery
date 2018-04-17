@@ -34,3 +34,4 @@ public class QnADao {
 		return session.delete(NAMESPACE + ".delete",qna_num);
 	}
 }
+

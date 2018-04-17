@@ -51,4 +51,8 @@ public class CouponDao {
 	public MembersVo searchMem(String email) {
 		return session.selectOne(NAMESPACE + ".searchMem", email);
 	}
+	
+	public List<CouponVo> allCouponList(){
+		return session.selectList(NAMESPACE + ".all_cou_list");
+	}
 }

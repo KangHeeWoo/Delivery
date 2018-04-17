@@ -27,11 +27,23 @@ public class EventDao {
 		return session.selectOne(NAMESPACE + ".detailEvent", num);
 	}
 	
-	public List<EventEntryVo> entryList(int num){
-		return session.selectList(NAMESPACE + ".entryList", num);
+	public List<EventEntryVo> entryList(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE + ".entryList", map);
 	}
 	
 	public int addEvent(EventVo vo) {
 		return session.insert(NAMESPACE + ".addEvent", vo);
+	}
+	
+	public int getEntCount(int num) {
+		return session.selectOne(NAMESPACE + ".getEntCount", num);
+	}
+	
+	public int winProsess(HashMap<String, Object> map) {
+		return session.update(NAMESPACE + ".win_prosess", map);
+	}
+	
+	public int loseProsess(HashMap<String, Object> map) {
+		return session.update(NAMESPACE + ".lose_prosess", map);
 	}
 }

@@ -51,4 +51,8 @@ public class CouponService {
 	public MembersVo searchMem(String email) {
 		return dao.searchMem(email);
 	}
+	
+	public List<CouponVo> allCouponList(){
+		return dao.allCouponList();
+	}
 }

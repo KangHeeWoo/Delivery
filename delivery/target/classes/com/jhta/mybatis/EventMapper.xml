@@ -10,14 +10,37 @@
 	<select id="getCount" resultType="int">
 		select nvl(count(*), 0) from event
 	</select>
+	<select id="getEntCount" parameterType="int" resultType="int">
+		select nvl(count(*), 0) from event_entry where eve_num = #{num}
+	</select>
 	<select id="detailEvent" parameterType="int" resultType="event">
 		select * from event where eve_num = #{num}
 	</select>
-	<select id="entryList" parameterType="int" resultType="eventEntry">
-		select e.*, m.mem_email from event_entry e, members m where e.mem_num=m.mem_num and eve_num = #{num}
+	<select id="entryList" parameterType="hashmap" resultType="eventEntry">
+		select * from
+			(select e.*, rownum rnum from
+				(select e.*, m.mem_email from event_entry e, members m 
+				where e.mem_num=m.mem_num and eve_num = #{num})e)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
 	</select>
 	<insert id="addEvent" parameterType="event">
 		insert into event
 		values(0, #{eve_title}, #{eve_cont}, #{eve_img}, #{eve_start}, #{eve_end}, sysdate)
 	</insert>
+	<update id="win_prosess" parameterType="hashmap">
+		update event_entry set eve_win = '당첨'
+		where eve_num=#{eve_num} and eve_ent_num in
+		<foreach collection="winNum" item="winNum" index="index"
+		open="(" separator="," close=")">
+			#{winNum}		
+		</foreach>
+	</update>
+	<update id="lose_prosess" parameterType="hashmap">
+		update event_entry set eve_win = '탈락'
+		where eve_num=#{eve_num} and eve_ent_num not in
+		<foreach collection="winNum" item="winNum" index="index"
+		open="(" separator="," close=")">
+			#{winNum}		
+		</foreach>
+	</update>
 </mapper>
