@@ -28,7 +28,10 @@ public class BookMarkDao {
 	public BookMarkVo numCheck(HashMap<String, Object> map) {
 		return session.selectOne(NAMESPACE+".numCheck", map);
 	}
-	
+	public int bookDel(HashMap<String, Object> map) {
+		System.out.println(map);
+		return session.delete(NAMESPACE+".bookdel", map);
+	}
 
 	
 }
