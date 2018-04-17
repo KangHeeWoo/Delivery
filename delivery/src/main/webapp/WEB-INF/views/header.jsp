@@ -111,13 +111,13 @@
               <a class="nav-link js-scroll-trigger" href="#services">주문하기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#">단골매장</a>
+              <a class="nav-link js-scroll-trigger" href="<c:url value='/members/bookmark' />">단골매장</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#">장바구니</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="<c:url value='/mypage'/>">My배맥</a>
+              <a class="nav-link js-scroll-trigger" href="<c:url value='/mypage' />">My배맥</a>
             </li>
          
           </ul>
