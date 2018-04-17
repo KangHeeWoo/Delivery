@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.delivery.vo.AnswerVo;
 import com.jhta.delivery.vo.QnAVo;
 
 @Repository
@@ -23,7 +24,13 @@ public class QnADao {
 	public QnAVo detail(int qna_num) {
 		return session.selectOne(NAMESPACE + ".detail",qna_num);
 	}
+	public AnswerVo adetail(int qna_ans_num) {
+		return session.selectOne(NAMESPACE + ".adetail",qna_ans_num);
+	}
 	public int getCount() {
 		return session.selectOne(NAMESPACE + ".count");
+	}
+	public int delete(int qna_num) {
+		return session.delete(NAMESPACE + ".delete",qna_num);
 	}
 }

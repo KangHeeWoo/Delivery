@@ -327,8 +327,8 @@
     </section>
    </div> 
    <script type="text/javascript">
-	var latitude = 37.572871536629854;
-	var longitude = 126.991934519897;
+	var latitude =  37.59922888910534;
+	var longitude = 127.09409930015491 ;
 
 	var mapContainer = null;
 	var mapOption = null;
@@ -346,6 +346,7 @@
 			center : new daum.maps.LatLng(latitude, longitude), // 지도의 중심좌표
 			level : 1
 		// 지도의 확대 레벨
+		
 		};
 
 		// 지도를 생성합니다    
@@ -486,10 +487,13 @@
 	
 	function getlist(n){
 		searchAddr=sido+" "+sigungu+" "+bname;
-		alert("배달가능지역:"+searchAddr);
-		alert("내 주소:" + myAddr);
-		
-		location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+searchAddr+"&myAddr="+myAddr+"'/>";
+		if(sido != null && sigungu != null && bname != null ){
+			alert("배달가능지역:"+searchAddr);
+			alert("내 주소:" + myAddr);			
+			location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+searchAddr+"&myAddr="+myAddr+"'/>";
+		}else{
+			alert("주소를 선택해주세요.");
+		}
 	}
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>

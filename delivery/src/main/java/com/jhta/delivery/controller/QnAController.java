@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.QnAService;
 import com.jhta.delivery.util.PageUtil;
+import com.jhta.delivery.vo.AnswerVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.QnAVo;
 
@@ -55,7 +56,7 @@ public class QnAController {
 	@RequestMapping("/qna/insertOk")
 	public String insertOk(QnAVo vo) {
 		try {
-			System.out.println(vo);
+			//System.out.println(vo);
 			service.insert(vo);
 			return "redirect:/qna/list";
 		}catch(Exception e) {
@@ -69,5 +70,23 @@ public class QnAController {
 		System.out.println("qna_num:" + qna_num);
 		model.addAttribute("vo",vo);
 		return ".qna.detail";
+	}
+	@RequestMapping("/qna/adetail")
+	public String adetail(int qna_ans_num, Model model) {
+		//System.out.println(qna_ans_num);
+		AnswerVo vo = service.adetail(qna_ans_num);
+		model.addAttribute("vo",vo);
+		return ".qna.adetail";
+	}
+	
+	@RequestMapping("/qna/delete")
+	public String delete(int qna_num) {
+		try {
+			service.delete(qna_num);
+			return "redirect:/qna/list";
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			return "error";
+		}
 	}
 }
