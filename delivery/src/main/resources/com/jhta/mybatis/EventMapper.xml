@@ -20,7 +20,8 @@
 		select * from
 			(select e.*, rownum rnum from
 				(select e.*, m.mem_email from event_entry e, members m 
-				where e.mem_num=m.mem_num and eve_num = #{num})e)
+				where e.mem_num=m.mem_num and eve_num = #{num}
+				order by eve_win)e)
 		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
 	</select>
 	<insert id="addEvent" parameterType="event">
