@@ -38,6 +38,9 @@
 	<definition name=".qna.*" extends=".main">
 		<put-attribute name="main" value="/WEB-INF/views/qna/{1}.jsp"/>
 	</definition>
+	<definition name=".notice.*" extends=".main">
+		<put-attribute name="main" value="/WEB-INF/views/notice/{1}.jsp"/>
+	</definition>
 	<definition name=".*" extends=".main">
 		<put-attribute name="main" value="/WEB-INF/views/{1}.jsp"/>
 	</definition>
