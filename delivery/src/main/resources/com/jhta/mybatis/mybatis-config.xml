@@ -21,6 +21,7 @@
 		<typeAlias type="com.jhta.delivery.vo.EventEntryVo" alias="eventEntry"/>
 		<typeAlias type="com.jhta.delivery.vo.BookMarkVo" alias="bookmark"/>
 		<typeAlias type="com.jhta.delivery.vo.BoardVo" alias="board"/>
+		<typeAlias type="com.jhta.delivery.vo.NoticeVo" alias="notice"/>
 	</typeAliases>
 	
 
@@ -40,5 +41,6 @@
 		<mapper resource="com/jhta/mybatis/BookMarkMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/BoardMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/MembersDetailMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/NoticeMapper.xml"/>
 	</mappers>
 </configuration>

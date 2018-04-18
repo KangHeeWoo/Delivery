@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.NoticeMapper">
+	<insert id="insert" parameterType="notice">
+		insert into notice values(0, #{not_title}, #{not_cont}, sysdate, 0)
+	</insert>
+	<update id="update" parameterType="notice">
+		update notice set not_title=#{not_title}, not_cont=#{not_cont}, not_regd=sysdate
+		where not_num=#{not_num}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from notice where not_num=#{not_num}
+	</delete>
+	<select id="getCount" resultType="int">
+		select nvl(count(*), 0) from notice
+	</select>
+	<select id="getList" parameterType="hashmap" resultType="notice">
+		select * from
+		(select n.*, rownum rnum from
+		(select * from notice order by not_num desc)n)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>		
+	</select>
+	<select id="getDetail" parameterType="int" resultType="notice">
+		select * from notice where not_num=#{not_num}
+	</select>
+	<update id="addHit" parameterType="int">
+		update notice set not_hit = not_hit + 1 where not_num=#{not_num}
+	</update>
+	<select id="prev" parameterType="int" resultType="notice">
+		select * from notice where not_num = 
+		(select max(not_num) from notice <![CDATA[where not_num < #{not_num}]]>)
+	</select>
+	<select id="next" parameterType="int" resultType="notice">
+		select * from notice where not_num = 
+		(select min(not_num) from notice <![CDATA[where not_num > #{not_num}]]>)
+	</select>
+</mapper>

@@ -93,6 +93,8 @@ public class AdminEventController {
 	public String detailEvent(int num, Model model, @RequestParam(value="pageNum", defaultValue="1")int pageNum) {
 		EventVo vo = service.detailEvent(num);
 		
+		vo.setEve_cont(vo.getEve_cont().replaceAll("\n", "<br>"));
+		
 		int getCount = service.getEntCount(num);
 		
 		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
