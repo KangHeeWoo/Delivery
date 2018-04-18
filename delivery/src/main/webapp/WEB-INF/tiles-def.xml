@@ -41,6 +41,9 @@
 	<definition name=".notice.*" extends=".main">
 		<put-attribute name="main" value="/WEB-INF/views/notice/{1}.jsp"/>
 	</definition>
+	<definition name=".board.*" extends=".main">
+		<put-attribute name="main" value="/WEB-INF/views/board/{1}.jsp"/>
+	</definition>
 	<definition name=".*" extends=".main">
 		<put-attribute name="main" value="/WEB-INF/views/{1}.jsp"/>
 	</definition>
