@@ -39,5 +39,6 @@
 		<mapper resource="com/jhta/mybatis/PeventMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/BookMarkMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/BoardMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/MembersDetailMapper.xml"/>
 	</mappers>
 </configuration>

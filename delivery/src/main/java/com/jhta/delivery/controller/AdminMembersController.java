@@ -32,7 +32,7 @@ public class AdminMembersController {
 	@RequestMapping("/members/search")
 	public ModelAndView search(@RequestParam(value="pageNum",defaultValue="1") int pageNum,String word,String search) {
 		
-		ModelAndView mv=new ModelAndView(".admin.memberssearch");
+		ModelAndView mv=new ModelAndView(".admin.membersSearch");
 		HashMap<String, Object> map1=new HashMap<String, Object>();
 		map1.put("search", search);
 		map1.put("word", word);
