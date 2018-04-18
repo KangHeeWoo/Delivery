@@ -30,4 +30,12 @@ public class OrdersDao {
 	public int getOrderCnt(int stoNum) {
 		return session.selectOne(NAMESPACE + ".getOrderCnt", stoNum);
 	}
+	
+	public int getMembersOrderCnt(int num) {
+		return session.selectOne(NAMESPACE + ".getMembersOrderCnt", num);
+	}
+	
+	public List<OrdersVo> getMembersOrder(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE + ".membersOrder", map);
+	}
 }

@@ -15,7 +15,28 @@ public class OrdersVo {
 	private int mem_num;
 	private String ord_addr;
 	private String pay_type_name;
-	
+	private String sto_name;
+	public OrdersVo(int ord_num, Date ord_time, Date ord_deli_time, String ord_state, int ord_price, int ord_point,
+			int ord_comm, int sto_num, int pay_type_num, int mem_num, String ord_addr, String pay_type_name,
+			String sto_name) {
+		super();
+		this.ord_num = ord_num;
+		this.ord_time = ord_time;
+		this.ord_deli_time = ord_deli_time;
+		this.ord_state = ord_state;
+		this.ord_price = ord_price;
+		this.ord_point = ord_point;
+		this.ord_comm = ord_comm;
+		this.sto_num = sto_num;
+		this.pay_type_num = pay_type_num;
+		this.mem_num = mem_num;
+		this.ord_addr = ord_addr;
+		this.pay_type_name = pay_type_name;
+		this.sto_name = sto_name;
+	}
+	public OrdersVo() {
+		super();
+	}
 	public int getOrd_num() {
 		return ord_num;
 	}
@@ -88,30 +109,17 @@ public class OrdersVo {
 	public void setPay_type_name(String pay_type_name) {
 		this.pay_type_name = pay_type_name;
 	}
+	public String getSto_name() {
+		return sto_name;
+	}
+	public void setSto_name(String sto_name) {
+		this.sto_name = sto_name;
+	}
 	@Override
 	public String toString() {
 		return "OrdersVo [ord_num=" + ord_num + ", ord_time=" + ord_time + ", ord_deli_time=" + ord_deli_time
 				+ ", ord_state=" + ord_state + ", ord_price=" + ord_price + ", ord_point=" + ord_point + ", ord_comm="
 				+ ord_comm + ", sto_num=" + sto_num + ", pay_type_num=" + pay_type_num + ", mem_num=" + mem_num
-				+ ", ord_addr=" + ord_addr + ", pay_type_name=" + pay_type_name + "]";
-	}
-	public OrdersVo(int ord_num, Date ord_time, Date ord_deli_time, String ord_state, int ord_price, int ord_point,
-			int ord_comm, int sto_num, int pay_type_num, int mem_num, String ord_addr, String pay_type_name) {
-		super();
-		this.ord_num = ord_num;
-		this.ord_time = ord_time;
-		this.ord_deli_time = ord_deli_time;
-		this.ord_state = ord_state;
-		this.ord_price = ord_price;
-		this.ord_point = ord_point;
-		this.ord_comm = ord_comm;
-		this.sto_num = sto_num;
-		this.pay_type_num = pay_type_num;
-		this.mem_num = mem_num;
-		this.ord_addr = ord_addr;
-		this.pay_type_name = pay_type_name;
-	}
-	public OrdersVo() {
-		super();
+				+ ", ord_addr=" + ord_addr + ", pay_type_name=" + pay_type_name + ", sto_name=" + sto_name + "]";
 	}
 }

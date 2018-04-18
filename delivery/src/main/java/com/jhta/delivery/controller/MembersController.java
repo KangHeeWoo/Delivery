@@ -24,9 +24,12 @@ import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.BookMarkService;
 import com.jhta.delivery.service.CouponService;
 import com.jhta.delivery.service.MembersService;
+import com.jhta.delivery.service.OrdersService;
 import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.CouponIssueVo;
 import com.jhta.delivery.vo.MembersVo;
+import com.jhta.delivery.vo.OrderListVo;
+import com.jhta.delivery.vo.OrdersVo;
 import com.jhta.delivery.vo.StoresVo;
 
 @Controller
@@ -35,6 +38,7 @@ public class MembersController {
 	@Autowired private MembersService service;
 	@Autowired private CouponService couponService;
 	@Autowired private BookMarkService bservice;
+	@Autowired private OrdersService oservice;
 	
 	@InitBinder
     public void InitBinder(WebDataBinder binder) {
@@ -137,5 +141,27 @@ public class MembersController {
 		return ob.toString();
 	}
 	
-	
+	@RequestMapping("/members/orderlist")
+	public String orderList(@RequestParam(name="pageNum", defaultValue="1")int pageNum, HttpSession session, Model model) {
+		String email = (String)session.getAttribute("email");
+		
+		MembersVo vo = service.getinfo(email);
+		
+		int getCount = oservice.getMembersOrderCnt(vo.getMem_num());
+		
+		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("memNum", vo.getMem_num());
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow", pu.getEndRow());
+		
+		List<OrdersVo> list = oservice.getMembersOrder(map);
+		
+		model.addAttribute("pu", pu);
+		model.addAttribute("order", list);
+		
+		return ".members.orderList";
+	}
 }

@@ -19,4 +19,15 @@
 	<update id="setOrdState" parameterType="hashmap">
 		update orders set ord_state=#{ord_state} where ord_num=#{ord_num}
 	</update>
+	<select id="getMembersOrderCnt" parameterType="int" resultType="int">
+		select nvl(count(*), 0) from orders where mem_num=#{mem_num}
+	</select>
+	<select id="membersOrder" parameterType="hashmap" resultType="orders">
+		select * from 
+		(select o.*, rownum rnum from
+		(select o.*, p.PAY_TYPE_NAME, s.sto_name from orders o, pay_type p, stores s 
+		where o.mem_num=#{memNum} and o.pay_type_num = p.pay_type_num and o.sto_num = s.sto_num
+		order by ord_num desc)o)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
+	</select>
 </mapper>

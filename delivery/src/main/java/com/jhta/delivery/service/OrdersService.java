@@ -29,4 +29,12 @@ public class OrdersService {
 	public int getOrderCnt(int stoNum) {
 		return dao.getOrderCnt(stoNum);
 	}
+	
+	public int getMembersOrderCnt(int num) {
+		return dao.getMembersOrderCnt(num);
+	}
+	
+	public List<OrdersVo> getMembersOrder(HashMap<String, Object> map){
+		return dao.getMembersOrder(map);
+	}
 }
