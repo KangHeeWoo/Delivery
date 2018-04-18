@@ -18,8 +18,22 @@
 	</table>
 	<br><br>
 	<table class="table">
-		<tr><th>이전글</th><td onclick="detail(${prev.not_num})">${prev.not_title }</td></tr>
-		<tr><th>다음글</th><td onclick="detail(${next.not_num})">${next.not_title }</td></tr>
+		<c:choose>
+			<c:when test="${prev == null }">
+				<tr><th>이전글</th><td>이전글이 없습니다.</td></tr>
+			</c:when>
+			<c:otherwise>
+				<tr><th>이전글</th><td onclick="detail(${prev.not_num})">${prev.not_title }</td></tr>
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${next == null }">
+				<tr><th>다음글</th><td>다음글이 없습니다.</td></tr>
+			</c:when>
+			<c:otherwise>
+				<tr><th>다음글</th><td onclick="detail(${next.not_num})">${next.not_title }</td></tr>
+			</c:otherwise>
+		</c:choose>
 		<tr><td colspan="2"><a href="<c:url value='/notice/noticeList' />">목록으로 가기</a></td></tr>
 	</table>
 </div>
