@@ -278,31 +278,6 @@ img#wpstats {
 														</div>
 													</div>
 												</div></li>
-											<li class="comment odd alt thread-odd thread-alt depth-1"
-												id="li-comment-26"><div id="comment-26"
-													class="comment_container">
-													<img alt=''
-														src='https://secure.gravatar.com/avatar/3472757f6a3732d6470f98d7d7e9cece?s=60&#038;d=mm&#038;r=g'
-														srcset='https://secure.gravatar.com/avatar/3472757f6a3732d6470f98d7d7e9cece?s=120&#038;d=mm&#038;r=g 2x'
-														class='avatar avatar-60 photo' height='60' width='60' />
-													<div class="comment-text">
-														<div class="star-rating">
-															<span style="width: 100%">Rated <strong
-																class="rating">5</strong> out of 5
-															</span>
-														</div>
-														<p class="meta">
-															<strong class="woocommerce-review__author">Coen
-																Jacobs</strong> <span class="woocommerce-review__dash">&ndash;</span>
-															<time class="woocommerce-review__published-date"
-																datetime="2013-06-07T12:19:25+00:00">June 7, 2013</time>
-														</p>
-														<div class="description">
-															<p>This are my favorite Sneakers. In fact, I&#8217;ve
-																ordered 5 of them!</p>
-														</div>
-													</div>
-												</div></li>
 										</ol>
 									</div>
 									<div id="review_form_wrapper">
@@ -340,30 +315,12 @@ img#wpstats {
 														<textarea id="comment" name="comment" cols="45" rows="8"
 															aria-required="true" required></textarea>
 													</p>
-													<p class="comment-form-author">
-														<label for="author">Name <span class="required">*</span></label>
-														<input id="author" name="author" type="text" value=""
-															size="30" aria-required="true" required />
-													</p>
-													<p class="comment-form-email">
-														<label for="email">Email <span class="required">*</span></label>
-														<input id="email" name="email" type="email" value=""
-															size="30" aria-required="true" required />
-													</p>
 													<p class="form-submit">
 														<input name="submit" type="submit" id="submit"
 															class="submit" value="Submit" /> <input type='hidden'
 															name='comment_post_ID' value='70' id='comment_post_ID' />
 														<input type='hidden' name='comment_parent'
 															id='comment_parent' value='0' />
-													</p>
-													<p class="comment-subscription-form">
-														<input type="checkbox" name="subscribe_blog"
-															id="subscribe_blog" value="subscribe"
-															style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" />
-														<label class="subscribe-label" id="subscribe-blog-label"
-															for="subscribe_blog">Notify me of new posts by
-															email.</label>
 													</p>
 												</form>
 											</div>

@@ -9,6 +9,10 @@
 	}
 </style>
 <div id="board_list">
+	<ul>
+		<li><a href="<c:url value='/board/list' />">게시판</a></li>
+		<li><a href="<c:url value='/notice/noticeList' />">공지사항</a></li>
+	</ul>
 	<table class="table">
 		<thead>
 			<tr>

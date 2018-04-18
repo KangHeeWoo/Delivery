@@ -4,11 +4,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
 	#notice_list{
-		width : 800px;
+		width : 1000px;
 		margin : auto;
 	}
 </style>
 <div id="notice_list">
+	<ul>
+		<li><a href="<c:url value='/board/list' />">게시판</a></li>
+		<li><a href="<c:url value='/notice/noticeList' />">공지사항</a></li>
+	</ul>
 	<table class="table">
 		<thead>
 			<tr>
