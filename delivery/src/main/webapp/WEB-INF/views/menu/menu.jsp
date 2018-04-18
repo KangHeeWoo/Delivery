@@ -21,7 +21,7 @@
 	list-style: none;
 }
 
-.main_menu ul .sub_menu {
+.sub_menu {
 	list-style: none;
 }
 </style>
@@ -219,161 +219,161 @@ img#wpstats {
 							<div class="portlet-body">
 								<div class="mt-element-list">
 									<ul>
-										<li class="main_menu"><h4>메뉴</h4>
+										<li class="main_menu"><h4 id="menu_title">메뉴</h4>
 											<div>
 												<ul>
-
-
 													<c:forEach var="menu" items="${menulist }">
 														<li class="sub_menu">
 															<h5>&lt; ${menu.men_name } &gt;</h5>
 															<p>
-																가격 : ${menu.men_price }원 <input type="number" id="quantity_5ad3b3016dce0" class="input-text qty text"
+																가격 : ${menu.men_price }원 <input type="number"
+																	id="quantity_5ad3b3016dce0" class="input-text qty text"
 																	step="1" min="1" max="" name="quantity" value="1"
 																	title="Qty" size="4" pattern="[0-9]*"
-																	inputmode="numeric" aria-labelledby="" />
-																<input type="button" value="담기" onclick="addmenu(${menu.men_num},${menu.men_price },'${menu.men_name }', event)">
-													</p></li>
-										</c:forEach>
-
-
+																	inputmode="numeric" aria-labelledby="" /> <input
+																	type="button" value="담기"
+																	onclick="addmenu(${menu.men_num},${menu.men_price },'${menu.men_name }', event)">
+															</p>
+														</li>
+													</c:forEach>
+												</ul>
+											</div>
+										</li>
 									</ul>
+										
 								</div>
-								</li>
-								</ul>
 							</div>
-						</div>
 
-						<!-- 리뷰관련작성페이지!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-						<div
-							class="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab"
-							id="tab-reviews" role="tabpanel"
-							aria-labelledby="tab-title-reviews">
-							<div id="reviews" class="woocommerce-Reviews">
-								<div id="comments">
-									<h2 class="woocommerce-Reviews-title">리뷰</h2>
-									<ol class="commentlist">
-										<li class="comment even thread-even depth-1"
-											id="li-comment-24"><div id="comment-24"
-												class="comment_container">
-												<img alt=''
-													src='https://secure.gravatar.com/avatar/f0cde930b42c79145194679d5b6e3b1d?s=60&#038;d=mm&#038;r=g'
-													srcset='https://secure.gravatar.com/avatar/f0cde930b42c79145194679d5b6e3b1d?s=120&#038;d=mm&#038;r=g 2x'
-													class='avatar avatar-60 photo' height='60' width='60' />
-												<div class="comment-text">
-													<div class="star-rating">
-														<span style="width: 80%">Rated <strong
-															class="rating">4</strong> out of 5
-														</span>
+							<!-- 리뷰관련작성페이지!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+							<div
+								class="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab"
+								id="tab-reviews" role="tabpanel"
+								aria-labelledby="tab-title-reviews">
+								<div id="reviews" class="woocommerce-Reviews">
+									<div id="comments">
+										<h2 class="woocommerce-Reviews-title">리뷰</h2>
+										<ol class="commentlist">
+											<li class="comment even thread-even depth-1"
+												id="li-comment-24"><div id="comment-24"
+													class="comment_container">
+													<img alt=''
+														src='https://secure.gravatar.com/avatar/f0cde930b42c79145194679d5b6e3b1d?s=60&#038;d=mm&#038;r=g'
+														srcset='https://secure.gravatar.com/avatar/f0cde930b42c79145194679d5b6e3b1d?s=120&#038;d=mm&#038;r=g 2x'
+														class='avatar avatar-60 photo' height='60' width='60' />
+													<div class="comment-text">
+														<div class="star-rating">
+															<span style="width: 80%">Rated <strong
+																class="rating">4</strong> out of 5
+															</span>
+														</div>
+														<p class="meta">
+															<strong class="woocommerce-review__author">Cobus
+																Bester</strong> <span class="woocommerce-review__dash">&ndash;</span>
+															<time class="woocommerce-review__published-date"
+																datetime="2013-06-07T11:52:25+00:00">June 7, 2013</time>
+														</p>
+														<div class="description">
+															<p>Really happy with this sneakers.</p>
+														</div>
 													</div>
-													<p class="meta">
-														<strong class="woocommerce-review__author">Cobus
-															Bester</strong> <span class="woocommerce-review__dash">&ndash;</span>
-														<time class="woocommerce-review__published-date"
-															datetime="2013-06-07T11:52:25+00:00">June 7, 2013</time>
+												</div></li>
+											<li class="comment odd alt thread-odd thread-alt depth-1"
+												id="li-comment-26"><div id="comment-26"
+													class="comment_container">
+													<img alt=''
+														src='https://secure.gravatar.com/avatar/3472757f6a3732d6470f98d7d7e9cece?s=60&#038;d=mm&#038;r=g'
+														srcset='https://secure.gravatar.com/avatar/3472757f6a3732d6470f98d7d7e9cece?s=120&#038;d=mm&#038;r=g 2x'
+														class='avatar avatar-60 photo' height='60' width='60' />
+													<div class="comment-text">
+														<div class="star-rating">
+															<span style="width: 100%">Rated <strong
+																class="rating">5</strong> out of 5
+															</span>
+														</div>
+														<p class="meta">
+															<strong class="woocommerce-review__author">Coen
+																Jacobs</strong> <span class="woocommerce-review__dash">&ndash;</span>
+															<time class="woocommerce-review__published-date"
+																datetime="2013-06-07T12:19:25+00:00">June 7, 2013</time>
+														</p>
+														<div class="description">
+															<p>This are my favorite Sneakers. In fact, I&#8217;ve
+																ordered 5 of them!</p>
+														</div>
+													</div>
+												</div></li>
+										</ol>
+									</div>
+									<div id="review_form_wrapper">
+										<div id="review_form">
+											<div id="respond" class="comment-respond">
+												<span id="reply-title" class="comment-reply-title">Add
+													a review <small><a rel="nofollow"
+														id="cancel-comment-reply-link"
+														href="/shop-isle/product/usa-tshirt/#respond"
+														style="display: none;">Cancel reply</a></small>
+												</span>
+												<form
+													action="https://demo.themeisle.com/shop-isle/wp-comments-post.php"
+													method="post" id="commentform" class="comment-form"
+													novalidate>
+													<p class="comment-notes">
+														<span id="email-notes">Your email address will not
+															be published.</span> Required fields are marked <span
+															class="required">*</span>
 													</p>
-													<div class="description">
-														<p>Really happy with this sneakers.</p>
+													<div class="comment-form-rating">
+														<label for="rating">Your rating</label><select
+															name="rating" id="rating" aria-required="true" required><option
+																value="">Rate&hellip;</option>
+															<option value="5">Perfect</option>
+															<option value="4">Good</option>
+															<option value="3">Average</option>
+															<option value="2">Not that bad</option>
+															<option value="1">Very poor</option>
+														</select>
 													</div>
-												</div>
-											</div></li>
-										<li class="comment odd alt thread-odd thread-alt depth-1"
-											id="li-comment-26"><div id="comment-26"
-												class="comment_container">
-												<img alt=''
-													src='https://secure.gravatar.com/avatar/3472757f6a3732d6470f98d7d7e9cece?s=60&#038;d=mm&#038;r=g'
-													srcset='https://secure.gravatar.com/avatar/3472757f6a3732d6470f98d7d7e9cece?s=120&#038;d=mm&#038;r=g 2x'
-													class='avatar avatar-60 photo' height='60' width='60' />
-												<div class="comment-text">
-													<div class="star-rating">
-														<span style="width: 100%">Rated <strong
-															class="rating">5</strong> out of 5
-														</span>
-													</div>
-													<p class="meta">
-														<strong class="woocommerce-review__author">Coen
-															Jacobs</strong> <span class="woocommerce-review__dash">&ndash;</span>
-														<time class="woocommerce-review__published-date"
-															datetime="2013-06-07T12:19:25+00:00">June 7, 2013</time>
+													<p class="comment-form-comment">
+														<label for="comment">Your review <span
+															class="required">*</span></label>
+														<textarea id="comment" name="comment" cols="45" rows="8"
+															aria-required="true" required></textarea>
 													</p>
-													<div class="description">
-														<p>This are my favorite Sneakers. In fact, I&#8217;ve
-															ordered 5 of them!</p>
-													</div>
-												</div>
-											</div></li>
-									</ol>
-								</div>
-								<div id="review_form_wrapper">
-									<div id="review_form">
-										<div id="respond" class="comment-respond">
-											<span id="reply-title" class="comment-reply-title">Add
-												a review <small><a rel="nofollow"
-													id="cancel-comment-reply-link"
-													href="/shop-isle/product/usa-tshirt/#respond"
-													style="display: none;">Cancel reply</a></small>
-											</span>
-											<form
-												action="https://demo.themeisle.com/shop-isle/wp-comments-post.php"
-												method="post" id="commentform" class="comment-form"
-												novalidate>
-												<p class="comment-notes">
-													<span id="email-notes">Your email address will not
-														be published.</span> Required fields are marked <span
-														class="required">*</span>
-												</p>
-												<div class="comment-form-rating">
-													<label for="rating">Your rating</label><select
-														name="rating" id="rating" aria-required="true" required><option
-															value="">Rate&hellip;</option>
-														<option value="5">Perfect</option>
-														<option value="4">Good</option>
-														<option value="3">Average</option>
-														<option value="2">Not that bad</option>
-														<option value="1">Very poor</option>
-													</select>
-												</div>
-												<p class="comment-form-comment">
-													<label for="comment">Your review <span
-														class="required">*</span></label>
-													<textarea id="comment" name="comment" cols="45" rows="8"
-														aria-required="true" required></textarea>
-												</p>
-												<p class="comment-form-author">
-													<label for="author">Name <span class="required">*</span></label>
-													<input id="author" name="author" type="text" value=""
-														size="30" aria-required="true" required />
-												</p>
-												<p class="comment-form-email">
-													<label for="email">Email <span class="required">*</span></label>
-													<input id="email" name="email" type="email" value=""
-														size="30" aria-required="true" required />
-												</p>
-												<p class="form-submit">
-													<input name="submit" type="submit" id="submit"
-														class="submit" value="Submit" /> <input type='hidden'
-														name='comment_post_ID' value='70' id='comment_post_ID' />
-													<input type='hidden' name='comment_parent'
-														id='comment_parent' value='0' />
-												</p>
-												<p class="comment-subscription-form">
-													<input type="checkbox" name="subscribe_blog"
-														id="subscribe_blog" value="subscribe"
-														style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" />
-													<label class="subscribe-label" id="subscribe-blog-label"
-														for="subscribe_blog">Notify me of new posts by
-														email.</label>
-												</p>
-											</form>
+													<p class="comment-form-author">
+														<label for="author">Name <span class="required">*</span></label>
+														<input id="author" name="author" type="text" value=""
+															size="30" aria-required="true" required />
+													</p>
+													<p class="comment-form-email">
+														<label for="email">Email <span class="required">*</span></label>
+														<input id="email" name="email" type="email" value=""
+															size="30" aria-required="true" required />
+													</p>
+													<p class="form-submit">
+														<input name="submit" type="submit" id="submit"
+															class="submit" value="Submit" /> <input type='hidden'
+															name='comment_post_ID' value='70' id='comment_post_ID' />
+														<input type='hidden' name='comment_parent'
+															id='comment_parent' value='0' />
+													</p>
+													<p class="comment-subscription-form">
+														<input type="checkbox" name="subscribe_blog"
+															id="subscribe_blog" value="subscribe"
+															style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" />
+														<label class="subscribe-label" id="subscribe-blog-label"
+															for="subscribe_blog">Notify me of new posts by
+															email.</label>
+													</p>
+												</form>
+											</div>
 										</div>
 									</div>
+									<div class="clear"></div>
 								</div>
-								<div class="clear"></div>
 							</div>
+							<!-- 리뷰관련작성페이지끝!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 						</div>
-						<!-- 리뷰관련작성페이지끝!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 					</div>
-				</div>
 				<div class="container"></div>
 				<hr class="divider-w">
 
@@ -581,9 +581,9 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 	
 	
 	
-	/* $(".main_menu").on('click', function(){
-		$(this).children("div").stop().slideToggle();
-	}); */
+	$("#menu_title").on('click', function(){
+		$(".main_menu").children("div").stop().slideToggle();
+	}); 
 	
 	
 	
