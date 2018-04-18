@@ -195,8 +195,8 @@ img#wpstats {
 								<!-- <input type="number" id="quantity_5acfe7d3bd4ea"
 									class="input-text qty text" step="1" min="1" max=""	name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*"	inputmode="numeric" aria-labelledby="" /> -->
 							</div>
-							<button type="submit" name="add-to-cart" value="70"
-								class="single_add_to_cart_button button alt">배달 시작하기</button>
+							<!-- 결제시 필요한 목록 = 해당 아이디, 쿠폰, 포인트, 결제금액, 주문목록 -->
+							<button type="submit" name="add-to-cart" value="70"	class="single_add_to_cart_button button alt" onclick="cart()">배달 시작하기</button>
 						</form>
 					</div>
 
@@ -594,8 +594,8 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 
 		console.log(cnt);
 		
-		
-		price+=men_name+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+men_price*cnt+"<br>";
+		// 내일 할일 form에 데이터 담기, 메모중복담기처리, 삭제
+		price+=men_name+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+men_price*cnt+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button>삭제</button><br>";
 		sum+=men_price*cnt;
 		//console.log("sum"+sum);
 		$("#cart").html(price);
@@ -616,6 +616,11 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 				console.log("즐겨찾기 제이슨 에러다");
 			}
 		});
+		
+		
+	}
+	
+	function cart(){
 		
 		
 	}

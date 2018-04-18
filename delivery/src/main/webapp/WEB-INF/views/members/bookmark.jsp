@@ -36,88 +36,29 @@
 		</c:choose>
 	</c:forEach>
 </div>
-<table id="table_id" class="display">
+<table id="table_id" class="display"  style="width:1000px; margin: auto; ">
     <thead>
         <tr>
-            <th>이름</th>
-            <th>성별</th>
-            <th>나이</th>
+            <th>매장명</th>
+            <th>주소</th>
+            <th>전화번호</th>
+            <th>영업시간</th>
+            <th>해제</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-            
-        </tr>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-            
-        </tr>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-            
-        </tr>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-            
-        </tr>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-            
-        </tr>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-            
-        </tr>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-            
-        </tr>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-            
-        </tr>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-            
-        </tr>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-                
-        </tr>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-            
-        </tr>
-        <tr>
-            <td>유재희</td>
-            <td>여자</td>
-            <td>21</td>
-            
-        </tr>
-        
+        <c:forEach var="book" items="${booklist }">
+		<fmt:formatDate value="${book.sto_open}" var="open" pattern="HH:mm"/>
+		<fmt:formatDate value="${book.sto_close}" var="close" pattern="HH:mm"/>
+		<tr >
+			<td onclick="bookpage(${book.sto_num})">${book.sto_name}</td>
+			<td onclick="bookpage(${book.sto_num})">${book.sto_addr}</td>
+			<td onclick="bookpage(${book.sto_num})">${book.sto_phone}</td>
+			<td onclick="bookpage(${book.sto_num})">${open} &sim; ${close }
+			</td>
+			<td><input type="button" value="즐겨찾기 해제" onclick="bookDel(${book.sto_num})"></td>
+		</tr>
+		</c:forEach>
     </tbody>
 </table>
 <script>
@@ -131,11 +72,13 @@
 	$(document).ready( function () {
 	    $('#table_id').DataTable({
 	    	 "language": {
-	             "lengthMenu": "보여준다 _MENU_ records per page",
-	             "zeroRecords": "Nothing found - sorry",
-	             "info": "Showing page _PAGE_ of _PAGES_",
+	             "lengthMenu": "Page _MENU_",
+	             "zeroRecords": "즐겨찾기에 저장된 매장이 존재하지 않습니다.",
+	             "info": "_PAGE_ of _PAGES_",
 	             "infoEmpty": "No records available",
-	             "infoFiltered": "(filtered from _MAX_ total records)"
+	             "infoFiltered": "(filtered from _MAX_ total records)",
+	             "search":"검색"
+	             
 	         }
 	    });
 	} );
