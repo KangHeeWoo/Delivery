@@ -3,5 +3,19 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.MembersDetailMapper">
-
+	<select id="members_grade" parameterType="int" resultType="com.jhta.delivery.vo.MembersGradeVo">
+		select m.*,g.gra_name,g.gra_bene from members m, grade g where m.gra_num=g.gra_num and m.mem_num=#{mem_num}
+	</select>
+	<select id="chat_log" parameterType="int" resultType="com.jhta.delivery.vo.ChatLogVo">
+		select * from chat_log where mem_num=#{mem_num}
+	</select>
+	<select id="coupon" parameterType="int" resultType="com.jhta.delivery.vo.CouponUseVo">
+		select * from coupon_issue where mem_num = #{mem_num} and cou_iss_num in (select cou_iss_num from coupon_uselist)
+	</select>
+	<select id="point" parameterType="int" resultType="com.jhta.delivery.vo.UsePointVo">
+		select * from use_point where mem_num=#{mem_num}
+	</select>
+	<select id="orders" parameterType="int" resultType="com.jhta.delivery.vo.OrdersVo">
+		select * from orders where mem_num=#{mem_num}
+	</select>
 </mapper>
