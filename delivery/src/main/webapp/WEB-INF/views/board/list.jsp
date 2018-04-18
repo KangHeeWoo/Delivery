@@ -18,7 +18,7 @@
 		<tbody>
 			<c:forEach var="vo" items="${list }">
 			<fmt:formatDate value="${vo.boa_regd }" type="date" var="date" pattern="YY/MM/dd"/>
-				<tr>
+				<tr onclick="getDetail(${vo.boa_num})">
 					<td>${vo.boa_num}</td>
 					<td>${vo.boa_title }</td>
 					<td>${vo.boa_writer}</td>
@@ -44,3 +44,10 @@
 	<div id="insert" align="right" style="margin-right: 500px;">	
 		<a href="<c:url value='/board/insert'/>">글쓰기</a>
 	</div>
+<script>
+	function getDetail(boa_num){
+		location.href="<c:url value='/board/detail?boa_num="+boa_num+"'/>"
+	}
+</script>	
+	
+	

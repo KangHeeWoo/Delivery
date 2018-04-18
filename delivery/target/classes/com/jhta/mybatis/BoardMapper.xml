@@ -15,4 +15,25 @@
 	<select id="getCount" resultType="int">
 		select nvl(count(*),0) from board
 	</select>
+	<update id="addHit" parameterType="int">
+		update board set boa_hit=boa_hit+1 where boa_num=#{boa_num}
+	</update>
+	<select id="detail" parameterType="int" resultType="board">
+		select * from board where boa_num=#{boa_num}
+	</select>
+	<select id="prev" parameterType="int" resultType="board">
+		select * from board where boa_num=
+		(select max(boa_num) from board <![CDATA[where boa_num < #{boa_num}]]>)
+	</select>
+	<select id="next" parameterType="int" resultType="board">
+		select * from board where boa_num=
+		(select min(boa_num) from board <![CDATA[where boa_num > #{boa_num}]]>)
+	</select>
+	<delete id="delete" parameterType="int">
+		delete from board where boa_num=#{boa_num}
+	</delete>
+	<update id="update" parameterType="board">
+		update board set boa_title=#{boa_title},boa_cont=#{boa_cont},boa_regd=sysdate
+		where boa_num=#{boa_num}
+	</update>
 </mapper>

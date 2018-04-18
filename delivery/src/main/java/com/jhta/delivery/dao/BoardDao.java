@@ -23,4 +23,22 @@ public class BoardDao {
 	public List<BoardVo> getList(HashMap<String, Object> map){
 		return session.selectList(NAMESPACE + ".boardlist",map);
 	}
+	public int addHit(int boa_num) {
+		return session.update(NAMESPACE + ".addHit",boa_num);
+	}
+	public BoardVo detail(int boa_num) {
+		return session.selectOne(NAMESPACE + ".detail",boa_num);
+	}
+	public BoardVo prev(int boa_num) {
+		return session.selectOne(NAMESPACE + ".prev",boa_num);
+	}
+	public BoardVo next(int boa_num) {
+		return session.selectOne(NAMESPACE + ".next",boa_num);
+	}
+	public int delete(int boa_num) {
+		return session.delete(NAMESPACE + ".delete",boa_num);
+	}
+	public int update(BoardVo vo) {
+		return session.update(NAMESPACE + ".update",vo);
+	}
 }

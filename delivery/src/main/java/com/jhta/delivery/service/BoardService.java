@@ -22,5 +22,22 @@ public class BoardService {
 	public List<BoardVo> getList(HashMap<String, Object> map){
 		return dao.getList(map);
 	}
-	
+	public int addHit(int boa_num) {
+		return dao.addHit(boa_num);
+	}
+	public BoardVo detail(int boa_num) {
+		return dao.detail(boa_num);
+	}
+	public BoardVo prev(int boa_num) {
+		return dao.prev(boa_num);
+	}
+	public BoardVo next(int boa_num) {
+		return dao.next(boa_num);
+	}
+	public int delete(int boa_num) {
+		return dao.delete(boa_num);
+	}
+	public int update(BoardVo vo) {
+		return dao.update(vo);
+	}
 }
