@@ -2,7 +2,7 @@ package com.jhta.delivery.vo;
 
 import java.util.Date;
 
-public class boa_comment {
+public class CommentVo {
 	private int boa_com_num;
 	private String boa_cont;
 	private Date boa_regd;
@@ -12,9 +12,9 @@ public class boa_comment {
 	private String boa_com_writer;
 	private int boa_num;
 	
-	public boa_comment() {}
+	public CommentVo() {}
 
-	public boa_comment(int boa_com_num, String boa_cont, Date boa_regd, int boa_ref, int boa_lev, int boa_step,
+	public CommentVo(int boa_com_num, String boa_cont, Date boa_regd, int boa_ref, int boa_lev, int boa_step,
 			String boa_com_writer, int boa_num) {
 		super();
 		this.boa_com_num = boa_com_num;
