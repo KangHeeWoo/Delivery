@@ -47,6 +47,14 @@
 		</tbody>
 	</table>
 	<div align="center" style="width: 100%">
+		<c:choose>
+			<c:when test="${couPage.startPageNum > couPage.pageBlockCount }">
+				<a href="<c:url value='/admin/coupon?cNum=${couPage.startPageNum -1 }&iNum=${isuPage.pageNum }&uNum=${usePage.pageNum }' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
+			</c:when>
+			<c:otherwise>
+				<span style="color: black;">&lt; 이전 &gt;</span>
+			</c:otherwise>
+		</c:choose>
 		<c:forEach var="i" begin="${couPage.startPageNum }" end="${couPage.endPageNum }">
 			<c:choose>
 				<c:when test="${i == couPage.pageNum }">
@@ -57,6 +65,14 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
+		<c:choose>
+			<c:when test="${couPage.endPageNum < couPage.totalPageCount }">
+				<a href="<c:url value='/admin/coupon?cNum=${couPage.endPageNum + 1 }&iNum=${isuPage.pageNum }&uNum=${usePage.pageNum }' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
+			</c:when>
+			<c:otherwise>
+				<span style="color: black;">&lt; 다음 &gt;</span>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	<div align="right" style="width: 100%">
 		<a href="javascript:addCoupon()">신규 쿠폰 등록</a>
@@ -103,6 +119,14 @@
 		</tbody>
 	</table>
 	<div align="center" style="width: 100%">
+		<c:choose>
+			<c:when test="${isuPage.startPageNum > isuPage.pageBlockCount }">
+				<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${isuPage.startPageNum - 1 }&uNum=${usePage.pageNum }' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
+			</c:when>
+			<c:otherwise>
+				<span style="color: black;">&lt; 이전 &gt;</span>
+			</c:otherwise>
+		</c:choose>
 		<c:forEach var="i" begin="${isuPage.startPageNum }"
 			end="${isuPage.endPageNum }">
 			<c:choose>
@@ -114,6 +138,14 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
+		<c:choose>
+			<c:when test="${isuPage.endPageNum < isuPage.totalPageCount }">
+				<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${isuPage.endPageNum + 1 }&uNum=${usePage.pageNum }' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
+			</c:when>
+			<c:otherwise>
+				<span style="color: black;">&lt; 다음 &gt;</span>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	<div align="right" style="width: 100%">
 		<a href="javascript:issueCoupon()">신규 쿠폰 발급</a>
@@ -148,6 +180,7 @@
 			</tr>
 		</table>
 	</div>
+
 	<table class="table">
 		<thead>
 			<tr>
@@ -167,6 +200,14 @@
 		</tbody>
 	</table>
 	<div align="center" style="width: 100%">
+		<c:choose>
+			<c:when test="${usePage.startPageNum > usePage.pageBlockCount }">
+				<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${isuPage.pageNum }&uNum=${usePage.startPageNum -1 }' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
+			</c:when>
+			<c:otherwise>
+				<span style="color: black;">&lt; 이전 &gt;</span>
+			</c:otherwise>
+		</c:choose>
 		<c:forEach var="i" begin="${usePage.startPageNum }"
 			end="${usePage.endPageNum }">
 			<c:choose>
@@ -178,6 +219,14 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
+		<c:choose>
+			<c:when test="${usePage.endPageNum < usePage.totalPageCount }">
+				<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${isuPage.pageNum }&uNum=${usePage.endPageNum + 1 }' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
+			</c:when>
+			<c:otherwise>
+				<span style="color: black;">&lt; 다음 &gt;</span>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </div>
 <script type="text/javascript">

@@ -44,6 +44,15 @@
 		</tbody>
 	</table>
 	<div align="center" style="width: 100%">
+		<c:choose>
+			<c:when test="${pu.startPageNum > pu.pageBlockCount }">
+				<a href="<c:url value='/members/orderlist?pageNum=${pu.startPageNum -1 }' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
+			</c:when>
+			<c:otherwise>
+				<span style="color: black;">&lt; 이전 &gt;</span>
+			</c:otherwise>
+		</c:choose>
+		
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i == pu.pageNum }">
@@ -54,6 +63,15 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
+		
+		<c:choose>
+			<c:when test="${pu.endPageNum < pu.totalPageCount }">
+				<a href="<c:url value='/members/orderlist?pageNum=${pu.endPageNum + 1 }' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
+			</c:when>
+			<c:otherwise>
+				<span style="color: black;">&lt; 다음 &gt;</span>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	<br><br>
 	<div align="center" id="orderList">
