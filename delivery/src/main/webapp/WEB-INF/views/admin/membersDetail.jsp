@@ -49,6 +49,18 @@
 </tr>
 </c:forEach>
 </table>
+<div align="center" style="width: 100%">
+		<c:forEach var="i" begin="${chatPage.startPageNum }" end="${chatPage.endPageNum }">
+			<c:choose>
+				<c:when test="${i == chatPage.pageNum }">
+					<span style="color: black;">[${i }]</span>
+				</c:when>
+				<c:otherwise>
+					<a href="<c:url value='/members/detail?chNum=${i }&cNum=${couponPage.pageNum }&pNum=${pointPage.pageNum }&oNum=${ordersPage.pageNum }&mem_num=${mgv.mem_num }' />"><span style="color: #555;">[${i }]</span></a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</div>
 <h1>쿠폰 사용 내역</h1>
 <table class="table">
 <tr>
@@ -60,6 +72,18 @@
 </tr>
 </c:forEach>
 </table>
+<div align="center" style="width: 100%">
+		<c:forEach var="i" begin="${couponPage.startPageNum }" end="${couponPage.endPageNum }">
+			<c:choose>
+				<c:when test="${i == couponPage.pageNum }">
+					<span style="color: black;">[${i }]</span>
+				</c:when>
+				<c:otherwise>
+					<a href="<c:url value='/members/detail?cNum=${i }&chNum=${chatPage.pageNum }&pNum=${pointPage.pageNum }&oNum=${ordersPage.pageNum }&mem_num=${mgv.mem_num }' />"><span style="color: #555;">[${i }]</span></a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</div>
 <h1>포인트 사용 내역</h1>
 <table class="table">
 <tr>
@@ -71,6 +95,18 @@
 </tr>
 </c:forEach>
 </table>
+<div align="center" style="width: 100%">
+		<c:forEach var="i" begin="${pointPage.startPageNum }" end="${pointPage.endPageNum }">
+			<c:choose>
+				<c:when test="${i == pointPage.pageNum }">
+					<span style="color: black;">[${i }]</span>
+				</c:when>
+				<c:otherwise>
+					<a href="<c:url value='/members/detail?pNum=${i }&cNum=${couponPage.pageNum }&chNum=${chatPage.pageNum }&oNum=${ordersPage.pageNum }&mem_num=${mgv.mem_num }' />"><span style="color: #555;">[${i }]</span></a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</div>
 <h1>주문 내역</h1>
 <table class="table">
 <tr>
@@ -80,8 +116,20 @@
 <fmt:formatDate value="${vo3.ord_time }" type="date" var="regd" pattern="yyyy-MM-dd HH:mm:ss"/>
 <fmt:formatDate value="${vo3.ord_deli_time }" type="date" var="regd1" pattern="yyyy-MM-dd HH:mm"/>
 <tr>
-<td>${vo3.ord_num }</td><td>${regd }</td><td>${regd1 }</td><td>${vo3.ord_state }</td><td>${vo3.ord_addr }</td><td>${vo3.sto_num }</td>
+<td>${vo3.ord_num }</td><td>${regd }</td><td>${regd1 }</td><td>${vo3.ord_state }</td><td>${vo3.ord_price }</td><td>${vo3.ord_addr }</td><td>${vo3.sto_num }</td>
 </tr>
 </c:forEach>
 </table>
+<div align="center" style="width: 100%">
+		<c:forEach var="i" begin="${ordersPage.startPageNum }" end="${ordersPage.endPageNum }">
+			<c:choose>
+				<c:when test="${i == ordersPage.pageNum }">
+					<span style="color: black;">[${i }]</span>
+				</c:when>
+				<c:otherwise>
+					<a href="<c:url value='/members/detail?oNum=${i }&cNum=${couponPage.pageNum }&pNum=${pointPage.pageNum }&chNum=${chatPage.pageNum }&mem_num=${mgv.mem_num }' />"><span style="color: #555;">[${i }]</span></a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</div>
 </div>

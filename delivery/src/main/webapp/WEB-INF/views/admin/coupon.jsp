@@ -148,7 +148,6 @@
 			</tr>
 		</table>
 	</div>
-
 	<table class="table">
 		<thead>
 			<tr>

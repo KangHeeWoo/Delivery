@@ -1,5 +1,6 @@
 package com.jhta.delivery.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,16 +20,40 @@ public class MembersDetailDao {
 	public MembersGradeVo members_grade(int mem_num) {
 		return session.selectOne(NAMESPACE+".members_grade",mem_num);
 	}
-	public List<ChatLogVo> chat_log(int mem_num) {
-		return session.selectList(NAMESPACE+".chat_log",mem_num);
+	public List<ChatLogVo> chat_log(HashMap<String, Object> map) {
+		System.out.println(map);
+		List<ChatLogVo> list =session.selectList(NAMESPACE+".chat_log",map);
+		System.out.println(list);
+		return list;
 	}
-	public List<CouponUseVo> coupon(int mem_num) {
-		return session.selectList(NAMESPACE+".coupon",mem_num);
+	public List<CouponUseVo> coupon(HashMap<String, Object> map) {
+		System.out.println(map);
+		List<CouponUseVo> list =session.selectList(NAMESPACE+".coupon",map);
+		System.out.println(list);
+		return list;
 	}
-	public List<UsePointVo> point(int mem_num) {
-		return session.selectList(NAMESPACE+".point",mem_num);
+	public List<UsePointVo> point(HashMap<String, Object> map) {
+		System.out.println(map);
+		List<UsePointVo> list =session.selectList(NAMESPACE+".point",map);
+		System.out.println(list);
+		return list;
 	}
-	public List<OrdersVo> orders(int mem_num) {
-		return session.selectList(NAMESPACE+".orders",mem_num);
+	public List<OrdersVo> orders(HashMap<String, Object> map) {
+		System.out.println(map);
+		List<OrdersVo> list =session.selectList(NAMESPACE+".orders",map);
+		System.out.println(list);
+		return list;
+	}
+	public int getChatCount(int mem_num) {
+		return session.selectOne(NAMESPACE+".getChatCount",mem_num);
+	}
+	public int getCouponCount(int mem_num) {
+		return session.selectOne(NAMESPACE+".getCouponCount",mem_num);
+	}
+	public int getPointCount(int mem_num) {
+		return session.selectOne(NAMESPACE+".getPointCount",mem_num);
+	}
+	public int getOrdersCount(int mem_num) {
+		return session.selectOne(NAMESPACE+".getOrdersCount",mem_num);
 	}
 }
