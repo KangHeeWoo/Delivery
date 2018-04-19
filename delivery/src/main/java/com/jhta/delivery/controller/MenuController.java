@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.delivery.service.BookMarkService;
+import com.jhta.delivery.service.CouponService;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.MenuService;
 import com.jhta.delivery.service.StoresService;
 import com.jhta.delivery.vo.BookMarkVo;
 import com.jhta.delivery.vo.CartVo;
+import com.jhta.delivery.vo.MemCouponVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.StoresVo;
@@ -31,6 +33,7 @@ public class MenuController {
 	@Autowired private MenuService Mservice;
 	@Autowired private MembersService memservice;
 	@Autowired private BookMarkService bservice;
+	@Autowired private CouponService Cservice;
 	
 	@RequestMapping("/menu/menu")
 	public String admin(int sto_num,Model model) {
@@ -45,15 +48,27 @@ public class MenuController {
 	}
 	@RequestMapping("/menu/cart")
 	public String cart(StoresVo stovo, HttpSession session, int[] num,String[] name,int[] price, int[] cnt,int total,Model model) {
+		System.out.println("¿À´Ï");
+		
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo vo=memservice.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		System.out.println(mem_num);
+		List<MemCouponVo> memCoupon=Cservice.memCoupon(mem_num);
+		
+		
 		ArrayList<CartVo> array = new ArrayList<CartVo>();
+		System.out.println(memCoupon+"memCoupon"+array);
 		
 		for(int i=0;i<num.length;i++) {
 			array.add(new CartVo(num[i], name[i], price[i], cnt[i]));
 		}
+		
 		model.addAttribute("stovo", stovo);
 		model.addAttribute("array", array);
 		model.addAttribute("total", total);
-	
+		model.addAttribute("memCoupon", memCoupon);
+		
 		return ".menu.cart";
 	}
 	

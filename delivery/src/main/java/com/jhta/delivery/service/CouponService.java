@@ -10,6 +10,7 @@ import com.jhta.delivery.dao.CouponDao;
 import com.jhta.delivery.vo.CouponIssueVo;
 import com.jhta.delivery.vo.CouponUseVo;
 import com.jhta.delivery.vo.CouponVo;
+import com.jhta.delivery.vo.MemCouponVo;
 import com.jhta.delivery.vo.MembersVo;
 
 @Service
@@ -54,5 +55,8 @@ public class CouponService {
 	
 	public List<CouponVo> allCouponList(){
 		return dao.allCouponList();
+	}
+	public List<MemCouponVo> memCoupon(int mem_num){
+		return dao.memCoupon(mem_num);
 	}
 }

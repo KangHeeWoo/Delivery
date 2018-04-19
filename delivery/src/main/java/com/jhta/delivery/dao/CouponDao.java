@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.jhta.delivery.vo.CouponIssueVo;
 import com.jhta.delivery.vo.CouponUseVo;
 import com.jhta.delivery.vo.CouponVo;
+import com.jhta.delivery.vo.MemCouponVo;
 import com.jhta.delivery.vo.MembersVo;
 
 @Repository
@@ -54,5 +55,8 @@ public class CouponDao {
 	
 	public List<CouponVo> allCouponList(){
 		return session.selectList(NAMESPACE + ".all_cou_list");
+	}
+	public List<MemCouponVo> memCoupon(int mem_num){
+		return session.selectList(NAMESPACE+".memCoupon", mem_num);
 	}
 }

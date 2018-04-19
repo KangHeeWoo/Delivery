@@ -24,6 +24,7 @@
 		<typeAlias type="com.jhta.delivery.vo.BoardImgVo" alias="boa_img"/>
 		<typeAlias type="com.jhta.delivery.vo.NoticeVo" alias="notice"/>
 		<typeAlias type="com.jhta.delivery.vo.CommentVo" alias="comment"/>
+		<typeAlias type="com.jhta.delivery.vo.MemCouponVo" alias="memCoupon"/>
 	</typeAliases>
 	
 
