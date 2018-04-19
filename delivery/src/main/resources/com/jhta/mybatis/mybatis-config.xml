@@ -21,6 +21,7 @@
 		<typeAlias type="com.jhta.delivery.vo.EventEntryVo" alias="eventEntry"/>
 		<typeAlias type="com.jhta.delivery.vo.BookMarkVo" alias="bookmark"/>
 		<typeAlias type="com.jhta.delivery.vo.BoardVo" alias="board"/>
+		<typeAlias type="com.jhta.delivery.vo.BoardImgVo" alias="boa_img"/>
 		<typeAlias type="com.jhta.delivery.vo.NoticeVo" alias="notice"/>
 	</typeAliases>
 	

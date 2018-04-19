@@ -1,19 +1,25 @@
 package com.jhta.delivery.controller;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.delivery.service.BoardService;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.util.PageUtil;
+import com.jhta.delivery.vo.BoardImgVo;
 import com.jhta.delivery.vo.BoardVo;
 import com.jhta.delivery.vo.MembersVo;
 
@@ -53,9 +59,22 @@ public class BoardController {
 		}
 	}
 	@RequestMapping("/board/insertOk")
-	public String insertOk(BoardVo vo) {
+	public String insertOk(BoardVo vo,HttpSession session,MultipartFile boa_img) {
+		String uploadPath = session.getServletContext().getRealPath("/resources/images/board");
+		String orgFileName = boa_img.getOriginalFilename();
+		String saveFileName = UUID.randomUUID() + "_" + orgFileName;
+		//vo1.setBoa_img(saveFileName);
+		
 		try {
+			InputStream is = boa_img.getInputStream();
+			FileOutputStream fos = new FileOutputStream(uploadPath + "\\" + saveFileName);
+			FileCopyUtils.copy(is, fos);
+			fos.close();
+			is.close();		
 			service.insert(vo);
+			int num = service.insertNum();
+			
+			service.insertImg(new BoardImgVo(0, saveFileName, num));
 			return "redirect:/board/list";
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -66,12 +85,14 @@ public class BoardController {
 	public String detail(int boa_num, Model model) {
 		service.addHit(boa_num);
 		BoardVo vo = service.detail(boa_num);
+		BoardImgVo vo1 = service.detailImg(boa_num);
 		BoardVo prev = service.prev(boa_num);
 		BoardVo next = service.next(boa_num);
 		
 		vo.setBoa_cont(vo.getBoa_cont().replaceAll("\n", "<br>"));
-		
+		//System.out.println(vo);
 		model.addAttribute("vo", vo);
+		model.addAttribute("vo1", vo1);
 		model.addAttribute("prev",prev);
 		model.addAttribute("next",next);
 		

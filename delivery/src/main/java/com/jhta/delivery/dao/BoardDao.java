@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.delivery.vo.BoardImgVo;
 import com.jhta.delivery.vo.BoardVo;
 
 @Repository
@@ -16,6 +17,9 @@ public class BoardDao {
 	
 	public int insert(BoardVo vo) {
 		return session.insert(NAMESPACE + ".insert",vo);
+	}
+	public int insertImg(BoardImgVo vo) {
+		return session.insert(NAMESPACE + ".insertImg",vo);
 	}
 	public int getCount() {
 		return session.selectOne(NAMESPACE + ".getCount");
@@ -40,5 +44,11 @@ public class BoardDao {
 	}
 	public int update(BoardVo vo) {
 		return session.update(NAMESPACE + ".update",vo);
+	}
+	public int insertNum() {
+		return session.selectOne(NAMESPACE + ".insertNum");
+	}
+	public BoardImgVo detailImg(int boa_num) {
+		return session.selectOne(NAMESPACE + ".detailImg",boa_num);
 	}
 }

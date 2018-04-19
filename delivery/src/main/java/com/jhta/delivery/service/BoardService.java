@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.delivery.dao.BoardDao;
+import com.jhta.delivery.vo.BoardImgVo;
 import com.jhta.delivery.vo.BoardVo;
 
 @Service
@@ -15,6 +16,9 @@ public class BoardService {
 	
 	public int insert(BoardVo vo) {
 		return dao.insert(vo);
+	}
+	public int insertImg(BoardImgVo vo) {
+		return dao.insertImg(vo);
 	}
 	public int getCount() {
 		return dao.getCount();
@@ -39,5 +43,11 @@ public class BoardService {
 	}
 	public int update(BoardVo vo) {
 		return dao.update(vo);
+	}
+	public int insertNum() {
+		return dao.insertNum();
+	}
+	public BoardImgVo detailImg(int boa_num) {
+		return dao.detailImg(boa_num);
 	}
 }
