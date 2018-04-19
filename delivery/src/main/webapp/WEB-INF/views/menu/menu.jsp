@@ -315,6 +315,7 @@ img#wpstats {
 														<textarea id="comment" name="comment" cols="45" rows="8"
 															aria-required="true" required></textarea>
 													</p>
+													<!-- 이미지 업로드 필요 -->
 													<p class="form-submit">
 														<input name="submit" type="submit" id="submit"
 															class="submit" value="Submit" /> <input type='hidden'
@@ -332,12 +333,9 @@ img#wpstats {
 							<!-- 리뷰관련작성페이지끝!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 						</div>
 				<div class="container"></div>
-				<hr class="divider-w">
-
 			</div>
 		</section>
 		<hr class="divider-w">
-
 	</div>
 
 	<noscript>
