@@ -148,4 +148,14 @@ public class StoresVo {
 	public void setCat_num(int cat_num) {
 		this.cat_num = cat_num;
 	}
+
+	@Override
+	public String toString() {
+		return "StoresVo [sto_num=" + sto_num + ", sto_name=" + sto_name + ", sto_regnum=" + sto_regnum + ", sto_addr="
+				+ sto_addr + ", sto_phone=" + sto_phone + ", sto_regd=" + sto_regd + ", sto_open=" + sto_open
+				+ ", sto_close=" + sto_close + ", sto_holiday=" + sto_holiday + ", sto_intro=" + sto_intro
+				+ ", sto_state=" + sto_state + ", sel_num=" + sel_num + ", cat_num=" + cat_num + ", sto_img=" + sto_img
+				+ "]";
+	}
+	
 }

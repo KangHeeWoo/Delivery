@@ -1,5 +1,6 @@
 package com.jhta.delivery.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.MenuService;
 import com.jhta.delivery.service.StoresService;
 import com.jhta.delivery.vo.BookMarkVo;
+import com.jhta.delivery.vo.CartVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.StoresVo;
@@ -40,6 +42,19 @@ public class MenuController {
 		model.addAttribute("menulist", menulist);
 		System.out.println(stovo.getSto_name()+"메뉴리스트:"+menulist);
 		return ".menu.menu";
+	}
+	@RequestMapping("/menu/cart")
+	public String cart(StoresVo stovo, HttpSession session, int[] num,String[] name,int[] price, int[] cnt,int total,Model model) {
+		ArrayList<CartVo> array = new ArrayList<CartVo>();
+		
+		for(int i=0;i<num.length;i++) {
+			array.add(new CartVo(num[i], name[i], price[i], cnt[i]));
+		}
+		model.addAttribute("stovo", stovo);
+		model.addAttribute("array", array);
+		model.addAttribute("total", total);
+	
+		return ".menu.cart";
 	}
 	
 	@RequestMapping(value="/menu/bookmark",produces="application/json;charset=utf-8")

@@ -170,34 +170,35 @@ img#wpstats {
 								</span>
 							</div>
 						</div>
-						<br> <br> <br>
+						<br> <br>
 						<div class="woocommerce-product-details__short-description">
 							<p>${stovo.sto_intro}</p>
 						</div>
-						<br> <br> <br> <br> <br> <span id="cart"></span>
+						<br> <br>
+						
+						
+
+
+					<form class="cart"	action="<c:url value='/menu/cart'/>"	method="post">
+						<span id="cart"></span>
+						<div id="cart_list" style="display : none;"></div>
+
 						<span id="total"></span>
-
-
-						<form class="cart"
-							action="https://demo.themeisle.com/shop-isle/product/usa-tshirt/"
-							method="post" enctype='multipart/form-data'>
+						<input type="hidden" name="sto_num" value="${stovo.sto_num}">
+						<input type="hidden" name="sto_name" value="${stovo.sto_name}">
+						<input type="hidden" name="sto_img" value="${stovo.sto_img}">
+						<input type="hidden" name="total" id="total_value">
 							<div class="quantity">
 								<div class="screen-reader-text">
 									<div class="yith-wcwl-add-button show" style="display: block">
 										<a href="#" rel="nofollow" data-product-id="70" data-product-type="simple" class="add_to_wishlist" onclick="bookmark(${stovo.sto_num})"> 즐겨찾기</a>
-										<img
-											src="https://s20206.pcdn.co/shop-isle/wp-content/plugins/yith-woocommerce-wishlist/assets/images/wpspin_light.gif"
-											class="ajax-loading" alt="loading" width="16" height="16"
-											style="visibility: hidden" />
 									</div>
 								</div>
-								<label class="screen-reader-text" for="quantity_5acfe7d3bd4ea">Quantity</label>
-								<!-- <input type="number" id="quantity_5acfe7d3bd4ea"
-									class="input-text qty text" step="1" min="1" max=""	name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*"	inputmode="numeric" aria-labelledby="" /> -->
+								
 							</div>
 							<!-- 결제시 필요한 목록 = 해당 아이디, 쿠폰, 포인트, 결제금액, 주문목록 -->
-							<button type="submit" name="add-to-cart" value="70"	class="single_add_to_cart_button button alt" onclick="cart()">배달 시작하기</button>
-						</form>
+							<button type="submit" name="add-to-cart" value="70"	class="single_add_to_cart_button button alt">배달 시작하기</button>
+					</form>
 					</div>
 
 					<div class="woocommerce-tabs wc-tabs-wrapper">
@@ -560,18 +561,98 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 	var sum=0;
 	function addmenu(men_num,men_price,men_name,event){
 		var cnt=$(event.target).prev().val();
+	    console.log(men_name+"..............");
+		sum = 0;
+		
+		var cart_list = $("#cart_list");
+		var nodes = cart_list.find(".aa");
+		
+		var check = true;
+		
+		for(var i=0;i<nodes.length;i++){
+			var node = nodes[i];
+			var num = $(node).find("input[name='num']").val();
+			
+			if(men_num == num){
+				var aa_cnt = $(node).find("input[name='cnt']");
+				var price = $(node).find("input[name='price']");
+				var addCnt = parseInt($(aa_cnt).val()) + parseInt(cnt);
+				$(aa_cnt).val(addCnt);
+				$(price).val(men_price);
+				check = false;
+			}
+		}
+		
+		if(check){
+			var input_num = $("<input name='num'>");
+			var input_cnt = $("<input name='cnt'>");
+			var input_name = $("<input name='name'>");
+			var input_price = $("<input name='price'>");
+			
+			$(input_num).val(men_num);
+			$(input_cnt).val(cnt);
+			$(input_name).val(men_name);
+			$(input_price).val(men_price);
+			
+			$("<div class='aa'></div>").appendTo($(cart_list))
+			.append(input_num)
+			.append(input_cnt)
+			.append(input_name)
+			.append(input_price);
+		}
 
-		console.log(cnt);
+		$("#cart").html("");
+		var html = "<table>";
+		var aa = cart_list.find(".aa"); 
+		
+		$(aa).each(function(i){
+			var nn=$(this).find("input[name='name']").val();
+			var pp=$(this).find("input[name='price']").val();
+			var cc=$(this).find("input[name='cnt']").val();
+			
+			html += "<tr><td>"+ nn + "</td><td>" + pp * cc + "</td><td><input type='button' onclick='deleteM(" + i + ")' value='삭제'></td></tr>";
+			sum += pp * cc;
+		});
+		
+		html += "</table>"
 		
 		// 내일 할일 form에 데이터 담기, 메모중복담기처리, 삭제
-		price+=men_name+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+men_price*cnt+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button>삭제</button><br>";
-		sum+=men_price*cnt;
-		//console.log("sum"+sum);
-		$("#cart").html(price);
+		
+		$("#cart").html(html);
 		
 		$("#total").html("<br><h4>총 액 : " + sum+" 원</h4>");
+		$("#total_value").val(sum);
 	}
-	
+	//메뉴 삭제하는곳
+	function deleteM(i){
+		sum = 0;
+		
+		var cart_list = $("#cart_list");
+		
+		
+		console.log(i);
+		$("#cart_list .aa:nth-child(" + (i+1) +")").remove();
+		
+		$("#cart").html("");
+		var html = "<table>";
+		var aa = cart_list.find(".aa"); 
+		
+		$(aa).each(function(i){
+			var nn=$(this).find("input[name='name']").val();
+			var pp=$(this).find("input[name='price']").val();
+			var cc=$(this).find("input[name='cnt']").val();
+			
+			html += "<tr><td>"+ nn + "</td><td>" + pp * cc + "</td><td><input type='button' onclick='deleteM(" + i + ")' value='삭제'></td></tr>";
+			sum += pp * cc;
+		});
+		
+		html += "</table>";
+		
+		$("#cart").html(html);
+		
+		$("#total").html("<br><h4>총 액 : " + sum+" 원</h4>");
+		$("#total_value").val(sum);
+	}
 	function bookmark(sto_num){
 		
 		$.ajax({
@@ -585,11 +666,6 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 				console.log("즐겨찾기 제이슨 에러다");
 			}
 		});
-		
-		
-	}
-	
-	function cart(){
 		
 		
 	}
