@@ -254,6 +254,26 @@ img#wpstats {
 									<div id="comments">
 										<h2 class="woocommerce-Reviews-title">리뷰</h2>
 										<ol class="commentlist">
+											<c:forEach var="comment" items="${comment }">
+												<li class="comment even thread-even depth-1" id="li-comment-24">
+													<div id="comment-24" class="comment_container">
+														<img src="" height="200" width="200"/>
+														<div class="comment-text">
+															<div class="star-rating">
+																<span style="width: 80%">Rated <strong class="rating">4</strong> out of 5 </span>
+															</div>
+															<p class="meta">
+																<strong class="woocommerce-review__author">Cobus Bester</strong>
+																<span class="woocommerce-review__dash">&ndash;</span>
+																<time>June 7, 2013</time>
+															</p>
+															<div class="description">
+																<p>Really happy with this sneakers.</p>
+															</div>
+														</div>
+													</div>
+												</li>
+											</c:forEach>
 											<li class="comment even thread-even depth-1"
 												id="li-comment-24"><div id="comment-24"
 													class="comment_container">
@@ -270,29 +290,25 @@ img#wpstats {
 														<p class="meta">
 															<strong class="woocommerce-review__author">Cobus
 																Bester</strong> <span class="woocommerce-review__dash">&ndash;</span>
-															<time class="woocommerce-review__published-date"
-																datetime="2013-06-07T11:52:25+00:00">June 7, 2013</time>
+															<time>June 7, 2013</time>
 														</p>
 														<div class="description">
 															<p>Really happy with this sneakers.</p>
 														</div>
 													</div>
-												</div></li>
+												</div>
+											</li>
 										</ol>
 									</div>
 									<div id="review_form_wrapper">
 										<div id="review_form">
 											<div id="respond" class="comment-respond">
 												<span id="reply-title" class="comment-reply-title">Add
-													a review <small><a rel="nofollow"
-														id="cancel-comment-reply-link"
-														href="/shop-isle/product/usa-tshirt/#respond"
-														style="display: none;">Cancel reply</a></small>
+													a review
 												</span>
 												<form
-													action="https://demo.themeisle.com/shop-isle/wp-comments-post.php"
-													method="post" id="commentform" class="comment-form"
-													novalidate>
+													action=""
+													method="post" >
 													<p class="comment-notes">
 														<span id="email-notes">Your email address will not
 															be published.</span> Required fields are marked <span
@@ -315,13 +331,10 @@ img#wpstats {
 														<textarea id="comment" name="comment" cols="45" rows="8"
 															aria-required="true" required></textarea>
 													</p>
-													<!-- 이미지 업로드 필요 -->
+													<p><input name="img" type="file"></p>
 													<p class="form-submit">
 														<input name="submit" type="submit" id="submit"
-															class="submit" value="Submit" /> <input type='hidden'
-															name='comment_post_ID' value='70' id='comment_post_ID' />
-														<input type='hidden' name='comment_parent'
-															id='comment_parent' value='0' />
+															class="submit" value="Submit" />
 													</p>
 												</form>
 											</div>
