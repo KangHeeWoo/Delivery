@@ -26,8 +26,8 @@ public class QnAService {
 	public AnswerVo adetail(int qna_ans_num) {
 		return dao.adetail(qna_ans_num);
 	}
-	public int getCount() {
-		return dao.getCount();
+	public int getCount(int mem_num) {
+		return dao.getCount(mem_num);
 	}
 	public int delete(int qna_num) {
 		return dao.delete(qna_num);

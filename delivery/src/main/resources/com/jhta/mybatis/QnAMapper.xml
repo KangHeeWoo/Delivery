@@ -22,8 +22,8 @@
 		insert into qna values(0,#{qna_title},#{qna_cont},sysdate,#{mem_num})
 	</insert>
 	
-	<select id="count" resultType="int">
-		select NVL(count(*),0) cnt from qna
+	<select id="count" resultType="int" parameterType="int">
+		select NVL(count(*),0) cnt from qna where mem_num=#{mem_num}
 	</select>
 	
 	<select id="myqna" resultMap="qnalist" parameterType="hashmap">	

@@ -27,8 +27,8 @@ public class QnADao {
 	public AnswerVo adetail(int qna_ans_num) {
 		return session.selectOne(NAMESPACE + ".adetail",qna_ans_num);
 	}
-	public int getCount() {
-		return session.selectOne(NAMESPACE + ".count");
+	public int getCount(int mem_num) {
+		return session.selectOne(NAMESPACE + ".count",mem_num);
 	}
 	public int delete(int qna_num) {
 		return session.delete(NAMESPACE + ".delete",qna_num);

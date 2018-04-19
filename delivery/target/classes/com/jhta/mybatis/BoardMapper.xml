@@ -6,6 +6,15 @@
 	<insert id="insert" parameterType="board">
 		insert into board values(0,#{boa_title},#{boa_cont},#{boa_hit},sysdate,#{boa_writer})
 	</insert>
+	<insert id="insertImg" parameterType="boa_img">	
+		insert into boa_img values(0,#{boa_img},#{boa_num})
+	</insert>
+	<select id="detailImg" parameterType="int" resultType="boa_img">
+		select * from boa_img where boa_num=#{boa_num}
+	</select>
+	<select id="insertNum" resultType="int">
+		select max(boa_num) from board
+	</select>
 	<select id="boardlist" parameterType="hashmap" resultType="board">
 		select * from
 		(select n.*, rownum rnum from

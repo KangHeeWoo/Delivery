@@ -30,7 +30,8 @@ public class QnAController {
 		model.addAttribute("email",email);
 		MembersVo vo = mservice.getinfo(email);
 		
-		int getCount = service.getCount();
+		
+		int getCount = service.getCount(vo.getMem_num());
 		
 		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
 		
