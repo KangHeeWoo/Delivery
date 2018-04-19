@@ -21,27 +21,19 @@ public class MembersDetailDao {
 		return session.selectOne(NAMESPACE+".members_grade",mem_num);
 	}
 	public List<ChatLogVo> chat_log(HashMap<String, Object> map) {
-		System.out.println(map);
 		List<ChatLogVo> list =session.selectList(NAMESPACE+".chat_log",map);
-		System.out.println(list);
 		return list;
 	}
 	public List<CouponUseVo> coupon(HashMap<String, Object> map) {
-		System.out.println(map);
 		List<CouponUseVo> list =session.selectList(NAMESPACE+".coupon",map);
-		System.out.println(list);
 		return list;
 	}
 	public List<UsePointVo> point(HashMap<String, Object> map) {
-		System.out.println(map);
 		List<UsePointVo> list =session.selectList(NAMESPACE+".point",map);
-		System.out.println(list);
 		return list;
 	}
 	public List<OrdersVo> orders(HashMap<String, Object> map) {
-		System.out.println(map);
 		List<OrdersVo> list =session.selectList(NAMESPACE+".orders",map);
-		System.out.println(list);
 		return list;
 	}
 	public int getChatCount(int mem_num) {
