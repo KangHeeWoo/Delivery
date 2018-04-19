@@ -51,4 +51,8 @@ public class NoticeController {
 		
 		return ".notice.noticeDetail";
 	}
+	@RequestMapping("/admin/noticeInsert")
+	public String noticeInsert() {
+		return ".admin.noticeInsert";
+	}
 }
