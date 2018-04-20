@@ -49,7 +49,7 @@ public class MenuController {
 	@RequestMapping("/menu/cart")
 	public String cart(StoresVo stovo, HttpSession session, int[] num,String[] name,int[] price, int[] cnt,int total,Model model) {
 		System.out.println("¿À´Ï");
-		
+		System.out.println("stovo:"+stovo);
 		String mem_email=(String)session.getAttribute("email");
 		MembersVo vo=memservice.mem_num(mem_email);
 		int mem_num=vo.getMem_num();

@@ -529,11 +529,13 @@
 			console.log("되는가");
 			emailCheck = false;
 			if (email_num == inputNumberCheck) {
+				console.log("되는가1");
 				emailP.html("인증완료").css({
 					color : "#003399"
 				});
 				emailCheck = true;
 			} else {
+				console.log("되는가2");
 				emailP.html("인증실패").css({
 					color : "#AA1212"
 				});

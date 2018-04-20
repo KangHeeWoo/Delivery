@@ -17,19 +17,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.delivery.service.BoardService;
+import com.jhta.delivery.service.CommentService;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.BoardImgVo;
 import com.jhta.delivery.vo.BoardVo;
+import com.jhta.delivery.vo.CommentVo;
 import com.jhta.delivery.vo.MembersVo;
 
 @Controller
 public class BoardController {
 	@Autowired private BoardService service;
 	@Autowired private MembersService mservice;
+	@Autowired private CommentService cservice;
 	
 	@RequestMapping("/board/list")
-	public String board(@RequestParam(name="pageNum", defaultValue="1")int pageNum,Model model){
+	public String board(@RequestParam(name="pageNum", defaultValue="1")int pageNum,Model model,HttpSession session){
+		String email = (String)session.getAttribute("email");
 		int getCount = service.getCount();
 		
 		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
@@ -43,6 +47,7 @@ public class BoardController {
 		
 		model.addAttribute("pu",pu);
 		model.addAttribute("list",list);
+		model.addAttribute("email",email);
 		
 		return ".board.list";
 	}
@@ -95,6 +100,9 @@ public class BoardController {
 		model.addAttribute("vo1", vo1);
 		model.addAttribute("prev",prev);
 		model.addAttribute("next",next);
+		
+		List<CommentVo> clist = cservice.list(boa_num);
+		model.addAttribute("clist",clist);
 		
 		return ".board.detail";
 	}
