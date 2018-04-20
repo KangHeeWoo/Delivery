@@ -34,4 +34,8 @@ public class PayService {
 	public int updatePoint(HashMap<String, Object> map) {
 		return dao.updatePoint(map);
 	}
+	
+	public int getOrdNum() {
+		return dao.getOrdNum();
+	}
 }

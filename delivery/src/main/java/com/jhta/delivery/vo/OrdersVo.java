@@ -16,6 +16,7 @@ public class OrdersVo {
 	private String ord_addr;
 	private String pay_type_name;
 	private String sto_name;
+
 	public OrdersVo(int ord_num, Date ord_time, Date ord_deli_time, String ord_state, int ord_price, int ord_point,
 			int ord_comm, int sto_num, int pay_type_num, int mem_num, String ord_addr, String pay_type_name,
 			String sto_name) {

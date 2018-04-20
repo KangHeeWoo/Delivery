@@ -35,4 +35,8 @@ public class PayDao {
 	public int updatePoint(HashMap<String, Object> map) {
 		return session.update(NAMESPACE+".updatePoint",map);
 	}
+	
+	public int getOrdNum() {
+		return session.selectOne(NAMESPACE + ".getOrdNum");
+	}
 }

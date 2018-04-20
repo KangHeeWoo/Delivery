@@ -33,8 +33,8 @@
 <tr><td id="payPrice">합계 : ${total}원</td></tr>
 </table>
 <div>
-<span><input type="time" name="ord_deli_time" id="ord_deli_time"> &nbsp;&nbsp; 예약 주문 적용 <input type="checkbox" id="reseChk"></span>
-<input type="hidden" name="num" value="${stovo.sto_num }">
+<span><input type="time" name="ord_deli_time" id="ord_deli_time"> &nbsp;&nbsp; 예약 주문 적용 <input type="checkbox" name="reseChk" id="reseChk"></span>
+<input type="hidden" name="sto_num" value="${stovo.sto_num }">
 </div>
 <br><br>
 <select name="payType">
@@ -79,8 +79,7 @@
 			alert("마감되었습니다");
 			return false;
 		}
-		
-		return false;
+
 	}
 
 	function setPayPrice(){
