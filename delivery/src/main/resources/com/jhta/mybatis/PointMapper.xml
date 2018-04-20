@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.PointMapper">
+	<select id="usePoint" parameterType="hashmap" resultType="usepoint">
+		select * from(select u.*,rownum rnum from(select * from use_point where mem_num=#{mem_num})u) <![CDATA[where rnum>=#{startrow} and rnum<=#{endrow} ]]> 
+	</select>
+</mapper>

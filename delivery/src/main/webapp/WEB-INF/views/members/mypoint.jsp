@@ -26,3 +26,5 @@
 		</c:choose>
 	</c:forEach>
 </div>
+
+<h3>포인트 사용내역</h3>

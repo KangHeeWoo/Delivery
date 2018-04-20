@@ -25,12 +25,14 @@ import com.jhta.delivery.service.BookMarkService;
 import com.jhta.delivery.service.CouponService;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.OrdersService;
+import com.jhta.delivery.service.UsePointService;
 import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.CouponIssueVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.OrderListVo;
 import com.jhta.delivery.vo.OrdersVo;
 import com.jhta.delivery.vo.StoresVo;
+import com.jhta.delivery.vo.UsePointVo;
 
 @Controller
 public class MembersController {
@@ -39,6 +41,7 @@ public class MembersController {
 	@Autowired private CouponService couponService;
 	@Autowired private BookMarkService bservice;
 	@Autowired private OrdersService oservice;
+	@Autowired private UsePointService usePservice;
 
 	
 	@InitBinder
@@ -181,13 +184,16 @@ public class MembersController {
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
 		
+		List<UsePointVo> useVo=usePservice.usePoint(map);
 		
 		List<OrdersVo> pointlist=oservice.pointlist(map);
 		System.out.println(pointlist+"pointlilst");
 	
 		model.addAttribute("pointlist", pointlist);
 		model.addAttribute("pu", pu);
+		model.addAttribute("usePvo", useVo);
 		
 		return ".members.mypoint";
 	}
+	
 }

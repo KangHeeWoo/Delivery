@@ -25,6 +25,7 @@
 		<typeAlias type="com.jhta.delivery.vo.NoticeVo" alias="notice"/>
 		<typeAlias type="com.jhta.delivery.vo.CommentVo" alias="comment"/>
 		<typeAlias type="com.jhta.delivery.vo.MemCouponVo" alias="memCoupon"/>
+		<typeAlias type="com.jhta.delivery.vo.UsePointVo" alias="usepoint"/>
 	</typeAliases>
 	
 
@@ -46,5 +47,6 @@
 		<mapper resource="com/jhta/mybatis/MembersDetailMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/NoticeMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/CommentMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/PointMapper.xml"/>
 	</mappers>
 </configuration>

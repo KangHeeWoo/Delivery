@@ -22,11 +22,7 @@
 	<definition name=".menu.*" extends=".main">
 		<put-attribute name="main" value="/WEB-INF/views/menu/{1}.jsp"/>
 	</definition>
-	
-	<definition name=".orders.*" extends=".main">
-		<put-attribute name="main" value="/WEB-INF/views/members/{1}.jsp"/>
-	</definition>
-	
+		
 	<definition name=".members.*" extends=".main">
 		<put-attribute name="main" value="/WEB-INF/views/members/{1}.jsp"/>
 	</definition>
