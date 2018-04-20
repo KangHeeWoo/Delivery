@@ -40,4 +40,7 @@ public class OrdersService {
 	public List<OrdersVo> pointlist(HashMap<String, Object> map){
 		return dao.pointlist(map);
 	}
+	public OrdersVo ordNumList(HashMap<String, Object> map) {
+		return dao.ordNumList(map);
+	}
 }

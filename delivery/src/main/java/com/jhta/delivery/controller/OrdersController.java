@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.OrdersService;
 import com.jhta.delivery.service.SellerService;
 import com.jhta.delivery.service.StoresService;
 import com.jhta.delivery.util.PageUtil;
+import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.OrderListVo;
 import com.jhta.delivery.vo.OrdersVo;
 import com.jhta.delivery.vo.SellerVo;
@@ -26,6 +28,7 @@ public class OrdersController {
 	@Autowired private OrdersService service;
 	@Autowired private SellerService selService;
 	@Autowired private StoresService stoService;
+	@Autowired private MembersService memservice;
 	
 	@RequestMapping("/seller/orderlist")
 	public String orderList(@RequestParam(name="stoNum", defaultValue="-1")int stoNum, 
@@ -64,5 +67,23 @@ public class OrdersController {
 		List<OrderListVo> list = service.getOrderList(ordNum);
 		
 		return list;
+	}
+	@RequestMapping("/orders/myorder")
+	public String myoder(int ord_num,HttpSession session,Model model) {
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo vo=memservice.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("mem_num", mem_num);
+		map.put("ord_num", ord_num);
+		
+		OrdersVo odrVo=service.ordNumList(map);
+		List<OrderListVo> listvo=service.getOrderList(ord_num);
+		
+		model.addAttribute("ordVo", odrVo);
+		model.addAttribute("listvo", listvo);
+		
+		
+		return ".members.myOrders";
 	}
 }

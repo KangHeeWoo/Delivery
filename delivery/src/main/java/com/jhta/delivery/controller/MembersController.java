@@ -181,11 +181,9 @@ public class MembersController {
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
 		
-		List<OrdersVo> pointlist=oservice.pointlist(map);
 		
-		map.put("mem_num", mem_num);
-		map.put("startRow", pu.getStartRow());
-		map.put("endRow", pu.getEndRow());
+		List<OrdersVo> pointlist=oservice.pointlist(map);
+		System.out.println(pointlist+"pointlilst");
 	
 		model.addAttribute("pointlist", pointlist);
 		model.addAttribute("pu", pu);

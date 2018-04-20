@@ -33,4 +33,8 @@
 	<select id="pointlist" parameterType="hashmap" resultType="orders">
 		select o.* from(select rownum rnum ,ord_point, ord_num,ord_deli_time from orders where mem_num=#{mem_num} order by ord_deli_time desc)o <![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
 	</select>
+	<select id="ordNumList" parameterType="hashmap" resultType="orders">
+		select o.*, p.PAY_TYPE_NAME, s.sto_name from orders o, pay_type p, stores s 
+		where o.mem_num=#{mem_num} and o.pay_type_num = p.pay_type_num and o.sto_num = s.sto_num and ord_num=#{ord_num}
+	</select>
 </mapper>

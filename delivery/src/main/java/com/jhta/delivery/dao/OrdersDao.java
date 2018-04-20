@@ -41,4 +41,7 @@ public class OrdersDao {
 	public List<OrdersVo> pointlist(HashMap<String, Object> map){
 		return session.selectList(NAMESPACE+".pointlist", map);
 	}
+	public OrdersVo ordNumList(HashMap<String, Object> map) {
+		return session.selectOne(NAMESPACE+".ordNumList", map);
+	}
 }
