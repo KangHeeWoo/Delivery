@@ -34,7 +34,7 @@
               <a class="admin-menu" href="#">QnA관리&nbsp;</a>
             </li>
             <li class="nav-item">
-              <a class="admin-menu" href="#">공지관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/admin/noticeList' />">공지관리&nbsp;</a>
             </li>
             <li class="nav-item">
               <a class="admin-menu" href="<c:url value='/admin/event'/>">이벤트관리&nbsp;</a>
