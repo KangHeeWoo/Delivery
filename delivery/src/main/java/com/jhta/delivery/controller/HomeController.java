@@ -89,9 +89,13 @@ public class HomeController {
 		int n=0;
 		int m=0;
 		if(joinradio.equals("mem_email") ) {
+			System.out.println("mem_email : " + email);
+			System.out.println("mem_pwd : " + pwd);
+			
 			map.put("mem_email", email);
 			map.put("mem_pwd",pwd);
 			n=memService.logincheck(map);
+			System.out.println("n : " + n);
 			if(n>0) {
 				session.setAttribute("email", email);
 				
