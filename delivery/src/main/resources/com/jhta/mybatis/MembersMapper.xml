@@ -65,4 +65,7 @@
 	  )
 	 <![CDATA[ where mem_num!=26 and rnum>=#{startRow} and rnum<=#{endRow}  ]]>
 	</select>
+	<select id="memPoint" parameterType="int" resultType="members">
+		select mem_point from members where mem_num=#{mem_num}
+	</select>
 </mapper>    

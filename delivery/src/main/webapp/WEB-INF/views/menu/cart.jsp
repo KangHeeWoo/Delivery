@@ -10,11 +10,15 @@
 	</c:forEach>
 	<tr><td>
 	<select name="coupon">
+	<option value="0">-- 쿠폰 --</option>
 		<c:forEach var="memcou" items="${memCoupon }">
 			쿠폰 <option value="${memcou.dis_price }">${memcou.cou_type}</option>
 		</c:forEach>
 	</select>
 	</td></tr>
+	<tr><td>사용가능 포인트 : ${memPoint.mem_point }</td></tr>
+	<tr><td><input type="text" name="usePoint"></td></tr>
+	
 <tr><td>>합계 : ${total}원</td></tr>
 
 </table>

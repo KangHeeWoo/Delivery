@@ -43,4 +43,7 @@ public class MembersDao {
 	public List<MembersVo> searchList(HashMap<String, Object> map){
 		return session.selectList(NAMESPACE+".searchList",map);
 	}
+	public MembersVo memPoint(int mem_num) {
+		return session.selectOne(NAMESPACE+".memPoint",mem_num);
+	}
 }

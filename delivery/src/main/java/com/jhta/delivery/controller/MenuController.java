@@ -55,6 +55,7 @@ public class MenuController {
 		int mem_num=vo.getMem_num();
 		System.out.println(mem_num);
 		List<MemCouponVo> memCoupon=Cservice.memCoupon(mem_num);
+		MembersVo memPoint=memservice.memPoint(mem_num);
 		
 		
 		ArrayList<CartVo> array = new ArrayList<CartVo>();
@@ -68,6 +69,7 @@ public class MenuController {
 		model.addAttribute("array", array);
 		model.addAttribute("total", total);
 		model.addAttribute("memCoupon", memCoupon);
+		model.addAttribute("memPoint", memPoint);
 		
 		return ".menu.cart";
 	}

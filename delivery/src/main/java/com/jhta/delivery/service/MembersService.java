@@ -52,4 +52,7 @@ public class MembersService {
 	public List<MembersVo> searchList(HashMap<String, Object> map){
 		return dao.searchList(map);
 	}
+	public MembersVo memPoint(int mem_num) {
+		return dao.memPoint(mem_num);
+	}
 }
