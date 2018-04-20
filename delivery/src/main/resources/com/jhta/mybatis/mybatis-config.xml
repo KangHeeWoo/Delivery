@@ -49,5 +49,6 @@
 		<mapper resource="com/jhta/mybatis/CommentMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/PointMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/PayMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/QnaAnswerMapper.xml"/>
 	</mappers>
 </configuration>
