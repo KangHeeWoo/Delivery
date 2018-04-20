@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.PayMapper">
+	<insert id="insertOrder" parameterType="orders">
+		insert into orders values(0,sysdate,#{ord_deli_time},'주문접수',#{ord_price},#{ord_point},#{ord_comm},#{sto_num},#{pay_type_num},#{mem_num},#{ord_addr})	
+	</insert>
+	<select id="getPoint" parameterType="int" resultType="int">
+		select gra_bene from grade where gra_num =         
+		(select gra_num from members where mem_num=#{mem_num})
+	</select>
+	<select id="getComm" resultType="int">
+		select adm_value from administration where adm_num=1
+	</select>
+	<insert id="insertOrderList" parameterType="orderlist">
+		insert into orderlist values(0,#{ord_cnt},#{ord_num},#{men_num})
+	</insert>
+	<insert id="useCoupon" parameterType="hashmap">
+		insert into coupon_uselist values(0,#{cou_iss_num},#{ord_num})
+	</insert>
+	<insert id="usePoint" parameterType="hashmap">
+		insert into use_point values(0,#{use_amount},#{mem_num},#{ord_num})
+	</insert>
+	<update id="updatePoint" parameterType="hashmap">
+		update members set mem_point=mem_point-#{use_amount}+#{ord_point} where mem_num=#{mem_num}
+	</update>
+</mapper>

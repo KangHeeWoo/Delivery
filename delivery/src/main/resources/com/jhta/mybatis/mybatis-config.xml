@@ -48,5 +48,6 @@
 		<mapper resource="com/jhta/mybatis/NoticeMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/CommentMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/PointMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/PayMapper.xml"/>
 	</mappers>
 </configuration>

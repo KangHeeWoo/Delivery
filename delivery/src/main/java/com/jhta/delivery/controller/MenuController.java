@@ -50,13 +50,13 @@ public class MenuController {
 	public String cart(StoresVo stovo, HttpSession session, int[] num,String[] name,int[] price, int[] cnt,int total,Model model) {
 		System.out.println("¿À´Ï");
 		System.out.println("stovo:"+stovo);
+		stovo = service.stoName(stovo.getSto_num());
 		String mem_email=(String)session.getAttribute("email");
 		MembersVo vo=memservice.mem_num(mem_email);
 		int mem_num=vo.getMem_num();
 		System.out.println(mem_num);
 		List<MemCouponVo> memCoupon=Cservice.memCoupon(mem_num);
 		MembersVo memPoint=memservice.memPoint(mem_num);
-		
 		
 		ArrayList<CartVo> array = new ArrayList<CartVo>();
 		System.out.println(memCoupon+"memCoupon"+array);
@@ -70,6 +70,7 @@ public class MenuController {
 		model.addAttribute("total", total);
 		model.addAttribute("memCoupon", memCoupon);
 		model.addAttribute("memPoint", memPoint);
+		model.addAttribute("addr",(String)session.getAttribute("myAddr"));
 		
 		return ".menu.cart";
 	}

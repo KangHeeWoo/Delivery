@@ -51,7 +51,8 @@
 	<select id="memCoupon" resultType="memCoupon" parameterType="int">
 		select c.*,i.cou_num,i.* from coupon c,
 		(select * from coupon_issue <![CDATA[where to_date(cou_start,'yyyy-mm-dd') <= to_date(sysdate, 'yyyy-mm-dd') 
-		and to_date(cou_end,'yyyy-mm-dd') >= to_date(sysdate, 'yyyy-mm-dd')]]>)i 
+		and to_date(cou_end,'yyyy-mm-dd') >= to_date(sysdate, 'yyyy-mm-dd')]]>
+		and COU_ISS_NUM not in (select COU_ISS_NUM from coupon_uselist))i 
 		where i.cou_num=c.cou_num  and mem_num=#{mem_num}
 	</select>
 </mapper>
