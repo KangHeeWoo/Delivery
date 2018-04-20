@@ -255,7 +255,7 @@ img#wpstats {
 									<div id="comments">
 										<h2 class="woocommerce-Reviews-title">리뷰</h2>
 										<ol class="commentlist">
-											<c:forEach var="comment" items="${comment }">
+											<c:forEach var="review" items="${review }">
 												<li class="comment even thread-even depth-1" id="li-comment-24">
 													<div id="comment-24" class="comment_container">
 														<img src="" height="200" width="200"/>

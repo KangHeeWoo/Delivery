@@ -26,6 +26,8 @@
 		<typeAlias type="com.jhta.delivery.vo.CommentVo" alias="comment"/>
 		<typeAlias type="com.jhta.delivery.vo.MemCouponVo" alias="memCoupon"/>
 		<typeAlias type="com.jhta.delivery.vo.UsePointVo" alias="usepoint"/>
+		<typeAlias type="com.jhta.delivery.vo.ReviewVo" alias="review"/>
+		<typeAlias type="com.jhta.delivery.vo.ReviewCommentVo" alias="reviewComment"/>
 	</typeAliases>
 	
 
@@ -50,5 +52,6 @@
 		<mapper resource="com/jhta/mybatis/PointMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/PayMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/QnaAnswerMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/ReviewMapper.xml"/>
 	</mappers>
 </configuration>
