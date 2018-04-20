@@ -30,4 +30,7 @@
 		order by ord_num desc)o)
 		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
 	</select>
+	<select id="pointlist" parameterType="hashmap" resultType="orders">
+		select o.* from(select rownum rnum ,ord_point, ord_num,ord_deli_time from orders where mem_num=#{mem_num} order by ord_deli_time desc)o <![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
+	</select>
 </mapper>

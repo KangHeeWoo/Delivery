@@ -49,6 +49,6 @@
 		select * from members where mem_email = #{val}
 	</select>
 	<select id="memCoupon" resultType="memCoupon" parameterType="int">
-		select c.*,i.cou_num,i.* from coupon c,(select * from coupon_issue where sysdate between cou_start and cou_end)i where i.cou_num=c.cou_num  and mem_num=#{mem_num}
+		select c.*,i.cou_num,i.* from coupon c,(select * from coupon_issue where sysdate between to_date(cou_start,'yyyy-mm-dd') and to_date(cou_end,'yyyy-mm-dd'))i where i.cou_num=c.cou_num  and mem_num=#{mem_num}
 	</select>
 </mapper>

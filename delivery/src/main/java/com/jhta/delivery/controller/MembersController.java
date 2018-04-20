@@ -39,6 +39,7 @@ public class MembersController {
 	@Autowired private CouponService couponService;
 	@Autowired private BookMarkService bservice;
 	@Autowired private OrdersService oservice;
+
 	
 	@InitBinder
     public void InitBinder(WebDataBinder binder) {
@@ -163,5 +164,32 @@ public class MembersController {
 		model.addAttribute("order", list);
 		
 		return ".members.orderList";
+	}
+	//myPont
+	@RequestMapping("/members/pointlist")
+	public String pointlist(HttpSession session,Model model,@RequestParam(value="pageNum",defaultValue="1")int pageNum) {
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo vo=service.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		
+		int getCount = oservice.getMembersOrderCnt(mem_num);
+		
+		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
+		
+		map.put("mem_num", mem_num);
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow", pu.getEndRow());
+		
+		List<OrdersVo> pointlist=oservice.pointlist(map);
+		
+		map.put("mem_num", mem_num);
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow", pu.getEndRow());
+	
+		model.addAttribute("pointlist", pointlist);
+		model.addAttribute("pu", pu);
+		
+		return ".members.mypoint";
 	}
 }

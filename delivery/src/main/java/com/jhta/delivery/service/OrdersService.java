@@ -37,4 +37,7 @@ public class OrdersService {
 	public List<OrdersVo> getMembersOrder(HashMap<String, Object> map){
 		return dao.getMembersOrder(map);
 	}
+	public List<OrdersVo> pointlist(HashMap<String, Object> map){
+		return dao.pointlist(map);
+	}
 }

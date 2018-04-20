@@ -38,4 +38,7 @@ public class OrdersDao {
 	public List<OrdersVo> getMembersOrder(HashMap<String, Object> map){
 		return session.selectList(NAMESPACE + ".membersOrder", map);
 	}
+	public List<OrdersVo> pointlist(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE+".pointlist", map);
+	}
 }
