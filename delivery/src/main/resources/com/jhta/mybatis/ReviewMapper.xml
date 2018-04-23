@@ -17,7 +17,6 @@
 			<result property="rev_com_num" column="rev_com_num"/>
 			<result property="rev_com_cont" column="rev_com_cont"/>
 			<result property="rev_com_regd" column="rev_com_regd"/>
-			<result property="rev_num" column="rev_num"/>
 		</collection>
 	</resultMap>
 	
@@ -34,18 +33,19 @@
 	</delete>
 	<select id="getCount" parameterType="int" resultType="int">
 		select nvl(count(*), 0) from review r, rev_comm c where ord_num 
-		in(select ord_num from orders where sto_num = #{val}) and r.rev_num = c.rev_num(+);
+		in(select ord_num from orders where sto_num = #{val}) and r.rev_num = c.rev_num(+)
 	</select>
 	<select id="getList" parameterType="hashmap" resultMap="reviewlist">
 		select * from 
 		(select rr.*, rownum rnum from
 		(select r.*, c.REV_COM_CONT, c.REV_COM_NUM, c.REV_COM_REGD, m.mem_num, m.mem_nick from review r, rev_comm c, 
 		(select ord_num, mem_num from orders where sto_num = #{sto_num}) o, (select mem_num, mem_nick from members) m
-		where o.ord_num = r.ord_num and m.mem_num = o.mem_num and r.rev_num = c.rev_num(+)) rr)		
+		where o.ord_num = r.ord_num and m.mem_num = o.mem_num and r.rev_num = c.rev_num(+)
+		order by o.ord_num desc) rr)		
 		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
 	</select>
 	<!-- 이미 등록된 여부가 있는지 확인 -->
-	<select id="getReview" parameterType="int" resultType="review">
-		select * from review where ord_num=#{ord_num}
+	<select id="getReview" parameterType="hashmap" resultType="review">
+		select * from review where ord_num in (select ord_num from orders where sto_num=#{sto_num} and mem_num=#{mem_num})
 	</select>
 </mapper>

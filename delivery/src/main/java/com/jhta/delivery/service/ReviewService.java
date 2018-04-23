@@ -34,7 +34,7 @@ public class ReviewService {
 		return dao.getList(map);
 	}
 	
-	public ReviewVo getReview(int num) {
-		return dao.getReview(num);
+	public ReviewVo getReview(HashMap<String, Object> map) {
+		return dao.getReview(map);
 	}
 }

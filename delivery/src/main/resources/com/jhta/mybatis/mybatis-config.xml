@@ -29,6 +29,7 @@
 		<typeAlias type="com.jhta.delivery.vo.ReviewVo" alias="review"/>
 		<typeAlias type="com.jhta.delivery.vo.ReviewCommentVo" alias="reviewComment"/>
 		<typeAlias type="com.jhta.delivery.vo.OrdersUsePointVo" alias="ordusepoint"/>
+		<typeAlias type="com.jhta.delivery.vo.ReviewImageVo" alias="reviewImage"/>
 	</typeAliases>
 	
 

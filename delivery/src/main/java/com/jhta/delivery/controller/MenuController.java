@@ -19,12 +19,15 @@ import com.jhta.delivery.service.BookMarkService;
 import com.jhta.delivery.service.CouponService;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.MenuService;
+import com.jhta.delivery.service.ReviewService;
 import com.jhta.delivery.service.StoresService;
+import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.BookMarkVo;
 import com.jhta.delivery.vo.CartVo;
 import com.jhta.delivery.vo.MemCouponVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.MenuVo;
+import com.jhta.delivery.vo.ReviewVo;
 import com.jhta.delivery.vo.StoresVo;
 
 @Controller
@@ -34,15 +37,29 @@ public class MenuController {
 	@Autowired private MembersService memservice;
 	@Autowired private BookMarkService bservice;
 	@Autowired private CouponService Cservice;
+	@Autowired private ReviewService rservice;
 	
 	@RequestMapping("/menu/menu")
-	public String admin(int sto_num,Model model) {
+	public String admin(int sto_num,Model model, @RequestParam(name="pageNum", defaultValue="1")int pageNum) {
 		StoresVo stovo=service.stoName(sto_num);
 		
 		List<MenuVo> menulist=Mservice.menulist(sto_num);
 		
+		int getCount = rservice.getCount(sto_num);
+		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("sto_num", sto_num);
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow", pu.getEndRow());
+		
+		List<ReviewVo> review = rservice.getList(map);
+		
 		model.addAttribute("stovo", stovo);
 		model.addAttribute("menulist", menulist);
+		model.addAttribute("review", review);
+		model.addAttribute("pu", pu);
 		System.out.println(stovo.getSto_name()+"메뉴리스트:"+menulist);
 		return ".menu.menu";
 	}

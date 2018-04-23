@@ -35,7 +35,7 @@ public class ReviewDao {
 		return session.selectList(NAMESPACE + ".getList", map);
 	}
 	
-	public ReviewVo getReview(int num) {
-		return session.selectOne(NAMESPACE + ".getReview", num);
+	public ReviewVo getReview(HashMap<String, Object> map) {
+		return session.selectOne(NAMESPACE + ".getReview", map);
 	}
 }

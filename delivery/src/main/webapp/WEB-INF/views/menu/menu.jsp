@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet"
 	href="https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/cache/min/48/0234f28583c4b65de050bc5036d91869.css"
 	data-minify="1" />
@@ -247,57 +248,73 @@ img#wpstats {
 
 					</div>
 							<!-- 리뷰관련작성페이지!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-							<div
-								class="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab"
-								id="tab-reviews" role="tabpanel"
-								aria-labelledby="tab-title-reviews">
+							<div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab" id="tab-reviews" role="tabpanel" aria-labelledby="tab-title-reviews">
 								<div id="reviews" class="woocommerce-Reviews">
 									<div id="comments">
 										<h2 class="woocommerce-Reviews-title">리뷰</h2>
 										<ol class="commentlist">
 											<c:forEach var="review" items="${review }">
+												<fmt:formatDate type="date" value="${review.rev_regd }" var="regd" pattern="MM dd, yyyy"/>
 												<li class="comment even thread-even depth-1" id="li-comment-24">
 													<div id="comment-24" class="comment_container">
-														<img src="" height="200" width="200"/>
 														<div class="comment-text">
 															<div class="star-rating">
-																<span style="width: 80%">Rated <strong class="rating">4</strong> out of 5 </span>
+																<span style="width: ${review.rev_sco * 20}%">Rated <strong class="rating">${review.rev_sco * 20}</strong> out of 5 </span>
 															</div>
 															<p class="meta">
-																<strong class="woocommerce-review__author">Cobus Bester</strong>
+																<strong class="woocommerce-review__author">${review.mem_nick }</strong>
 																<span class="woocommerce-review__dash">&ndash;</span>
-																<time>June 7, 2013</time>
+																<time>${regd }</time>
 															</p>
 															<div class="description">
-																<p>Really happy with this sneakers.</p>
+																<p>${review.rev_cont }</p>
 															</div>
 														</div>
+														<c:if test="${review.reviewComment != null }">
+															<c:set var="revComment" value="${review.reviewComment }"></c:set>
+															<fmt:formatDate type="date" value="${revComment.rev_com_regd }" var="cregd" pattern="MM dd, yyyy"/>
+																<div style="margin-left : 150px;">
+																	<p class="meta">
+																		<strong class="woocommerce-review__author">사장님</strong>
+																		<span class="woocommerce-review__dash">&ndash;</span>
+																		<time>${cregd }</time>
+																	</p>
+																	<div class="description">
+																		<p>${revComment.rev_com_cont }</p>
+																	</div>
+																</div>
+														</c:if>
 													</div>
 												</li>
 											</c:forEach>
-											
-											<li class="comment even thread-even depth-1"
-												id="li-comment-24"><div id="comment-24"
-													class="comment_container">
-													<img alt=''
-														src='https://secure.gravatar.com/avatar/f0cde930b42c79145194679d5b6e3b1d?s=60&#038;d=mm&#038;r=g'
-														srcset='https://secure.gravatar.com/avatar/f0cde930b42c79145194679d5b6e3b1d?s=120&#038;d=mm&#038;r=g 2x'
-														class='avatar avatar-60 photo' height='60' width='60' />
-													<div class="comment-text">
-														<div class="star-rating">
-															<span style="width: 80%">Rated <strong
-																class="rating">4</strong> out of 5
-															</span>
-														</div>
-														<p class="meta">
-															<strong class="woocommerce-review__author">Cobus
-																Bester</strong> <span class="woocommerce-review__dash">&ndash;</span>
-															<time>June 7, 2013</time>
-														</p>
-														<div class="description">
-															<p>Really happy with this sneakers.</p>
-														</div>
-													</div>
+											<li>
+												<div align="center">
+													<c:choose>
+														<c:when test="${pu.startPageNum > pu.pageBlockCount }">
+															<a href="<c:url value='/menu/menu?pageNum=${pu.startPageNum -1 }&stoNum=${stovo.sto_num}' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
+														</c:when>
+														<c:otherwise>
+															<span style="color: black;">&lt; 이전 &gt;</span>
+														</c:otherwise>
+													</c:choose>
+													<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
+														<c:choose>
+															<c:when test="${i == pu.pageNum }">
+																<span style="color: black;">[${i }]</span>
+															</c:when>
+															<c:otherwise>
+																<a href="<c:url value='/menu/menu?pageNum=${i }&stoNum=${stovo.sto_num}' />"><span style="color: #555;">[${i }]</span></a>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
+													<c:choose>
+														<c:when test="${pu.endPageNum < pu.totalPageCount }">
+															<a href="<c:url value='/menu/menu?pageNum=${pu.endPageNum + 1 }&stoNum=${stovo.sto_num}' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
+														</c:when>
+														<c:otherwise>
+															<span style="color: black;">&lt; 다음 &gt;</span>
+														</c:otherwise>
+													</c:choose>
 												</div>
 											</li>
 										</ol>
@@ -308,18 +325,15 @@ img#wpstats {
 												<span id="reply-title" class="comment-reply-title">Add
 													a review
 												</span>
-												<form
-													action=""
-													method="post" >
+												<form action="" method="post" enctype="multipart/form-data" onsubmit="return checkOrderList()">
 													<p class="comment-notes">
 														<span id="email-notes">Your email address will not
 															be published.</span> Required fields are marked <span
 															class="required">*</span>
 													</p>
 													<div class="comment-form-rating">
-														<label for="rating">Your rating</label><select
-															name="rating" id="rating" aria-required="true" required><option
-																value="">Rate&hellip;</option>
+														<label for="rating">Your rating</label><select name="rating" id="rating" aria-required="true" required>
+															<option value="">Rate&hellip;</option>
 															<option value="5">Perfect</option>
 															<option value="4">Good</option>
 															<option value="3">Average</option>
@@ -328,26 +342,22 @@ img#wpstats {
 														</select>
 													</div>
 													<p class="comment-form-comment">
-														<label for="comment">Your review <span
-															class="required">*</span></label>
-														<textarea id="comment" name="comment" cols="45" rows="8"
-															aria-required="true" required></textarea>
+														<label for="comment">Your review <span class="required">*</span></label>
+														<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required></textarea>
 													</p>
-													<p><input name="img" type="file"></p>
+													<p><input type="number" id="fileCnt" min="0" max="5" placeholder="첨부할 이미지 개수" style="width : 200px"><button type="button" onclick="uploadCnt()">적용</button></p>
+													<div id="fileupload"></div>
 													<p class="form-submit">
-														<input name="submit" type="submit" id="submit"
-															class="submit" value="Submit" />
+														<input name="submit" type="submit" id="submit" class="submit" value="Submit" />
 													</p>
 												</form>
 											</div>
 										</div>
 									</div>
-									<div class="clear"></div>
 								</div>
 							</div>
 							<!-- 리뷰관련작성페이지끝!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 						</div>
-				<div class="container"></div>
 			</div>
 		</section>
 		<hr class="divider-w">
@@ -653,6 +663,7 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 		$("#total").html("<br><h4>총 액 : " + sum+" 원</h4>");
 		$("#total_value").val(sum);
 	}
+	
 	function bookmark(sto_num){
 		
 		$.ajax({
@@ -666,7 +677,26 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 				console.log("즐겨찾기 제이슨 에러다");
 			}
 		});
+	}
+	
+	function uploadCnt(){
+		var cnt = $("#fileCnt").val();
+		var fileupload = $("#fileupload");
 		
+		if(cnt == ''){
+			alert("첨부할 파일 개수를 입력해주세요");
+			return;
+		}
 		
+		$(fileupload).html("");
+		
+		for(var i=0;i<cnt;i++){
+			var inputFile = $("<p><input type='file' name='file' required></p>");
+			fileupload.append(inputFile);
+		}
+	}
+	
+	function checkOrderList(){
+		return false;
 	}
 </script>
