@@ -11,6 +11,8 @@
 		<result property="rev_regd" column="rev_regd"/>
 		<result property="rev_sco" column="rev_sco"/>
 		<result property="ord_num" column="ord_num"/>
+		<result property="mem_num" column="mem_num"/>
+		<result property="mem_nick" column="mem_nick"/>
 		<collection property="reviewComment" ofType="reviewComment">
 			<result property="rev_com_num" column="rev_com_num"/>
 			<result property="rev_com_cont" column="rev_com_cont"/>
@@ -34,14 +36,16 @@
 		select nvl(count(*), 0) from review r, rev_comm c where ord_num 
 		in(select ord_num from orders where sto_num = #{val}) and r.rev_num = c.rev_num(+);
 	</select>
-	<select id="getLIst" parameterType="hashmap" resultMap="reviewlist">
+	<select id="getList" parameterType="hashmap" resultMap="reviewlist">
 		select * from 
 		(select rr.*, rownum rnum from
-		(select r.*, c.REV_COM_CONT, c.REV_COM_NUM, c.REV_COM_REGD from review r, rev_comm c where ord_num in(
-		select ord_num from orders where sto_num = #{sto_num}) and r.rev_num = c.rev_num(+)) rr)		
+		(select r.*, c.REV_COM_CONT, c.REV_COM_NUM, c.REV_COM_REGD, m.mem_num, m.mem_nick from review r, rev_comm c, 
+		(select ord_num, mem_num from orders where sto_num = #{sto_num}) o, (select mem_num, mem_nick from members) m
+		where o.ord_num = r.ord_num and m.mem_num = o.mem_num and r.rev_num = c.rev_num(+)) rr)		
 		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
 	</select>
+	<!-- 이미 등록된 여부가 있는지 확인 -->
 	<select id="getReview" parameterType="int" resultType="review">
-		select * from review where ord_num=#{val}
+		select * from review where ord_num=#{ord_num}
 	</select>
 </mapper>

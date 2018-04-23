@@ -10,8 +10,36 @@ public class ReviewVo {
 	private Date rev_regd;
 	private int rev_sco;
 	private int ord_num;
+	private int mem_num;
+	private String mem_nick;
 	
 	private ReviewCommentVo reviewComment;
+
+	public ReviewVo(int rev_num, String rev_title, String rev_cont, int rev_hit, Date rev_regd, int rev_sco,
+			int ord_num, int mem_num, String mem_nick, ReviewCommentVo reviewComment) {
+		super();
+		this.rev_num = rev_num;
+		this.rev_title = rev_title;
+		this.rev_cont = rev_cont;
+		this.rev_hit = rev_hit;
+		this.rev_regd = rev_regd;
+		this.rev_sco = rev_sco;
+		this.ord_num = ord_num;
+		this.mem_num = mem_num;
+		this.mem_nick = mem_nick;
+		this.reviewComment = reviewComment;
+	}
+
+	public ReviewVo() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "ReviewVo [rev_num=" + rev_num + ", rev_title=" + rev_title + ", rev_cont=" + rev_cont + ", rev_hit="
+				+ rev_hit + ", rev_regd=" + rev_regd + ", rev_sco=" + rev_sco + ", ord_num=" + ord_num + ", mem_num="
+				+ mem_num + ", mem_nick=" + mem_nick + ", reviewComment=" + reviewComment + "]";
+	}
 
 	public int getRev_num() {
 		return rev_num;
@@ -69,34 +97,27 @@ public class ReviewVo {
 		this.ord_num = ord_num;
 	}
 
+	public int getMem_num() {
+		return mem_num;
+	}
+
+	public void setMem_num(int mem_num) {
+		this.mem_num = mem_num;
+	}
+
+	public String getMem_nick() {
+		return mem_nick;
+	}
+
+	public void setMem_nick(String mem_nick) {
+		this.mem_nick = mem_nick;
+	}
+
 	public ReviewCommentVo getReviewComment() {
 		return reviewComment;
 	}
 
 	public void setReviewComment(ReviewCommentVo reviewComment) {
 		this.reviewComment = reviewComment;
-	}
-
-	@Override
-	public String toString() {
-		return "ReviewVo [rev_num=" + rev_num + ", rev_title=" + rev_title + ", rev_cont=" + rev_cont + ", rev_hit="
-				+ rev_hit + ", rev_regd=" + rev_regd + ", rev_sco=" + rev_sco + ", ord_num=" + ord_num
-				+ ", reviewComment=" + reviewComment + "]";
-	}
-
-	public ReviewVo(int rev_num, String rev_title, String rev_cont, int rev_hit, Date rev_regd, int rev_sco,
-			int ord_num, ReviewCommentVo reviewComment) {
-		super();
-		this.rev_num = rev_num;
-		this.rev_title = rev_title;
-		this.rev_cont = rev_cont;
-		this.rev_hit = rev_hit;
-		this.rev_regd = rev_regd;
-		this.rev_sco = rev_sco;
-		this.ord_num = ord_num;
-		this.reviewComment = reviewComment;
-	}
-	public ReviewVo() {
-		super();
 	}
 }

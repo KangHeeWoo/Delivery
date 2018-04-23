@@ -33,22 +33,8 @@
 								checked="checked='checked'";
 								}
 							}
-							%>
-							
-							<%
 						}
-					
 					%>
-		          	<%-- <c:forEach var="cook" items="${getCookie}">
-		          	
-		          		<c:if test="${cook.getName == 'mem_email' }">
-		          			<c:set var="mem_email" value="${cook.getValue }"></c:set>
-		          		</c:if>
-		          		<c:if test="${cook.getName == 'mem_pwd' }">
-		          			<c:set var="mem_pwd" value="${cook.getValue }"></c:set>
-		          		</c:if>
-		          	</c:forEach>
-		          	 --%>
 		          	<!-- 아이디가 없을때 -->
 				          <div align="right" style="display: inline-block; margin-left: 500px;">
 							<a href="<c:url value='/join'/>">회원가입</a>
