@@ -2,9 +2,20 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jhta.mybatis.QnAMapper">
-	<select id="list" resultType="qna">
-		select * from qna
-		where qna_num not in (select qna_num from qna_answer)
+<mapper namespace="com.jhta.mybatis.QnaAnswerMapper">
+	<select id="list" resultType="com.jhta.delivery.vo.QnAVo" parameterType="hashmap">
+		select * from
+		(select u.*,rownum rnum from
+		(select * from qna where qna_num not in (select qna_num from qna_answer))u)
+		<![CDATA[where rnum>=#{startRow} and rnum<=#{endRow} ]]> 
 	</select>
+	<select id="count" resultType="int">
+		select NVL(count(*),0) cnt from qna where qna_num not in (select qna_num from qna_answer)
+	</select>
+	<select id="detail" parameterType="int" resultType="com.jhta.delivery.vo.QnAVo">
+		select * from qna where qna_num=#{qna_num}
+	</select>
+	<insert id="insert" parameterType="hashmap">
+		insert into qna_answer values(0,#{qna_ans_title},#{qna_ans_cont},sysdate,#{qna_num})
+	</insert>
 </mapper>
