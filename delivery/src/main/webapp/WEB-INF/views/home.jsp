@@ -404,7 +404,7 @@
 			var startPos;
 			console.log("사용함");
 			var options = {
-				enableHighAccuracy : false,
+				enableHighAccuracy : true,
 				timeout : 1000,
 				maximumAge : 0
 			};

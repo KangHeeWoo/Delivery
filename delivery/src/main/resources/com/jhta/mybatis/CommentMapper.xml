@@ -15,6 +15,6 @@
 	<select id="list" parameterType="int" resultType="comment" >
 		 select * from boa_comment 
 		 where boa_num=#{boa_num}
-		 order by boa_ref, boa_step
+		 order by boa_ref desc, boa_step
 	</select>
 </mapper>
