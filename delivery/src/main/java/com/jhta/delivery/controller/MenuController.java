@@ -71,7 +71,8 @@ public class MenuController {
 		model.addAttribute("total", total);
 		model.addAttribute("memCoupon", memCoupon);
 		model.addAttribute("memPoint", memPoint);
-		model.addAttribute("addr",(String)session.getAttribute("able_loc")+(String)session.getAttribute("myDetail"));
+		model.addAttribute("able_loc",(String)session.getAttribute("able_loc"));
+		model.addAttribute("myDetail",(String)session.getAttribute("myDetail"));
 		
 		return ".menu.cart";
 	}

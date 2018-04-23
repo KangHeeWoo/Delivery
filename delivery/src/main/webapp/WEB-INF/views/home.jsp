@@ -489,8 +489,8 @@
 	function getlist(n){
 		searchAddr=sido+" "+sigungu+" "+bname;
 		if(sido != null && sigungu != null && bname != null ){
-			alert("배달가능지역:"+searchAddr);
-			alert("내 주소:" +searchAddr + myDetail);			
+			//alert("배달가능지역:"+searchAddr);
+			//alert("내 주소:" +searchAddr + myDetail);			
 			location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+searchAddr+"&myDetail="+myDetail+"'/>";
 		}else{
 			alert("주소를 선택해주세요.");
