@@ -76,7 +76,7 @@ public class HomeController {
 			response.addCookie(pwdCook);
 			
 		}else {
-			//모든 쿠키제거
+			//모든 쿠키제거 - jsessionID 제외하고 제거
 			Cookie[] cookies=request.getCookies();
 			if(cookies!=null) {
 				for(int i=0;i<cookies.length;i++) {
