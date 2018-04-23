@@ -52,6 +52,7 @@ public class MenuController {
 		System.out.println("stovo:"+stovo);
 		stovo = service.stoName(stovo.getSto_num());
 		String mem_email=(String)session.getAttribute("email");
+		System.out.println("mem_email:" + mem_email);
 		MembersVo vo=memservice.mem_num(mem_email);
 		int mem_num=vo.getMem_num();
 		System.out.println(mem_num);
@@ -70,7 +71,7 @@ public class MenuController {
 		model.addAttribute("total", total);
 		model.addAttribute("memCoupon", memCoupon);
 		model.addAttribute("memPoint", memPoint);
-		model.addAttribute("addr",(String)session.getAttribute("myAddr"));
+		model.addAttribute("addr",(String)session.getAttribute("able_loc")+(String)session.getAttribute("myDetail"));
 		
 		return ".menu.cart";
 	}

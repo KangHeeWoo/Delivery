@@ -29,13 +29,14 @@ public class MyPositionController {
 		return ".map.myposition";
 	}*/
 	@RequestMapping("/myposition")
-	public String myPositionList(@RequestParam(value="pageNum",defaultValue="1")int pageNum, int cat_num,String able_loc,String myAddr,Model model,HttpSession session) {
-		session.setAttribute("myAddr", myAddr);
+	public String myPositionList(@RequestParam(value="pageNum",defaultValue="1")int pageNum, int cat_num,String able_loc,String myDetail,Model model,HttpSession session) {
+		session.setAttribute("able_loc", able_loc);
+		session.setAttribute("myDetail", myDetail);
 		
 		int getCount=service.getCount();
 		
 		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
-		System.out.println("pu.getEndRow():"+ pu.getEndRow());
+		//System.out.println("pu.getEndRow():"+ pu.getEndRow());
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("cat_num", cat_num);

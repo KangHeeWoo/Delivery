@@ -27,10 +27,10 @@ public class CommentController {
 		try {
 			MembersVo vo1 = mservice.getinfo(email);
 			vo.setBoa_com_writer(vo1.getMem_nick());
-			System.out.println(vo.getBoa_com_num());
+			//System.out.println(vo.getBoa_com_num());
 		
 			if (vo.getBoa_com_num() != 0) {
-				System.out.println(vo.getBoa_com_num());
+				//System.out.println(vo.getBoa_com_num());
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("boa_ref", vo.getBoa_com_num());
 				map.put("boa_step", vo.getBoa_step()+1);

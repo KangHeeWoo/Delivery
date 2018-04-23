@@ -54,7 +54,7 @@ public class BoardController {
 	@RequestMapping("/board/insert")
 	public String insert(HttpSession session,Model model) {
 		String email = (String)session.getAttribute("email");
-		System.out.println(email);
+		//System.out.println(email);
 		if(email != null) {
 			MembersVo vo = mservice.getinfo(email);
 			model.addAttribute("boa_writer",vo.getMem_nick());

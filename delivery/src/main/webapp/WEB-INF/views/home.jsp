@@ -338,6 +338,7 @@
 	var sido=null;
 	var sigungu=null;
 	var bname=null;
+	var myDetail=null;
 
 	function getMap() {
 		mapContainer = document.getElementById('map'); // 지도를 표시할 div 
@@ -467,17 +468,17 @@
 		}
 	}
 	function saveAddr(){
-		myAddr=document.getElementById("sample5_address").value;
-		myAddr +=" " + document.getElementById("detail_address").value;
+		searchAddr=document.getElementById("sample5_address").value;
+		myDetail = " " + document.getElementById("detail_address").value;
 		
-		if(!(myAddr == null || myAddr == '' || myAddr ==' ')){
+		if(!(searchAddr == null || searchAddr == '' || searchAddr ==' ')){
 			$.ajax({
 				url:"<c:url value='/myAddr'/>",
 				data:{searchAddr:searchAddr},
 				dataType:"json",
 				success:function(data){
-					//alert("myAddr:"+myAddr+"searchAddr:"+searchAddr);
-					alert("'"+myAddr + "'가 내 주소로 지정되었습니다.");
+					//alert("Mydetail:"+myDetail+" searchAddr:"+searchAddr);
+					alert("'"+searchAddr + myDetail + "'가 내 주소로 지정되었습니다.");
 				}
 			});
 		}else{
@@ -489,8 +490,8 @@
 		searchAddr=sido+" "+sigungu+" "+bname;
 		if(sido != null && sigungu != null && bname != null ){
 			alert("배달가능지역:"+searchAddr);
-			alert("내 주소:" + myAddr);			
-			location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+searchAddr+"&myAddr="+myAddr+"'/>";
+			alert("내 주소:" +searchAddr + myDetail);			
+			location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+searchAddr+"&myDetail="+myDetail+"'/>";
 		}else{
 			alert("주소를 선택해주세요.");
 		}
