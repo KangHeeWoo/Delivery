@@ -3,7 +3,14 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.PointMapper">
-	<select id="usePoint" parameterType="hashmap" resultType="usepoint">
-		select * from(select u.*,rownum rnum from(select * from use_point where mem_num=#{mem_num})u) <![CDATA[where rnum>=#{startrow} and rnum<=#{endrow} ]]> 
+	
+	<select id="usegetCount" parameterType="int" resultType="int">
+		select count(*) cnt from use_point u,orders o where u.ord_num=o.ord_num and u.mem_num=#{mem_num} 
 	</select>
+	<select id="ordUsePoint" parameterType="hashmap" resultType="ordusepoint">
+		<![CDATA[select * from
+		(select aa.*,rownum rnum from
+		(select u.use_amount,s.sto_addr,o.ord_num,o.ord_time,s.sto_name from use_point u,orders o,stores s where u.ord_num=o.ord_num and s.sto_num=o.sto_num and u.mem_num=#{mem_num} order by o.ord_time desc)aa) where rnum>=#{use_startRow} and rnum<=#{use_endRow}]]>
+	</select>
+	
 </mapper>

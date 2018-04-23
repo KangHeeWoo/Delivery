@@ -30,6 +30,7 @@ import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.CouponIssueVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.OrderListVo;
+import com.jhta.delivery.vo.OrdersUsePointVo;
 import com.jhta.delivery.vo.OrdersVo;
 import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.UsePointVo;
@@ -42,6 +43,7 @@ public class MembersController {
 	@Autowired private BookMarkService bservice;
 	@Autowired private OrdersService oservice;
 	@Autowired private UsePointService usePservice;
+
 
 	
 	@InitBinder
@@ -170,28 +172,35 @@ public class MembersController {
 	}
 	//myPont
 	@RequestMapping("/members/pointlist")
-	public String pointlist(HttpSession session,Model model,@RequestParam(value="pageNum",defaultValue="1")int pageNum) {
+	public String pointlist(HttpSession session,Model model,@RequestParam(value="pageNum",defaultValue="1")int pageNum,@RequestParam(value="use_pageNum",defaultValue="1")int use_pageNum) {
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		String mem_email=(String)session.getAttribute("email");
 		MembersVo vo=service.mem_num(mem_email);
 		int mem_num=vo.getMem_num();
 		
 		int getCount = oservice.getMembersOrderCnt(mem_num);
+		int usegetCount= usePservice.usegetCount(mem_num); 
 		
 		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
+		PageUtil usepu = new PageUtil(pageNum, 10, 10, usegetCount);
 		
 		map.put("mem_num", mem_num);
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
+		map.put("use_startRow",usepu.getStartRow());
+		map.put("use_endRow",usepu.getEndRow());
 		
-		List<UsePointVo> useVo=usePservice.usePoint(map);
+		//List<UsePointVo> useVo=usePservice.usePoint(map);
 		
 		List<OrdersVo> pointlist=oservice.pointlist(map);
-		System.out.println(pointlist+"pointlilst");
+		//System.out.println(pointlist+"pointlilst");
+		List<OrdersUsePointVo> usepointlist=usePservice.ordUsePoint(map);
 	
 		model.addAttribute("pointlist", pointlist);
 		model.addAttribute("pu", pu);
-		model.addAttribute("usePvo", useVo);
+		model.addAttribute("usepu", usepu);
+		model.addAttribute("usepointlist", usepointlist);
+		//model.addAttribute("usePvo", useVo);
 		
 		return ".members.mypoint";
 	}
