@@ -28,7 +28,7 @@
               <a class="admin-menu" href="<c:url value='/admin/coupon' />">쿠폰관리&nbsp;</a>
             </li>
             <li class="nav-item">
-              <a class="admin-menu" href="#">광고관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/admin/topAds' />">광고관리&nbsp;</a>
             </li>
             <li class="nav-item">
               <a class="admin-menu" href="<c:url value='/admin/qnaAnswer' />">QnA관리&nbsp;</a>

@@ -8,11 +8,36 @@
 		margin : auto;
 	}
 	#sto_img{
+		width: 100px;
+		height: 100px;
+	}
+	#ads_img{
 		width: 150px;
 		height: 150px;
 	}
 </style>
 <div id="store_list">
+<table class="table" >
+	<thead>
+		<tr style="background-color: #ffcd28">
+			<th colspan="6" style="text-align: center;">☆★☆★☆★슈퍼리스트 광고업소☆★☆★☆★</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach var="vo" items="${adsList }">
+		<fmt:formatDate value="${vo.sto_open }" type="date" var="open" pattern="hh:mm"/>
+		<fmt:formatDate value="${vo.sto_close }" type="date" var="close" pattern="hh:mm"/>
+			<tr onclick="storedetail(${vo.sto_num })">
+				<td><img id="ads_img" src="<c:url value='/resources/images/stores/${vo.sto_img }'/>"></td>
+				<td>${vo.sto_name }</td>
+				<td>${vo.sto_addr }</td>
+				<td>${vo.sto_phone }</td>
+				<td>${open }</td>
+				<td>${close }</td>
+			</tr>
+		</c:forEach>
+	</tbody>
+</table>
 <table class="table">
 	<thead>
 		<tr>

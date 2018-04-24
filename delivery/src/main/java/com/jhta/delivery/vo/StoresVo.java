@@ -17,6 +17,7 @@ public class StoresVo {
 	private int sel_num;
 	private int cat_num;
 	private String sto_img;
+	
 	public StoresVo() {}
 
 	public StoresVo(String sto_img,int sto_num, String sto_name, String sto_regnum, String sto_addr, String sto_phone, Date sto_regd,

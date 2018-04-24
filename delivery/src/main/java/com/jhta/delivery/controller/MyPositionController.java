@@ -14,17 +14,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.delivery.service.StoresService;
+import com.jhta.delivery.service.TopAdsService;
 import com.jhta.delivery.util.PageUtil;
+import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.StoreslistVo;
+import com.jhta.delivery.vo.TopAdsVo;
 
 @Controller
 public class MyPositionController {
 	@Autowired private StoresService service;
+	@Autowired private TopAdsService tservice;
 	
 	/*@RequestMapping(value = "/myposition", method = RequestMethod.GET)
 	public String myposition() {
 		return ".map.myposition";
 	}*/
+	
 	@RequestMapping(value="/searchAddr",produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String searchAddr(HttpSession session) {
@@ -54,6 +59,9 @@ public class MyPositionController {
 		map.put("able_loc", able_loc);
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
+		
+		List<StoresVo> adsList = tservice.topAdsList(map);
+		model.addAttribute("adsList",adsList);
 		
 		List<StoreslistVo> list=service.myPositionList(map);
 		model.addAttribute("list",list);
