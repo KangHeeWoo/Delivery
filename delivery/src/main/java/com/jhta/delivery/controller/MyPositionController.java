@@ -10,14 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.jhta.delivery.service.StoresService;
 import com.jhta.delivery.util.PageUtil;
-import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.StoreslistVo;
 
 @Controller
@@ -28,6 +25,20 @@ public class MyPositionController {
 	public String myposition() {
 		return ".map.myposition";
 	}*/
+	@RequestMapping(value="/searchAddr",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String searchAddr(HttpSession session) {
+		JSONObject ob=new JSONObject();
+		try {
+			ob.put("result", true);
+			ob.put("able_loc",session.getAttribute("able_loc"));
+			//System.out.println("@.@"+session.getAttribute("able_loc"));	
+		}catch(Exception e) {
+			e.printStackTrace();
+			ob.put("result", false);
+		}			
+		return ob.toString();
+	}
 	@RequestMapping("/myposition")
 	public String myPositionList(@RequestParam(value="pageNum",defaultValue="1")int pageNum, int cat_num,String able_loc,String myDetail,Model model,HttpSession session) {
 		session.setAttribute("able_loc", able_loc);
@@ -60,7 +71,7 @@ public class MyPositionController {
 			if(searchAddr!=null && !searchAddr.equals("")) {
 				session.setAttribute("searchAddr", searchAddr);
 				ob.put("result", true);
-				//System.out.println("myAddr技记技记");				
+				System.out.println("myAddr技记技记");				
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -38,11 +38,12 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="input">이미지</label>
+				<label class="col-sm-3 control-label" for="input">첨부할 이미지 개수</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="boa_img" type="file" name="boa_img">
+					<input id="fileCnt" type="number" min="0" max="5" width="200px">&nbsp;<button type="button" onclick="uploadCnt()">적용</button>
 				</div>
 			</div>
+			<div id="fileupload" style="display: block"></div>
 			<div class="form-group">
 				<div class="col-sm-12 text-center">
 					<button class="btn btn-primary" type="submit">
@@ -68,4 +69,27 @@
 	<script src="js/bootstrap.min.js"></script>
 
 </body>
+<script type="text/javascript">
+	function uploadCnt(){
+		var cnt = $("#fileCnt").val();
+		var fileupload = $("#fileupload");
+		
+		if(cnt == ''){
+			alert("첨부할 파일 개수를 입력해주세요.");
+			return;
+		}
+		if(5<cnt || 0>cnt){
+			alert("파일첨부는 5개 이하로 가능합니다.");
+			return;
+		}
+		
+		$(fileupload).html("");
+		
+		for(var i=0;i<cnt;i++){
+			var inputFile = $("	<div class='form-group'><label class='col-sm-3 control-label' for='input'>이미지</label><div class='col-sm-6'><input class='form-control' id='boa_img' type='file' name='boa_img' required='required'></div></div>");
+			fileupload.append(inputFile);
+		}
+		
+	}
+</script>
 </html>

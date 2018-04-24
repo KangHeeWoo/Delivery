@@ -477,7 +477,7 @@
 				data:{searchAddr:searchAddr},
 				dataType:"json",
 				success:function(data){
-					//alert("Mydetail:"+myDetail+" searchAddr:"+searchAddr);
+					console.log("Mydetail:"+myDetail+" searchAddr:"+searchAddr);
 					alert("'"+searchAddr + myDetail + "'가 내 주소로 지정되었습니다.");
 				}
 			});
@@ -489,11 +489,17 @@
 	function getlist(n){
 		searchAddr=sido+" "+sigungu+" "+bname;
 		if(sido != null && sigungu != null && bname != null ){
-			//alert("배달가능지역:"+searchAddr);
-			//alert("내 주소:" +searchAddr + myDetail);			
 			location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+searchAddr+"&myDetail="+myDetail+"'/>";
 		}else{
-			alert("주소를 선택해주세요.");
+			$.ajax({
+				url:"<c:url value='/searchAddr'/>",
+				data:{searchAddr:searchAddr},
+				dataType:"json",
+				success:function(data){
+					//console.log(data.able_loc);
+					location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+data.able_loc+"&myDetail="+myDetail+"'/>";
+				}
+			});	
 		}
 	}
 </script>

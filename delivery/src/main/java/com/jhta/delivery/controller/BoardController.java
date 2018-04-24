@@ -15,6 +15,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.jhta.delivery.service.BoardService;
 import com.jhta.delivery.service.CommentService;
@@ -64,33 +65,42 @@ public class BoardController {
 		}
 	}
 	@RequestMapping("/board/insertOk")
-	public String insertOk(BoardVo vo,HttpSession session,MultipartFile boa_img) {
+	public String insertOk(BoardVo vo,HttpSession session,MultipartHttpServletRequest mhsr) {
+		
+		service.insert(vo);
+		
 		String uploadPath = session.getServletContext().getRealPath("/resources/images/board");
-		String orgFileName = boa_img.getOriginalFilename();
-		String saveFileName = UUID.randomUUID() + "_" + orgFileName;
-		//vo1.setBoa_img(saveFileName);
 		
 		try {
-			InputStream is = boa_img.getInputStream();
-			FileOutputStream fos = new FileOutputStream(uploadPath + "\\" + saveFileName);
-			FileCopyUtils.copy(is, fos);
-			fos.close();
-			is.close();		
-			service.insert(vo);
-			int num = service.insertNum();
 			
-			service.insertImg(new BoardImgVo(0, saveFileName, num));
-			return "redirect:/board/list";
+			List<MultipartFile> fileList = mhsr.getFiles("boa_img");  
+			
+			if(!fileList.isEmpty()) {
+				for(int i=0;i<fileList.size();i++) {
+					String orgFileName = fileList.get(i).getOriginalFilename();
+					String saveFileName = UUID.randomUUID() + "_" + orgFileName;
+					InputStream is = fileList.get(i).getInputStream();
+					FileOutputStream fos = new FileOutputStream(uploadPath + "\\" + saveFileName);
+					FileCopyUtils.copy(is, fos);
+					fos.close();
+					is.close();		
+					int num = service.insertNum();
+					service.insertImg(new BoardImgVo(0, saveFileName, num));
+				}
+			}
+			
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 			return "error";
 		}
+		
+		return "redirect:/board/list";
 	}
 	@RequestMapping("/board/detail")
 	public String detail(int boa_num, Model model) {
 		service.addHit(boa_num);
 		BoardVo vo = service.detail(boa_num);
-		BoardImgVo vo1 = service.detailImg(boa_num);
+		List<BoardImgVo> vo1 = service.detailImg(boa_num);
 		BoardVo prev = service.prev(boa_num);
 		BoardVo next = service.next(boa_num);
 		

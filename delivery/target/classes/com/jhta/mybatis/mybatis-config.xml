@@ -30,6 +30,7 @@
 		<typeAlias type="com.jhta.delivery.vo.ReviewCommentVo" alias="reviewComment"/>
 		<typeAlias type="com.jhta.delivery.vo.OrdersUsePointVo" alias="ordusepoint"/>
 		<typeAlias type="com.jhta.delivery.vo.ReviewImageVo" alias="reviewImage"/>
+		<typeAlias type="com.jhta.delivery.vo.TopAdsVo" alias="topAds"/>
 	</typeAliases>
 	
 
@@ -55,5 +56,6 @@
 		<mapper resource="com/jhta/mybatis/PayMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/QnaAnswerMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/ReviewMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/TopAdsMapper.xml"/>
 	</mappers>
 </configuration>

@@ -48,7 +48,7 @@ public class BoardDao {
 	public int insertNum() {
 		return session.selectOne(NAMESPACE + ".insertNum");
 	}
-	public BoardImgVo detailImg(int boa_num) {
-		return session.selectOne(NAMESPACE + ".detailImg",boa_num);
+	public List<BoardImgVo> detailImg(int boa_num) {
+		return session.selectList(NAMESPACE + ".detailImg",boa_num);
 	}
 }

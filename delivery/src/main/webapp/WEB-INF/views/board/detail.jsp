@@ -48,6 +48,10 @@
 		width : 50px;
 		display: inline-block;
 	}
+	.boa_img{
+		width:200px;
+		height: 200px;
+	}
 </style>
 <div id="board_detail">
 	<fmt:formatDate value="${vo.boa_regd }" var="date" pattern="yyyy-MM-dd HH:mm"/>
@@ -61,7 +65,9 @@
 		</tr>
 		<tr>
 			<td>
-				<img src="<c:url value='/resources/images/board/${vo1.boa_img }' />">
+				<c:forEach var="vo1" items="${vo1 }">
+					<img class="boa_img" src="<c:url value='/resources/images/board/${vo1.boa_img }' />"><br>
+				</c:forEach>
 				<p>${vo.boa_cont }</p>
 			</td>
 		</tr>

@@ -47,7 +47,7 @@ public class BoardService {
 	public int insertNum() {
 		return dao.insertNum();
 	}
-	public BoardImgVo detailImg(int boa_num) {
+	public List<BoardImgVo> detailImg(int boa_num) {
 		return dao.detailImg(boa_num);
 	}
 }
