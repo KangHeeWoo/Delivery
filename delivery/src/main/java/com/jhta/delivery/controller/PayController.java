@@ -14,6 +14,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.PayService;
 import com.jhta.delivery.vo.CartVo;
@@ -25,6 +26,7 @@ import com.jhta.delivery.vo.OrdersVo;
 public class PayController {
 	@Autowired private PayService service;
 	@Autowired private MembersService mservice;
+	@Autowired private SimpleMailSender simpleMailSender;
 	
 	@InitBinder
     public void InitBinder(WebDataBinder binder) {
@@ -72,6 +74,8 @@ public class PayController {
 		map.put("ord_point", (int)(total * (getPoint/100)));	
 		
 		service.updatePoint(map);
+		
+		simpleMailSender.sendMail("배달의 백성民 인증", "회원님이 현재 주문하신 음식이 '주문접수' 되었습니다.", email, "deliveryjhta@gmail.com");
 		
 		return "redirect:/members/orderlist";
 	}

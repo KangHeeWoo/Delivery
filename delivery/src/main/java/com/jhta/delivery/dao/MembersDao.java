@@ -46,4 +46,8 @@ public class MembersDao {
 	public MembersVo memPoint(int mem_num) {
 		return session.selectOne(NAMESPACE+".memPoint",mem_num);
 	}
+	
+	public MembersVo searchMemNum(int num) {
+		return session.selectOne(NAMESPACE + ".searchMemNum", num);
+	}
 }

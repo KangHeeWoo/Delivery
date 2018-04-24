@@ -48,7 +48,7 @@
 		(select r.*, c.REV_COM_CONT, c.REV_COM_NUM, c.REV_COM_REGD, m.mem_num, m.mem_nick from review r, rev_comm c, 
 		(select ord_num, mem_num from orders where sto_num = #{sto_num}) o, (select mem_num, mem_nick from members) m
 		where o.ord_num = r.ord_num and m.mem_num = o.mem_num and r.rev_num = c.rev_num(+)) rr)rrr, rev_image i		
-		<![CDATA[where rnum >= 1 and rnum <= 10 and rrr.rev_num = i.rev_num(+)]]>
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow} and rrr.rev_num = i.rev_num(+)]]>
 	</select>
 	<!-- 이미 등록된 여부가 있는지 확인 -->
 	<select id="getOrder" parameterType="hashmap" resultType="orders">

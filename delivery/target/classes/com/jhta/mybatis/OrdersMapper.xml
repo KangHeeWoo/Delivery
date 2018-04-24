@@ -22,6 +22,9 @@
 	<select id="getMembersOrderCnt" parameterType="int" resultType="int">
 		select nvl(count(*), 0) from orders where mem_num=#{mem_num}
 	</select>
+	<select id="getOrderInfo" parameterType="int" resultType="orders">
+		select * from orders where ord_num = #{val}
+	</select>
 	<select id="membersOrder" parameterType="hashmap" resultType="orders">
 		select * from 
 		(select o.*, rownum rnum from

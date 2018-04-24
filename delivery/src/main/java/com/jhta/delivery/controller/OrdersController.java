@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.OrdersService;
 import com.jhta.delivery.service.SellerService;
@@ -29,6 +31,7 @@ public class OrdersController {
 	@Autowired private SellerService selService;
 	@Autowired private StoresService stoService;
 	@Autowired private MembersService memservice;
+	@Autowired private SimpleMailSender simpleMailSender;
 	
 	@RequestMapping("/seller/orderlist")
 	public String orderList(@RequestParam(name="stoNum", defaultValue="-1")int stoNum, 
@@ -85,5 +88,30 @@ public class OrdersController {
 		
 		
 		return ".members.myOrders";
+	}
+	
+	@RequestMapping("/seller/setOrderState")
+	@ResponseBody
+	public String setOrderState(String ord_state, int ord_num) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("ord_state", ord_state);
+		map.put("ord_num", ord_num);
+		
+		int n = service.setOrdState(map);
+		
+		JSONObject ob = new JSONObject();
+		
+		ob.put("result", false);
+		if(n > 0 ) { 
+			ob.put("result", true);
+			
+			OrdersVo ovo = service.getOrderInfo(ord_num);
+			MembersVo mvo = memservice.searchMemNum(ovo.getMem_num());
+
+			simpleMailSender.sendMail("배달의 백성民 인증", "회원님이 현재 주문하신 음식이 '" + ord_state + "' 입니다.", mvo.getMem_email(), "deliveryjhta@gmail.com");
+		}
+		
+		return ob.toString();
 	}
 }

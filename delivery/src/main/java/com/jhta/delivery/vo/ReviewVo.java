@@ -1,6 +1,7 @@
 package com.jhta.delivery.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class ReviewVo {
 	private int rev_num;
@@ -14,32 +15,7 @@ public class ReviewVo {
 	private String mem_nick;
 	
 	private ReviewCommentVo reviewComment;
-	private ReviewImageVo reviewImage;
-	public ReviewVo(int rev_num, String rev_title, String rev_cont, int rev_hit, Date rev_regd, int rev_sco,
-			int ord_num, int mem_num, String mem_nick, ReviewCommentVo reviewComment, ReviewImageVo reviewImage) {
-		super();
-		this.rev_num = rev_num;
-		this.rev_title = rev_title;
-		this.rev_cont = rev_cont;
-		this.rev_hit = rev_hit;
-		this.rev_regd = rev_regd;
-		this.rev_sco = rev_sco;
-		this.ord_num = ord_num;
-		this.mem_num = mem_num;
-		this.mem_nick = mem_nick;
-		this.reviewComment = reviewComment;
-		this.reviewImage = reviewImage;
-	}
-	public ReviewVo() {
-		super();
-	}
-	@Override
-	public String toString() {
-		return "ReviewVo [rev_num=" + rev_num + ", rev_title=" + rev_title + ", rev_cont=" + rev_cont + ", rev_hit="
-				+ rev_hit + ", rev_regd=" + rev_regd + ", rev_sco=" + rev_sco + ", ord_num=" + ord_num + ", mem_num="
-				+ mem_num + ", mem_nick=" + mem_nick + ", reviewComment=" + reviewComment + ", reviewImage="
-				+ reviewImage + "]";
-	}
+	private List<ReviewImageVo> reviewImage;
 	public int getRev_num() {
 		return rev_num;
 	}
@@ -100,10 +76,35 @@ public class ReviewVo {
 	public void setReviewComment(ReviewCommentVo reviewComment) {
 		this.reviewComment = reviewComment;
 	}
-	public ReviewImageVo getReviewImage() {
+	public List<ReviewImageVo> getReviewImage() {
 		return reviewImage;
 	}
-	public void setReviewImage(ReviewImageVo reviewImage) {
+	public void setReviewImage(List<ReviewImageVo> reviewImage) {
 		this.reviewImage = reviewImage;
+	}
+	@Override
+	public String toString() {
+		return "ReviewVo [rev_num=" + rev_num + ", rev_title=" + rev_title + ", rev_cont=" + rev_cont + ", rev_hit="
+				+ rev_hit + ", rev_regd=" + rev_regd + ", rev_sco=" + rev_sco + ", ord_num=" + ord_num + ", mem_num="
+				+ mem_num + ", mem_nick=" + mem_nick + ", reviewComment=" + reviewComment + ", reviewImage="
+				+ reviewImage + "]";
+	}
+	public ReviewVo(int rev_num, String rev_title, String rev_cont, int rev_hit, Date rev_regd, int rev_sco,
+			int ord_num, int mem_num, String mem_nick, ReviewCommentVo reviewComment, List<ReviewImageVo> reviewImage) {
+		super();
+		this.rev_num = rev_num;
+		this.rev_title = rev_title;
+		this.rev_cont = rev_cont;
+		this.rev_hit = rev_hit;
+		this.rev_regd = rev_regd;
+		this.rev_sco = rev_sco;
+		this.ord_num = ord_num;
+		this.mem_num = mem_num;
+		this.mem_nick = mem_nick;
+		this.reviewComment = reviewComment;
+		this.reviewImage = reviewImage;
+	}
+	public ReviewVo() {
+		super();
 	}
 }

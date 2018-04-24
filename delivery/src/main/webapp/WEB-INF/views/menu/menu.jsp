@@ -133,6 +133,20 @@ img#wpstats {
 	margin: 0 !important
 }
 </style>
+<!-- 강희 작업 내역 - 지우면 안됨 //////////////////////////////// -->
+<!-- Magnific Popup core CSS file -->
+<!-- Magnific Popup core JS file -->
+
+<link rel="stylesheet" href="<c:url value='/resources/css/magnific-popup.css'/>">
+<script type="text/javascript" src="<c:url value='/resources/js/jquery.magnific-popup.js'/>"></script>
+
+<style type="text/css">
+	.revImage{
+		width : 150px;
+		height : 100px;
+	}
+</style>
+<!-- //////////////////////////////////////////////////// -->
 
 <body
 	class="product-template-default single single-product postid-70 woocommerce woocommerce-page woocommerce-active">
@@ -259,7 +273,7 @@ img#wpstats {
 													<div id="comment-24" class="comment_container">
 														<div class="comment-text">
 															<div class="star-rating">
-																<span style="width: ${review.rev_sco * 20}%">Rated <strong class="rating">${review.rev_sco * 20}</strong> out of 5 </span>
+																<span style="width: ${review.rev_sco * 20}%">Rated <strong class="rating">${review.rev_sco }</strong> out of 5 </span>
 															</div>
 															<p class="meta">
 																<strong class="woocommerce-review__author">${review.mem_nick }</strong>
@@ -268,6 +282,15 @@ img#wpstats {
 															</p>
 															<div class="description">
 																<p>${review.rev_cont }</p>
+																
+																<c:if test="${review.reviewImage != null }">
+																	<div class="revImage_wrapper">
+																		<c:forEach var="revImage" items="${review.reviewImage }">
+																			<img class="revImage ${review.rev_num }" src="<c:url value='/resources/images/review/${revImage.rev_img }' />">
+																		</c:forEach>
+																	</div>
+																	<br>
+																</c:if>
 															</div>
 														</div>
 														<c:if test="${review.reviewComment != null }">
@@ -291,7 +314,7 @@ img#wpstats {
 												<div align="center">
 													<c:choose>
 														<c:when test="${pu.startPageNum > pu.pageBlockCount }">
-															<a href="<c:url value='/menu/menu?pageNum=${pu.startPageNum -1 }&stoNum=${stovo.sto_num}' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
+															<a href="<c:url value='/menu/menu?pageNum=${pu.startPageNum -1 }&sto_num=${stovo.sto_num}' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
 														</c:when>
 														<c:otherwise>
 															<span style="color: black;">&lt; 이전 &gt;</span>
@@ -303,13 +326,13 @@ img#wpstats {
 																<span style="color: black;">[${i }]</span>
 															</c:when>
 															<c:otherwise>
-																<a href="<c:url value='/menu/menu?pageNum=${i }&stoNum=${stovo.sto_num}' />"><span style="color: #555;">[${i }]</span></a>
+																<a href="<c:url value='/menu/menu?pageNum=${i }&sto_num=${stovo.sto_num}' />"><span style="color: #555;">[${i }]</span></a>
 															</c:otherwise>
 														</c:choose>
 													</c:forEach>
 													<c:choose>
 														<c:when test="${pu.endPageNum < pu.totalPageCount }">
-															<a href="<c:url value='/menu/menu?pageNum=${pu.endPageNum + 1 }&stoNum=${stovo.sto_num}' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
+															<a href="<c:url value='/menu/menu?pageNum=${pu.endPageNum + 1 }&sto_num=${stovo.sto_num}' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
 														</c:when>
 														<c:otherwise>
 															<span style="color: black;">&lt; 다음 &gt;</span>
@@ -718,4 +741,15 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 			}
 		});	
 	}
+	/*
+	$(function(){
+		$('.revImage_a').magnificPopup({
+			type: 'image',
+			beforeOpen : function(){
+				console.log("쉽게 가자 좀");
+			}
+			// other options
+		});
+	});
+	*/
 </script>

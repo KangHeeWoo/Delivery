@@ -43,4 +43,7 @@ public class OrdersService {
 	public OrdersVo ordNumList(HashMap<String, Object> map) {
 		return dao.ordNumList(map);
 	}
+	public OrdersVo getOrderInfo(int num) {
+		return dao.getOrderInfo(num);
+	}
 }

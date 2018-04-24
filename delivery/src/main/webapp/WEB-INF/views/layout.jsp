@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>배달의백성民</title>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.3.1.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css?ver=1'/>">

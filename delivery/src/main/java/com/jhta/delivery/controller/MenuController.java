@@ -56,6 +56,8 @@ public class MenuController {
 		
 		List<ReviewVo> review = rservice.getList(map);
 		
+		System.out.println(sto_num);
+		
 		model.addAttribute("stovo", stovo);
 		model.addAttribute("menulist", menulist);
 		model.addAttribute("review", review);

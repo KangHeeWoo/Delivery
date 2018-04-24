@@ -68,4 +68,7 @@
 	<select id="memPoint" parameterType="int" resultType="members">
 		select mem_point from members where mem_num=#{mem_num}
 	</select>
+	<select id="searchMemNum" parameterType="int" resultType="members">
+		select * from members where mem_num = #{val}
+	</select>
 </mapper>    

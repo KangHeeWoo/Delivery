@@ -55,4 +55,7 @@ public class MembersService {
 	public MembersVo memPoint(int mem_num) {
 		return dao.memPoint(mem_num);
 	}
+	public MembersVo searchMemNum(int num) {
+		return dao.searchMemNum(num);
+	}
 }

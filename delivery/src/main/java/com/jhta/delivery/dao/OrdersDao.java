@@ -44,4 +44,8 @@ public class OrdersDao {
 	public OrdersVo ordNumList(HashMap<String, Object> map) {
 		return session.selectOne(NAMESPACE+".ordNumList", map);
 	}
+	
+	public OrdersVo getOrderInfo(int num) {
+		return session.selectOne(NAMESPACE + ".getOrderInfo", num);
+	}
 }

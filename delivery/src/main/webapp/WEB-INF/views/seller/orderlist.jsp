@@ -176,11 +176,18 @@
 			$.ajax({
 				url : "<c:url value='/seller/setOrderState' />",
 				data : {ord_state : changeValue, ord_num : n},
-				dataType : "text",
+				dataType : "json",
 				success : function(data){
-					console.log(data);
+					var result = data.result;
+					
+					if(result){
+						alert("상태 변경 적용");	
+					}else{
+						alert("상태 변경 실패");
+					}
 				}, error : function(){
 					alert("상태 변경 실패");
+					setSelect(state);
 				}
 			});
 		}else{
