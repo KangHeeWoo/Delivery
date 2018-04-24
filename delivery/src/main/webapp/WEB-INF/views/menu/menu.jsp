@@ -325,12 +325,9 @@ img#wpstats {
 												<span id="reply-title" class="comment-reply-title">Add
 													a review
 												</span>
-												<form action="" method="post" enctype="multipart/form-data" onsubmit="return checkOrderList()">
-													<p class="comment-notes">
-														<span id="email-notes">Your email address will not
-															be published.</span> Required fields are marked <span
-															class="required">*</span>
-													</p>
+												<form action="<c:url value='/review/insert' />" method="post" enctype="multipart/form-data" id="frm" onsubmit="return checkOrderList();">
+													<input type="hidden" name="sto_num" value="${stovo.sto_num}">
+													<input type="hidden" name="ord_num" id="ord_num">
 													<div class="comment-form-rating">
 														<label for="rating">Your rating</label><select name="rating" id="rating" aria-required="true" required>
 															<option value="">Rate&hellip;</option>
@@ -346,7 +343,7 @@ img#wpstats {
 														<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required></textarea>
 													</p>
 													<p><input type="number" id="fileCnt" min="0" max="5" placeholder="첨부할 이미지 개수" style="width : 200px"><button type="button" onclick="uploadCnt()">적용</button></p>
-													<div id="fileupload"></div>
+													<div id="fileupload" style="display: block"></div>
 													<p class="form-submit">
 														<input name="submit" type="submit" id="submit" class="submit" value="Submit" />
 													</p>
@@ -697,6 +694,28 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 	}
 	
 	function checkOrderList(){
-		return false;
+		$.ajax({
+			url : "<c:url value='/review/checkOrderList' />",
+			data : {sto_num : '${stovo.sto_num}'},
+			dataType : "json",
+			async : false,
+			success : function(data){
+				var result = data.result;
+				
+				if(result){
+					var ord_num = data.ord_num;
+					console.log(ord_num);
+					$("#ord_num").val(ord_num);
+					
+					console.log($("#ord_num").val());
+				}else{
+					alert("1회 이상 구매기록이 있을 때 리뷰를 작성할 수 있습니다.");
+					return false;
+				}
+			}, error : function(){
+				alert("데이터 조회 실패");
+				return false;
+			}
+		});	
 	}
 </script>

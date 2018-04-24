@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.delivery.dao.ReviewDao;
+import com.jhta.delivery.vo.OrdersVo;
 import com.jhta.delivery.vo.ReviewCommentVo;
+import com.jhta.delivery.vo.ReviewImageVo;
 import com.jhta.delivery.vo.ReviewVo;
 
 @Service
@@ -34,7 +36,15 @@ public class ReviewService {
 		return dao.getList(map);
 	}
 	
-	public ReviewVo getReview(HashMap<String, Object> map) {
-		return dao.getReview(map);
+	public OrdersVo getOrder(HashMap<String, Object> map) {
+		return dao.getOrder(map);
+	}
+	
+	public int getMaxNum() {
+		return dao.getMaxNum();
+	}
+	
+	public int insertImage(ReviewImageVo vo) {
+		return dao.insertImage(vo);
 	}
 }

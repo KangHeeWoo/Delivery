@@ -7,7 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.delivery.vo.OrdersVo;
 import com.jhta.delivery.vo.ReviewCommentVo;
+import com.jhta.delivery.vo.ReviewImageVo;
 import com.jhta.delivery.vo.ReviewVo;
 
 @Repository
@@ -35,7 +37,15 @@ public class ReviewDao {
 		return session.selectList(NAMESPACE + ".getList", map);
 	}
 	
-	public ReviewVo getReview(HashMap<String, Object> map) {
-		return session.selectOne(NAMESPACE + ".getReview", map);
+	public OrdersVo getOrder(HashMap<String, Object> map) {
+		return session.selectOne(NAMESPACE + ".getOrder", map);
+	}
+	
+	public int getMaxNum() {
+		return session.selectOne(NAMESPACE + ".getMaxNum");
+	}
+	
+	public int insertImage(ReviewImageVo vo) {
+		return session.insert(NAMESPACE + ".insertImage", vo);
 	}
 }

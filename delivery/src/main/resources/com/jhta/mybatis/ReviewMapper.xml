@@ -18,11 +18,18 @@
 			<result property="rev_com_cont" column="rev_com_cont"/>
 			<result property="rev_com_regd" column="rev_com_regd"/>
 		</collection>
+		<collection property="reviewImage" ofType="reviewImage">
+			<result property="rev_img" column="rev_img"/>
+		</collection>
 	</resultMap>
 	
 	<insert id="insertReview" parameterType="review">
 		insert into review
 		values(0, #{rev_title}, #{rev_cont}, 0, sysdate, #{rev_sco}, #{ord_num})
+	</insert>
+	<insert id="insertImage" parameterType="reviewImage">
+		insert into rev_image
+		values(0, #{rev_img}, #{rev_num})
 	</insert>
 	<insert id="insertComment" parameterType="reviewComment">
 		insert into rev_comm
@@ -35,17 +42,19 @@
 		select nvl(count(*), 0) from review r, rev_comm c where ord_num 
 		in(select ord_num from orders where sto_num = #{val}) and r.rev_num = c.rev_num(+)
 	</select>
-	<select id="getList" parameterType="hashmap" resultMap="reviewlist">
-		select * from 
+	<select id="getList" parameterType="hashmap" resultMap="reviewlist">		
+		select rrr.*, i.rev_img from 
 		(select rr.*, rownum rnum from
 		(select r.*, c.REV_COM_CONT, c.REV_COM_NUM, c.REV_COM_REGD, m.mem_num, m.mem_nick from review r, rev_comm c, 
 		(select ord_num, mem_num from orders where sto_num = #{sto_num}) o, (select mem_num, mem_nick from members) m
-		where o.ord_num = r.ord_num and m.mem_num = o.mem_num and r.rev_num = c.rev_num(+)
-		order by o.ord_num desc) rr)		
-		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
+		where o.ord_num = r.ord_num and m.mem_num = o.mem_num and r.rev_num = c.rev_num(+)) rr)rrr, rev_image i		
+		<![CDATA[where rnum >= 1 and rnum <= 10 and rrr.rev_num = i.rev_num(+)]]>
 	</select>
 	<!-- 이미 등록된 여부가 있는지 확인 -->
-	<select id="getReview" parameterType="hashmap" resultType="review">
-		select * from review where ord_num in (select ord_num from orders where sto_num=#{sto_num} and mem_num=#{mem_num})
+	<select id="getOrder" parameterType="hashmap" resultType="orders">
+		select * from orders where sto_num=#{sto_num} and mem_num=#{mem_num}
+	</select>
+	<select id="getMaxNum" resultType="int">
+		select max(rev_num) from review
 	</select>
 </mapper>
