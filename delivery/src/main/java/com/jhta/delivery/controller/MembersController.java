@@ -96,7 +96,6 @@ public class MembersController {
 		bservice.bookDel(map);
 		return "redirect:/members/bookmark";
 	}
-	
 	@RequestMapping(value="/join",method=RequestMethod.POST)
 	public String insert(MembersVo vo, String mem_addr2) {
 		String mem_addr=vo.getMem_addr()+mem_addr2;
@@ -110,7 +109,7 @@ public class MembersController {
 		
 		nextMon.set(Calendar.MONTH, today.get(Calendar.MONTH) + 1);
 		
-		couponService.issueCoupon(new CouponIssueVo(0, 41, mem.getMem_num(), today.getTime(), nextMon.getTime(), null, null));
+		couponService.issueCoupon(new CouponIssueVo(0, 41, mem.getMem_num(), today.getTime(), nextMon.getTime(), null, null,0));
 		
 		return ".main";
 	}
@@ -195,14 +194,38 @@ public class MembersController {
 		List<OrdersVo> pointlist=oservice.pointlist(map);
 		//System.out.println(pointlist+"pointlilst");
 		List<OrdersUsePointVo> usepointlist=usePservice.ordUsePoint(map);
-	
+		
+		int mypoint=usePservice.mypoint(mem_num);
+		
 		model.addAttribute("pointlist", pointlist);
 		model.addAttribute("pu", pu);
 		model.addAttribute("usepu", usepu);
 		model.addAttribute("usepointlist", usepointlist);
+		model.addAttribute("mypoint", mypoint);
 		//model.addAttribute("usePvo", useVo);
 		
 		return ".members.mypoint";
 	}
 	
+	@RequestMapping("/members/couponlist")
+	public String couponlist(HttpSession session,Model model,@RequestParam(value="CpageNum",defaultValue="1")int CpageNum,@RequestParam(value="Cuse_pageNum",defaultValue="1")int Cuse_pageNum) {
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo vo=service.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		
+		int CgetCount=couponService.myCcount(mem_num);
+		
+		PageUtil pu = new PageUtil(CpageNum, 10, 10, CgetCount);
+		
+		map.put("mem_num", mem_num);
+		map.put("CstartRow", pu.getStartRow());
+		map.put("CendRow", pu.getEndRow());
+		
+		List<CouponIssueVo> mycoupon=couponService.mycoupon(map);
+		
+		model.addAttribute("pu", pu);
+		model.addAttribute("mycoupon", mycoupon);
+		return ".members.mycoupon";
+	}
 }

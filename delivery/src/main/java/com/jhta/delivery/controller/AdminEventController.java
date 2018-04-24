@@ -163,7 +163,7 @@ public class AdminEventController {
 		next.set(Calendar.MONTH, next.get(Calendar.MONTH) + 1);
 		
 		for(int i=0;i<win_cnt;i++) {
-			couService.issueCoupon(new CouponIssueVo(0, win_pro, list.get(winList.get(i)).getMem_num(), now.getTime(), next.getTime(), null, null));
+			couService.issueCoupon(new CouponIssueVo(0, win_pro, list.get(winList.get(i)).getMem_num(), now.getTime(), next.getTime(), null, null,0));
 		}
 		
 		return "redirect:/admin/detailevent?num="+num;

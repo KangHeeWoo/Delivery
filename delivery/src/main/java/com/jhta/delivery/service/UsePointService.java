@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import com.jhta.delivery.dao.UsePointDao;
 import com.jhta.delivery.vo.OrdersUsePointVo;
 
-
-
 @Service
 public class UsePointService {
 	@Autowired private UsePointDao dao;
@@ -22,4 +20,7 @@ public class UsePointService {
 		return dao.ordUsePoint(map);
 	}
 	
+	public int mypoint(int mem_num) {
+		return dao.mypoint(mem_num);
+	}
 }

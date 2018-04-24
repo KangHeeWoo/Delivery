@@ -55,4 +55,12 @@
 		and COU_ISS_NUM not in (select COU_ISS_NUM from coupon_uselist))i 
 		where i.cou_num=c.cou_num  and mem_num=#{mem_num}
 	</select>
+	<select id="mycoupon" resultType="c_issue" parameterType="hashmap">
+	select * from(select a.*,rownum rnum from(select ci.*,c.cou_type,c.dis_price from coupon c,coupon_issue ci where c.cou_num=ci.cou_num and ci.mem_num=#{mem_num} 
+	<![CDATA[and to_date(ci.cou_start,'yyyy-mm-dd') <= to_date(sysdate, 'yyyy-mm-dd') and to_date(ci.cou_end,'yyyy-mm-dd') >= to_date(sysdate, 'yyyy-mm-dd'))a )]]>
+	<![CDATA[where rnum>=#{CstartRow} and rnum<=#{CendRow}]]>
+	</select>
+	<select id="myCcount" resultType="int" parameterType="int">
+		select count(*) cnt from(select ci.*,c.cou_type,c.dis_price from coupon c,coupon_issue ci where c.cou_num=ci.cou_num and ci.mem_num=#{mem_num})
+	</select>
 </mapper>

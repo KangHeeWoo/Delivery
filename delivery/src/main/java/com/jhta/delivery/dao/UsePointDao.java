@@ -9,10 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.jhta.delivery.vo.OrdersUsePointVo;
 
-
-
-
-
 @Repository
 public class UsePointDao {
 	@Autowired private SqlSession session;
@@ -25,5 +21,7 @@ public class UsePointDao {
 	public List<OrdersUsePointVo> ordUsePoint(HashMap<String, Object> map){
 		return session.selectList(NAMESPACE+".ordUsePoint", map);
 	}
-	
+	public int mypoint(int mem_num) {
+		return session.selectOne(NAMESPACE+".mypoint", mem_num);
+	}
 }

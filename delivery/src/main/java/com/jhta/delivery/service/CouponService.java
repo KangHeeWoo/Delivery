@@ -59,4 +59,11 @@ public class CouponService {
 	public List<MemCouponVo> memCoupon(int mem_num){
 		return dao.memCoupon(mem_num);
 	}
+	public List<CouponIssueVo> mycoupon(HashMap<String, Object> map){
+		return dao.mycoupon(map);	
+	}
+	public int myCcount(int mem_num) {
+		return dao.myCcount(mem_num);
+	}
+	
 }

@@ -12,5 +12,7 @@
 		(select aa.*,rownum rnum from
 		(select u.use_amount,s.sto_addr,o.ord_num,o.ord_time,s.sto_name from use_point u,orders o,stores s where u.ord_num=o.ord_num and s.sto_num=o.sto_num and u.mem_num=#{mem_num} order by o.ord_time desc)aa) where rnum>=#{use_startRow} and rnum<=#{use_endRow}]]>
 	</select>
-	
+	<select id="mypoint" resultType="int" parameterType="int">
+		select sum(mem_point) mypoint from members where mem_num=#{mem_num}
+	</select>
 </mapper>

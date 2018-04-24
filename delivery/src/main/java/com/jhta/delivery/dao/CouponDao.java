@@ -59,4 +59,10 @@ public class CouponDao {
 	public List<MemCouponVo> memCoupon(int mem_num){
 		return session.selectList(NAMESPACE+".memCoupon", mem_num);
 	}
+	public List<CouponIssueVo> mycoupon(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE+".mycoupon", map);
+	}
+	public int myCcount(int mem_num) {
+		return session.selectOne(NAMESPACE+".myCcount", mem_num);
+	}
 }
