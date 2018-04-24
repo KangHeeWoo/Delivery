@@ -1,7 +1,7 @@
 package com.jhta.delivery.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -13,11 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.PayService;
-import com.jhta.delivery.vo.CartVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.OrderListVo;
 import com.jhta.delivery.vo.OrdersVo;
@@ -44,7 +42,10 @@ public class PayController {
 		
 		double getPoint = service.getPoint(vo.getMem_num());
 		double getComm = service.getComm();
-		service.insertOrder(new OrdersVo(0, null, ord_deli_time, 
+		
+		Calendar curr = Calendar.getInstance();
+		
+		service.insertOrder(new OrdersVo(0, curr.getTime(), ord_deli_time, 
 				null, total, (int)(total * (getPoint/100)), (int)(total * (getComm/100)), sto_num, 
 				payType, vo.getMem_num(), able_loc+" "+myDetail, null, null));
 		

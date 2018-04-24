@@ -81,7 +81,8 @@
 			alert("마감되었습니다");
 			return false;
 		}
-
+		
+		websocket.send("소켓 테스트 진행중");
 	}
 
 	function setPayPrice(){
@@ -107,6 +108,25 @@
 		}else{
 			var disprice = $(coupon).find("option[value=" + $(coupon).val() + "]").html().split(":")[1].trim();
 			return disprice;
+		}
+	}
+	
+	$(function() {
+		setWebsocket();
+	});
+	
+	function setWebsocket(){
+		var wsUri = 'ws:/localhost:8090/delivery/socketRequest';
+		
+		websocket = new WebSocket(wsUri);
+		websocket.onopen = function(e){
+			onOpen(e);
+		}
+		websocket.onmessage = function(e){
+			onMessage(e);
+		}
+		websocket.onerror = function(e){
+			onError(e);
 		}
 	}
 
