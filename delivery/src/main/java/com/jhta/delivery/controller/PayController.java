@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,8 @@ public class PayController {
     }
 	
 	@RequestMapping("/order/pay")
-	public String order(int[] num,String[] name,int[] price, int[] cnt,int total,int coupon,int usePoint,int sto_num,int payType,HttpSession session,boolean reseChk, Date ord_deli_time, String myDetail) {
+	public String order(int[] num,String[] name,int[] price, int[] cnt,int total,int coupon,int usePoint,
+			int sto_num,int payType,HttpSession session,boolean reseChk, Date ord_deli_time, String myDetail) {
 		String email = (String)session.getAttribute("email");
 		String able_loc = (String)session.getAttribute("able_loc");
 		//String myDetail = (String)session.getAttribute("myDetail");
@@ -78,6 +80,6 @@ public class PayController {
 		
 		simpleMailSender.sendMail("배달의 백성民 인증", "회원님이 현재 주문하신 음식이 '주문접수' 되었습니다.", email, "deliveryjhta@gmail.com");
 		
-		return "redirect:/members/orderlist";
+		return "redirect:/members/orderlist?requestPay=requestPay&stoNum="+sto_num;
 	}
 }

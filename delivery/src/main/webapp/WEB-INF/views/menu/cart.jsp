@@ -54,9 +54,11 @@
 	var total='${total}';
 	var mem_point='${memPoint.mem_point }';
 	
-	var c = new Date();
-	
-	$("#ord_deli_time").val(c.getHours() + ":" + c.getMinutes());
+	$(function(){
+		var c = new Date();
+		
+		$("#ord_deli_time").val(c.getHours() + ":" + c.getMinutes());
+	});
 
 	function pay(){
 		var open = '${open}'.split(":");
@@ -81,8 +83,6 @@
 			alert("마감되었습니다");
 			return false;
 		}
-		
-		websocket.send("소켓 테스트 진행중");
 	}
 
 	function setPayPrice(){
@@ -110,25 +110,5 @@
 			return disprice;
 		}
 	}
-	
-	$(function() {
-		setWebsocket();
-	});
-	
-	function setWebsocket(){
-		var wsUri = 'ws:/localhost:8090/delivery/socketRequest';
-		
-		websocket = new WebSocket(wsUri);
-		websocket.onopen = function(e){
-			onOpen(e);
-		}
-		websocket.onmessage = function(e){
-			onMessage(e);
-		}
-		websocket.onerror = function(e){
-			onError(e);
-		}
-	}
-
 </script>
 

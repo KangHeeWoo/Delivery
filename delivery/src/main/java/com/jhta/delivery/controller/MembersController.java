@@ -25,6 +25,7 @@ import com.jhta.delivery.service.BookMarkService;
 import com.jhta.delivery.service.CouponService;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.OrdersService;
+import com.jhta.delivery.service.SellerService;
 import com.jhta.delivery.service.UsePointService;
 import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.CouponIssueVo;
@@ -32,6 +33,7 @@ import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.OrderListVo;
 import com.jhta.delivery.vo.OrdersUsePointVo;
 import com.jhta.delivery.vo.OrdersVo;
+import com.jhta.delivery.vo.SellerVo;
 import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.UsePointVo;
 
@@ -43,8 +45,7 @@ public class MembersController {
 	@Autowired private BookMarkService bservice;
 	@Autowired private OrdersService oservice;
 	@Autowired private UsePointService usePservice;
-
-
+	@Autowired private SellerService sellerService;
 	
 	@InitBinder
     public void InitBinder(WebDataBinder binder) {
@@ -147,7 +148,8 @@ public class MembersController {
 	}
 	
 	@RequestMapping("/members/orderlist")
-	public String orderList(@RequestParam(name="pageNum", defaultValue="1")int pageNum, HttpSession session, Model model) {
+	public String orderList(@RequestParam(name="pageNum", defaultValue="1")int pageNum, 
+			HttpSession session, Model model, String requestPay, @RequestParam(name="stoNum", defaultValue="-1")int stoNum) {
 		String email = (String)session.getAttribute("email");
 		
 		MembersVo vo = service.getinfo(email);
@@ -166,6 +168,11 @@ public class MembersController {
 		
 		model.addAttribute("pu", pu);
 		model.addAttribute("order", list);
+		model.addAttribute("requestPay", requestPay);
+		if(requestPay != null) {
+			SellerVo svo = sellerService.getSellerInfo(stoNum);
+			model.addAttribute("seller_email", svo.getSel_email());
+		}
 		
 		return ".members.orderList";
 	}

@@ -45,9 +45,37 @@
         </div>
       </div>
     </nav>
+    <div id="requestOrder" style="display: none;">
+    	<p>새로운 주문이 들어왔습니다. 주문정보를 확인하시겠습니까?
+    		<a href="<c:url value='/seller/orderlist' />">예</a>
+    	</p>
+    </div>
     
 <script>
 	$("#mainlogo").click(function(){
 		location.href = "<c:url value='/seller/main' />";
 	});
+	
+	$(function() {
+		setWebsocket();
+	});
+	
+	function showNewOrder(msg){
+		$("#requestOrder").css({"display" : "block"});
+	}
+	
+	function setWebsocket(){
+		var wsUri = 'ws:/localhost:8090/delivery/socketRequest';
+		
+		websocket = new WebSocket(wsUri);
+		websocket.onopen = function(e){			
+			
+		}
+		websocket.onmessage = function(e){
+			showNewOrder(e.data);
+		}
+		websocket.onerror = function(e){
+			
+		}
+	}
 </script>
