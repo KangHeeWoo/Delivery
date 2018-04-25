@@ -117,4 +117,8 @@ public class HomeController {
 		
 		return ".login";
 	}
+	@RequestMapping(value="/aa",method=RequestMethod.GET)
+	public String loginOk1() {
+		return ".seller";
+	}
 }

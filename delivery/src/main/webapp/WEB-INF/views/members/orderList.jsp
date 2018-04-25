@@ -122,10 +122,10 @@
 	});
 	
 	function setWebsocket(){
-		var wsUri = 'ws:/localhost:8090/delivery/socketRequest';
+		var wsUri = 'ws://192.168.0.27:8090/delivery/socketRequest';
 		
-		websocket = new WebSocket(wsUri);
-		websocket.onopen = function(e){			
+		var websocket = new WebSocket(wsUri);
+		websocket.onopen = function(e){
 			if('${requestPay}' == 'requestPay'){
 				websocket.send("requestPay:" + '${seller_email}');
 			}

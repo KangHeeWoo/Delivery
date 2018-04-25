@@ -56,26 +56,31 @@
 		location.href = "<c:url value='/seller/main' />";
 	});
 	
+	function showNewOrder(msg){
+		if(msg.startsWith("requestPay:")){
+			var getEmail = msg.split(":");
+			if('${sessionScope.email}' == getEmail[1]){
+				$("#requestOrder").css({"display" : "block"});
+			}
+		}
+	}
+	
 	$(function() {
 		setWebsocket();
 	});
 	
-	function showNewOrder(msg){
-		$("#requestOrder").css({"display" : "block"});
-	}
-	
 	function setWebsocket(){
-		var wsUri = 'ws:/localhost:8090/delivery/socketRequest';
+		var wsUri = 'ws://192.168.0.27:8090/delivery/socketRequest';
 		
-		websocket = new WebSocket(wsUri);
-		websocket.onopen = function(e){			
+		var websocket = new WebSocket(wsUri);
+		websocket.onopen = function(e){		
 			
 		}
 		websocket.onmessage = function(e){
 			showNewOrder(e.data);
 		}
 		websocket.onerror = function(e){
-			
+			console.log("소켓 에러");
 		}
 	}
 </script>
