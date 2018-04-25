@@ -19,11 +19,11 @@ public class TopAdsDao {
 	public List<StoresVo> topAdsList(HashMap<String, Object> map) {
 		return session.selectList(NAMESPACE+".topAdsList",map);
 	}
-	public int topAdsUpdate(Date d) {
-		return session.update(NAMESPACE+".topAdsUpdate", d);
+	public List<TopAdsVo> topAdsEntry(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE+".topAdsEntry", map);
 	}
-	public List<TopAdsVo> topAdsEntry(Date d){
-		return session.selectList(NAMESPACE+".topAdsEntry", d);
+	public int getCount(Date d) {
+		return session.selectOne(NAMESPACE+".count",d);
 	}
 		
 }

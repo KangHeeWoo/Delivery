@@ -18,10 +18,10 @@ public class TopAdsService {
 	public List<StoresVo> topAdsList(HashMap<String, Object> map) {
 		return dao.topAdsList(map);
 	}
-	public int topAdsUpdate(Date d) {
-		return dao.topAdsUpdate(d);
+	public List<TopAdsVo> topAdsEntry(HashMap<String, Object> map){
+		return dao.topAdsEntry(map);
 	}
-	public List<TopAdsVo> topAdsEntry(Date d){
-		return dao.topAdsEntry(d);
+	public int getCount(Date d) {
+		return dao.getCount(d);
 	}
 }

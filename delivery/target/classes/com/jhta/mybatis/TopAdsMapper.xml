@@ -13,10 +13,18 @@
 		order by top_ads_price desc)ss)
 		<![CDATA[where rnum>=1 and rnum<=5]]>
 	</select>
-	<select id="topAdsEntry" parameterType="date" resultType="topAds">
-		select sto_num 
+	<select id="topAdsEntry" parameterType="hashmap" resultType="topAds">	
+		select * from
+    		(select aa.*, rownum rnum from
+			(select *
+			from top_ads_entry 
+			where to_char(top_ads_start,'yyyy-mm') = to_char(#{top_ads_start},'yyyy-mm') 
+			order by top_ads_price)aa)
+       		<![CDATA[where rnum>=#{startRow} and rnum<=#{endRow}]]>
+	</select>
+	<select id="count" resultType="int" parameterType="date">
+		select NVL(count(*),0) cnt 
 		from top_ads_entry 
 		where to_char(top_ads_start,'yyyy-mm') = to_char(#{value},'yyyy-mm') 
-		order by top_ads_price
 	</select>
 </mapper>
