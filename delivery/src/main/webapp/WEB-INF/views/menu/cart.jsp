@@ -54,9 +54,11 @@
 	var total='${total}';
 	var mem_point='${memPoint.mem_point }';
 	
-	var c = new Date();
-	
-	$("#ord_deli_time").val(c.getHours() + ":" + c.getMinutes());
+	$(function(){
+		var c = new Date();
+		
+		$("#ord_deli_time").val(c.getHours() + ":" + c.getMinutes());
+	});
 
 	function pay(){
 		var open = '${open}'.split(":");
@@ -81,7 +83,6 @@
 			alert("마감되었습니다");
 			return false;
 		}
-
 	}
 
 	function setPayPrice(){
@@ -109,6 +110,5 @@
 			return disprice;
 		}
 	}
-
 </script>
 

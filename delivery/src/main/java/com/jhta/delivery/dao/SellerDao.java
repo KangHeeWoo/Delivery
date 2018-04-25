@@ -22,6 +22,10 @@ public class SellerDao {
 	public SellerVo logincheck(HashMap<String, String> map) {
 		return session.selectOne(NAMESPACE+".logincheck",map);
 	}
+	
+	public SellerVo getSellerInfo(int num) {
+		return session.selectOne(NAMESPACE + ".getSellerInfo", num);
+	}
 
 	public int insert(SellerVo vo) {
 		return session.insert(NAMESPACE+".insert", vo);

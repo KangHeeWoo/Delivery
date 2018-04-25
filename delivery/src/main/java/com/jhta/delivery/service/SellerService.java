@@ -22,6 +22,10 @@ public class SellerService {
 		if(vo!=null) return 1;
 		else return -1; 
 	}
+	
+	public SellerVo getSellerInfo(int num) {
+		return dao.getSellerInfo(num);
+	}
 
 	public int logincheck(HashMap<String, String> map) {
 		SellerVo vo=dao.logincheck(map);

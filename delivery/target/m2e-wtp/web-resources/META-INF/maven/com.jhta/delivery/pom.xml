@@ -15,6 +15,15 @@
 	</properties>
 	<dependencies>
 		<!-- //////////////////////////////////////////////////////////////////////////////////// -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+		<!-- 웹소켓 사용하기 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-websocket</artifactId>
+		    <version>4.2.5.RELEASE</version>
+		</dependency>
+		
+		
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
 		    <groupId>commons-fileupload</groupId>
