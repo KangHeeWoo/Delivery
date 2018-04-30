@@ -94,7 +94,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">주문하기</a>
+              <a class="nav-link js-scroll-trigger" href="<c:url value='/event/eventlist' />">이벤트팡팡</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="<c:url value='/members/bookmark' />">단골매장</a>
