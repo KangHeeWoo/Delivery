@@ -41,7 +41,7 @@
 					
 								<a href="<c:url value='/login'/>" class="dropdown-toggle" data-toggle="dropdown">로그인</a>
 								<span class="caret"></span>
-								<ul id="login-dp" class="dropdown-menu">
+								<ul id="login-dp" class="dropdown-menu" style="display: ${(param.loginCheck=='loginCheck')? 'block' : 'none'}">
 									<li>
 										<div class="row">
 											<div class="col-md-12">
