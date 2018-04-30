@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<link rel="stylesheet"
-	href="https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/cache/min/48/0234f28583c4b65de050bc5036d91869.css"
-	data-minify="1" />
+<link rel="stylesheet"	href="<c:url value='/resources/css/0234f28583c4b65de050bc5036d91869.css'/>"	data-minify="1" />
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
