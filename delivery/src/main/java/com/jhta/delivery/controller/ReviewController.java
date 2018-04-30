@@ -110,8 +110,6 @@ public class ReviewController {
 		
 		List<ReviewVo> review = service.getList(map);
 		
-		System.out.println("review : " + review);
-		
 		model.addAttribute("review", review);
 		model.addAttribute("pu", pu);
 		

@@ -32,6 +32,7 @@ public class LoginFilter implements Filter{
 			boolean checkLogin = false;
 			
 			if(requestMapping.startsWith("/menu/cart")) checkLogin = true;
+			if(requestMapping.startsWith("/mypage")) checkLogin = true;			
 			//원하는 RequestMapping 경로 추가
 			
 			if(checkLogin) {
