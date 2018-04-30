@@ -41,7 +41,7 @@
 			</c:if>
 			<p class="star_rating">
 				<c:forEach begin="1" end="${review.rev_sco}">
-				
+					<a href="#" class="on">★</a>
 				</c:forEach>
 				<c:forEach begin="${review.rev_sco+1}" end="5">
 				
