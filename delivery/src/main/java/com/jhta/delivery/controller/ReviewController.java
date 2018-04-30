@@ -12,15 +12,18 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.ReviewService;
+import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.OrdersVo;
 import com.jhta.delivery.vo.ReviewImageVo;
@@ -88,5 +91,30 @@ public class ReviewController {
 		}
 		
 		return ob.toString();
+	}
+	
+	@RequestMapping("/members/review")
+	public String reviewList(@RequestParam(name="pageNum", defaultValue="1")int pageNum, Model model, HttpSession session) {
+		String mem_email = (String)session.getAttribute("email");
+		MembersVo mvo = mservice.getinfo(mem_email); 
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("mem_num", mvo.getMem_num());
+		
+		int getCount = service.getCount(map);
+		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
+		
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow", pu.getEndRow());
+		
+		List<ReviewVo> review = service.getList(map);
+		
+		System.out.println("review : " + review);
+		
+		model.addAttribute("review", review);
+		model.addAttribute("pu", pu);
+		
+		return ".members.review";
 	}
 }

@@ -38,15 +38,29 @@
 	<delete id="delete" parameterType="int">
 		delete from review where rev_num=#{val}
 	</delete>
-	<select id="getCount" parameterType="int" resultType="int">
+	<select id="getCount" parameterType="hashmap" resultType="int">
 		select nvl(count(*), 0) from review r, rev_comm c where ord_num 
-		in(select ord_num from orders where sto_num = #{val}) and r.rev_num = c.rev_num(+)
+		in(select ord_num from orders where 
+		<if test="sto_num != null"> 
+			sto_num = #{sto_num}
+		</if>
+		<if test="mem_num != null">
+			mem_num = #{mem_num}
+		</if>
+		) and r.rev_num = c.rev_num(+)
 	</select>
 	<select id="getList" parameterType="hashmap" resultMap="reviewlist">		
 		select rrr.*, i.rev_img from 
 		(select rr.*, rownum rnum from
 		(select r.*, c.REV_COM_CONT, c.REV_COM_NUM, c.REV_COM_REGD, m.mem_num, m.mem_nick from review r, rev_comm c, 
-		(select ord_num, mem_num from orders where sto_num = #{sto_num}) o, (select mem_num, mem_nick from members) m
+		(select ord_num, mem_num from orders where
+		<if test="sto_num != null"> 
+			sto_num = #{sto_num}
+		</if>
+		<if test="mem_num != null">
+			mem_num = #{mem_num}
+		</if>	
+		) o, (select mem_num, mem_nick from members) m
 		where o.ord_num = r.ord_num and m.mem_num = o.mem_num and r.rev_num = c.rev_num(+)) rr)rrr, rev_image i		
 		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow} and rrr.rev_num = i.rev_num(+)]]>
 	</select>

@@ -29,8 +29,8 @@ public class ReviewDao {
 		return session.delete(NAMESPACE + ".delete", num);
 	}
 	
-	public int getCount(int num) {
-		return session.selectOne(NAMESPACE + ".getCount", num);
+	public int getCount(HashMap<String, Object> map) {
+		return session.selectOne(NAMESPACE + ".getCount", map);
 	}
 	
 	public List<ReviewVo> getList(HashMap<String, Object> map){

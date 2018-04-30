@@ -28,8 +28,8 @@ public class ReviewService {
 		return dao.deleteReview(num);
 	}
 	
-	public int getCount(int num) {
-		return dao.getCount(num);
+	public int getCount(HashMap<String, Object> map) {
+		return dao.getCount(map);
 	}
 	
 	public List<ReviewVo> getList(HashMap<String, Object> map){

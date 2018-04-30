@@ -45,12 +45,13 @@ public class MenuController {
 		
 		List<MenuVo> menulist=Mservice.menulist(sto_num);
 		
-		int getCount = rservice.getCount(sto_num);
-		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
-		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("sto_num", sto_num);
+		
+		int getCount = rservice.getCount(map);
+		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
+		
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
 		
