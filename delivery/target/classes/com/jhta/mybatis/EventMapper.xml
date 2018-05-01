@@ -5,7 +5,7 @@
 		select * from
 			(select e.*, rownum rnum from
 				(select * from event order by eve_num desc)e)
-		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow} and to_date(eve_start,'yyyy-mm-dd') <= to_date(sysdate, 'yyyy-mm-dd') and to_date(eve_end,'yyyy-mm-dd') >= to_date(sysdate, 'yyyy-mm-dd')]]>
 	</select>
 	<select id="getCount" resultType="int">
 		select nvl(count(*), 0) from event
@@ -44,4 +44,7 @@
 			#{winNum}		
 		</foreach>
 	</update>
+	<insert id="eventEntry" parameterType="hashmap" >
+		insert into event_entry values(0,'응모',#{eve_num},#{mem_num})
+	</insert>
 </mapper>

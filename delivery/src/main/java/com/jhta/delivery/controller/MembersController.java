@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.BookMarkService;
 import com.jhta.delivery.service.CouponService;
+import com.jhta.delivery.service.EventService;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.OrdersService;
 import com.jhta.delivery.service.SellerService;
@@ -47,6 +48,7 @@ public class MembersController {
 	@Autowired private OrdersService oservice;
 	@Autowired private UsePointService usePservice;
 	@Autowired private SellerService sellerService;
+	@Autowired private EventService Eservice;
 	
 	@InitBinder
     public void InitBinder(WebDataBinder binder) {
@@ -256,5 +258,31 @@ public class MembersController {
 		model.addAttribute("pu", pu);
 		model.addAttribute("list", list);
 		return ".members.memElist";
+	}
+	@RequestMapping(value="/member/eventMem",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String eventMem(int eve_num,HttpSession session) {
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo vo=service.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("eve_num", eve_num);
+		map.put("mem_num", mem_num);
+		
+		JSONObject ob=new JSONObject();
+		int n=service.eventMem(map);
+		
+		//
+		if(n<0) {
+			//이벤트 신청하기
+			int m=Eservice.eventEntry(map);
+			System.out.println("이벤트신청가능유무"+m);
+			if(m>0) ob.put("result", true);
+			
+		}else {
+			ob.put("result", false);
+		}
+
+		return ob.toString();
 	}
 }

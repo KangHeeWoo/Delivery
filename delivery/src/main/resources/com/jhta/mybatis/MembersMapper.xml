@@ -77,4 +77,7 @@
 	<select id="memEcount" parameterType="int" resultType="int">
 		select count(*) cnt from event e,event_entry v where v.mem_num=#{mem_num} and e.eve_num=v.eve_num 
 	</select>
+	<select id="eventMem" parameterType="hashmap" resultType="int">
+		select count(*) cnt from event_entry where mem_num=#{mem_num} and eve_num=#{eve_num}
+	</select>
 </mapper>    

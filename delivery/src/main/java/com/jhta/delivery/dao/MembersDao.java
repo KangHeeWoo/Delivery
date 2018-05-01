@@ -57,4 +57,7 @@ public class MembersDao {
 	public int memEcount(int mem_num) {
 		return session.selectOne(NAMESPACE+".memEcount", mem_num);
 	}
+	public int eventMem(HashMap<String, Object> map) {
+		return session.selectOne(NAMESPACE+".eventMem", map);
+	}
 }

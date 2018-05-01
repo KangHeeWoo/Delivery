@@ -3,6 +3,7 @@ package com.jhta.delivery.service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.exceptions.IbatisException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +45,8 @@ public class EventService {
 	
 	public int loseProsess(HashMap<String, Object> map) {
 		return dao.loseProsess(map);
+	}
+	public int eventEntry(HashMap<String, Object> map) {
+		return dao.eventEntry(map);
 	}
 }

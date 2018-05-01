@@ -46,4 +46,7 @@ public class EventDao {
 	public int loseProsess(HashMap<String, Object> map) {
 		return session.update(NAMESPACE + ".lose_prosess", map);
 	}
+	public int eventEntry(HashMap<String,Object> map) {
+		return session.insert(NAMESPACE+".eventEntry", map);
+	}
 }

@@ -14,11 +14,11 @@
 		
 	 ${start } &sim; ${end }<br><br><br>
 	 <img src="<c:url value='/resources/images/event/${event.eve_img }' />"><br><br><br>
-	 <img src="<c:url value='/resources/images/버튼.png' />" style="width:514px;height:189px;" onclick="event(${event.eve_num})">
+	 <img src="<c:url value='/resources/images/버튼.png' />" style="width:514px;height:189px;" onclick="eventMem(${event.eve_num})">
 </div>
 
 <script>
-	function event(eve_num){
+	function eventMem(eve_num){
 		$.ajax({
 			url : "<c:url value='/member/eventMem'/>",
 			data : {eve_num:eve_num},

@@ -65,4 +65,7 @@ public class MembersService {
 	public int memEcount(int mem_num) {
 		return dao.memEcount(mem_num);
 	}
+	public int eventMem(HashMap<String, Object> map) {
+		return dao.eventMem(map);
+	}
 }
