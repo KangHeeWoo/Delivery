@@ -120,21 +120,4 @@
 	$(function() {
 		setWebsocket();
 	});
-	
-	function setWebsocket(){
-		var wsUri = 'ws://192.168.0.27:8090/delivery/socketRequest';
-		
-		var websocket = new WebSocket(wsUri);
-		websocket.onopen = function(e){
-			if('${requestPay}' == 'requestPay'){
-				websocket.send("requestPay:" + '${seller_email}');
-			}
-		}
-		websocket.onmessage = function(e){
-			
-		}
-		websocket.onerror = function(e){
-			
-		}
-	}
 </script>
