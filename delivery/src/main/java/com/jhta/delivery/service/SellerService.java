@@ -39,4 +39,7 @@ public class SellerService {
 	public SellerVo getSeller(String sel_email) {
 		return dao.eamilcheck(sel_email);
 	}
+	public int getSel_num(String email) {
+		return dao.getSel_num(email);
+	}
 }

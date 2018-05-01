@@ -33,4 +33,7 @@ public class StoresService {
 	public int getCount() {
 		return dao.getCount();
 	}
+	public int stInsert(HashMap<String, Object> map) {
+		return dao.stInsert(map);
+	}
 }

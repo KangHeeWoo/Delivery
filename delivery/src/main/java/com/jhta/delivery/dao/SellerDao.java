@@ -30,4 +30,7 @@ public class SellerDao {
 	public int insert(SellerVo vo) {
 		return session.insert(NAMESPACE+".insert", vo);
 	}
+	public int getSel_num(String email) {
+		return session.selectOne(NAMESPACE+".getSel_num",email);
+	}
 }

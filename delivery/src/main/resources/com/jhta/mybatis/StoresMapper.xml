@@ -24,4 +24,9 @@
 	<select id="count" resultType="int">
 		select NVL(count(*),0) cnt from stores
 	</select>
+	<insert id="stInsert" parameterType="hashmap">
+		insert into stores values(0,#{sto_name},#{sto_regnum},#{sto_addr},#{sto_phone},sysdate,
+		to_date('20180501' || #{sto_open}, 'yyyymmdd hh24:mi'),to_date('20180501' || #{sto_close}, 'yyyymmdd hh24:mi'),
+		#{sto_holiday},#{sto_intro},'대기',#{sel_num},#{cat_num})
+	</insert>
 </mapper>

@@ -34,4 +34,10 @@ public class StoresDao {
 	public int getCount() {
 		return session.selectOne(NAMESPACE + ".count");
 	}
+	public int stInsert(HashMap<String, Object> map) {
+		System.out.println(map);
+		int n=session.insert(NAMESPACE+".stInsert",map);
+		System.out.println("test"+n);
+		return n;
+	}
 }

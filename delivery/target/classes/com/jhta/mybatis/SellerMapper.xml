@@ -16,4 +16,7 @@
 		select * from seller where sel_num in(
 		select sel_num from stores where sto_num = #{num})
 	</select>
+	<select id="getSel_num" parameterType="String" resultType="int">
+		select sel_num from seller where sel_email=#{email}
+	</select>
 </mapper>    
