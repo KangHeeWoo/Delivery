@@ -55,7 +55,7 @@ public class AdminEventController {
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
 		
-		List<EventVo> list = service.eventList(map);
+		List<EventVo> list = service.adminEventList(map);
 		
 		model.addAttribute("pu", pu);
 		model.addAttribute("event", list);

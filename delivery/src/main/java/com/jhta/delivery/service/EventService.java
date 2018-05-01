@@ -19,6 +19,10 @@ public class EventService {
 		return dao.eventList(map);
 	}
 	
+	public List<EventVo> adminEventList(HashMap<String, Object> map){
+		return dao.adminEventList(map);
+	}
+	
 	public int getCount() {
 		return dao.getCount();
 	}

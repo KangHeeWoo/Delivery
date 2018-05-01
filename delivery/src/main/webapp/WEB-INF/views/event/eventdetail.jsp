@@ -6,14 +6,14 @@
 	<fmt:formatDate value="${event.eve_end }" var="end" pattern="yyyy-MM-dd "/>
 	<fmt:formatDate value="${event.eve_regd }" var="regd" pattern="yyyy-MM-dd"/>
 <h1>이벤트 팡팡</h1>
-<div align="right">등록일 : ${regd }</div>
+<div align="right" style="padding-right: 300px;">등록일 : ${regd }</div>
 <div align="center">
 	<img src="<c:url value='/resources/images/event/${event.eve_img }' />">
 	<p>${event.eve_cont }</p>
 	제목 : ${event.eve_title }<br><br>
 		
 	 ${start } &sim; ${end }<br><br><br>
-	 <img src="<c:url value='/resources/images/event/${event.eve_img }' />"><br><br><br>
+	 <img src="<c:url value='/resources/images/event/참쉬운-방법.png' />" style="width:900px;height:auto;"><br><br><br>
 	 <img src="<c:url value='/resources/images/버튼.png' />" style="width:514px;height:189px;" onclick="eventMem(${event.eve_num})">
 </div>
 

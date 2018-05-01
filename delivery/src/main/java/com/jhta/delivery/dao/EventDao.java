@@ -19,6 +19,10 @@ public class EventDao {
 		return session.selectList(NAMESPACE + ".eventList", map);
 	}
 	
+	public List<EventVo> adminEventList(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE + ".adminEventList", map);
+	}
+	
 	public int getCount() {
 		return session.selectOne(NAMESPACE + ".getCount");
 	}

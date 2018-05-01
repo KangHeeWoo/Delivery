@@ -262,6 +262,7 @@ public class MembersController {
 	@RequestMapping(value="/member/eventMem",produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String eventMem(int eve_num,HttpSession session) {
+		System.out.println("json오니");
 		String mem_email=(String)session.getAttribute("email");
 		MembersVo vo=service.mem_num(mem_email);
 		int mem_num=vo.getMem_num();
@@ -271,15 +272,16 @@ public class MembersController {
 		
 		JSONObject ob=new JSONObject();
 		int n=service.eventMem(map);
-		
+		System.out.println(n);
 		//
-		if(n<0) {
+		if(n<=0) {
 			//이벤트 신청하기
 			int m=Eservice.eventEntry(map);
 			System.out.println("이벤트신청가능유무"+m);
 			if(m>0) ob.put("result", true);
 			
 		}else {
+			System.out.println("json오니2");
 			ob.put("result", false);
 		}
 

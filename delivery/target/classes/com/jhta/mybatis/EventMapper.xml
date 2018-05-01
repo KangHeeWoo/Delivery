@@ -7,6 +7,12 @@
 				(select * from event order by eve_num desc)e)
 		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow} and to_date(eve_start,'yyyy-mm-dd') <= to_date(sysdate, 'yyyy-mm-dd') and to_date(eve_end,'yyyy-mm-dd') >= to_date(sysdate, 'yyyy-mm-dd')]]>
 	</select>
+	<select id="adminEventList" parameterType="hashmap" resultType="event">
+		select * from
+			(select e.*, rownum rnum from
+				(select * from event order by eve_num desc)e)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
+	</select>
 	<select id="getCount" resultType="int">
 		select nvl(count(*), 0) from event
 	</select>
