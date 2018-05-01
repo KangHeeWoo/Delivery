@@ -25,11 +25,6 @@ public class MyPositionController {
 	@Autowired private StoresService service;
 	@Autowired private TopAdsService tservice;
 	
-	/*@RequestMapping(value = "/myposition", method = RequestMethod.GET)
-	public String myposition() {
-		return ".map.myposition";
-	}*/
-	
 	@RequestMapping(value="/searchAddr",produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String searchAddr(HttpSession session) {
@@ -44,6 +39,7 @@ public class MyPositionController {
 		}			
 		return ob.toString();
 	}
+	
 	@RequestMapping("/myposition")
 	public String myPositionList(@RequestParam(value="pageNum",defaultValue="1")int pageNum, int cat_num,String able_loc,String myDetail,Model model,HttpSession session) {
 		session.setAttribute("able_loc", able_loc);
@@ -61,15 +57,18 @@ public class MyPositionController {
 		map.put("endRow", pu.getEndRow());
 		
 		List<StoresVo> adsList = tservice.topAdsList(map);
+		System.out.println("adsList : " + adsList);
 		model.addAttribute("adsList",adsList);
 		
 		List<StoreslistVo> list=service.myPositionList(map);
+		System.out.println("list : " + list);
 		model.addAttribute("list",list);
 		model.addAttribute("pu",pu);
 		model.addAttribute("cat_num",cat_num);
 		model.addAttribute("able_loc",able_loc);
 		return ".map.mylist";
 	}
+	
 	@RequestMapping(value="/myAddr",produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String myAddr(String searchAddr,HttpSession session) {
@@ -87,8 +86,4 @@ public class MyPositionController {
 		}		
 		return ob.toString();
 	}
-	/*@RequestMapping(value="/addrsearch",method=RequestMethod.GET)
-	public String join() {
-		return ".map.addrsearch";
-	}*/
 }

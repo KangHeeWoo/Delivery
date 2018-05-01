@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.SellerService;
+import com.jhta.delivery.vo.MembersVo;
 
 @Controller
 public class HomeController {
@@ -91,15 +92,14 @@ public class HomeController {
 		int n=0;
 		int m=0;
 		if(joinradio.equals("mem_email") ) {
-			System.out.println("mem_email : " + email);
-			System.out.println("mem_pwd : " + pwd);
-			
 			map.put("mem_email", email);
 			map.put("mem_pwd",pwd);
 			n=memService.logincheck(map);
 			System.out.println("n : " + n);
 			if(n>0) {
+				MembersVo vo = memService.getinfo(email);
 				session.setAttribute("email", email);
+				session.setAttribute("nick", vo.getMem_nick());
 				
 				if(email.equals("admin@admin")) return ".admin";
 				

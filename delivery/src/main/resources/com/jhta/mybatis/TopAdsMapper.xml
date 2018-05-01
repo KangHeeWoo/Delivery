@@ -6,10 +6,10 @@
 	<select id="topAdsList" parameterType="hashmap" resultType="stores">
 		select * from
 		(select ss.*, rownum rnum from
-		(select s.*, top_ads_price,i.sto_img from stores s, (select sto_num, top_ads_price 
+		(select s.*, top_ads_price,i.sto_img, se.sel_email from stores s, seller se, (select sto_num, top_ads_price 
 		from top_ads_entry where to_char(top_ads_start,'yyyy-mm')=to_char(sysdate,'yyyy-mm')) a, category c, sto_image i
 		where s.sto_num = a.sto_num and s.sto_num in (select sto_num from able_location where able_loc=#{able_loc})
-		and s.cat_num=c.cat_num and s.sto_num=i.sto_num and c.cat_num=#{cat_num}
+		and s.cat_num=c.cat_num and s.sto_num=i.sto_num and c.cat_num=#{cat_num} and s.sel_num = se.sel_num
 		order by top_ads_price desc)ss)
 		<![CDATA[where rnum>=1 and rnum<=5]]>
 	</select>

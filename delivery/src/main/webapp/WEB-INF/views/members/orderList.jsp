@@ -128,7 +128,7 @@
 		websocket.onopen = function(e){
 			if('${requestPay}' == 'requestPay'){
 				websocket.send("requestPay:" + '${seller_email}');
-			}()
+			}
 		}
 		websocket.onmessage = function(e){
 			

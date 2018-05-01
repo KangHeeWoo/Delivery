@@ -17,7 +17,46 @@ public class StoreslistVo {
 	private int sel_num;
 	private int cat_num;
 	private String sto_img;
+	private String sel_email;
 	
+	public StoreslistVo(int sto_num, String sto_name, String sto_regnum, String sto_addr, String sto_phone,
+			Date sto_regd, Date sto_open, Date sto_close, String sto_holiday, String sto_intro, String sto_state,
+			int sel_num, int cat_num, String sto_img, String sel_email) {
+		super();
+		this.sto_num = sto_num;
+		this.sto_name = sto_name;
+		this.sto_regnum = sto_regnum;
+		this.sto_addr = sto_addr;
+		this.sto_phone = sto_phone;
+		this.sto_regd = sto_regd;
+		this.sto_open = sto_open;
+		this.sto_close = sto_close;
+		this.sto_holiday = sto_holiday;
+		this.sto_intro = sto_intro;
+		this.sto_state = sto_state;
+		this.sel_num = sel_num;
+		this.cat_num = cat_num;
+		this.sto_img = sto_img;
+		this.sel_email = sel_email;
+	}
+
+	@Override
+	public String toString() {
+		return "StoreslistVo [sto_num=" + sto_num + ", sto_name=" + sto_name + ", sto_regnum=" + sto_regnum
+				+ ", sto_addr=" + sto_addr + ", sto_phone=" + sto_phone + ", sto_regd=" + sto_regd + ", sto_open="
+				+ sto_open + ", sto_close=" + sto_close + ", sto_holiday=" + sto_holiday + ", sto_intro=" + sto_intro
+				+ ", sto_state=" + sto_state + ", sel_num=" + sel_num + ", cat_num=" + cat_num + ", sto_img=" + sto_img
+				+ ", sel_email=" + sel_email + "]";
+	}
+
+	public String getSel_email() {
+		return sel_email;
+	}
+
+	public void setSel_email(String sel_email) {
+		this.sel_email = sel_email;
+	}
+
 	public StoreslistVo () {}
 
 	public StoreslistVo(int sto_num, String sto_name, String sto_regnum, String sto_addr, String sto_phone,
