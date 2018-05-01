@@ -36,7 +36,8 @@
 		</c:choose>
 	</c:forEach>
 </div>
-<table id="table_id" class="display"  style="width:1000px; margin: auto; ">
+<div  style="width:1000px; margin: auto; ">
+<table id="table_id" class="display" >
     <thead>
         <tr>
             <th>매장명</th>
@@ -61,6 +62,7 @@
 		</c:forEach>
     </tbody>
 </table>
+</div>
 <script>
 	function bookpage(num){
 		location.href="<c:url value='/menu/menu?sto_num="+num+"'/>";
@@ -71,6 +73,7 @@
 	}
 	$(document).ready( function () {
 	    $('#table_id').DataTable({
+	    	
 	    	 "language": {
 	             "lengthMenu": "Page _MENU_",
 	             "zeroRecords": "즐겨찾기에 저장된 매장이 존재하지 않습니다.",

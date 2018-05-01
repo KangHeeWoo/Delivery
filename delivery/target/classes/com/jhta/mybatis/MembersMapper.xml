@@ -71,4 +71,10 @@
 	<select id="searchMemNum" parameterType="int" resultType="members">
 		select * from members where mem_num = #{val}
 	</select>
+	<select id="memElist" parameterType="hashmap" resultType="eventlist">
+		select * from (select a.*, rownum rnum from(select e.eve_num,e.eve_title,e.EVE_START,e.EVE_END,v.eve_win from event e,event_entry v where v.mem_num=#{mem_num} and e.eve_num=v.eve_num )a) <![CDATA[where rnum>=#{startRow} and rnum<=#{endRow}]]>
+	</select>
+	<select id="memEcount" parameterType="int" resultType="int">
+		select count(*) cnt from event e,event_entry v where v.mem_num=#{mem_num} and e.eve_num=v.eve_num 
+	</select>
 </mapper>    

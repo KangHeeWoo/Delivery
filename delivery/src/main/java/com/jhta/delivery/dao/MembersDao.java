@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.delivery.vo.EventListVo;
 import com.jhta.delivery.vo.MembersVo;
 
 @Repository
@@ -49,5 +50,11 @@ public class MembersDao {
 	
 	public MembersVo searchMemNum(int num) {
 		return session.selectOne(NAMESPACE + ".searchMemNum", num);
+	}
+	public List<EventListVo> memElist(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE+".memElist", map);
+	}
+	public int memEcount(int mem_num) {
+		return session.selectOne(NAMESPACE+".memEcount", mem_num);
 	}
 }

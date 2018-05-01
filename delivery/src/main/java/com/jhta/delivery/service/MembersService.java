@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.delivery.dao.MembersDao;
+import com.jhta.delivery.vo.EventListVo;
 import com.jhta.delivery.vo.MembersVo;
 
 
@@ -57,5 +58,11 @@ public class MembersService {
 	}
 	public MembersVo searchMemNum(int num) {
 		return dao.searchMemNum(num);
+	}
+	public List<EventListVo> memElist(HashMap<String, Object> map){
+		return dao.memElist(map);
+	}
+	public int memEcount(int mem_num) {
+		return dao.memEcount(mem_num);
 	}
 }

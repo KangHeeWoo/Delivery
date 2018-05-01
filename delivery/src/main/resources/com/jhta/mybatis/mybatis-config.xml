@@ -31,6 +31,7 @@
 		<typeAlias type="com.jhta.delivery.vo.OrdersUsePointVo" alias="ordusepoint"/>
 		<typeAlias type="com.jhta.delivery.vo.ReviewImageVo" alias="reviewImage"/>
 		<typeAlias type="com.jhta.delivery.vo.TopAdsVo" alias="topAds"/>
+		<typeAlias type="com.jhta.delivery.vo.EventListVo" alias="eventlist"/>
 	</typeAliases>
 	
 

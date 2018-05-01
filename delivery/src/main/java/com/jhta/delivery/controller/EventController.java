@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jhta.delivery.service.EventService;
 import com.jhta.delivery.util.PageUtil;
+import com.jhta.delivery.vo.CouponVo;
+import com.jhta.delivery.vo.EventEntryVo;
 import com.jhta.delivery.vo.EventVo;
 
 @Controller
@@ -51,9 +53,14 @@ public class EventController {
 
 	@RequestMapping("/event/eventdetail")
 	public String eventDetail(int eve_num,Model model ) {
-		model.addAttribute("eve_num", eve_num);
+		//model.addAttribute("eve_num", eve_num);
+		EventVo vo = service.detailEvent(eve_num);
 		
+		vo.setEve_cont(vo.getEve_cont().replaceAll("\n", "<br>"));
+		
+		model.addAttribute("event", vo);
 		return ".event.eventdetail";
 	}
-
+	
+	
 }

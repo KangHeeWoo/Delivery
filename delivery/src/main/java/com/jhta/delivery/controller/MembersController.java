@@ -29,6 +29,7 @@ import com.jhta.delivery.service.SellerService;
 import com.jhta.delivery.service.UsePointService;
 import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.CouponIssueVo;
+import com.jhta.delivery.vo.EventListVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.OrderListVo;
 import com.jhta.delivery.vo.OrdersUsePointVo;
@@ -234,5 +235,26 @@ public class MembersController {
 		model.addAttribute("pu", pu);
 		model.addAttribute("mycoupon", mycoupon);
 		return ".members.mycoupon";
+	}
+	@RequestMapping("/members/eventlist")
+	public String memElist(HttpSession session,Model model,@RequestParam(value="pageNum",defaultValue="1")int pageNum) {
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo vo=service.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		
+		int getCount=service.memEcount(mem_num);
+		
+		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
+		
+		map.put("mem_num", mem_num);
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow", pu.getEndRow());
+		
+		List<EventListVo> list=service.memElist(map);
+		
+		model.addAttribute("pu", pu);
+		model.addAttribute("list", list);
+		return ".members.memElist";
 	}
 }

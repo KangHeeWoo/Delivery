@@ -373,7 +373,7 @@
 2. 서비스 이용 중 발생한 회원과 회사간의 소송은 민사소송법에 의한 관할법원에 제소합니다. 
 
 					</textarea>
-					<input type="checkbox" checked="checked" required="required"> 회원가입 동의
+					<input type="checkbox" required="required"> 회원가입 동의
 				</div>
 			</div>
 			<div class="form-group">
