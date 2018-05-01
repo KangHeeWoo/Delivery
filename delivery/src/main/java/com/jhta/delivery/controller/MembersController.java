@@ -287,4 +287,9 @@ public class MembersController {
 
 		return ob.toString();
 	}
+	@RequestMapping(value="/members/information")
+	public String information(HttpSession session) {
+		
+		return ".members.myInformation";
+	}
 }
