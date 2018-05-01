@@ -271,6 +271,7 @@
 		
 		//ul.closest(".frame").scrollTop(ul.css("height"));
 		//스크롤 하단이동 확인
+		
 	}
 	
 	function formatAMPM(date) {
