@@ -57,11 +57,9 @@ public class MyPositionController {
 		map.put("endRow", pu.getEndRow());
 		
 		List<StoresVo> adsList = tservice.topAdsList(map);
-		System.out.println("adsList : " + adsList);
 		model.addAttribute("adsList",adsList);
 		
 		List<StoreslistVo> list=service.myPositionList(map);
-		System.out.println("list : " + list);
 		model.addAttribute("list",list);
 		model.addAttribute("pu",pu);
 		model.addAttribute("cat_num",cat_num);
