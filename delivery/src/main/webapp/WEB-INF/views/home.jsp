@@ -26,9 +26,8 @@
 	          <div class="intro-heading text-uppercase">배달의 백성民</div>	
           </div>
       	
-	      <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
-		    <div class="slides">
-		    </div>
+	      <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel" style="width:800px;">
+		    <div class="slides"></div>
 			<h3 class="title"></h3>
 		    <a class="prev">‹</a>
 		    <a class="next">›</a>
@@ -39,7 +38,7 @@
 			
 		<div id="links">
 		    <c:forEach var="vo" items="${list }">
-				<a href="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>" class="carousel">
+				<a href="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>">
 					<img class="main_ads" src="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>" alt="main">
 				</a>			
 			</c:forEach>
@@ -324,7 +323,38 @@
 		    document.getElementById('links').getElementsByTagName('a'),
 		    {
 		        container: '#blueimp-gallery-carousel',
-		        carousel: true
+		        carousel: true,
+		        onopened : function(){
+		        	var slide = $(".slide");
+		        	for(var i=0;i<slide.length;i++){
+		        		var leftVal = i * -800 + 'px';
+		        		var translate = '';
+		        		var duration = '400ms';
+		        		if(i == 0) {translate = 'translate(0px, 0px)';}
+		        		if(i == 1) {translate = 'translate(800px, 0px)';}
+		        		if(i == 2) {translate = 'translate(-800px, 0px)';}
+		        		
+		        		$(slide[i]).css({
+		        			left : leftVal,
+		        			transform : translate
+		        		});
+		        	}
+		        	
+		        }
+		        /*onopened : function(){
+		        	var slide = $(".slide");
+		        	for(var i=0;i<slide.length;i++){
+		        		var leftVal = i * -400;
+		        		$(slide[i]).css({left : leftVal});
+		        	}
+		        }  
+		         event : function(){
+		        	var slide = $(".slide");
+		        	for(var i=0;i<slide.length;i++){
+		        		var leftVal = i * -400;
+		        		$(slide[i]).css({left : leftVal});
+		        	}
+		        }  */ 
 		    }
 		);
 	</script>

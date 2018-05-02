@@ -54,7 +54,7 @@
 	white-space: nowrap;
 	color:black;
 }
-#main_ads{
+.main_ads{
 	width:1000px;
 	height: 700px;
 }
