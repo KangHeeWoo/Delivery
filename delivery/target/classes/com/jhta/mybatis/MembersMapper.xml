@@ -80,4 +80,7 @@
 	<select id="eventMem" parameterType="hashmap" resultType="int">
 		select count(*) cnt from event_entry where mem_num=#{mem_num} and eve_num=#{eve_num}
 	</select>
+	<select id="Password" parameterType="hashmap" resultType="int">
+		select count(*)cnt from members where mem_pwd=#{mem_pwd} and mem_num=#{mem_num}
+	</select>
 </mapper>    

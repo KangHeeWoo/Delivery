@@ -60,4 +60,7 @@ public class MembersDao {
 	public int eventMem(HashMap<String, Object> map) {
 		return session.selectOne(NAMESPACE+".eventMem", map);
 	}
+	public int Password(HashMap<String, Object> map) {
+		return session.selectOne(NAMESPACE+".Password", map);
+	}
 }

@@ -25,7 +25,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputNumber">이메일</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputEmail" type="text" name="mem_email" readonly="readonly">
+					<input class="form-control" id="inputEmail" type="text" name="mem_email" readonly="readonly" value="${memDetail.mem_email }">
 				</div>
 			</div>
 
@@ -33,7 +33,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputName">이름</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputName" type="text" name="mem_name">
+					<input class="form-control" id="inputName" type="text" name="mem_name" value="${memDetail.mem_name }">
 				</div>
 			</div>
 			
@@ -42,8 +42,8 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputPasswordCheck">현재 비밀번호</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputPasswordCheck" type="password" placeholder="Password Check" name="mem_pwd" onkeyup="pwd()" >
-					<p class="help-block" id="pwd2">현재 사용중인 비밀번호를 입력해주세요.</p>
+					<input class="form-control" id="PasswordCheck" type="password" placeholder="Password Check" name="mem_pwd" onkeyup="pwd()" >
+					<p class="help-block" id="pwd">현재 사용중인 비밀번호를 입력해주세요.</p>
 				</div>
 			</div>
 			
@@ -68,8 +68,8 @@
 				<label class="col-sm-3 control-label" for="inputNumber">닉네임</label>
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="text" class="form-control" id="inputNick"
-							placeholder="Nickname" name="mem_nick"> <span	class="input-group-btn">
+						<input type="text" class="form-control" id="inputNick" placeholder="Nickname" name="mem_nick" value="${memDetail.mem_nick }"> 
+						<span	class="input-group-btn">
 							<button class="btn btn-success" onclick="nickCheck()">
 								중복확인<i class="fa fa-mail-forward spaceLeft"></i>
 							</button>
@@ -80,7 +80,7 @@
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputBirth">생년월일</label>
+				<label class="col-sm-3 control-label" for="inputBirth" value="${memDetail.mem_birth }">생년월일</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputBirth" type="date"name="mem_birth">
 				</div>
@@ -89,7 +89,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputPhone">전화번호</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputPhone" type="text" name="mem_phone" placeholder="-를 빼고 입력해주시기 바랍니다." onkeyup="phonecheck()">
+					<input class="form-control" id="inputPhone" type="text" name="mem_phone" placeholder="-를 빼고 입력해주시기 바랍니다." onkeyup="phonecheck()" value="${memDetail.mem_phone }">
 					<p class="help-block" id="phonecheckP"></p>
 				</div>
 			</div>
@@ -99,7 +99,7 @@
 				<label class="col-sm-3 control-label" for="inputAddr">주소</label>
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="text" class="form-control" id="sample5_address" placeholder="Address" width="100" readonly="readonly" name="mem_addr">
+						<input type="text" class="form-control" id="sample5_address" placeholder="Address" width="100" readonly="readonly" name="mem_addr" value="${memDetail.mem_addr }">
 						<span class="input-group-btn">
 							<input type="button" class="btn btn-success" onclick="sample5_execDaumPostcode()" value="주소검색">
 						</span>
@@ -109,7 +109,7 @@
 			<div class="form-group" align="center">
 				<label class="col-sm-3 control-label" for="inputAddr"> </label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputPhone" type="text" name="mem_addr2" placeholder="Detailed address">
+					<input class="form-control" id="inputPhone" type="text" name="mem_addr2" placeholder="Detailed address" >
 				</div>
 			</div>
 
@@ -125,9 +125,12 @@
 					<button class="btn btn-primary" type="submit">
 						수정하기<i class="fa fa-check spaceLeft"></i>
 					</button>
-					<button class="btn btn-danger" type="reset">
-						취소<i class="fa fa-times spaceLeft"></i>
+					<button class="btn btn-primary" type="reset">
+						취소<i class="fa fa-check spaceLeft"></i>
 					</button>
+					<a href="<c:url value='/members/delete'/>"><button class="btn btn-danger">
+						탈퇴하기<i class="fa fa-times spaceLeft"></i>
+					</button></a>
 				</div>
 			</div>
 		</form>
@@ -174,6 +177,7 @@
 			if (!nickCheck) return false;
 			if (!pwdCheck) return false;
 			if (!phoneCheck) return false;
+			if (!password) return false;
 			//추가로 달아요
 
 			return true;
@@ -192,7 +196,29 @@
 				phonecheckP.html("전화번호는 숫자로만 입력해주세요.").css({color: "#AA1212"});
 			}
 		}
-		
+		//현재사용중인번호 일치체크
+		function pwd(){
+			var Password=$("#PasswordCheck").val();
+			var pwd=$("#pwd");
+			password = false;
+			$.ajax({
+				url : "<c:url value='/member/password'/>",
+				data: {Password :Password},
+				dataType : "json",
+				success : function(data){
+					if(data.result){
+						pwd.html("비밀번호가 일치합니다").css({color: "#003399"}); 
+						password = true;
+					}else {
+						pwd.html("비밀번호가 일치하지 않습니다.").css({color: "#AA1212"});
+					}
+				},
+				error : function(){
+					console.log("사용비번json 오류");
+				}
+				
+			});		
+		}
 		///////////비번유효성
 		function pwd1(){
 			var inputPassword=$("#inputPassword").val();

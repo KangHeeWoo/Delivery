@@ -288,8 +288,36 @@ public class MembersController {
 		return ob.toString();
 	}
 	@RequestMapping(value="/members/information")
-	public String information(HttpSession session) {
+	public String information(HttpSession session,Model model) {
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo vo=service.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		MembersVo memDetail=service.searchMemNum(mem_num);
+		model.addAttribute("memDetail", memDetail);
 		
 		return ".members.myInformation";
+	}
+	@RequestMapping(value="/member/password",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String password(HttpSession session,String Password) {
+		System.out.println("비번json오니");
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo vo=service.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("mem_pwd", Password);
+		map.put("mem_num", mem_num);
+		
+		JSONObject ob=new JSONObject();
+		int n=service.Password(map);
+		System.out.println(n);
+		//
+		if(n>0) {
+			ob.put("result", true);
+			
+		}else {
+			ob.put("result", false);
+		}
+		return ob.toString();
 	}
 }

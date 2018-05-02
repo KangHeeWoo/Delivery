@@ -68,4 +68,7 @@ public class MembersService {
 	public int eventMem(HashMap<String, Object> map) {
 		return dao.eventMem(map);
 	}
+	public int Password(HashMap<String, Object> map) {
+		return dao.Password(map);
+	}
 }
