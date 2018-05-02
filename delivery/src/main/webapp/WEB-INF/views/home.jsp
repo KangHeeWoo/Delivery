@@ -10,51 +10,12 @@
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e62d111f7ae02205a9444c872d9a9085&libraries=LIBRARY"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e62d111f7ae02205a9444c872d9a9085&libraries=services,clusterer,drawing"></script>
+ 
+
+ 
+ 
   <div id="page-top">
-  
-<style>
-.map_wrap {
-	position: relative;
-	width: 100%;
-	height: 700px;
-}
-
-.title {
-	font-weight: bold;
-	display: block;
-}
-
-.hAddr {
-	position: absolute;
-	left: 10px;
-	top: 10px;
-	border-radius: 2px;
-	background: #fff;
-	background: rgba(255, 255, 255, 0.8);
-	z-index: 1;
-	padding: 5px;
-	color:black;
-}
-
-#centerAddr {
-	display: block;
-	margin-top: 2px;
-	font-weight: normal;
-	color:black;
-}
-
-.bAddr {
-	padding: 5px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	color:black;
-}
-#main_ads{
-	width:1000px;
-	height: 700px;
-}
-</style>
+ 
 
     <!-- Header -->
     <header class="masthead">
@@ -62,11 +23,34 @@
         <div class="intro-text" >
           <div>
           	  <div class="intro-lead-in">느림의 미학 킥보드...</div>
-	          <div class="intro-heading text-uppercase">배달의 백성民</div>
-          	  <c:forEach var="vo" items="${list }">
-              	<img id="main_ads" src="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>">
-              </c:forEach>
+	          <div class="intro-heading text-uppercase">배달의 백성民</div>	
           </div>
+      	
+	      <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
+		    <div class="slides">
+		    </div>
+			<h3 class="title"></h3>
+		    <a class="prev">‹</a>
+		    <a class="next">›</a>
+		    <a class="play-pause"></a>
+		    <ol class="indicator"></ol>
+		  </div>
+		 
+			
+		<div id="links">
+		    <c:forEach var="vo" items="${list }">
+				<a href="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>" class="carousel">
+					<img class="main_ads" src="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>" alt="main">
+				</a>			
+			</c:forEach>
+		</div>
+	
+      	
+		    
+		   
+		    
+		
+          		
           <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">주문하기</a>
         </div>
         <div class="form-group">
@@ -335,6 +319,16 @@
       </div>
     </section>
    </div> 
+	<script>
+		blueimp.Gallery(
+		    document.getElementById('links').getElementsByTagName('a'),
+		    {
+		        container: '#blueimp-gallery-carousel',
+		        carousel: true
+		    }
+		);
+	</script>
+	
    <script type="text/javascript">
 	var latitude =  37.59922888910534;
 	var longitude = 127.09409930015491 ;

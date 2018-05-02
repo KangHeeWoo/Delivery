@@ -13,7 +13,52 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css?ver=1'/>">
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap-theme.min.css'/>">
 <link href="<c:url value='/resources/css/agency.min.css'/>" rel="stylesheet">
+ <link rel="stylesheet" href="<c:url value='/resources/css/blueimp-gallery.min.css'/>">
+  <script src="<c:url value='/resources/js/blueimp-gallery.min.js'/>"></script>
+ 
+<style>
+.map_wrap {
+	position: relative;
+	width: 100%;
+	height: 700px;
+}
 
+.title {
+	font-weight: bold;
+	display: block;
+}
+
+.hAddr {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	border-radius: 2px;
+	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
+	z-index: 1;
+	padding: 5px;
+	color:black;
+}
+
+#centerAddr {
+	display: block;
+	margin-top: 2px;
+	font-weight: normal;
+	color:black;
+}
+
+.bAddr {
+	padding: 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	color:black;
+}
+#main_ads{
+	width:1000px;
+	height: 700px;
+}
+</style>
 </head>
 <body>
 <div id="warp">
@@ -28,6 +73,10 @@
 	</div>
 </div>
 </body>
+
+
+ 
+ 
  <!-- Bootstrap core JavaScript -->
 
     <script src="<c:url value='/resources/js/bootstrap.bundle.min.js'/>"></script>
