@@ -20,7 +20,7 @@
 			</h1>
 		</div>
 		<form class="form-horizontal" action="<c:url value='/members/memUpdate'/>"
-			method="post" onsubmit="return joinOk()">
+			method="post" onsubmit="return updateOk()">
 
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputNumber">이메일</label>
@@ -42,7 +42,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputPasswordCheck">현재 비밀번호</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="PasswordCheck" type="password" placeholder="Password Check" name="mem_pwd" onkeyup="pwd()" >
+					<input class="form-control" id="PasswordCheck" type="password" placeholder="Password Check"  onkeyup="pwd()" >
 					<p class="help-block" id="pwd">현재 사용중인 비밀번호를 입력해주세요.</p>
 				</div>
 			</div>
@@ -70,7 +70,7 @@
 					<div class="input-group">
 						<input type="text" class="form-control" id="inputNick" placeholder="Nickname" name="mem_nick" value="${memDetail.mem_nick }"> 
 						<span	class="input-group-btn">
-							<button class="btn btn-success" onclick="nickCheck()">
+							<button class="btn btn-success" id="btn_success">
 								중복확인<i class="fa fa-mail-forward spaceLeft"></i>
 							</button>
 						</span>
@@ -80,9 +80,9 @@
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputBirth" value="${memDetail.mem_birth }">생년월일</label>
+				<label class="col-sm-3 control-label" for="inputBirth">생년월일</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputBirth" type="date"name="mem_birth">
+					<input class="form-control" id="inputBirth" type="date"name="mem_birth" value="<fmt:formatDate value="${memDetail.mem_birth }" pattern="yyyy-MM-dd"/>" readonly="readonly">
 				</div>
 			</div>
 
@@ -128,9 +128,9 @@
 					<button class="btn btn-primary" type="reset">
 						취소<i class="fa fa-check spaceLeft"></i>
 					</button>
-					<a href="<c:url value='/members/delete'/>"><button class="btn btn-danger">
-						탈퇴하기<i class="fa fa-times spaceLeft"></i>
-					</button></a>
+					<button class="btn btn-danger" onclick="deleteM()">
+						탈퇴하기</i>
+					</button>
 				</div>
 			</div>
 		</form>
@@ -149,6 +149,15 @@
 	<script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=00c0bb384860705065e4de2f7b7b454&libraries=services"></script>
 	<script>
+		function deleteM(){
+			location.href="<c:url value='/members/delete'/>";
+		}
+		$(function(){
+			$("#btn_success").click(function(){
+				nickCheck1();
+			});
+		});
+	
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 		mapOption = {
 			center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
@@ -171,12 +180,10 @@
 		var pwdCheck = false;
 		var phoneCheck = false;
 		
-		///////////////////////joinOk///////////////////////////////////////
-		function joinOk() {
-			if (!emailCheck) return false;
+		///////////////////////Ok///////////////////////////////////////
+		function updateOk() {
 			if (!nickCheck) return false;
 			if (!pwdCheck) return false;
-			if (!phoneCheck) return false;
 			if (!password) return false;
 			//추가로 달아요
 
@@ -187,7 +194,7 @@
 			var inputPhone=$("#inputPhone").val();
 			var phonecheckP=$("#phonecheckP");
 			var reg=/^[0-9]{10,11}/;
-			phoneCheck = false;
+			
 			
 			if(inputPhone.match(reg)){
 				phonecheckP.html("");
@@ -241,7 +248,8 @@
 			else  pwd1.html("숫자, 특수문자 포함 8자 이상으로 입력하세요").css({color: "#AA1212"});			
 		}
 		////////////////////////닉네임 체크
-		function nickCheck(){
+		function nickCheck1(){
+			console.log("재히바보");
 			nickCheck = false;
 			
 			var inputNick=$("#inputNick").val(); //입력한 닉네임
@@ -252,9 +260,11 @@
 				dataType : "json",
 				success : function(data){
 					if(data.result){
+						nickcheckP.html("");
 						nickcheckP.html("사용 가능한 닉네임입니다.").css({color: "#003399"}); 
 						nickCheck = true;
 					}else {
+						nickcheckP.html("");
 						nickcheckP.html("사용 불가능한 닉네임입니다.").css({color: "#AA1212"});
 					}
 				},

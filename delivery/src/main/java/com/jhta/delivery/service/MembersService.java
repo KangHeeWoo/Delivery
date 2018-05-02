@@ -71,4 +71,10 @@ public class MembersService {
 	public int Password(HashMap<String, Object> map) {
 		return dao.Password(map);
 	}
+	public int memUpdate(MembersVo vo) {
+		return dao.memUpdate(vo);
+	}
+	public int memGra(HashMap<String, Object> map) {
+		return dao.memGra(map);
+	}
 }

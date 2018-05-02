@@ -287,6 +287,49 @@ public class MembersController {
 
 		return ob.toString();
 	}
+	@RequestMapping(value="/members/memUpdate")
+	public String memUpdate(HttpSession session,Model model,String mem_name,String mem_pwd,String mem_nick,String mem_phone,String mem_addr,String mem_addr2 ) {
+		System.out.println("¾÷µ«¿À´Ï?"+","+mem_name+","+mem_pwd+","+mem_nick+mem_phone+","+mem_addr+mem_addr2);
+		String mem_addr3=mem_addr+mem_addr2;
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo vo=service.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		MembersVo Mvo=new MembersVo(mem_num, null, mem_name, mem_pwd, null, mem_addr3, mem_phone, null, mem_nick, null, 0, 0);
+	
+		int n=service.memUpdate(Mvo);
+		System.out.println("n"+n);
+		
+		return ".main";
+	}
+	//È¸¿øÅ»ÅðÇÏ±â
+	@RequestMapping(value="/members/delete")
+	public String memDelete(HttpSession session,Model model) {
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo vo=service.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		model.addAttribute("mem_num", mem_num);
+		
+		return ".members.memDelete";
+	}
+	//Å»Åð µî±Þ¼öÁ¤
+	@RequestMapping(value="/members/Mdelete")
+	public String mDelete(HttpSession session,Model model,String mem_pwd) {
+		String mem_email=(String)session.getAttribute("email");
+		MembersVo vo=service.mem_num(mem_email);
+		int mem_num=vo.getMem_num();
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("mem_num", mem_num);
+		map.put("mem_pwd", mem_pwd);
+		int n=service.memGra(map);
+		String DD="pwdNo";
+		if(n>=0) {
+			session.invalidate();
+			return ".main";
+		}else {
+			return "redirect:/members/delete?DD="+DD;
+		}
+
+	}
 	@RequestMapping(value="/members/information")
 	public String information(HttpSession session,Model model) {
 		String mem_email=(String)session.getAttribute("email");

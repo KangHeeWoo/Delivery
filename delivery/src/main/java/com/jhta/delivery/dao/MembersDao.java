@@ -63,4 +63,10 @@ public class MembersDao {
 	public int Password(HashMap<String, Object> map) {
 		return session.selectOne(NAMESPACE+".Password", map);
 	}
+	public int memUpdate(MembersVo vo) {
+		return session.update(NAMESPACE+".memUPdate", vo);
+	}
+	public int memGra(HashMap<String, Object> map) {
+		return session.update(NAMESPACE+".MemGra", map);
+	}
 }

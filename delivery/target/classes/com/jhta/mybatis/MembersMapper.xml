@@ -10,7 +10,7 @@
 		select * from members where mem_email=#{mem_email}
 	</select>
 	<select id="logincheck" parameterType="hashmap" resultType="members">
-		select * from members where mem_email=#{mem_email} and mem_pwd=#{mem_pwd}
+		select * from members where mem_email=#{mem_email} and mem_pwd=#{mem_pwd} and gra_num!=4
 	</select>
 	<select id="nickcheck" parameterType="String" resultType="members">
 		select * from members where mem_nick=#{mem_nick}
@@ -83,4 +83,10 @@
 	<select id="Password" parameterType="hashmap" resultType="int">
 		select count(*)cnt from members where mem_pwd=#{mem_pwd} and mem_num=#{mem_num}
 	</select>
+	<update id="memUPdate" parameterType="members">
+		update members set mem_name=#{mem_name},mem_pwd=#{mem_pwd},mem_addr=#{mem_addr},mem_phone=#{mem_phone},mem_nick=#{mem_nick} where mem_num=#{mem_num}
+	</update>
+	<update id="MemGra" parameterType="hashmap">
+		update members set gra_num=4 where mem_num=#{mem_num} and mem_pwd=#{mem_pwd}
+	</update>
 </mapper>    
