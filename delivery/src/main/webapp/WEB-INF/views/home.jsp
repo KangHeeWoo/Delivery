@@ -27,29 +27,22 @@
           </div>
       	
 	      <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel" style="width:800px;">
-		    <div class="slides"></div>
+		    <div class="slides">
+				<div id="links">
+				    <c:forEach var="vo" items="${list }">
+						<a href="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>">
+							<img class="main_ads" src="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>" alt="main">
+						</a>			
+					</c:forEach>
+				</div>
+		    </div>
 			<h3 class="title"></h3>
 		    <a class="prev">‹</a>
 		    <a class="next">›</a>
 		    <a class="play-pause"></a>
 		    <ol class="indicator"></ol>
 		  </div>
-		 
 			
-		<div id="links">
-		    <c:forEach var="vo" items="${list }">
-				<a href="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>">
-					<img class="main_ads" src="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>" alt="main">
-				</a>			
-			</c:forEach>
-		</div>
-	
-      	
-		    
-		   
-		    
-		
-          		
           <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">주문하기</a>
         </div>
         <div class="form-group">
@@ -319,17 +312,17 @@
     </section>
    </div> 
 	<script>
-		blueimp.Gallery(
+	/*	blueimp.Gallery(
 		    document.getElementById('links').getElementsByTagName('a'),
 		    {
 		        container: '#blueimp-gallery-carousel',
-		        carousel: true,
+		        carousel: true
+		        
 		        onopened : function(){
 		        	var slide = $(".slide");
 		        	for(var i=0;i<slide.length;i++){
 		        		var leftVal = i * -800 + 'px';
 		        		var translate = '';
-		        		var duration = '400ms';
 		        		if(i == 0) {translate = 'translate(0px, 0px)';}
 		        		if(i == 1) {translate = 'translate(800px, 0px)';}
 		        		if(i == 2) {translate = 'translate(-800px, 0px)';}
@@ -340,7 +333,7 @@
 		        		});
 		        	}
 		        	
-		        }
+		        } */
 		        /*onopened : function(){
 		        	var slide = $(".slide");
 		        	for(var i=0;i<slide.length;i++){
@@ -616,5 +609,17 @@
 				autoClose : true
 			});
 		}
+	</script>
+	<script type="text/javascript">
+		$(function(){
+			blueimp.Gallery(
+				    document.getElementById('links').getElementsByTagName('a'),
+				    {
+				        container: '#blueimp-gallery-carousel',
+				        carousel: true,
+				        startSlideshow: true,
+				        slideshowInterval: 3000
+				    });
+		})
 	</script>
    
