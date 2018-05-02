@@ -1,6 +1,7 @@
 package com.jhta.delivery.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -15,17 +16,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jhta.delivery.service.MainAdsService;
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.SellerService;
+import com.jhta.delivery.vo.MainAdsVo;
 import com.jhta.delivery.vo.MembersVo;
 
 @Controller
 public class HomeController {
 	@Autowired private MembersService memService;
 	@Autowired private SellerService selService;
+	@Autowired private MainAdsService adsService;
 	
 	@RequestMapping("/")
-	public String home() {
+	public String home(Model model) {
+		List<MainAdsVo> list = adsService.mainAdsSelected();
+		model.addAttribute("list",list);
 		return ".main";
 	}
 	@RequestMapping(value="/join",method=RequestMethod.GET)

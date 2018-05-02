@@ -3,5 +3,21 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.MainAdsMapper">
-
+	<select id="mainAdsSelected" resultType="mainAds">
+		select sto_num,main_ads_img from
+        (select a.*, rownum rnum from
+        (select * from main_ads_entry where to_char(main_ads_start,'yyyy-mm')=to_char(sysdate,'yyyy-mm') order by main_ads_price desc)a)
+        <![CDATA[where rnum<=3]]>
+	</select>
+	<select id="mainAdsEntry" parameterType="hashmap" resultType="mainAds">
+		select * from
+       (select a.*, rownum rnum from
+       (select * from main_ads_entry where to_char(main_ads_start,'yyyy-mm')=to_char(#{main_ads_start},'yyyy-mm'))a)
+       <![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow}]]>
+	</select>
+	<select id="getCount" parameterType="date" resultType="int">
+	   select NVL(count(*),0) cnt
+       from main_ads_entry
+       where to_char(main_ads_start,'yyyy-mm') = to_char(#{value},'yyyy-mm')
+	</select>
 </mapper>

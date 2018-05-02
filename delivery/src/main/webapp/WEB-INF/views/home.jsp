@@ -50,14 +50,23 @@
 	white-space: nowrap;
 	color:black;
 }
+#main_ads{
+	width:1000px;
+	height: 700px;
+}
 </style>
 
     <!-- Header -->
     <header class="masthead">
       <div class="container" >
         <div class="intro-text" >
-          <div class="intro-lead-in">느림의 미학 킥보드...</div>
-          <div class="intro-heading text-uppercase">배달의 백성民</div>
+          <div>
+          	  <div class="intro-lead-in">느림의 미학 킥보드...</div>
+	          <div class="intro-heading text-uppercase">배달의 백성民</div>
+          	  <c:forEach var="vo" items="${list }">
+              	<img id="main_ads" src="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>">
+              </c:forEach>
+          </div>
           <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">주문하기</a>
         </div>
         <div class="form-group">
