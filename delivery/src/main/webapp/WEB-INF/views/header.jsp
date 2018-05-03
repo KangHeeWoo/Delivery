@@ -63,7 +63,7 @@
 														<input type="password" class="form-control"	id="exampleInputPassword2" placeholder="비밀번호" required name="pwd" value="<%=mem_pwd %>">
 														
 														<div class="help-block text-right">
-															<a href="#">비밀번호 찾기</a>
+															<a href="<c:url value='/members/Find_pwd'/>">비밀번호 찾기</a>
 														</div>
 														
 													</div>
