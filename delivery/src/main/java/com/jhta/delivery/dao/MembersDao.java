@@ -20,7 +20,6 @@ public class MembersDao {
 		return session.insert(NAMESPACE+".insert", vo);
 	}
 	public MembersVo emailcheck(String mem_email) {
-		
 		return session.selectOne(NAMESPACE+".emailcheck", mem_email);
 	}
 	public MembersVo nickcheck(String mem_nick) {
@@ -69,4 +68,8 @@ public class MembersDao {
 	public int memGra(HashMap<String, Object> map) {
 		return session.update(NAMESPACE+".MemGra", map);
 	}
+	public int pwdUpdate(HashMap<String, Object> map) {
+		return session.update(NAMESPACE+".pwdUpdate", map);
+	}
+	
 }

@@ -77,4 +77,7 @@ public class MembersService {
 	public int memGra(HashMap<String, Object> map) {
 		return dao.memGra(map);
 	}
+	public int pwdUpdate(HashMap<String, Object> map) {
+		return dao.pwdUpdate(map);
+	}
 }

@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -362,5 +363,46 @@ public class MembersController {
 			ob.put("result", false);
 		}
 		return ob.toString();
+	}
+	@RequestMapping(value="/members/Find_pwd")
+	public String Findpwd(HttpSession session,Model model) {
+		
+		
+		return ".members.Findpwd";
+	}
+	//비밀번호찾기 관련 controller
+	@RequestMapping(value="/member/emailCheck",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String emailCheck(String mem_email) {
+		System.out.println("이메일오니"+mem_email);
+		JSONObject ob=new JSONObject();
+
+		int m=service.emailcheck(mem_email);
+		System.out.println("m"+m);
+		if(m>0) {
+			ob.put("result", true);
+		}else {
+			ob.put("result", false);
+		}
+		return ob.toString();
+	}
+	@RequestMapping(value="/members/Pwd")
+	public String Pwd(String mem_email,Model model) {
+		String randomPwd=UUID.randomUUID()+"";
+		String Pwd=randomPwd.substring(1, 11);
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("mem_email", mem_email);
+		map.put("mem_pwd", Pwd);
+		
+		System.out.println(Pwd+"이메일"+mem_email);
+	
+			simpleMailSender.sendMail("배달의 백성民 인증", "새로운 비밀번호 \n" + Pwd, mem_email, "deliveryjhta@gmail.com");
+			
+			int n=service.pwdUpdate(map);
+			System.out.println(n+"n개 비번업뎃");
+			
+			return ".main";
+		
+		
 	}
 }

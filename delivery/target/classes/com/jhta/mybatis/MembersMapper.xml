@@ -7,16 +7,16 @@
 		insert into members values(0,#{mem_email},#{mem_name},#{mem_pwd},#{mem_birth},#{mem_addr},#{mem_phone},sysdate,#{mem_nick},3, #{mem_sex},0)
 	</insert>
 	<select id="emailcheck" parameterType="String" resultType="members">
-		select * from members where mem_email=#{mem_email}
+		select * from members where mem_email=#{mem_email} and gra_num in(5,3,1)
 	</select>
 	<select id="logincheck" parameterType="hashmap" resultType="members">
 		select * from members where mem_email=#{mem_email} and mem_pwd=#{mem_pwd} and gra_num!=4
 	</select>
 	<select id="nickcheck" parameterType="String" resultType="members">
-		select * from members where mem_nick=#{mem_nick}
+		select * from members where mem_nick=#{mem_nick} 
 	</select>
 	<select id="mem_num" parameterType="String" resultType="members">
-		select mem_num from members where mem_email=#{mem_email}
+		select mem_num from members where mem_email=#{mem_email} and gra_num!=4
 	</select>
 	<select id="count" resultType="int">
 		select NVL(count(*),0) cnt from members where mem_num!=26
@@ -66,10 +66,10 @@
 	 <![CDATA[ where mem_num!=26 and rnum>=#{startRow} and rnum<=#{endRow}  ]]>
 	</select>
 	<select id="memPoint" parameterType="int" resultType="members">
-		select mem_point from members where mem_num=#{mem_num}
+		select mem_point from members where mem_num=#{mem_num} and gra_num in(5,3,1)
 	</select>
 	<select id="searchMemNum" parameterType="int" resultType="members">
-		select * from members where mem_num = #{val}
+		select * from members where mem_num = #{val} and gra_num in(5,3,1)
 	</select>
 	<select id="memElist" parameterType="hashmap" resultType="eventlist">
 		select * from (select a.*, rownum rnum from(select e.eve_num,e.eve_title,e.EVE_START,e.EVE_END,v.eve_win from event e,event_entry v where v.mem_num=#{mem_num} and e.eve_num=v.eve_num )a) <![CDATA[where rnum>=#{startRow} and rnum<=#{endRow}]]>
@@ -81,12 +81,15 @@
 		select count(*) cnt from event_entry where mem_num=#{mem_num} and eve_num=#{eve_num}
 	</select>
 	<select id="Password" parameterType="hashmap" resultType="int">
-		select count(*)cnt from members where mem_pwd=#{mem_pwd} and mem_num=#{mem_num}
+		select count(*)cnt from members where mem_pwd=#{mem_pwd} and mem_num=#{mem_num} and gra_num in(5,3,1)
 	</select>
 	<update id="memUPdate" parameterType="members">
-		update members set mem_name=#{mem_name},mem_pwd=#{mem_pwd},mem_addr=#{mem_addr},mem_phone=#{mem_phone},mem_nick=#{mem_nick} where mem_num=#{mem_num}
+		update members set mem_name=#{mem_name},mem_pwd=#{mem_pwd},mem_addr=#{mem_addr},mem_phone=#{mem_phone},mem_nick=#{mem_nick} where mem_num=#{mem_num} and gra_num in(5,3,1)
 	</update>
 	<update id="MemGra" parameterType="hashmap">
 		update members set gra_num=4 where mem_num=#{mem_num} and mem_pwd=#{mem_pwd}
 	</update>
-</mapper>    
+	<update id="pwdUpdate" parameterType="hashmap">
+		update members set mem_pwd=#{mem_pwd} where mem_email=#{mem_email} and gra_num in(5,3,1)
+	</update>
+</mapper>
