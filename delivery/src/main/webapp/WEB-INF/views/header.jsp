@@ -118,10 +118,18 @@
     		<p>채팅으로 주문하기 <span class="orderclose">x</span></p>
     	</div>
     	<div class="ordercontent">
-    		<ul class="chatlist"></ul>
+    		<ul class="chatlist">
+    			<li class="msg_left">
+    				버튼을 눌러 주소를 등록해주세요.
+    				<span class="input-group-btn">							
+						<input type="button" class="btn btn-success"
+						onclick="getDaumPostcode()" value="주소검색">
+					</span>	
+    			</li>
+    		</ul>
     		<div class="inputMsg">
-    			<input class="inputText" type="text" placeholder="메세지를 입력해주세요.">
-    			<button class="btn btn-primary">보내기</button>
+    			<input class="inputText" type="text" placeholder="메세지를 입력해주세요." onkeydown="inputText(event)">
+    			<button class="btn btn-primary" onclick="sendText(event)">보내기</button>
     		</div>
     	</div>
     </div>
@@ -150,4 +158,108 @@
 	$("#mainlogo").click(function(){
 		location.href = "<c:url value='/' />";
 	});
+	
+	var chatOrderProcess = 1;
+	
+	function checkOrderProcess(text){
+		switch(chatOrderProcess){
+		case 1:
+			if(text == '예'){
+				
+			}else if(text == '아니오'){
+				inputChat('chatbot', '잘못된 답변입니다.');
+				var ttt = "<li class='msg_left'>"
+						+ "버튼을 눌러 주소를 등록해주세요."
+						+ "<span class='input-group-btn'>"
+						+ "<input type='button' class='btn btn-success' onclick='getDaumPostcode()' value='주소검색'>"
+						+ "</span></li>";
+			}else{
+				inputChat('chatbot', '잘못된 답변입니다.');
+			}
+			break;
+		case 2:
+			break;
+		default:
+			break;
+		}
+	}
+	
+	function inputChat(who, text){
+		var chatList = $(".chatlist");
+		var inputMsg = "";
+		
+		if(who == 'me'){
+			inputMsg += "<li class='msg_right'>" + text + "</li>";
+			checkOrderProcess(text);
+		}else{
+			inputMsg += "<li class='msg_left'>" + text + "</li>";
+		}
+		
+		chatList.append(inputMsg);
+		$(".inputText").focus();
+	}
+	
+	function inputText(e) {
+		var target = e.target;
+		if (e.which == 13) {
+			var text = $(target).val();
+			if (text !== "") {
+				inputChat('me', text);
+				$(target).val("");
+			}
+		}
+	}
+
+	function sendText(e) {
+		var target = $(e.target);
+		var input = target.prev();
+
+		var text = $(input).val();
+		if (text !== "") {
+			inputChat('me', text);
+			$(input).val("");
+		}
+	}
+	
+	function getDaumPostcode(){
+		new daum.Postcode(
+				{
+					oncomplete : function(data) {
+						// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+						sido=data.sido;
+						sigungu=data.sigungu;
+						bname=data.bname;
+						console.log(data.sido);
+						console.log(data.sigungu);
+						console.log(data.bname);
+						var fullAddr = data.address; // 최종 주소 변수
+						var extraAddr = ''; // 조합형 주소 변수
+						//console.log(data.address);
+						// 기본 주소가 도로명 타입일때 조합한다.
+						if (data.addressType === 'R') {
+							//법정동명이 있을 경우 추가한다.
+							if (data.bname !== '') {
+								extraAddr += data.bname;
+							}
+							// 건물명이 있을 경우 추가한다.
+							if (data.buildingName !== '') {
+								extraAddr += (extraAddr !== '' ? ', '
+										+ data.buildingName
+										: data.buildingName);
+							}
+							// 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+							fullAddr += (extraAddr !== '' ? ' ('
+									+ extraAddr + ')' : '');
+						}
+					
+						//document.getElementById("sample5_address").value = fullAddr;
+						fullAddr += "<p>입력하신 주소가 맞습니까? (예/아니오)</p>";
+						inputChat('chatbot', fullAddr);
+					}
+				}).open({
+			popupName : 'findAddr',
+			autoClose : true
+		});
+	}
   </script>

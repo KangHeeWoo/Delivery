@@ -28,7 +28,27 @@
 	margin : 5px;
 	height : 350px;
 	overflow-y : scroll;
+	padding : 0px;
 }
+.chatlist>li{
+	list-style: none;
+	max-width : 70%;
+	min-height: 40px;
+	background-color: white;
+	margin : 10px;
+	border-radius : 10px;
+	padding : 3px 5px 3px 5px;
+}
+
+.chatlist>li[class="msg_left"]{
+	float: left;
+}
+
+.chatlist>li[class="msg_right"]{
+	float : right;
+	text-align : right;
+}
+
 .inputMsg{
 	position : absolute;
 	bottom : 10px;
