@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.MainAdsMapper">
 	<select id="mainAdsSelected" resultType="mainAds">
-		select sto_num,main_ads_img from
+		select sto_num,main_ads_img,main_ads_num from
         (select a.*, rownum rnum from
         (select * from main_ads_entry where to_char(main_ads_start,'yyyy-mm')=to_char(sysdate,'yyyy-mm') order by main_ads_price desc)a)
         <![CDATA[where rnum<=3]]>
@@ -20,7 +20,22 @@
        from main_ads_entry
        where to_char(main_ads_start,'yyyy-mm') = to_char(#{value},'yyyy-mm')
 	</select>
-	<insert id="insertSelected" parameterType="mainAdsSelected">
-		insert into main_ads_selected values (0,#{main_ads_num})
+	<select id="getInfo" resultType="mainAds">
+		select main_ads_num from main_ads_entry where main_ads_state='성공' and to_char(main_ads_start,'yyyy-mm') = to_char(sysdate,'yyyy-mm')
+	</select>
+	<insert id="insertSelected" parameterType="int">
+		insert into main_ads_select values (0,#{main_ads_num})
 	</insert>
+	<update id="updateSuccess">
+		update main_ads_entry set main_ads_state='성공' where to_char(main_ads_start,'yyyy-mm')=to_char(sysdate,'yyyy-mm') and main_ads_num in (select main_ads_num from
+        (select a.*, rownum rnum from
+        (select * from main_ads_entry where to_char(main_ads_start,'yyyy-mm')=to_char(sysdate,'yyyy-mm') order by main_ads_price desc)a)
+        <![CDATA[ where rnum<=3)]]>
+	</update>
+	<update id="updateFail">
+		 update main_ads_entry set main_ads_state='실패' where to_char(main_ads_start,'yyyy-mm')=to_char(sysdate,'yyyy-mm') and main_ads_num not in (select main_ads_num from
+        (select a.*, rownum rnum from
+        (select * from main_ads_entry where to_char(main_ads_start,'yyyy-mm')=to_char(sysdate,'yyyy-mm') order by main_ads_price desc)a)
+         <![CDATA[ where rnum<=3)]]>
+	</update>
 </mapper>

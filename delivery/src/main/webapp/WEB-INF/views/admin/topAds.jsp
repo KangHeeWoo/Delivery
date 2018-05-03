@@ -17,6 +17,11 @@
 
 <br>
 <div id="selectBox">
+	<ul>
+		<li><a href="<c:url value='/admin/topAdsList' />">상단광고</a></li>
+		<li><a href="<c:url value='/admin/mainAdsList' />">메인광고</a></li>
+	</ul>
+	<br>
 	<h4>상단광고</h4>
 	<form action="<c:url value='/admin/topAdsList'/>" method="post">
 		<select name="year" size="1">

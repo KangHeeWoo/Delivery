@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.delivery.dao.MainAdsDao;
+import com.jhta.delivery.vo.MainAdsSelectedVo;
 import com.jhta.delivery.vo.MainAdsVo;
 
 @Service
@@ -23,5 +24,17 @@ public class MainAdsService {
 	public int getCount(Date d) {
 		return dao.getCount(d);
 	}
-
+	public int insertSelected (int main_ads_num) {
+		return dao.insertSelected(main_ads_num);
+	}
+	public int updateSuccess() {
+		return dao.updateSuccess();
+	}
+	public int updateFail() {
+		return dao.updateFail();
+	}
+	public List<MainAdsVo> getInfo() {
+		return dao.getInfo();
+	}
+	
 }
