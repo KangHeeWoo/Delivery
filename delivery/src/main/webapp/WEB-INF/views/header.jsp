@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="<c:url value='/resources/css/chat-order.css'/>">
 	<div align="center">
 		<img src="<c:url value='/resources/images/로고-pn.png'/>" id="mainlogo">
 	</div>
@@ -112,6 +113,19 @@
         </div>
       </div>
     </nav>
+    
+    <div class="chatOrder">
+    	<div class="orderheader">
+    		<p>채팅으로 주문하기 <span class="orderclose">x</span></p>
+    	</div>
+    	<div class="ordercontent">
+    		<ul class="chatlist"></ul>
+    		<div class="inputMsg">
+    			<input class="inputText" type="text" placeholder="메세지를 입력해주세요.">
+    			<button class="btn btn-primary">보내기</button>
+    		</div>
+    	</div>
+    </div>
   <script>
   function emailCheck(){
 	  var emailcheck=$("#exampleInputEmail2").val();
