@@ -3,12 +3,9 @@
 
 
 <!-- Bootstrap -->
-<link href="<c:url value='/resources/css/bootstrap.min.css'/>"
-	rel="stylesheet">
+<link href="<c:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet">
 <!-- Custom style -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/bootstrap-theme.min.css'/>"
-	media="screen" title="no title" ><!-- charset="utf-8" -->
+<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap-theme.min.css'/>" media="screen" title="no title" ><!-- charset="utf-8" -->
 
 
 </head>
