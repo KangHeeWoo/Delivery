@@ -20,4 +20,7 @@
        from main_ads_entry
        where to_char(main_ads_start,'yyyy-mm') = to_char(#{value},'yyyy-mm')
 	</select>
+	<insert id="insertSelected" parameterType="mainAdsSelected">
+		insert into main_ads_selected values (0,#{main_ads_num})
+	</insert>
 </mapper>

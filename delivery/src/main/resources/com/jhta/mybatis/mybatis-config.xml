@@ -33,6 +33,7 @@
 		<typeAlias type="com.jhta.delivery.vo.TopAdsVo" alias="topAds"/>
 		<typeAlias type="com.jhta.delivery.vo.MainAdsVo" alias="mainAds"/>
 		<typeAlias type="com.jhta.delivery.vo.EventListVo" alias="eventlist"/>
+		<typeAlias type="com.jhta.delivery.vo.MainAdsSelectedVo" alias="mainAdsSelected"/>
 	</typeAliases>
 	
 
