@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="<c:url value="/"/>resources/js/bootstrap-timepicker.min.js"></script>
 <div style="width: 800px; margin: auto;">
-<form method="post" action="<c:url value='/stUpdateOk'/>" onsubmit="add();">
+<form method="post" action="<c:url value='/stUpdateOk'/>" onsubmit="add();" enctype="multipart/form-data">
 <table class="table">
 	<tr>
-	<th>매장명</th><td><input type="text" name="sto_name" value="${vo.sto_name }"></td>
+	<th>매장명</th><td><input readonly="readonly" type="text" name="sto_name" value="${vo.sto_name }"><input type="hidden" name="sto_num" value="${vo.sto_num }"></td>
 	</tr>
 	<tr>
-	<th>사업자 등록번호</th><td><input type="text" name="sto_regnum" value="${vo.sto_regnum }"></td>
+	<th>사업자 등록번호</th><td><input readonly="readonly" type="text" name="sto_regnum" value="${vo.sto_regnum }"></td>
 	</tr>
 	<tr>
-	<th>주소</th><td><input type="text" id="sample5_address" placeholder="Address" width="100" readonly="readonly">
+	<th>주소</th><td><input type="text" id="sample5_address" placeholder="Address" width="100" readonly="readonly" value="${vo.sto_addr }">
 							<input type="button" onclick="sample5_execDaumPostcode()" value="주소검색">
 						</td>
 	</tr>
@@ -23,16 +24,21 @@
 	<th>전화번호</th><td><input type="text" name="sto_phone" value="${vo.sto_phone }"></td>
 	</tr>
 	<tr>
-	<th>오픈시간</th><td><input type="time" name="sto_open" value="${vo.sto_open }"></td>
+	<fmt:formatDate value="${vo.sto_open }" var="regd1" pattern="kk:mm"/>
+	<th>오픈시간</th><td><input type="time" name="sto_open" value="${regd1 }"></td>
 	</tr>
 	<tr>
-	<th>마감시간</th><td><input type="time" name="sto_close" id="myTime" value="22:00"></td>
+	<fmt:formatDate value="${vo.sto_close }" var="regd2" pattern="kk:mm"/>
+	<th>마감시간</th><td><input type="time" name="sto_close" id="myTime" value="${regd2 }"></td>
 	</tr>
 	<tr>
 	<th>휴무일</th><td><input type="text" name="sto_holiday" value="${vo.sto_holiday }"></td>
 	</tr>
 	<tr>
 	<th>소개 및 안내</th><td><textarea cols="60" rows="10" name="sto_intro">${vo.sto_intro }</textarea></td>
+	</tr>
+	<tr>
+		<th>이미지 등록</th><td><input type='file' name='sto_img'></td>
 	</tr>
 </table>
 카테고리
@@ -50,14 +56,13 @@
 <option value="11">패스트푸드</option>
 <option value="12">찜,탕</option>
 </select><br>
-<input type="submit" value="신청">
+<input type="submit" value="수정">
 </form>
 </div>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=00c0bb384860705065e4de2f7b7b454&libraries=services"></script>
 <script>
-document.getElementById("myTime").value = ${vo.sto_close};
 var select=document.getElementsByName("cat_num")[0];
 for(var i=0; i<select.options.length;i++){
 	if(select.options[i].value=='${vo.cat_num}'){

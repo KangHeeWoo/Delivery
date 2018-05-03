@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="<c:url value="/"/>resources/js/bootstrap-timepicker.min.js"></script>
 <div style="width: 800px; margin: auto;">
-<form method="post" action="<c:url value='/stInsert'/>" onsubmit="add();">
+<form method="post" action="<c:url value='/stInsert'/>" onsubmit="add();" enctype="multipart/form-data">
 <table class="table">
 	<tr>
 	<th>매장명</th><td><input type="text" name="sto_name"></td>
@@ -35,7 +35,7 @@
 	<th>소개 및 안내</th><td><textarea cols="60" rows="10" name="sto_intro"></textarea></td>
 	</tr>
 	<tr>
-		<th>이미지 등록</th><td></td>
+		<th>이미지 등록</th><td><input type='file' name='sto_img' required='required'></td>
 	</tr>
 </table>
 
@@ -65,7 +65,7 @@ function add(){
 	alert("신청이 완료 되었습니다");
 	var addr1=document.getElementById("sample5_address").value;
 	var addr2=document.getElementById("addr2").value;
-	$("#sto_addr").val(addr1+"/"+addr2);
+	$("#sto_addr").val(addr1+addr2);
 }
 
 function sample5_execDaumPostcode() {

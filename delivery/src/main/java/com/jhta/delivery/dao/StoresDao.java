@@ -7,8 +7,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.jhta.delivery.vo.MembersVo;
-import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.StoreslistVo;
 
@@ -41,9 +39,21 @@ public class StoresDao {
 		return session.selectList(NAMESPACE+".stList",sel_num);
 	}
 	public StoresVo stDetail(int sto_num) {
-		System.out.println(sto_num);
-		StoresVo vo=session.selectOne(NAMESPACE+".stDetail",sto_num);
-		System.out.println(vo);
-		return vo;
+		return session.selectOne(NAMESPACE+".stDetail",sto_num);
+	}
+	public StoresVo stDetail2(String sto_name) {
+		return session.selectOne(NAMESPACE+".stDetail2",sto_name);
+	}
+	public int stImg(HashMap<String, Object> map1) {
+		return session.insert(NAMESPACE+".stImg",map1);
+	}
+	public int stUpdate(HashMap<String, Object> map) {
+		return session.update(NAMESPACE+".stUpdate",map);
+	}
+	public String getImgName(int sto_num) {
+		return session.selectOne(NAMESPACE+".getImgName",sto_num);
+	}
+	public int imgUpdate(HashMap<String, Object> map1) {
+		return session.update(NAMESPACE+".imgUpdate",map1);
 	}
 }

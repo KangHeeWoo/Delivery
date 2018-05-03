@@ -35,4 +35,19 @@
 	<select id="stDetail" parameterType="int" resultType="com.jhta.delivery.vo.StoresVo">
 		select * from stores where sto_num=#{sto_num}
 	</select>
+	<select id="stDetail2" parameterType="String" resultType="com.jhta.delivery.vo.StoresVo">
+		select * from stores where sto_name=#{sto_name}
+	</select>
+	<insert id="stImg" parameterType="hashmap">
+		insert into sto_image values(0,#{sto_img},#{sto_num})
+	</insert>
+	<update id="stUpdate" parameterType="hashmap">
+		update stores set sto_addr=#{sto_addr},sto_phone=#{sto_phone},sto_open=to_date('20180501' || #{sto_open}, 'yyyymmdd hh24:mi'),sto_close=to_date('20180501' || #{sto_close}, 'yyyymmdd hh24:mi'),sto_holiday=#{sto_holiday},sto_intro=#{sto_intro} where sto_num=#{sto_num}
+	</update>
+	<select id="getImgName" parameterType="int" resultType="String">
+		select sto_img from sto_image where sto_num=#{sto_num}
+	</select>
+	<update id="imgUpdate" parameterType="hashmap">
+		update sto_image set sto_img=#{sto_img} where sto_num=#{sto_num}
+	</update>
 </mapper>
