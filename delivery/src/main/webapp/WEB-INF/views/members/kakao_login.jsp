@@ -11,16 +11,20 @@
 
  
     <a id="kakao-login-btn"></a>
-    <a href="http://developers.kakao.com/logout"></a>
+    <a href="http://developers.kakao.com/logout">로그아웃</a>
+    https://developers.kakao.com/docs/js-reference#kakao_auth_logout()
+    
     <script type='text/javascript'>
     
         // 사용할 앱의 JavaScript 키를 설정해 주세요.
-        Kakao.init(' 9cbf163ebaf03720bd5bb2a9fc38885e');
+        Kakao.init('9cbf163ebaf03720bd5bb2a9fc38885e');
         // 카카오 로그인 버튼을 생성합니다.
         Kakao.Auth.createLoginButton({
           container: '#kakao-login-btn',
           success: function(authObj) {
-            alert(JSON.stringify(authObj));
+            alert("로그인성공");
+            console.log(authObj);
+           // location.href="<c:url value='/members/kakaoMain'/>";
           },
           fail: function(err) {
              alert(JSON.stringify(err));

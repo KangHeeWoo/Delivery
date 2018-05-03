@@ -78,8 +78,7 @@
 												</form>
 										</div>
 											<div class="social-buttons">
-												<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i>Facebook</a> 
-												<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+												<a href="<c:url value='/members/kakao_login'/>" class="btn btn-tw"><i class="fa fa-twitter"></i> SNS_LOGIN</a>
 											</div>
 										</div>
 									</li>
