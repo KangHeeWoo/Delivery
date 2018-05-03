@@ -7,6 +7,7 @@ package com.jhta.delivery.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -118,7 +119,6 @@ public class SellerController {
 				String saveFileName=UUID.randomUUID()+"_"+orgFileName;
 				InputStream is= mf.getInputStream();
 				FileOutputStream fos=new FileOutputStream(uploadPath+"\\"+saveFileName);
-				System.out.println(uploadPath+"\\"+saveFileName);
 				FileCopyUtils.copy(is, fos);
 				fos.close();
 				is.close();
@@ -187,6 +187,17 @@ public class SellerController {
 			}catch(Exception e) {
 				System.out.println(e.getMessage());
 			}
+		}
+		return "redirect:/stList";
+	}
+	@RequestMapping("/stMenu")
+	public String stMenu(String sto_name) {
+		return ".seller.stMenu";
+	}
+	@RequestMapping("/stMenuInsert")
+	public String stMenuInsert(String[] men_name, int[] men_price,String[] men_state) {
+		for(int i=0;i<men_name.length;i++) {
+			System.out.println(men_name[i]+men_price[i]+men_state[i]);
 		}
 		return "redirect:/stList";
 	}

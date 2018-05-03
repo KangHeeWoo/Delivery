@@ -38,7 +38,7 @@
 	</tr>
 </table>
 <div style="margin: auto;">
-<a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>">메뉴관리</a>
+<a href="<c:url value='/stMenu?sto_name=${vo.sto_name }'/>">메뉴관리</a>
 <a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>">수정</a>
 <a href="<c:url value='/stDelete?sto_num=${vo.sto_num }'/>">삭제요청</a>
 </div>
