@@ -30,9 +30,9 @@
 		    <div class="slides">
 				<div id="links">
 				    <c:forEach var="vo" items="${list }">
-						<a href="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>">
-							<img class="main_ads" src="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>" alt="main">
-						</a>			
+						<a href="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>" data-id="${vo.sto_num }">
+							<img class="main_ads" src="<c:url value='/resources/images/main_ads/${vo.main_ads_img }'/>" alt="main">		
+						</a>
 					</c:forEach>
 				</div>
 		    </div>
@@ -311,47 +311,6 @@
       </div>
     </section>
    </div> 
-	<script>
-	/*	blueimp.Gallery(
-		    document.getElementById('links').getElementsByTagName('a'),
-		    {
-		        container: '#blueimp-gallery-carousel',
-		        carousel: true
-		        
-		        onopened : function(){
-		        	var slide = $(".slide");
-		        	for(var i=0;i<slide.length;i++){
-		        		var leftVal = i * -800 + 'px';
-		        		var translate = '';
-		        		if(i == 0) {translate = 'translate(0px, 0px)';}
-		        		if(i == 1) {translate = 'translate(800px, 0px)';}
-		        		if(i == 2) {translate = 'translate(-800px, 0px)';}
-		        		
-		        		$(slide[i]).css({
-		        			left : leftVal,
-		        			transform : translate
-		        		});
-		        	}
-		        	
-		        } */
-		        /*onopened : function(){
-		        	var slide = $(".slide");
-		        	for(var i=0;i<slide.length;i++){
-		        		var leftVal = i * -400;
-		        		$(slide[i]).css({left : leftVal});
-		        	}
-		        }  
-		         event : function(){
-		        	var slide = $(".slide");
-		        	for(var i=0;i<slide.length;i++){
-		        		var leftVal = i * -400;
-		        		$(slide[i]).css({left : leftVal});
-		        	}
-		        }  */ 
-		    }
-		);
-	</script>
-	
    <script type="text/javascript">
 	var latitude =  37.59922888910534;
 	var longitude = 127.09409930015491 ;
@@ -618,7 +577,11 @@
 				        container: '#blueimp-gallery-carousel',
 				        carousel: true,
 				        startSlideshow: true,
-				        slideshowInterval: 3000
+				        slideshowInterval: 3000,
+				        onslide: function(index,slide){
+				        	var text = this.list[index].getAttribute('data-id');
+				        	//console.log("text : "+text);
+				        }
 				    });
 		})
 	</script>

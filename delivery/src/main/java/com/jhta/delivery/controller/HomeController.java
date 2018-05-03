@@ -65,7 +65,7 @@ public class HomeController {
 		return ".members.mypage";
 	}
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String loginOk(String joinradio,String email, String pwd,HttpSession session,boolean idcheckBox,HttpServletRequest request,HttpServletResponse response) {
+	public String loginOk(String joinradio,String email, String pwd,HttpSession session,boolean idcheckBox,HttpServletRequest request,HttpServletResponse response,Model model) {
 		HashMap<String, String> map=new HashMap<String, String>();
 		//System.out.println(idcheckBox);
 		
@@ -108,6 +108,9 @@ public class HomeController {
 				session.setAttribute("nick", vo.getMem_nick());
 				
 				if(email.equals("admin@admin")) return ".admin";
+				
+				List<MainAdsVo> list = adsService.mainAdsSelected();
+				model.addAttribute("list",list);
 				
 				return ".main";
 			}
