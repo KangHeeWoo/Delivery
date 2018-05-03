@@ -36,4 +36,10 @@ public class StoresService {
 	public int stInsert(HashMap<String, Object> map) {
 		return dao.stInsert(map);
 	}
+	public List<StoresVo> list(int sel_num){
+		return dao.list(sel_num);
+	}
+	public StoresVo stDetail(int sto_num) {
+		return dao.stDetail(sto_num);
+	}
 }

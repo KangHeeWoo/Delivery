@@ -29,4 +29,10 @@
 		to_date('20180501' || #{sto_open}, 'yyyymmdd hh24:mi'),to_date('20180501' || #{sto_close}, 'yyyymmdd hh24:mi'),
 		#{sto_holiday},#{sto_intro},'대기',#{sel_num},#{cat_num})
 	</insert>
+	<select id="stList" parameterType="int" resultType="com.jhta.delivery.vo.StoresVo">
+		select * from stores where sel_num=#{sel_num}
+	</select>
+	<select id="stDetail" parameterType="int" resultType="com.jhta.delivery.vo.StoresVo">
+		select * from stores where sto_num=#{sto_num}
+	</select>
 </mapper>

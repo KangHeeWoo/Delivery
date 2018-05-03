@@ -4,17 +4,19 @@ package com.jhta.delivery.controller;
 
 
 
-import java.sql.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.SellerService;
@@ -82,9 +84,7 @@ public class SellerController {
 	}
 	@RequestMapping("/stInsert")
 	public String stInsert(String sto_name,String sto_regnum,String sto_addr,String sto_phone,String sto_open,String sto_close,String sto_holiday,String sto_intro,int cat_num,HttpSession session) {
-		System.out.println("셀러컨트롤러"+sto_open+"///"+sto_close);
 		String email=(String)session.getAttribute("email");
-		System.out.println(email);
 		int sel_num=service.getSel_num(email);
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		map.put("sto_name", sto_name);
@@ -101,7 +101,24 @@ public class SellerController {
 		return ".seller.manageIndex";
 	}
 	@RequestMapping("/stList")
-	public String stList() {
-		return ".seller.stList";
+	public ModelAndView stList(HttpSession session) {
+		String email=(String)session.getAttribute("email");
+		int sel_num=service.getSel_num(email);
+		List<StoresVo> list=service1.list(sel_num);
+		ModelAndView mv=new ModelAndView(".seller.stList");
+		mv.addObject("list",list);
+		return mv;
+	}
+	@RequestMapping("/stDetail")
+	public String stDetail(int sto_num,Model model) {
+		StoresVo vo=service1.stDetail(sto_num);
+		model.addAttribute("vo",vo);
+		return ".seller.stDetail";
+	}
+	@RequestMapping("/stUpdate")
+	public String stUpdate(int sto_num,Model model) {
+		StoresVo vo=service1.stDetail(sto_num);
+		model.addAttribute("vo",vo);
+		return ".seller.stUpdate";
 	}
 }

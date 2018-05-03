@@ -3,13 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="<c:url value="/"/>resources/js/bootstrap-timepicker.min.js"></script>
 <div style="width: 800px; margin: auto;">
-<form method="post" action="<c:url value='/stInsert'/>" onsubmit="add();">
+<form method="post" action="<c:url value='/stUpdateOk'/>" onsubmit="add();">
 <table class="table">
 	<tr>
-	<th>매장명</th><td><input type="text" name="sto_name"></td>
+	<th>매장명</th><td><input type="text" name="sto_name" value="${vo.sto_name }"></td>
 	</tr>
 	<tr>
-	<th>사업자 등록번호</th><td><input type="text" name="sto_regnum"></td>
+	<th>사업자 등록번호</th><td><input type="text" name="sto_regnum" value="${vo.sto_regnum }"></td>
 	</tr>
 	<tr>
 	<th>주소</th><td><input type="text" id="sample5_address" placeholder="Address" width="100" readonly="readonly">
@@ -20,25 +20,21 @@
 	<th>상세주소</th><td><input type="text" id="addr2"><input type="hidden" id="sto_addr" name="sto_addr"></td>
 	</tr>
 	<tr>
-	<th>전화번호</th><td><input type="text" name="sto_phone"></td>
+	<th>전화번호</th><td><input type="text" name="sto_phone" value="${vo.sto_phone }"></td>
 	</tr>
 	<tr>
-	<th>오픈시간</th><td><input type="time" name="sto_open"></td>
+	<th>오픈시간</th><td><input type="time" name="sto_open" value="${vo.sto_open }"></td>
 	</tr>
 	<tr>
-	<th>마감시간</th><td><input type="time" name="sto_close"></td>
+	<th>마감시간</th><td><input type="time" name="sto_close" id="myTime" value="22:00"></td>
 	</tr>
 	<tr>
-	<th>휴무일</th><td><input type="text" name="sto_holiday"></td>
+	<th>휴무일</th><td><input type="text" name="sto_holiday" value="${vo.sto_holiday }"></td>
 	</tr>
 	<tr>
-	<th>소개 및 안내</th><td><textarea cols="60" rows="10" name="sto_intro"></textarea></td>
-	</tr>
-	<tr>
-		<th>이미지 등록</th><td></td>
+	<th>소개 및 안내</th><td><textarea cols="60" rows="10" name="sto_intro">${vo.sto_intro }</textarea></td>
 	</tr>
 </table>
-
 카테고리
 <select name="cat_num" size="1">
 <option value="1">한식</option>
@@ -61,11 +57,18 @@
 	<script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=00c0bb384860705065e4de2f7b7b454&libraries=services"></script>
 <script>
+document.getElementById("myTime").value = ${vo.sto_close};
+var select=document.getElementsByName("cat_num")[0];
+for(var i=0; i<select.options.length;i++){
+	if(select.options[i].value=='${vo.cat_num}'){
+		select.options[i].selected=true;
+	}
+}
 function add(){
 	alert("신청이 완료 되었습니다");
 	var addr1=document.getElementById("sample5_address").value;
 	var addr2=document.getElementById("addr2").value;
-	$("#sto_addr").val(addr1+"/"+addr2);
+	$("#sto_addr").val(addr1+" "+addr2);
 }
 
 function sample5_execDaumPostcode() {

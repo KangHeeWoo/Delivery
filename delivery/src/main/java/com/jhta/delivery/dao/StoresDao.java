@@ -35,9 +35,15 @@ public class StoresDao {
 		return session.selectOne(NAMESPACE + ".count");
 	}
 	public int stInsert(HashMap<String, Object> map) {
-		System.out.println(map);
-		int n=session.insert(NAMESPACE+".stInsert",map);
-		System.out.println("test"+n);
-		return n;
+		return session.insert(NAMESPACE+".stInsert",map);
+	}
+	public List<StoresVo> list(int sel_num){
+		return session.selectList(NAMESPACE+".stList",sel_num);
+	}
+	public StoresVo stDetail(int sto_num) {
+		System.out.println(sto_num);
+		StoresVo vo=session.selectOne(NAMESPACE+".stDetail",sto_num);
+		System.out.println(vo);
+		return vo;
 	}
 }
