@@ -277,29 +277,29 @@
             <h3 class="section-subheading text-muted">Developed siblings.</h3>
           </div>
         </div>
-        <div class="row">
+        <div class="row" >
           <div class="col-sm-3">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
-              <h4>Woo Kanghee</h4>           
+              <img style="width: 300px; height: auto;" src="<c:url value='/resources/images/member/강1.png'/>" alt="">
+              <h4 style="margin-left: 40px;">Woo Kanghee</h4>           
             </div>
           </div>
           <div class="col-sm-3">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
-              <h4>Park Mina</h4>              
+              <img class="mx-auto rounded-circle" style="width: 300px; height: auto;" src="<c:url value='/resources/images/member/민1.png'/>" alt="">
+              <h4 style="margin-left: 40px;">Park Mina</h4>              
             </div>
           </div>
           <div class="col-sm-3">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
-              <h4>Yoo Jaehee</h4>              
+              <img class="mx-auto rounded-circle" style="width: 300px; height: auto;" src="<c:url value='/resources/images/member/재1.png'/>" alt="">
+              <h4 style="margin-left: 40px;">Yoo Jaehee</h4>              
             </div>
           </div>
           <div class="col-sm-3">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/4.jpg" alt="">
-              <h4>Kim Minsung</h4>              
+              <img class="mx-auto rounded-circle" style="width: 300px; height: auto;" src="<c:url value='/resources/images/member/성1.png'/>" alt="">
+              <h4 style="margin-left: 40px;">Kim Minsung</h4>              
             </div>
           </div>
         </div>
