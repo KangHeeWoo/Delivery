@@ -209,12 +209,14 @@ public class SellerController {
 			map.put("sto_num", sto_num);
 			service1.stMenuInsert(map);
 		}
-		return "redirect:/stMenuIndex";
+		return "redirect:/stMenuList";
 	}
-	/*@RequestMapping("/stMenuList")
+	@RequestMapping("/stMenuList")
 	public String stMenuList(Model model,HttpSession session) {
 		int sto_num=(Integer)session.getAttribute("sto_num");
-		List<MenuVo> vo=
+		List<MenuVo> list=service1.stMenuList(sto_num);
+		model.addAttribute("list",list);
+		System.out.println("list.tostring : "+list.toString());
 		return ".seller.stMenuList";
-	}*/
+	}
 }

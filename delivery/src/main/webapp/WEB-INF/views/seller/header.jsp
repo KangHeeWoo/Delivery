@@ -18,10 +18,7 @@
              <a class="admin-menu" href="<c:url value='/stManage'/>">매장관리&nbsp;</a>
            </li>
            <li class="nav-item">
-             <a class="admin-menu" href="#">메뉴관리&nbsp;</a>
-           </li>
-           <li class="nav-item">
-             <a class="admin-menu" href="#">리뷰관리&nbsp;</a>
+             <a class="admin-menu" href="<c:url value='/seller/reviewlist' />">리뷰관리&nbsp;</a>
            </li>
            <li class="nav-item">
              <a class="admin-menu" href="<c:url value='/seller/orderlist' />">주문관리&nbsp;</a>

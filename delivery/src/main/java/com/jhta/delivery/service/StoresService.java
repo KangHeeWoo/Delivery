@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.delivery.dao.StoresDao;
+import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.StoreslistVo;
 
@@ -57,5 +58,8 @@ public class StoresService {
 	}
 	public int stMenuInsert(HashMap<String, Object> map) {
 		return dao.stMenuInsert(map);
+	}
+	public List<MenuVo> stMenuList(int sto_num){
+		return dao.stMenuList(sto_num);
 	}
 }

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.StoreslistVo;
 
@@ -58,5 +59,8 @@ public class StoresDao {
 	}
 	public int stMenuInsert(HashMap<String, Object> map) {
 		return session.insert(NAMESPACE+".stMenuInsert",map);
+	}
+	public List<MenuVo>stMenuList(int sto_num){
+		return session.selectList(NAMESPACE+".stMenuList",sto_num);
 	}
 }

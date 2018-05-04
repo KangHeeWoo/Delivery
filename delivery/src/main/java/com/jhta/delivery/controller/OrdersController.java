@@ -35,7 +35,7 @@ public class OrdersController {
 	
 	@RequestMapping("/seller/orderlist")
 	public String orderList(@RequestParam(name="stoNum", defaultValue="-1")int stoNum, 
-			@RequestParam(name="pageNum", defaultValue="1")int pageNum,Model model, HttpSession session) {
+			@RequestParam(name="pageNum", defaultValue="1")int pageNum, Model model, HttpSession session) {
 		
 		String email = (String)session.getAttribute("email");
 

@@ -159,6 +159,7 @@
 				var receiveNick = $(chatroom).prop("id");
 				var ul = chatroom.find("ul");
 				ul.append(addMsg);
+				$(ul).scrollTop($(ul).height());
 				$(target).val('');
 				websocket.send("membersMsg:" + receiveNick + ":${sessionScope.nick}:" + text);
 			}

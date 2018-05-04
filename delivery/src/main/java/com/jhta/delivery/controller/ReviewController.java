@@ -23,16 +23,60 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.jhta.delivery.service.MembersService;
 import com.jhta.delivery.service.ReviewService;
+import com.jhta.delivery.service.SellerService;
+import com.jhta.delivery.service.StoresService;
 import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.OrdersVo;
+import com.jhta.delivery.vo.ReviewCommentVo;
 import com.jhta.delivery.vo.ReviewImageVo;
 import com.jhta.delivery.vo.ReviewVo;
+import com.jhta.delivery.vo.SellerVo;
+import com.jhta.delivery.vo.StoresVo;
 
 @Controller
 public class ReviewController {
 	@Autowired private ReviewService service;
 	@Autowired private MembersService mservice;
+	@Autowired private SellerService selService;
+	@Autowired private StoresService stoService;
+	
+	@RequestMapping(value="/review/insertReviewComment", method=RequestMethod.POST)
+	public String insertReviewComment(int sto_num, ReviewCommentVo vo) {
+		service.insertComment(vo);
+		return "redirect:/seller/reviewlist?sto_num=" + sto_num;
+	}
+	
+	@RequestMapping("/seller/reviewlist")
+	public String reviewList(@RequestParam(name="stoNum", defaultValue="-1")int stoNum, 
+			@RequestParam(name="pageNum", defaultValue="1")int pageNum, Model model, HttpSession session) {
+		String email = (String)session.getAttribute("email");
+
+		SellerVo seller = selService.getSeller(email);
+		
+		if(stoNum == -1) stoNum = stoService.minStoNum(seller.getSel_num());
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("sto_num", stoNum);
+		
+		int getCount = service.getCount(map);
+		
+		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
+		
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow", pu.getEndRow());
+		
+		List<ReviewVo> list = service.getList(map);
+		List<StoresVo> stoList = stoService.stoList(seller.getSel_num());
+		
+		model.addAttribute("sto_list", stoList);
+		model.addAttribute("review", list);
+		model.addAttribute("pu", pu);
+		model.addAttribute("sto_num", stoNum);
+		
+		return ".seller.reviewList";
+	}
 	
 	@RequestMapping(value="/review/insert", method=RequestMethod.POST)
 	public String insertReview(int sto_num, int ord_num, int rating, String comment, MultipartHttpServletRequest mhsr, HttpSession session) {

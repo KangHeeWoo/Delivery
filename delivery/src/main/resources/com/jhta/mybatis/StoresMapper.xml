@@ -53,5 +53,7 @@
 	<insert id="stMenuInsert" parameterType="hashmap">
 		insert into menu values(0,#{men_name},#{men_price},#{men_state},#{sto_num})
 	</insert>
-	<select id="stMenuList" resultType="com.jhta.delivery.vo.MenuVo"></select>
+	<select id="stMenuList" parameterType="int" resultType="com.jhta.delivery.vo.MenuVo">
+		select * from menu where sto_num=#{sto_num}
+	</select>
 </mapper>
