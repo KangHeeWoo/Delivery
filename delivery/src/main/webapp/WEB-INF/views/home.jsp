@@ -577,11 +577,11 @@
                     container: '#blueimp-gallery-carousel',
                     carousel: true,
                     startSlideshow: true,
-                    slideshowInterval: 3000,
+                    slideshowInterval: 3000/* ,
                     onslide: function(index,slide){
                        var text = this.list[index].getAttribute('data-id');
                        //console.log("text : "+text);
-                    }
+                    } */
                 });
       })
    </script>

@@ -903,14 +903,6 @@
       ) {
         // Click on displayed element
         if (options.toggleControlsOnSlideClick) {
-        	
-        	
-        	
-          var text = this.list[this.index].getAttribute('data-id');
-          location.href= "/delivery/menu/menu?sto_num="+ text;
-           
-          
-          
           this.preventDefault(event)
           this.toggleControls()
         }
