@@ -37,7 +37,7 @@ public class PayController {
 	public String order(int[] num,String[] name,int[] price, int[] cnt,int total,int coupon,int usePoint,
 			int sto_num,int payType,HttpSession session,boolean reseChk, Date ord_deli_time, String myDetail) {
 		String email = (String)session.getAttribute("email");
-		String searchAddr = (String)session.getAttribute("searchAddr");
+		String firstAddr = (String)session.getAttribute("firstAddr");
 		//String myDetail = (String)session.getAttribute("myDetail");
 		
 		MembersVo vo = mservice.getinfo(email);
@@ -49,7 +49,7 @@ public class PayController {
 		
 		service.insertOrder(new OrdersVo(0, curr.getTime(), ord_deli_time, 
 				null, total, (int)(total * (getPoint/100)), (int)(total * (getComm/100)), sto_num, 
-				payType, vo.getMem_num(), searchAddr+" "+myDetail, null, null));
+				payType, vo.getMem_num(), firstAddr+" "+myDetail, null, null));
 		
 		int getOrdNum = service.getOrdNum();		
 		

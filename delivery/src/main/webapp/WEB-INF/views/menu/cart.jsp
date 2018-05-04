@@ -7,7 +7,7 @@
 <table class="table">
 	<tr><td><img width="300" height="auto"	src="<c:url value='/resources/images/stores/${stovo.sto_img}'/>"></td></tr>
 	<tr>
-		<td> 주소 : <input type="text" name="able_loc" value="${firstAddr }" readonly="readonly"> &nbsp;&nbsp;&nbsp; 상세주소 : <input type="text" name="myDetail" value=" ${lastAddr  }"><td>
+		<td> 주소 : <input type="text" name="able_loc" value="${searchAddr }" readonly="readonly"> &nbsp;&nbsp;&nbsp; 상세주소 : <input type="text" name="myDetail" value=" ${myDetail  }"><td>
 	</tr>
 	<c:forEach var="menu" items="${array}">
 		<tr><td>메뉴: ${menu.name }, &nbsp;     수량 : ${menu.cnt },   &nbsp;   가격  : ${menu.price }원</td></tr>
