@@ -56,4 +56,7 @@ public class StoresDao {
 	public int imgUpdate(HashMap<String, Object> map1) {
 		return session.update(NAMESPACE+".imgUpdate",map1);
 	}
+	public int stMenuInsert(HashMap<String, Object> map) {
+		return session.insert(NAMESPACE+".stMenuInsert",map);
+	}
 }

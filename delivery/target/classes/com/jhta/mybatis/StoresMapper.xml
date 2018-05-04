@@ -50,4 +50,7 @@
 	<update id="imgUpdate" parameterType="hashmap">
 		update sto_image set sto_img=#{sto_img} where sto_num=#{sto_num}
 	</update>
+	<insert id="stMenuInsert" parameterType="hashmap">
+		insert into menu values(0,#{men_name},#{men_price},#{men_state},#{sto_num})
+	</insert>
 </mapper>

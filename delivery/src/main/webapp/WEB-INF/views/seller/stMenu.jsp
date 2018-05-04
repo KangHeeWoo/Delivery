@@ -19,7 +19,7 @@
 		$(menuupload).html("");
 		for(var i=0;i<cnt;i++){
 			var inputMenu = $("<table class='table'><tr><th>메뉴명</th><td><input type='text' name='men_name'></td></tr><tr><th>가격</th><td><input type='text' name='men_price'></td></tr><tr><th>상태</th><td>"
-			 + "<select name='men_state'><option value='주문가능' selected='selected'>주문가능</option><option value='주문불가능'>주문불가능</option></select></td></tr></table><br>");
+			 + "<select name='men_state'><option value='가능' selected='selected'>주문가능</option><option value='불가능'>주문불가능</option></select></td></tr></table><br>");
 			menuupload.append(inputMenu);
 		}
 	}

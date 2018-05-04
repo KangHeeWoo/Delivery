@@ -55,4 +55,7 @@ public class StoresService {
 	public int imgUpdate(HashMap<String, Object> map1) {
 		return dao.imgUpdate(map1);
 	}
+	public int stMenuInsert(HashMap<String, Object> map) {
+		return dao.stMenuInsert(map);
+	}
 }

@@ -7,7 +7,6 @@ package com.jhta.delivery.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -29,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.SellerService;
 import com.jhta.delivery.service.StoresService;
+import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.SellerVo;
 import com.jhta.delivery.vo.StoresVo;
 
@@ -110,7 +110,6 @@ public class SellerController {
 		StoresVo vo=service1.stDetail2(sto_name);
 		HashMap<String, Object> map1=new HashMap<String, Object>();
 		
-		
 		String uploadPath=session.getServletContext().getRealPath("/resources/images/stores");
 		try {
 			MultipartFile mf=mhsr.getFile("sto_img");
@@ -141,8 +140,9 @@ public class SellerController {
 		return mv;
 	}
 	@RequestMapping("/stDetail")
-	public String stDetail(int sto_num,Model model) {
+	public String stDetail(int sto_num,Model model,HttpSession session) {
 		StoresVo vo=service1.stDetail(sto_num);
+		session.setAttribute("sto_num", sto_num);
 		model.addAttribute("vo",vo);
 		return ".seller.stDetail";
 	}
@@ -190,15 +190,31 @@ public class SellerController {
 		}
 		return "redirect:/stList";
 	}
+	@RequestMapping("/stMenuIndex")
+	public String stMenuIndex() {
+		return ".seller.stMenuIndex";
+	}
 	@RequestMapping("/stMenu")
-	public String stMenu(String sto_name) {
+	public String stMenu() {
 		return ".seller.stMenu";
 	}
 	@RequestMapping("/stMenuInsert")
-	public String stMenuInsert(String[] men_name, int[] men_price,String[] men_state) {
+	public String stMenuInsert(String[] men_name, int[] men_price,String[] men_state,HttpSession session) {
+		int sto_num=(Integer)session.getAttribute("sto_num");
 		for(int i=0;i<men_name.length;i++) {
-			System.out.println(men_name[i]+men_price[i]+men_state[i]);
+			HashMap<String, Object> map=new HashMap<String, Object>();
+			map.put("men_name", men_name[i]);
+			map.put("men_price", men_price[i]);
+			map.put("men_state", men_state[i]);
+			map.put("sto_num", sto_num);
+			service1.stMenuInsert(map);
 		}
-		return "redirect:/stList";
+		return "redirect:/stMenuIndex";
 	}
+	/*@RequestMapping("/stMenuList")
+	public String stMenuList(Model model,HttpSession session) {
+		int sto_num=(Integer)session.getAttribute("sto_num");
+		List<MenuVo> vo=
+		return ".seller.stMenuList";
+	}*/
 }

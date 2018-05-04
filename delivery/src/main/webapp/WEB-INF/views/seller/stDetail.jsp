@@ -37,9 +37,11 @@
 	<th>상태</th><td>${vo.sto_state }</td>
 	</tr>
 </table>
-<div style="margin: auto;">
-<a href="<c:url value='/stMenu?sto_name=${vo.sto_name }'/>">메뉴관리</a>
-<a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>">수정</a>
-<a href="<c:url value='/stDelete?sto_num=${vo.sto_num }'/>">삭제요청</a>
+<div style="width: 800px; margin: auto;">
+<ul>
+<li><a href="<c:url value='/stMenuIndex'/>">메뉴관리</a></li>
+<li><a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>">수정</a></li>
+<li><a href="<c:url value='/stDelete?sto_num=${vo.sto_num }'/>">삭제요청</a></li>
+</ul>
 </div>
 

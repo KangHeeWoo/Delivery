@@ -37,10 +37,8 @@
 	<tr>
 		<th>이미지 등록</th><td><input type='file' name='sto_img' required='required'></td>
 	</tr>
-</table>
-
-카테고리
-<select name="cat_num" size="1">
+	<tr>
+	<th>카테고리</th><td><select name="cat_num" size="1">
 <option value="1">한식</option>
 <option value="2">분식</option>
 <option value="3">일식</option>
@@ -53,8 +51,12 @@
 <option value="10">도시락</option>
 <option value="11">패스트푸드</option>
 <option value="12">찜,탕</option>
-</select><br>
+</select></td>
+	</tr>
+</table>
+<div align="center">
 <input type="submit" value="신청">
+</div>
 </form>
 </div>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
