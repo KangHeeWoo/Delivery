@@ -1,70 +1,73 @@
 @charset "UTF-8";
 
 .chatOrder{
-	position : fixed;
-	top : 300px;
-	left : 1600px;
-	width : 285px;
-	background : #dedede;
-	z-index : 99999;
+   position : fixed;
+   top : 300px;
+   left : 1600px;
+   width : 285px;
+   background : #dedede;
+   z-index : 99999;
 }
 .orderheader{
-	text-align : center;
-	background : #adadad;
-	height : 30px;
+   text-align : center;
+   background : #adadad;
+   height : 30px;
 }
 .orderclose{
-	position : relative;
-	top : -6px;
-	right : 15px;
-	float : right;
-	font-size : 19px;
-	font-height : bold;
+   position : relative;
+   top : -6px;
+   right : 15px;
+   float : right;
+   font-size : 19px;
+   font-height : bold;
 }
 .ordercontent{
-	height : 400px;
+   height : 400px;
 }
 .chatlist{
-	margin : 5px;
-	height : 350px;
-	overflow-y : scroll;
-	padding : 0px;
+   margin : 5px;
+   height : 350px;
+   overflow-y : scroll;
+   padding : 0px;
 }
 .chatlist>li{
-	list-style: none;
-	max-width : 70%;
-	min-height: 40px;
-	background-color: white;
-	margin : 10px;
-	border-radius : 10px;
-	padding : 3px 5px 3px 5px;
+   list-style: none;
+   min-width : 50%;
+   max-width : 70%;
+   min-height: 40px;
+   background-color: white;
+   margin : 10px;
+   border-radius : 10px;
+   padding : 3px 5px 3px 5px;
+   display: block;
+   position: relative;
 }
 
 .chatlist>li[class="msg_left"]{
-	float: left;
+   float: left;
 }
 
 .chatlist>li[class="msg_right"]{
-	float : right;
-	text-align : right;
+   float : right;
+   text-align : right;
 }
 
 .inputMsg{
-	position : absolute;
-	bottom : 10px;
+   position : absolute;
+   bottom : 10px;
 }
 .inputMsg>input{
-	margin-left : 10px;
-	width : 200px;
-	height : 33px;
-	border : 0px;
-	border-radius : 5px;
+   margin-left : 10px;
+   width : 200px;
+   height : 33px;
+   border : 0px;
+   border-radius : 5px;
 }
 
 .btn{
-	border : 0px;
-	height : 33px;
-	margin : 0px;
-	padding-top : 0px;
-	padding-bottom : 0px;
+   border : 0px;
+   height : 33px;
+   margin : 0px;
+   padding-top : 0px;
+   padding-bottom : 0px;
 }
