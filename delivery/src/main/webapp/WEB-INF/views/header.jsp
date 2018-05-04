@@ -165,7 +165,7 @@
    
    var chatOrderProcess = 1;
    
-   var searchAddr = "";
+   var chatSearchAddr = "";
    var firstAddr = "";
    var lastAddr = "";
    
@@ -220,13 +220,13 @@
             console.log(firstAddr);
             console.log(lastAddr);
             console.log(choiceCat);
-            console.log(searchAddr);
+            console.log(chatSearchAddr);
             
             $.ajax({
                url : "<c:url value='/chatorder/list' />",
                data : {
                   cat_num : choiceCat,
-                  able_loc : searchAddr,
+                  able_loc : chatSearchAddr,
                   firstAddr : firstAddr,
                   lastAddr : lastAddr
                },
@@ -311,7 +311,7 @@
                   /* console.log(data.sido);
                   console.log(data.sigungu);
                   console.log(data.bname); */
-                  searchAddr = data.sido + ' ' + data.sigungu + ' ' + data.bname;
+                  chatSearchAddr = data.sido + ' ' + data.sigungu + ' ' + data.bname;
                   var fullAddr = data.address; // 최종 주소 변수
                   var extraAddr = ''; // 조합형 주소 변수
                   //console.log(data.address);
