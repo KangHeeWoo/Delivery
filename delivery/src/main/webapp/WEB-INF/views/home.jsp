@@ -26,7 +26,7 @@
 	          <div class="intro-heading text-uppercase">배달의 백성民</div>	
           </div>
       	
-	      <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel" style="width:800px;">
+	      <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel" style="width:1000px;">
 		    <div class="slides">
 				<div id="links">
 				    <c:forEach var="vo" items="${list }">
