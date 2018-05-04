@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <link rel="stylesheet" href="<c:url value='/resources/css/chat-order.css'/>">
    <div align="center">
       <img src="<c:url value='/resources/images/로고-pn.png'/>" id="mainlogo">
@@ -42,16 +43,19 @@
                
                         <a href="<c:url value='/login'/>" class="dropdown-toggle" data-toggle="dropdown">로그인</a>
                         <span class="caret"></span>
-                        <ul id="login-dp" class="dropdown-menu" style="display: ${(param.loginCheck=='loginCheck')? 'block' : 'none'}">
+                        <ul id="login-dp" class="dropdown-menu" >
                            <li>
-                              <div class="row">
+                              <div class="row" style="width: 250px; padding: 10px; ">
                                  <div class="col-md-12">
                                     <h4 align="center">로그인</h4>
                                     
                                     <!-- 라디오 첵크값에 따른 아이디 검사 -->
                                     <form class="form" role="form" method="post" action="<c:url value='/login'/>" id="login-nav" onsubmit="return loginOk()">
-                                    <input type="radio" name="joinradio" value="mem_email" checked="checked"> 우리민족  
-                                    <input type="radio" name="joinradio" value="sel_email"> 사장님 <br><br>
+                                    <div align="center">
+                                     <input type="radio" name="joinradio" value="mem_email" checked="checked"> 우리민족  
+                                    <input type="radio" name="joinradio" value="sel_email"> 사장님
+                                    </div>
+                                    <br>
                                        <div class="form-group">
                                           <label class="sr-only" for="exampleInputEmail2">이메일</label> 
                                           <!-- 이메일값 넘기기 -->
@@ -72,12 +76,12 @@
                                        </div>
                                        
                                        <div class="checkbox">
-                                          <label> <input type="checkbox" id="idcheckBox" name="idcheckBox" <%=checked %>>아이디 저장</label>
+                                          <label> <input type="checkbox" id="idcheckBox" name="idcheckBox" <%=checked %>>자동로그인</label><br>
                                        </div>
                                     
                                     </form>
                               </div>
-                                 <div class="social-buttons">
+                                 <div class="social-buttons" align="right">
                                     <a href="<c:url value='/members/kakao_login'/>" class="btn btn-tw"><i class="fa fa-twitter"></i> SNS_LOGIN</a>
                                  </div>
                               </div>
@@ -158,6 +162,12 @@
      });
      
   }
+  
+  $(function(){
+	  if('${param.loginCheck}'=='loginCheck'){
+		  alert("로그인해야 우리백성");
+	  }
+  })
   
    $("#mainlogo").click(function(){
       location.href = "<c:url value='/' />";

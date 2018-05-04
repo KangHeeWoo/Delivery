@@ -16,7 +16,7 @@
 	 <img src="<c:url value='/resources/images/event/참쉬운-방법.png' />" style="width:900px;height:auto;"><br><br><br>
 	 <img src="<c:url value='/resources/images/버튼.png' />" style="width:514px;height:189px;" onclick="eventMem(${event.eve_num})">
 </div>
-
+<br><br><br><br><br><br><br><br><br><br><br>
 <script>
 	function eventMem(eve_num){
 		$.ajax({

@@ -35,8 +35,8 @@
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
-</div>
-<div  style="width:1000px; margin: auto; ">
+</div><br><br><br><br><br><br><br><br><br><br><br>
+<%-- <div  style="width:1000px; margin: auto; ">
 <table id="table_id" class="display" >
     <thead>
         <tr>
@@ -62,7 +62,7 @@
 		</c:forEach>
     </tbody>
 </table>
-</div>
+</div> --%>
 <script>
 	function bookpage(num){
 		location.href="<c:url value='/menu/menu?sto_num="+num+"'/>";
@@ -71,7 +71,7 @@
 		location.href="<c:url value='/members/bookDel?sto_num="+sto_num+"'/>";
 		
 	}
-	$(document).ready( function () {
+	/* $(document).ready( function () {
 	    $('#table_id').DataTable({
 	    	
 	    	 "language": {
@@ -84,5 +84,5 @@
 	             
 	         }
 	    });
-	} );
+	} ); */
 </script>
