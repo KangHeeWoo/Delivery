@@ -11,3 +11,4 @@
 	<li><a href="<c:url value='/members/eventlist'/>">My 이벤트</a></li>
 	<li><a href="<c:url value='/members/information'/>">내정보</a></li>
 </ul>
+<br><br><br><br><br><br><br><br><br><br><br>

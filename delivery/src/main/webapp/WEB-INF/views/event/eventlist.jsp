@@ -65,6 +65,7 @@
 		</c:choose>
 	</div>
 </div>
+<br><br><br><br><br><br><br><br><br><br><br>
 <script>
 	function eventDetail(num){
 		location.href = "<c:url value='/event/eventdetail?eve_num=" + num + "'/>";
