@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.PayMapper">
 	<insert id="insertOrder" parameterType="orders">
-		insert into orders values(0,sysdate,#{ord_deli_time},'주문접수',
+		insert into orders values(0,#{ord_time},#{ord_deli_time},'주문접수',
 		#{ord_price},#{ord_point},#{ord_comm},#{sto_num},#{pay_type_num},#{mem_num},#{ord_addr})	
 	</insert>
 	<select id="getOrdNum" resultType="int">

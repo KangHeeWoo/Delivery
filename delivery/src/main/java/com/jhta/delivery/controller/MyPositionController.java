@@ -45,7 +45,13 @@ public class MyPositionController {
       session.setAttribute("able_loc", able_loc);
       session.setAttribute("myDetail", myDetail);
       
-      int getCount=service.getCount();
+      HashMap<String, Object> map1 = new HashMap<String, Object>();
+      map1.put("able_loc", able_loc);
+      map1.put("cat_num", cat_num);
+      
+      
+      int getCount=service.getCount(map1);
+
       
       PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
       //System.out.println("pu.getEndRow():"+ pu.getEndRow());
@@ -73,7 +79,11 @@ public class MyPositionController {
       session.setAttribute("firstAddr", firstAddr);
       session.setAttribute("lastAddr", lastAddr);
       
-      int getCount=service.getCount();
+      HashMap<String, Object> map1 = new HashMap<String, Object>();
+      map1.put("able_loc", able_loc);
+      map1.put("cat_num", cat_num);
+
+      int getCount=service.getCount(map1);
       
       HashMap<String, Object> map = new HashMap<String, Object>();
       map.put("cat_num", cat_num);

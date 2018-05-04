@@ -30,8 +30,8 @@ public class StoresDao {
 	public StoresVo stoName(int sto_num) {
 		return session.selectOne(NAMESPACE+".stoName", sto_num);
 	}
-	public int getCount() {
-		return session.selectOne(NAMESPACE + ".count");
+	public int getCount(HashMap<String, Object> map) {
+		return session.selectOne(NAMESPACE + ".count",map);
 	}
 	public int stInsert(HashMap<String, Object> map) {
 		return session.insert(NAMESPACE+".stInsert",map);

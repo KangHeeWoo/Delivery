@@ -29,8 +29,9 @@ public class StoresService {
 	public StoresVo stoName(int sto_num) {
 		return dao.stoName(sto_num);
 	}
-	public int getCount() {
-		return dao.getCount();
+	public int getCount(HashMap<String, Object> map) {
+		System.out.println(map + " 야아아아아아ㅏㄱ");
+		return dao.getCount(map);
 	}
 	public int stInsert(HashMap<String, Object> map) {
 		return dao.stInsert(map);

@@ -21,8 +21,11 @@
 	<select id="stoName" parameterType="int" resultType="stores">
 		select s.*,s.sto_num,i.sto_img from (select * from stores where sto_state='승인' and sto_num=#{sto_num})s, sto_image i where s.sto_num=i.sto_num
 	</select>
-	<select id="count" resultType="int">
-		select NVL(count(*),0) cnt from stores
+	<select id="count" resultType="int" parameterType="hashmap">
+		select NVL(count(*),0) cnt from stores 
+		where sto_state='승인' and 
+		cat_num=#{cat_num} and 
+		sto_num in(select sto_num from able_location where able_loc=#{able_loc})
 	</select>
 	<insert id="stInsert" parameterType="hashmap">
 		insert into stores values(0,#{sto_name},#{sto_regnum},#{sto_addr},#{sto_phone},sysdate,
