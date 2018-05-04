@@ -7,10 +7,10 @@
 <form method="post" action="<c:url value='/stUpdateOk'/>" onsubmit="add();" enctype="multipart/form-data">
 <table class="table">
 	<tr>
-	<th>매장명</th><td><input readonly="readonly" type="text" name="sto_name" value="${vo.sto_name }"><input type="hidden" name="sto_num" value="${vo.sto_num }"></td>
+	<th>매장명</th><td>${vo.sto_name }<input type="hidden" name="sto_num" value="${vo.sto_num }"></td>
 	</tr>
 	<tr>
-	<th>사업자 등록번호</th><td><input readonly="readonly" type="text" name="sto_regnum" value="${vo.sto_regnum }"></td>
+	<th>사업자 등록번호</th><td>${vo.sto_regnum }</td>
 	</tr>
 	<tr>
 	<th>주소</th><td><input type="text" id="sample5_address" placeholder="Address" width="100" readonly="readonly" value="${vo.sto_addr }">
@@ -40,9 +40,8 @@
 	<tr>
 		<th>이미지 등록</th><td><input type='file' name='sto_img'></td>
 	</tr>
-</table>
-카테고리
-<select name="cat_num" size="1">
+	<tr>
+		<th>카테고리</th><td><select name="cat_num" size="1">
 <option value="1">한식</option>
 <option value="2">분식</option>
 <option value="3">일식</option>
@@ -55,8 +54,12 @@
 <option value="10">도시락</option>
 <option value="11">패스트푸드</option>
 <option value="12">찜,탕</option>
-</select><br>
+</select></td>
+	</tr>
+</table>
+<div align="center">
 <input type="submit" value="수정">
+</div>
 </form>
 </div>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -70,7 +73,7 @@ for(var i=0; i<select.options.length;i++){
 	}
 }
 function add(){
-	alert("신청이 완료 되었습니다");
+	alert("수정이 완료 되었습니다");
 	var addr1=document.getElementById("sample5_address").value;
 	var addr2=document.getElementById("addr2").value;
 	$("#sto_addr").val(addr1+" "+addr2);

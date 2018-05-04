@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,6 +32,7 @@ import com.jhta.delivery.service.StoresService;
 import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.SellerVo;
 import com.jhta.delivery.vo.StoresVo;
+
 
 @Controller
 public class SellerController {
@@ -216,7 +218,32 @@ public class SellerController {
 		int sto_num=(Integer)session.getAttribute("sto_num");
 		List<MenuVo> list=service1.stMenuList(sto_num);
 		model.addAttribute("list",list);
-		System.out.println("list.tostring : "+list.toString());
 		return ".seller.stMenuList";
+	}
+	@RequestMapping("/stMenuUpdate")
+	public String stMenuUpdate(int[] men_num,int[] men_price,String[] men_state) {
+		for(int i=0;i<men_num.length;i++) {
+			HashMap<String, Object> map=new HashMap<String, Object>();
+			map.put("men_num", men_num[i]);
+			map.put("men_price", men_price[i]);
+			map.put("men_state", men_state[i]);
+			service1.stMenuUpdate(map);
+		}
+		return "redirect:/stMenuList";
+	}
+	@RequestMapping("/stMenuDelete")
+	public String stMenuDelete(String men_name) {
+		service1.stMenuDelete(men_name);
+		return "redirect:/stMenuList";
+	}
+	@RequestMapping(value="/stRegnumCheck",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String stNameCheck(String sto_regnum) {
+		String ck=service1.stRegnumCheck(sto_regnum);
+		return ck;
+	}
+	@RequestMapping("/stLocation")
+	public String stLocation() {
+		return ".seller.stLocation";
 	}
 }

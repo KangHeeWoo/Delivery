@@ -63,4 +63,13 @@ public class StoresDao {
 	public List<MenuVo>stMenuList(int sto_num){
 		return session.selectList(NAMESPACE+".stMenuList",sto_num);
 	}
+	public int stMenuUpdate(HashMap<String, Object> map) {
+		return session.update(NAMESPACE+".stMenuUpdate",map);
+	}
+	public int stMenuDelete(String men_name) {
+		return session.delete(NAMESPACE+".stMenuDelete",men_name);
+	}
+	public String stRegnumCheck(String sto_regnum) {
+		return session.selectOne(NAMESPACE+".stRegnumCheck",sto_regnum);
+	}
 }

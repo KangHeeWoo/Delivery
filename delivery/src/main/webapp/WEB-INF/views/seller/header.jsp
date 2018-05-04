@@ -15,7 +15,7 @@
        <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav text-uppercase ml-auto">
            <li class="nav-item">
-             <a class="admin-menu" href="<c:url value='/stManage'/>">매장관리&nbsp;</a>
+             <a class="admin-menu" href="<c:url value='/stList'/>">매장관리&nbsp;</a>
            </li>
            <li class="nav-item">
              <a class="admin-menu" href="<c:url value='/seller/reviewlist' />">리뷰관리&nbsp;</a>

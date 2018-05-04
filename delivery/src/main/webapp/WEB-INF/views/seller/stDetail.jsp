@@ -39,7 +39,8 @@
 </table>
 <div style="width: 800px; margin: auto;">
 <ul>
-<li><a href="<c:url value='/stMenuIndex'/>">메뉴관리</a></li>
+<li><a href="<c:url value='/stMenuList'/>">메뉴관리</a></li>
+<li><a href="<c:url value='/stLocation'/>">배달가능지역 관리</a></li>
 <li><a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>">수정</a></li>
 <li><a href="<c:url value='/stDelete?sto_num=${vo.sto_num }'/>">삭제요청</a></li>
 </ul>

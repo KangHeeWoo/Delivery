@@ -62,4 +62,13 @@ public class StoresService {
 	public List<MenuVo> stMenuList(int sto_num){
 		return dao.stMenuList(sto_num);
 	}
+	public int stMenuUpdate(HashMap<String, Object> map) {
+		return dao.stMenuUpdate(map);
+	}
+	public int stMenuDelete(String men_name) {
+		return dao.stMenuDelete(men_name);
+	}
+	public String stRegnumCheck(String sto_regnum) {
+		return dao.stRegnumCheck(sto_regnum);
+	}
 }

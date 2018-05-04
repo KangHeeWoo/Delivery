@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<div style="width: 800px; margin: auto;">
+<a href="<c:url value='/stAdd'/>">매장 신청</a>
+</div>
  <table class="table" style="width: 800px; margin: auto;">
  <tr>
  <th>매장 번호</th><th>매장명</th><th>매장등록일</th><th>매장 상태</th>

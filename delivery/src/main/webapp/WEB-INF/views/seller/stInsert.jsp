@@ -3,13 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="<c:url value="/"/>resources/js/bootstrap-timepicker.min.js"></script>
 <div style="width: 800px; margin: auto;">
-<form method="post" action="<c:url value='/stInsert'/>" onsubmit="add();" enctype="multipart/form-data">
+<form method="post" name="cc" action="<c:url value='/stInsert'/>" onsubmit="add();" enctype="multipart/form-data">
 <table class="table">
 	<tr>
-	<th>매장명</th><td><input type="text" name="sto_name"></td>
+	<th>사업자 등록번호</th><td><input type="text" id="sto_regnum" name="sto_regnum"></td>
 	</tr>
 	<tr>
-	<th>사업자 등록번호</th><td><input type="text" name="sto_regnum"></td>
+	<th>매장명</th><td><input type="text" name="sto_name"></td>
 	</tr>
 	<tr>
 	<th>주소</th><td><input type="text" id="sample5_address" placeholder="Address" width="100" readonly="readonly">
@@ -63,6 +63,23 @@
 	<script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=00c0bb384860705065e4de2f7b7b454&libraries=services"></script>
 <script>
+$('#sto_regnum').blur(function() {
+	var sto_regnum=$("#sto_regnum").val();
+	$.ajax({
+		url:"<c:url value='/stRegnumCheck'/>",
+		data:{sto_regnum:sto_regnum},
+		dataType:"text",
+		success:function(data){
+			console.log(data);
+			if(data!=""){
+				alert("존재하는 사업자등록번호 입니다.");
+				document.cc.sto_regnum.value=""; 
+			}
+		}, error : function(){
+			console.log("error!");
+		}
+	});
+});
 function add(){
 	alert("신청이 완료 되었습니다");
 	var addr1=document.getElementById("sample5_address").value;

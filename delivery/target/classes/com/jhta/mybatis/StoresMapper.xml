@@ -56,4 +56,13 @@
 	<select id="stMenuList" parameterType="int" resultType="com.jhta.delivery.vo.MenuVo">
 		select * from menu where sto_num=#{sto_num}
 	</select>
+	<update id="stMenuUpdate" parameterType="hashmap">
+		update menu set men_price=#{men_price}, men_state=#{men_state} where men_num=#{men_num}
+	</update>
+	<delete id="stMenuDelete" parameterType="String">
+		delete from menu where men_name=#{men_name}
+	</delete>
+	<select id="stRegnumCheck" parameterType="String" resultType="String">
+		select sto_name from stores where sto_regnum=#{sto_regnum}
+	</select>
 </mapper>
