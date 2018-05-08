@@ -13,7 +13,7 @@
 			<div class="input-group">
 				<input type="email" class="form-control" id="inputEmail"
 					placeholder="Email" name="mem_email"> <span	class="input-group-btn">
-					<input type="button" class="btn btn-success" onclick="emailCheck()" value="이메일확인">
+					<input type="button" class="btn btn-success" onclick="emailCheck()" value="이메일확인" id="btnSendEmail">
 				</span>
 			</div>
 			<p class="help-block" id="emailcheckP"></p>
@@ -44,6 +44,7 @@
 	function emailCheck() {
 		var mem_email = $("#inputEmail").val();
 		var emailcheckP=$("#emailcheckP");
+		$("#btnSendEmail").prop("disabled", true);
 
 		$.ajax({
 			url : "<c:url value='/member/emailCheck'/>",
@@ -60,9 +61,11 @@
 					
 					emailcheckP.html("존재하지 않는 이메일입니다.").css({color : "#AA1212", display:"block"});
 				}
+				$("#btnSendEmail").prop("disabled", false);
 			},
 			error : function() {
 				alert("이메일 중복 오류");
+				$("#btnSendEmail").prop("disabled", false);
 			}
 		});
 	}
