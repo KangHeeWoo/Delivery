@@ -36,7 +36,7 @@ public class ReviewService {
 		return dao.getList(map);
 	}
 	
-	public OrdersVo getOrder(HashMap<String, Object> map) {
+	public List<OrdersVo> getOrder(HashMap<String, Object> map) {
 		return dao.getOrder(map);
 	}
 	

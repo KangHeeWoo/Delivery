@@ -37,8 +37,8 @@ public class ReviewDao {
 		return session.selectList(NAMESPACE + ".getList", map);
 	}
 	
-	public OrdersVo getOrder(HashMap<String, Object> map) {
-		return session.selectOne(NAMESPACE + ".getOrder", map);
+	public List<OrdersVo> getOrder(HashMap<String, Object> map) {
+		return session.selectList(NAMESPACE + ".getOrder", map);
 	}
 	
 	public int getMaxNum() {

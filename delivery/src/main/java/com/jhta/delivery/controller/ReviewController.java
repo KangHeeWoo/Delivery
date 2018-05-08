@@ -123,15 +123,15 @@ public class ReviewController {
 		map.put("sto_num", sto_num);
 		map.put("mem_num", mvo.getMem_num());
 		
-		OrdersVo ovo = service.getOrder(map); 
+		List<OrdersVo> list = service.getOrder(map); 
 
 		JSONObject ob = new JSONObject();
 		
 		ob.put("result", false);
 		
-		if(ovo != null) {
+		if(list != null) {
 			ob.put("result", true);
-			ob.put("ord_num", ovo.getOrd_num());
+			ob.put("ord_num", list.get(list.size()-1).getOrd_num());
 		}
 		
 		return ob.toString();
