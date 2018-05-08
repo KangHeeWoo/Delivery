@@ -72,4 +72,16 @@ public class StoresDao {
 	public String stRegnumCheck(String sto_regnum) {
 		return session.selectOne(NAMESPACE+".stRegnumCheck",sto_regnum);
 	}
+	public List<StoresVo> adstAdd() {
+		return session.selectList(NAMESPACE+".adstAdd");
+	}
+	public int stEnable(int sto_num) {
+		return session.update(NAMESPACE+".stEnable",sto_num);
+	}
+	public int stDisable(int sto_num) {
+		return session.update(NAMESPACE+".stDisable",sto_num);
+	}
+	public int stDelete(int sto_num) {
+		return session.update(NAMESPACE+".stDelete",sto_num);
+	}
 }

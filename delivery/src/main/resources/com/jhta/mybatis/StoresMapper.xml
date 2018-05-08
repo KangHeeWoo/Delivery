@@ -68,4 +68,16 @@
 	<select id="stRegnumCheck" parameterType="String" resultType="String">
 		select sto_name from stores where sto_regnum=#{sto_regnum}
 	</select>
+	<select id="adstAdd" resultType="com.jhta.delivery.vo.StoresVo">
+		select * from stores where sto_state='대기'
+	</select>
+	<update id="stEnable" parameterType="int">
+		update stores set sto_state='승인' where sto_num=#{sto_num}
+	</update>
+	<update id="stDisable" parameterType="int">
+		update stores set sto_state='미승인' where sto_num=#{sto_num}
+	</update>
+	<update id="stDelete" parameterType="int">
+		update stores set sto_state='삭제' where sto_num=#{sto_num}
+	</update>
 </mapper>

@@ -30,7 +30,6 @@ public class StoresService {
 		return dao.stoName(sto_num);
 	}
 	public int getCount(HashMap<String, Object> map) {
-		System.out.println(map + " 야아아아아아ㅏㄱ");
 		return dao.getCount(map);
 	}
 	public int stInsert(HashMap<String, Object> map) {
@@ -71,5 +70,17 @@ public class StoresService {
 	}
 	public String stRegnumCheck(String sto_regnum) {
 		return dao.stRegnumCheck(sto_regnum);
+	}
+	public List<StoresVo> adstAdd() {
+		return dao.adstAdd();
+	}
+	public int stEnable(int sto_num) {
+		return dao.stEnable(sto_num);
+	}
+	public int stDisable(int sto_num) {
+		return dao.stDisable(sto_num);
+	}
+	public int stDelete(int sto_num) {
+		return dao.stDelete(sto_num);
 	}
 }

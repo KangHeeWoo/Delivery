@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,7 +41,6 @@ public class SellerController {
 	
 	@RequestMapping("/seller/main")
 	public String main() {
-		
 		return ".seller";
 	}
 	
@@ -245,5 +243,10 @@ public class SellerController {
 	@RequestMapping("/stLocation")
 	public String stLocation() {
 		return ".seller.stLocation";
+	}
+	@RequestMapping("/stDelete")
+	public String stDelete(int sto_num) {
+		service1.stDelete(sto_num);
+		return "redirect:/stList";
 	}
 }
