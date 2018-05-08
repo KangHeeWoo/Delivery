@@ -97,16 +97,16 @@
                 </c:choose>
         <div class="collapse navbar-collapse" id="navbarResponsive" style="display: inline-block; margin-left: 70px;">
           <ul class="navbar-nav text-uppercase ml-auto">
-            <li class="nav-item">
+            <li class="nav-item" style="list-style: none;">
               <a class="nav-link js-scroll-trigger" href="<c:url value='/event/eventlist' />">이벤트팡팡</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="list-style: none;">
               <a class="nav-link js-scroll-trigger" href="<c:url value='/members/bookmark' />">단골매장</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="list-style: none;">
               <a class="nav-link js-scroll-trigger" href="<c:url value='/mypage' />">My배맥</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" style="list-style: none;">
               <a class="nav-link js-scroll-trigger" href="<c:url value='/board/list' />">게시판</a>
             </li>
           </ul>

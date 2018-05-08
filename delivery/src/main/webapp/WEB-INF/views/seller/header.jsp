@@ -19,23 +19,23 @@
    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
      <div class="container">		
        <div class="collapse navbar-collapse" id="navbarResponsive">
-         <ul class="navbar-nav text-uppercase ml-auto">
-           <li class="nav-item">
+         <ul class="navbar-nav text-uppercase ml-auto" >
+           <li class="nav-item" style="list-style: none;">
              <a class="admin-menu" href="<c:url value='/stList'/>" >매장관리&nbsp;</a>
            </li>
-           <li class="nav-item">
+           <li class="nav-item" style="list-style: none;">
              <a class="admin-menu" href="<c:url value='/seller/reviewlist' />">리뷰관리&nbsp;</a>
            </li>
-           <li class="nav-item">
+           <li class="nav-item" style="list-style: none;">
              <a class="admin-menu" href="<c:url value='/seller/orderlist' />">주문관리&nbsp;</a>
            </li>
-           <li class="nav-item">
+           <li class="nav-item" style="list-style: none;">
              <a class="admin-menu" href="#">광고신청&nbsp;</a>
            </li>
-           <li class="nav-item">
+           <li class="nav-item" style="list-style: none;">
              <a class="admin-menu" href="<c:url value='/seller/information'/>">사장님 정보&nbsp;</a>
            </li>
-           <li class="nav-item" style="margin-left: 500px;">
+           <li class="nav-item" style="margin-left: 500px;list-style: none;">
              <a class="admin-menu" href="<c:url value='/logout'/>">로그아웃&nbsp;</a>
            </li>
          </ul>

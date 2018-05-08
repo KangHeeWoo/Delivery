@@ -62,7 +62,7 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	<div align="right" style="width: 100%">
+	<div align="right">
 		<a href="<c:url value='/admin/addEvent' />">신규 이벤트 등록</a>
 	</div>
 </div>

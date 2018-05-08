@@ -5,7 +5,7 @@
 
 <div class="wrap_subContent">
 	<h2 class="subTitle">공지 관리</h2>
-	<ul>
+	<ul style="list-style: none;">
 		<li><a href="<c:url value='/admin/noticeInsert' />" style="margin-left: 850px;">공지 등록</a></li>
 	</ul>
 	<table class="table">

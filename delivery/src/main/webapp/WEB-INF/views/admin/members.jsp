@@ -48,6 +48,7 @@
    </select>
 <input type="text" name="word">
 <input type="submit" value="검색">
+<br><br>
 </form>
 </div>
 </div>
