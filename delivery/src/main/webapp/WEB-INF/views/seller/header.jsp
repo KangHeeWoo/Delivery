@@ -26,13 +26,7 @@
            <li class="nav-item">
              <a class="admin-menu" href="#">광고신청&nbsp;</a>
            </li>
-           <li class="nav-item">
-             <a class="admin-menu" href="#">1:1문의&nbsp;</a>
-           </li>
-           <li class="nav-item">
-             <a class="admin-menu" href="<c:url value='/board/list' />">자유게시판&nbsp;</a>
-           </li>
-           <li class="nav-item">
+           <li class="nav-item" style="margin-left: 500px;">
              <a class="admin-menu" href="<c:url value='/logout'/>">로그아웃&nbsp;</a>
            </li>
          </ul>
