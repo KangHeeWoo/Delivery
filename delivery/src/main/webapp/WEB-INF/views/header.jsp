@@ -39,9 +39,9 @@
                %>
                    <!-- 아이디가 없을때 -->
                       <div align="right" style="display: inline-block; margin-left: 850px;">
-                     <a href="<c:url value='/join'/>" style="margin: 10px;">회원가입</a>
+                     <a href="<c:url value='/join'/>" style="margin: 10px;color:#fed136;">회원가입</a>
                
-                        <a href="<c:url value='/login'/>" class="dropdown-toggle" data-toggle="dropdown">로그인</a>
+                        <a href="<c:url value='/login'/>" class="dropdown-toggle" data-toggle="dropdown" style="color:#fed136;">로그인</a>
                         <span class="caret"></span>
                         <ul id="login-dp" class="dropdown-menu" >
                            <li>
@@ -91,8 +91,8 @@
                    </c:when>
                    <c:otherwise>
                    <!--  로그인 했을때 -->
-                      <a href="<c:url value='/logout'/>" style="display: inline-block; margin-left: 850px;">로그아웃</a>
-                      <a href="javascript:toggleChatOrder()" style="margin: 10px;" >채팅주문</a>
+                      <a href="<c:url value='/logout'/>" style="display: inline-block;color:#fed136; margin-left: 850px;">로그아웃</a>
+                      <a href="javascript:toggleChatOrder()" style="margin: 10px;color:#fed136;" >채팅주문</a>
                    </c:otherwise>
                 </c:choose>
         <div class="collapse navbar-collapse" id="navbarResponsive" style="display: inline-block; margin-left: 70px;">

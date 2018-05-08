@@ -4,9 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="wrap_subContent">
-	<h2 class="subTitle">이벤트 관리</h2>
+	<h2 class="subTitle">공지 관리</h2>
 	<ul>
-		<li><a href="<c:url value='/admin/noticeInsert' />">공지 등록</a></li>
+		<li><a href="<c:url value='/admin/noticeInsert' />" style="margin-left: 850px;">공지 등록</a></li>
 	</ul>
 	<table class="table">
 		<thead>
