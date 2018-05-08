@@ -3,8 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<h1 align="center">문의답변 대기 리스트</h1>
-<table class="table" style="width: 800px; margin: auto;">
+<div class="wrap_subContent">
+<h2 class="subTitle">문의답변 대기 리스트</h2>
+<table class="table">
 <tr>
 <td>번호</td><td>제목</td><td>작성일</td>
 </tr>
@@ -29,3 +30,4 @@
 			</c:choose>
 		</c:forEach>
 	</div>
+</div>

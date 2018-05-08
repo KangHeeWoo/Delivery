@@ -21,7 +21,7 @@
 <style>
 @font-face{
 	font-family: 'baemin';
-	src:url(<c:url value="/resources/fonts/BMJUA_TTF.TTF"/>) format('truetype');
+	src:url(<c:url value="/resources/fonts/BMHANNA_11YRS_TTF.TTF"/>) format('truetype');
 }
 .subTitle {
     font-family: baemin;

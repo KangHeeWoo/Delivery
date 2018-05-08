@@ -3,13 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style type="text/css">
-	#event_manage {
-		width: 800px;
-		margin: auto;
+	.wrap_subContent {
 		align-content: center;
 	}
 </style>
-<div id="event_manage">
+<div class="wrap_subContent">
+	<h2 class="subTitle">이벤트 관리</h2>
 	<table class="table">
 		<thead>
 			<tr>

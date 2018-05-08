@@ -13,8 +13,8 @@
        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
   <body>
-<div style="margin-left: 100px;">
-    <h4>매출 통계</h4>
+<div style="margin-left: 150px;">
+    <h2 class="subTitle">매출 통계</h2>
     <form method="get" action="<c:url value='/chart'/>">
     <select name="year" size="1">
  		<option value="2017">2017년</option>
@@ -52,7 +52,7 @@
 		}
 	}
 </script>
- 	<div align="right" style="margin-right: 100px;">
+ 	<div align="right" style="margin-right: 150px;">
  	<h4>등급별 적립포인트</h4>
  	<form method="get" action="<c:url value='/chart'/>">
 꼬끼오등급 적립포인트 :

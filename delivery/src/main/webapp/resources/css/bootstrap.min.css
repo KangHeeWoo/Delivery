@@ -4431,7 +4431,8 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 		height: auto !important;
 		padding-bottom: 0;
 		overflow: visible !important;
-		visibility: visible !important
+		visibility: visible !important;
+		padding-top: 15px;
 	}
 	.navbar-collapse.in {
 		overflow-y: visible

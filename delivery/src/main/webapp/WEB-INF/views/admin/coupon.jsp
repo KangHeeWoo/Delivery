@@ -3,9 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style type="text/css">
-	#coupon_manage {
-		width: 800px;
-		margin: auto;
+	.wrap_subContent {
 		align-content: center;
 	}
 	
@@ -27,7 +25,8 @@
 		display: none;
 	}
 </style>
-<div id="coupon_manage">
+<div class="wrap_subContent">
+	<h2 class="subTitle">쿠폰 관리</h2>
 	<table class="table">
 		<thead>
 			<tr>

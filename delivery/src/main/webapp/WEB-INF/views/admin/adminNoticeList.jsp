@@ -2,13 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<style>
-	#notice_list{
-		width : 1000px;
-		margin : auto;
-	}
-</style>
-<div id="notice_list">
+
+<div class="wrap_subContent">
+	<h2 class="subTitle">이벤트 관리</h2>
 	<ul>
 		<li><a href="<c:url value='/admin/noticeInsert' />">공지 등록</a></li>
 	</ul>

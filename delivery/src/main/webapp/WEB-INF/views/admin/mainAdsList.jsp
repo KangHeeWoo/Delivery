@@ -17,14 +17,13 @@
 		margin : auto;
 	}
 </style>
-<br>
+<div class="wrap_subContent">
 <div id="selectBox">
+	<h2 class="subTitle">메인광고</h2>
 	<ul>
 		<li><a href="<c:url value='/admin/topAdsList' />">상단광고</a></li>
 		<li><a href="<c:url value='/admin/mainAdsList' />">메인광고</a></li>
 	</ul>
-	<br>
-	<h4>메인광고</h4>
 	<form action="<c:url value='/admin/mainAdsList'/>" method="post">
 		<select name="year" size="1">
 			<option value="2018">2018년</option>
@@ -85,6 +84,7 @@
 			</c:choose>
 		</c:forEach>
 	</div>
+</div>
 </div>
 <script>
 

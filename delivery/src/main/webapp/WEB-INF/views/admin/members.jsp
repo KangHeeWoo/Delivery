@@ -9,8 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 align="center">회원 리스트</h1><br>
-<table class="table" style="align-content: center; width: 800px; margin: auto;">
+<div class="wrap_subContent">
+<h2 class="subTitle">회원 리스트</h2><br>
+<table class="table">
 	<tr>
 		<th>번호</th><th>이름</th><th>닉네임</th><th>이메일</th><th>가입일</th>
 	</tr>
@@ -48,6 +49,7 @@
 <input type="text" name="word">
 <input type="submit" value="검색">
 </form>
+</div>
 </div>
 </body>
 </html>

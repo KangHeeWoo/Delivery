@@ -39,7 +39,7 @@
             <li class="nav-item">
               <a class="admin-menu" href="<c:url value='/admin/event'/>">이벤트관리&nbsp;</a>
             </li>
-             <li class="nav-item">
+             <li class="nav-item" style="margin-left: 250px;">
               <a class="admin-menu" href="<c:url value='/logout'/>">로그아웃&nbsp;</a>
             </li>
           </ul>
