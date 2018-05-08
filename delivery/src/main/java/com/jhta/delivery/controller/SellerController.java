@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.SellerService;
 import com.jhta.delivery.service.StoresService;
+import com.jhta.delivery.vo.AbleLocationVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.SellerVo;
@@ -241,14 +242,30 @@ public class SellerController {
 		String ck=service1.stRegnumCheck(sto_regnum);
 		return ck;
 	}
-	@RequestMapping("/stLocation")
-	public String stLocation() {
-		return ".seller.stLocation";
-	}
+
 	@RequestMapping("/stDelete")
 	public String stDelete(int sto_num) {
 		service1.stDelete(sto_num);
 		return "redirect:/stList";
+	}
+	@RequestMapping("/stLocation")
+	public String stLocation(Model model,HttpSession session) {
+		int sto_num=(Integer)session.getAttribute("sto_num");
+		List<AbleLocationVo> list=service.stLocList(sto_num);
+		model.addAttribute("list",list);
+		return ".seller.stLocation";
+	}
+	@RequestMapping("/stLocInsert")
+	public String stLocInsert(String able_loc,HttpSession session) {
+		int sto_num=(Integer)session.getAttribute("sto_num");
+		AbleLocationVo vo=new AbleLocationVo(0,able_loc,sto_num);
+		service.stLocInsert(vo);
+		return "redirect:/stLocation";
+	}
+	@RequestMapping("/stLocDelete")
+	public String stLocDelete(int able_loc_num) {
+		service.stLocDelete(able_loc_num);
+		return "redirect:/stLocation";
 	}
 	@RequestMapping(value="/seller/information")
 	public String information(HttpSession session,Model model) {

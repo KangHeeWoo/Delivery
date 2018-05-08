@@ -83,4 +83,10 @@ public class StoresService {
 	public int stDelete(int sto_num) {
 		return dao.stDelete(sto_num);
 	}
+	public List<StoresVo> adstDel() {
+		return dao.adstDel();
+	}
+	public int adstDelOk(int sto_num) {
+		return dao.adstDelOk(sto_num);
+	}
 }

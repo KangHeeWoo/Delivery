@@ -84,4 +84,10 @@ public class StoresDao {
 	public int stDelete(int sto_num) {
 		return session.update(NAMESPACE+".stDelete",sto_num);
 	}
+	public List<StoresVo> adstDel() {
+		return session.selectList(NAMESPACE+".adstDel");
+	}
+	public int adstDelOk(int sto_num) {
+		return session.update(NAMESPACE+".adstDelOk",sto_num);
+	}
 }

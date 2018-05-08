@@ -1,12 +1,14 @@
 package com.jhta.delivery.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.delivery.dao.MembersDao;
 import com.jhta.delivery.dao.SellerDao;
+import com.jhta.delivery.vo.AbleLocationVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.SellerVo;
 
@@ -41,6 +43,15 @@ public class SellerService {
 	}
 	public int getSel_num(String email) {
 		return dao.getSel_num(email);
+	}
+	public List<AbleLocationVo> stLocList(int sto_num){
+		return dao.stLocList(sto_num);
+	}
+	public int stLocInsert(AbleLocationVo vo) {
+		return dao.stLocInsert(vo);
+	}
+	public int stLocDelete(int able_loc_num) {
+		return dao.stLocDelete(able_loc_num);
 	}
 	public SellerVo sel_num(String sel_email) {
 		return dao.sel_num(sel_email);

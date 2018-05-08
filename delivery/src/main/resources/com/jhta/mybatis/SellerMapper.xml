@@ -19,6 +19,15 @@
 	<select id="getSel_num" parameterType="String" resultType="int">
 		select sel_num from seller where sel_email=#{email}
 	</select>
+	<select id="stLocList" parameterType="int" resultType="com.jhta.delivery.vo.AbleLocationVo">
+		select * from able_location where sto_num=#{sto_num}
+	</select>
+	<insert id="stLocInsert" parameterType="com.jhta.delivery.vo.AbleLocationVo">
+		insert into able_location values(0,#{able_loc},#{sto_num})
+	</insert>
+	<delete id="stLocDelete" parameterType="int">
+		delete from able_location where able_loc_num=#{able_loc_num}
+	</delete>
 	<select id="sel_num" parameterType="String" resultType="seller">
 		select sel_num from seller where sel_email=#{sel_email} and gra_num=6
 	</select>

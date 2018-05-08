@@ -78,6 +78,12 @@
 		update stores set sto_state='미승인' where sto_num=#{sto_num}
 	</update>
 	<update id="stDelete" parameterType="int">
+		update stores set sto_state='삭제요청' where sto_num=#{sto_num}
+	</update>
+	<select id="adstDel" resultType="com.jhta.delivery.vo.StoresVo">
+		select * from stores where sto_state='삭제요청'
+	</select>
+	<update id="adstDelOk" parameterType="int">
 		update stores set sto_state='삭제' where sto_num=#{sto_num}
 	</update>
 </mapper>

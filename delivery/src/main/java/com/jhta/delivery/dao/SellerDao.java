@@ -2,12 +2,13 @@ package com.jhta.delivery.dao;
 
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.jhta.delivery.vo.MembersVo;
+import com.jhta.delivery.vo.AbleLocationVo;
 import com.jhta.delivery.vo.SellerVo;
 
 @Repository
@@ -32,6 +33,15 @@ public class SellerDao {
 	}
 	public int getSel_num(String email) {
 		return session.selectOne(NAMESPACE+".getSel_num",email);
+	}
+	public List<AbleLocationVo> stLocList(int sto_num){
+		return session.selectList(NAMESPACE+".stLocList",sto_num);
+	}
+	public int stLocInsert(AbleLocationVo vo){
+		return session.insert(NAMESPACE+".stLocInsert",vo);
+	}
+	public int stLocDelete(int able_loc_num) {
+		return session.delete(NAMESPACE+".stLocDelete",able_loc_num);
 	}
 	public SellerVo sel_num(String sel_email) {
 		return session.selectOne(NAMESPACE+".sel_num", sel_email);

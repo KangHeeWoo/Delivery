@@ -41,4 +41,15 @@ public class AdminStController {
 		service.stDisable(sto_num);
 		return "redirect:/adstAdd";
 	}
+	@RequestMapping("/adstDel")
+	public String adstDel(Model model) {
+		List<StoresVo> list=service.adstDel();
+		model.addAttribute("list",list);
+		return ".admin.stoDel";
+	}
+	@RequestMapping("/adstDelOk")
+	public String adstDelOk(int sto_num) {
+		service.adstDelOk(sto_num);
+		return "redirect:/adstDel";
+	}
 }
