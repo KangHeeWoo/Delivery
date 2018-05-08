@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.BookMarkService;
@@ -405,13 +406,35 @@ public class MembersController {
 		
 		
 	}
-	@RequestMapping(value="/members/kakao")
-	public String KakaoE(String kakaoEmail,Model model) {
+	@RequestMapping(value="/members/kakao",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String KakaoE(String kakaoEmail,HttpSession session) {
+		JSONObject ob=new JSONObject();
 		
 		System.out.println("이메일"+kakaoEmail);
+		String mem_email=kakaoEmail;
+		
+		MembersVo vo=service.getinfo(mem_email);
+		if(vo==null) {
+			service.snsInsert(mem_email);
+			ob.put("result", "회원가입");
+			session.setAttribute("email", mem_email);
+		}else {
+			if(vo.getMem_sns().equals("아니요")) {
+				ob.put("result", "alert");
+			}else{
+				if(vo.getMem_addr().equals(" ")) {
+					ob.put("result", "회원정보수정");
+					session.setAttribute("email", mem_email);
+				}else {
+					ob.put("result", "main");
+					session.setAttribute("email", mem_email);
+				}
+			}
+		}
 	
 			
-		return ".main";
+		return ob.toString();
 		
 		
 	}

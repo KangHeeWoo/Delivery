@@ -29,15 +29,15 @@
          Kakao.API.request({
             url : '/v1/user/me',
             success : function(res) {
-               alert( JSON.stringify(res));
+               //alert( JSON.stringify(res));
                
                var emailM = JSON.stringify(res.kaccount_email);
                var emailLength = emailM.length;
                var newEmail = emailM.substr(1,(emailLength-2));
-              
                
-               alert(newEmail);
-               location.href="<c:url value='/members/kakao?kakaoEmail="+newEmail+"' />";
+              // alert(newEmail);
+              	
+               kakaoEmail(newEmail);
             },
             fail : function(error) {
                alert(JSON.stringify(error));
@@ -49,4 +49,26 @@
       }
    });
    //]]>
+   
+   function kakaoEmail(newEmail){
+	   $.ajax({
+		   url : "<c:url value='/members/kakao'/>",
+		   data : {kakaoEmail:newEmail},
+		   dataType: "json",
+		   success : function(data){
+			   if(data.result=='회원가입'){
+				   alert("가입해 주셔서 감사합니다.(임시비밀번호: 아이디)");
+				   location.href="<c:url value='/members/information'/>";
+			   }else if(data.result == 'alert'){
+				   alert("이미 우리 백성입니다.");
+			   }else if(data.result == '회원정보수정'){
+				   alert("회원정보를 수정해주세요 ㅜㅜ");
+				   location.href="<c:url value='/members/information'/>";
+			   }else if(data.result == 'main'){
+				   location.href="<c:url value='/'/>";
+			   }
+			   		
+		   }
+	   });
+   }
 </script>

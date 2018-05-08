@@ -80,4 +80,11 @@ public class MembersService {
 	public int pwdUpdate(HashMap<String, Object> map) {
 		return dao.pwdUpdate(map);
 	}
+	
+	
+	////////////sns/////////////////
+	
+	public int snsInsert(String mem_email) {
+		return dao.snsInsert(mem_email);
+	}
 }

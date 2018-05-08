@@ -71,12 +71,7 @@ public class MembersDao {
 		return session.update(NAMESPACE+".pwdUpdate", map);
 	}
 	/////////////////////////////////////// sns ///////////////////////
-	public int email_snsX(String mem_email) {
-		return session.selectOne(NAMESPACE+".email_snsX", mem_email);
-	}
-	public int Kemail_snsO(String mem_email) {
-		return session.selectOne(NAMESPACE+".Kemail_snsO", mem_email);
-	}
+	
 	public int snsInsert(String mem_email) {
 		return session.insert(NAMESPACE+".snsInsert", mem_email);
 	}

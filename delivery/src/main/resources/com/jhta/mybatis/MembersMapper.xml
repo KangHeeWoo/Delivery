@@ -7,7 +7,7 @@
 		insert into members values(0,#{mem_email},#{mem_name},#{mem_pwd},#{mem_birth},#{mem_addr},#{mem_phone},sysdate,#{mem_nick},3, #{mem_sex},0,'아니요')
 	</insert>
 	<select id="emailcheck" parameterType="String" resultType="members">
-		select * from members where mem_email=#{mem_email} and gra_num in(5,3,1)
+		select * from members where mem_email=#{mem_email} and gra_num in(1,2,3)
 	</select>
 	<select id="logincheck" parameterType="hashmap" resultType="members">
 		select * from members where mem_email=#{mem_email} and mem_pwd=#{mem_pwd} and gra_num!=4
@@ -94,18 +94,15 @@
 	</update>
 	
 	
-	<!-- 이메일존재, sns가입 아님 1.alert창    0. insert -->
+	<!-- 이메일존재, sns가입 아님 1.alert창    0. insert(정보수정) -->
 	<select id="email_snsX" parameterType="String" resultType="int">
 		select NVL(count(*),0) cnt from members where mem_email=#{mem_email} and mem_sns='아니요'
 	</select>
 	
 	<!-- 이메일 미존재, sns가입아님  -->
 	<insert id="snsInsert" parameterType="String">
-		insert into members values(0,#{mem_email},' ',' ',sysdate,' ',' ',sysdate,' ',3,'미지정',0,'예')
+		insert into members values(0,#{mem_email},' ',#{mem_email},sysdate,' ',' ',sysdate,' ',3,'미지정',0,'예')
 	</insert>
 	
-	<!-- 이메일 존재, SNS가입, 주소없음 1. 회원정보수정   0. main창으로-->
-	<select id="Kemail_snsO" parameterType="String" resultType="int">
-		select NVL(count(*),0) cnt from members where  mem_email=#{mem_email} and mem_sns='예' and mem_addr=' '
-	</select>
+	
 </mapper>
