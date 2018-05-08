@@ -25,10 +25,10 @@
 	<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 		<c:choose>
 			<c:when test="${i==pu.pageNum }"> <!-- 현재페이지 색상 다르게 표시하기 -->
-				<a href="<c:url value='/adstList?pageNum=${i }'/>">${i }</a>
+				<a href="<c:url value='/adList/search?pageNum=${i }&word=${map.word }&search=${map.search }'/>">${i }</a>
 			</c:when>
 			<c:otherwise>
-				<a href="<c:url value='/adstList?pageNum=${i }'/>">${i }</a>
+				<a href="<c:url value='/adList/search?pageNum=${i }&word=${map.word }&search=${map.search }'/>">${i }</a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
@@ -42,3 +42,4 @@
 </form>
 </div>
 </div>
+</script>

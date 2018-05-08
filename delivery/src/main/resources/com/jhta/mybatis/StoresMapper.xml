@@ -99,4 +99,32 @@
 	  )
 	 <![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow}  ]]> 
 	</select>
+	<select id="adstListCnts" resultType="int" parameterType="hashmap">
+		select NVL(count(*),0) cnt from stores
+		<where>
+		<if test="search=='num'">
+			sto_num  like '%'||#{word}||'%' 
+		</if>
+		<if test="search=='name'">
+			sto_name  like '%'||#{word}||'%' 
+		</if>
+		</where>
+	</select>
+	<select id="adstSearchList" parameterType="hashmap" resultType="com.jhta.delivery.vo.StoresVo">
+	  select * from
+	  (
+		  select aa.*,rownum rnum from
+		  (
+		  select * from stores
+		  <if test="search=='id'">
+		    where sto_num like '%'||#{word}||'%'
+		  </if>
+		  <if test="search=='name'">
+		    where sto_name like '%'||#{word}||'%'
+		  </if>
+		  order by sto_regd desc
+		  )aa
+	  )
+	 <![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow}  ]]>
+	</select>
 </mapper>

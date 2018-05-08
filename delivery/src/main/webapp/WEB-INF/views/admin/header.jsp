@@ -19,7 +19,7 @@
               <a class="admin-menu" href="<c:url value='/memberslist' />" style="color:#fed136;">회원관리&nbsp;</a>
             </li>
             <li class="nav-item" style="list-style: none;"> 
-              <a class="admin-menu" href="<c:url value='/stoManage' />" style="color:#fed136;">매장관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/adstList' />" style="color:#fed136;">매장관리&nbsp;</a>
             </li>
             <li class="nav-item" style="list-style: none;">
               <a class="admin-menu" href="<c:url value='/chart' />" style="color:#fed136;">매출관리&nbsp;</a>

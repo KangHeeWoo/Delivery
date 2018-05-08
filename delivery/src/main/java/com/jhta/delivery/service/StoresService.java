@@ -95,4 +95,10 @@ public class StoresService {
 	public List<StoresVo> adstList(HashMap<String, Object> map){
 		return dao.adstList(map);
 	}
+	public int adstListCnts(HashMap<String, Object> map1) {
+		return dao.adstListCnts(map1);
+	}
+	public List<StoresVo> adstSearchList(HashMap<String, Object> map){
+		return dao.adstSearchList(map);
+	}
 }

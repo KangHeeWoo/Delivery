@@ -38,7 +38,7 @@
 <td>가입일</td><td>${regd }</td>
 </tr>
 </table>
-<h1>채팅 기록</h1>
+<%-- <h1>채팅 기록</h1>
 <table class="table">
 <tr>
 <th>번호</th><th>파일명</th><th>저장시간</th>
@@ -60,7 +60,7 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-	</div>
+	</div> --%>
 <h1>쿠폰 사용 내역</h1>
 <table class="table">
 <tr>

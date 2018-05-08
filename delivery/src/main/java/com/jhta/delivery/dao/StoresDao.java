@@ -96,4 +96,10 @@ public class StoresDao {
 	public List<StoresVo> adstList(HashMap<String, Object> map) {
 		return session.selectList(NAMESPACE+".adstList",map);
 	}
+	public int adstListCnts(HashMap<String, Object> map1) {
+		return session.selectOne(NAMESPACE+".adstListCnts",map1);
+	}
+	public List<StoresVo> adstSearchList(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE+".adstSearchList",map);
+	}
 }
