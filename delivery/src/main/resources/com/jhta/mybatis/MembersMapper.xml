@@ -7,7 +7,7 @@
 		insert into members values(0,#{mem_email},#{mem_name},#{mem_pwd},#{mem_birth},#{mem_addr},#{mem_phone},sysdate,#{mem_nick},3, #{mem_sex},0,'아니요')
 	</insert>
 	<select id="emailcheck" parameterType="String" resultType="members">
-		select * from members where mem_email=#{mem_email} and gra_num in(1,2,3)
+		select * from members where mem_email=#{mem_email} and gra_num in(1,2,3,100)
 	</select>
 	<select id="logincheck" parameterType="hashmap" resultType="members">
 		select * from members where mem_email=#{mem_email} and mem_pwd=#{mem_pwd} and gra_num!=4

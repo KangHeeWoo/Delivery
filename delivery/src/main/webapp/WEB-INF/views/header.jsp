@@ -2,11 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+
+<link href="<c:url value='/resources/css/menu.css'/>" rel="stylesheet">
+
 <link rel="stylesheet" href="<c:url value='/resources/css/chat-order.css'/>">
    <div align="center">
-      <img src="<c:url value='/resources/images/로고-pn.png'/>" id="mainlogo">
+      <img src="<c:url value='/resources/images/백성민로고.png'/>" id="mainlogo" style="width:350px; height: auto; margin: 30px;">
    </div>
-    
+
+
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
@@ -19,24 +25,24 @@
                 <!-- 로그인 여부 -->
                 <c:choose>
                    <c:when test="${empty sessionScope.email }">
-                   <%
-               Cookie[] ck=request.getCookies();
-                  String mem_email="";
-                  String mem_pwd="";
-                  String checked="";
-                  if(ck!=null){
-                     for(Cookie cook:ck){
-                        if(cook.getName().equals("mem_email")){
-                           mem_email=cook.getValue();
-                        }else if(cook.getName().equals("mem_pwd")){
-                           mem_pwd=cook.getValue();
-                        }
-                        if(cook.getName().equals("chk")){
-                        checked="checked='checked'";
-                        }
-                     }
-                  }
-               %>
+		               <%
+		               Cookie[] ck=request.getCookies();
+		                  String mem_email="";
+		                  String mem_pwd="";
+		                  String checked="";
+		                  if(ck!=null){
+		                     for(Cookie cook:ck){
+		                        if(cook.getName().equals("mem_email")){
+		                           mem_email=cook.getValue();
+		                        }else if(cook.getName().equals("mem_pwd")){
+		                           mem_pwd=cook.getValue();
+		                        }
+		                        if(cook.getName().equals("chk")){
+		                        checked="checked='checked'";
+		                        }
+		                     }
+		                  }
+		               %>
                    <!-- 아이디가 없을때 -->
                       <div align="right" style="display: inline-block; margin-left: 850px;">
                      <a href="<c:url value='/join'/>" style="margin: 10px;color:#fed136;">회원가입</a>

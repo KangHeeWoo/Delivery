@@ -12,7 +12,8 @@
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e62d111f7ae02205a9444c872d9a9085&libraries=services,clusterer,drawing"></script>
  
 
- 
+
+
  
   <div id="page-top">
  
@@ -20,10 +21,11 @@
     <!-- Header -->
     <header class="masthead">
       <div class="container" >
-        <div class="intro-text" >
+
           <div>
-               <div class="intro-lead-in">느림의 미학 킥보드...</div>
-             <div class="intro-heading text-uppercase">배달의 백성民</div>   
+              <img alt="백성로고" src="<c:url value='/resources/images/백성백성.png'/>" style="margin-bottom: 50px;" >
+              <a id="goMenu"><img alt="백성로고" src="<c:url value='/resources/images/주문버튼.png'/>" style="margin-bottom: 50px;"></a>
+              
           </div>
          
          <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel" style="width:1000px;">
@@ -44,17 +46,17 @@
         </div>
          
          
-        </div>
+
         <div class="form-group">
-         <div class="col-sm-6">
+         <div class="col-sm-8">
             <div class="input-group">
                <input type="text" class="form-control" id="sample5_address"
-                  placeholder="주소검색을 눌러 주소를 입력해 주세요" width="100" readonly="readonly" name="mem_addr">
+                  placeholder="주소검색을 눌러 주소를 입력해 주세요" style="width:350px;" readonly="readonly" name="mem_addr">
                <span class="input-group-btn">                     
                <input type="button" class="btn btn-success"
                   onclick="sample5_execDaumPostcode()" value="주소검색">
                </span>
-               <input type="text" class="form-control" id="detail_address" placeholder="상세 주소를 입력해 주세요" width="100" >
+               <input type="text" class="form-control" id="detail_address" placeholder="상세 주소를 입력해 주세요" style="width:300px;" >
             </div>
          </div>
       </div>
@@ -583,6 +585,20 @@
                        //console.log("text : "+text);
                     } */
                 });
-      })
+         
+         $("#goMenu").on('click', function(e) {
+        	 e.preventDefault();
+        	 var offset = $("#sample5_address").offset();
+        	 console.log(offset.top);
+        	 
+        	 console.log($(window).scrollTop());
+
+              $('html body').stop().animate({
+                   scrollTop : offset.top + 'px'
+                }, 400);
+            });
+      });
+      
+
    </script>
    
