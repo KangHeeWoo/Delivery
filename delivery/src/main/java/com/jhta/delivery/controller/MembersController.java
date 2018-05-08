@@ -371,19 +371,31 @@ public class MembersController {
 		
 		return ".members.Findpwd";
 	}
+	
+	
 	//비밀번호찾기 관련 controller
 	@RequestMapping(value="/member/emailCheck",produces="application/json;charset=utf-8")
 	@ResponseBody
-	public String emailCheck(String mem_email) {
-		System.out.println("이메일오니"+mem_email);
+	public String emailCheck(String mem_email,String radiovalue) {
+		System.out.println("이메일오니"+mem_email+"   radio"+radiovalue);
 		JSONObject ob=new JSONObject();
-
-		int m=service.emailcheck(mem_email);
-		System.out.println("m"+m);
-		if(m>0) {
-			ob.put("result", true);
-		}else {
-			ob.put("result", false);
+		if(radiovalue.equals("mem_email")) {
+			int m=service.emailcheck(mem_email);
+			System.out.println("m"+m);
+			if(m>0) {
+				ob.put("result", true);
+			}else {
+				ob.put("result", false);
+			}
+		}else if(radiovalue.equals("sel_email")) {
+			
+			int n=sellerService.emailcheck(mem_email);
+			System.out.println("n"+n);
+			if(n>0) {
+				ob.put("result", true);
+			}else {
+				ob.put("result", false);
+			}
 		}
 		return ob.toString();
 	}

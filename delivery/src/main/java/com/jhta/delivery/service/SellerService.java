@@ -42,4 +42,5 @@ public class SellerService {
 	public int getSel_num(String email) {
 		return dao.getSel_num(email);
 	}
+	
 }

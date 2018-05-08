@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.SellerMapper">
 	<select id="emailcheck" parameterType="String" resultType="seller">
-		select * from seller where sel_email=#{sel_email} 
+		select * from seller where sel_email=#{value} and gra_num =6
 	</select>
 	<select id="logincheck" parameterType="hashmap" resultType="seller">
 		select * from seller where sel_email=#{sel_email} and sel_pwd=#{sel_pwd}
@@ -19,4 +19,5 @@
 	<select id="getSel_num" parameterType="String" resultType="int">
 		select sel_num from seller where sel_email=#{email}
 	</select>
+
 </mapper>    

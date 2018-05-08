@@ -3,10 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<form class="form-horizontal" action="<c:url value='/members/Pwd'/>"
-	method="post">
+<form class="form-horizontal" action="<c:url value='/members/Pwd'/>" method="post" id="mem_selPwd">
 
 	<div class="form-group">
+		<div align="center">
+        	<input type="radio" name="joinradio" value="mem_email" checked="checked"> 우리민족  
+        	<input type="radio" name="joinradio" value="sel_email"> 사장님
+        </div><br><br>
 		<label class="col-sm-3 control-label" for="inputNumber"
 			onsubmit="return emailOK()">이메일</label>
 		<div class="col-sm-6">
@@ -19,6 +22,7 @@
 			<p class="help-block" id="emailcheckP"></p>
 		</div>
 	</div>
+
 
 		
 	<div class="form-group">
@@ -44,11 +48,16 @@
 	function emailCheck() {
 		var mem_email = $("#inputEmail").val();
 		var emailcheckP=$("#emailcheckP");
+		var form = mem_selPwd;
+		var radiovalue=form.joinradio.value;
+		//console.log(form.joinradio.value);
+		
+		//return ;
 		$("#btnSendEmail").prop("disabled", true);
 
 		$.ajax({
 			url : "<c:url value='/member/emailCheck'/>",
-			data : {mem_email : mem_email},
+			data : {mem_email : mem_email, radiovalue : radiovalue},
 			type : "post",
 			dataType : "json",
 			success : function(data) {

@@ -33,4 +33,5 @@ public class SellerDao {
 	public int getSel_num(String email) {
 		return session.selectOne(NAMESPACE+".getSel_num",email);
 	}
+
 }
