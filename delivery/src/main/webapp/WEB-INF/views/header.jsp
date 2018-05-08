@@ -11,7 +11,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="margin-left: 40px;">
              메뉴
           <i class="fa fa-bars"></i>
         </button>
@@ -38,8 +38,8 @@
                   }
                %>
                    <!-- 아이디가 없을때 -->
-                      <div align="right" style="display: inline-block; margin-left: 500px;">
-                     <a href="<c:url value='/join'/>">회원가입</a>
+                      <div align="right" style="display: inline-block; margin-left: 850px;">
+                     <a href="<c:url value='/join'/>" style="margin: 10px;">회원가입</a>
                
                         <a href="<c:url value='/login'/>" class="dropdown-toggle" data-toggle="dropdown">로그인</a>
                         <span class="caret"></span>
@@ -91,20 +91,17 @@
                    </c:when>
                    <c:otherwise>
                    <!--  로그인 했을때 -->
-                      <a href="<c:url value='/logout'/>" >로그아웃</a>
-                      <a href="javascript:toggleChatOrder()" >채팅주문</a>
+                      <a href="<c:url value='/logout'/>" style="display: inline-block; margin-left: 850px;">로그아웃</a>
+                      <a href="javascript:toggleChatOrder()" style="margin: 10px;" >채팅주문</a>
                    </c:otherwise>
                 </c:choose>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="collapse navbar-collapse" id="navbarResponsive" style="display: inline-block; margin-left: 70px;">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="<c:url value='/event/eventlist' />">이벤트팡팡</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="<c:url value='/members/bookmark' />">단골매장</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#">장바구니</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="<c:url value='/mypage' />">My배맥</a>

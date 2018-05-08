@@ -34,8 +34,10 @@
                var emailM = JSON.stringify(res.kaccount_email);
                var emailLength = emailM.length;
                var newEmail = emailM.substr(1,(emailLength-2));
+              
+               
                alert(newEmail);
-              // location.href="<c:url value='/sociallogin?type1=2&email="+newEmail+"' />";
+               location.href="<c:url value='/members/kakao?kakaoEmail="+newEmail+"' />";
             },
             fail : function(error) {
                alert(JSON.stringify(error));

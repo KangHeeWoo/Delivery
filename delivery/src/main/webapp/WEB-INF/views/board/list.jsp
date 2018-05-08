@@ -2,13 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<style type="text/css">
-	#board_list{
-		width : 1000px;
-		margin : auto;
-	}
-</style>
-<div id="board_list">
+
+<div class="wrap_subContent">
+	<h2 class="subTitle">자유게시판</h2>
 	<ul>
 		<li><a href="<c:url value='/board/list' />">게시판</a></li>
 		<li><a href="<c:url value='/notice/noticeList' />">공지사항</a></li>

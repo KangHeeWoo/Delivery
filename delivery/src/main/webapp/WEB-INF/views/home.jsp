@@ -43,7 +43,7 @@
           <ol class="indicator"></ol>
         </div>
          
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">주문하기</a>
+         
         </div>
         <div class="form-group">
          <div class="col-sm-6">
