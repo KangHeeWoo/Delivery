@@ -105,9 +105,10 @@ public class HomeController {
 			if(n>0) {
 				MembersVo vo = memService.getinfo(email);
 				session.setAttribute("email", email);
-				session.setAttribute("nick", vo.getMem_nick());
 				
 				if(email.equals("admin@admin")) return ".admin";
+				
+				session.setAttribute("nick", vo.getMem_nick());
 				
 				List<MainAdsVo> list = adsService.mainAdsSelected();
 				model.addAttribute("list",list);
