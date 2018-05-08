@@ -16,6 +16,7 @@ public class MembersVo {
 	private String mem_sex;
 	private int gra_num;
 	private int mem_point;
+	private String mem_sns;
 	public MembersVo() {}
 	public MembersVo(int mem_num, String mem_email, String mem_name, String mem_pwd, Date mem_birth, String mem_addr,
 			String mem_phone, Date mem_regd, String mem_nick, String mem_sex, int gra_num, int mem_point) {
@@ -32,6 +33,31 @@ public class MembersVo {
 		this.mem_sex = mem_sex;
 		this.gra_num = gra_num;
 		this.mem_point = mem_point;
+	}
+	public MembersVo(int mem_num, String mem_email, String mem_name, String mem_pwd, Date mem_birth, String mem_addr,
+			String mem_phone, Date mem_regd, String mem_nick, String mem_sex, int gra_num, int mem_point,
+			String mem_sns) {
+		super();
+		this.mem_num = mem_num;
+		this.mem_email = mem_email;
+		this.mem_name = mem_name;
+		this.mem_pwd = mem_pwd;
+		this.mem_birth = mem_birth;
+		this.mem_addr = mem_addr;
+		this.mem_phone = mem_phone;
+		this.mem_regd = mem_regd;
+		this.mem_nick = mem_nick;
+		this.mem_sex = mem_sex;
+		this.gra_num = gra_num;
+		this.mem_point = mem_point;
+		this.mem_sns = mem_sns;
+	}
+	
+	public String getMem_sns() {
+		return mem_sns;
+	}
+	public void setMem_sns(String mem_sns) {
+		this.mem_sns = mem_sns;
 	}
 	public int getMem_num() {
 		return mem_num;
@@ -110,7 +136,7 @@ public class MembersVo {
 		return "MembersVo [mem_num=" + mem_num + ", mem_email=" + mem_email + ", mem_name=" + mem_name + ", mem_pwd="
 				+ mem_pwd + ", mem_birth=" + mem_birth + ", mem_addr=" + mem_addr + ", mem_phone=" + mem_phone
 				+ ", mem_regd=" + mem_regd + ", mem_nick=" + mem_nick + ", mem_sex=" + mem_sex + ", gra_num=" + gra_num
-				+ ", mem_point=" + mem_point + "]";
+				+ ", mem_point=" + mem_point + ", mem_sns=" + mem_sns + "]";
 	}
 	
 }

@@ -405,4 +405,15 @@ public class MembersController {
 		
 		
 	}
+	@RequestMapping(value="/members/kakao")
+	public String KakaoE(String kakaoEmail,Model model) {
+		
+		System.out.println("¿Ã∏ﬁ¿œ"+kakaoEmail);
+	
+			
+		return ".main";
+		
+		
+	}
+	
 }
