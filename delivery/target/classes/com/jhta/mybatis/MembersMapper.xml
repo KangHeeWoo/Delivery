@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.MembersMapper">
 	<insert id="insert" parameterType="members">
-		insert into members values(0,#{mem_email},#{mem_name},#{mem_pwd},#{mem_birth},#{mem_addr},#{mem_phone},sysdate,#{mem_nick},3, #{mem_sex},0)
+		insert into members values(0,#{mem_email},#{mem_name},#{mem_pwd},#{mem_birth},#{mem_addr},#{mem_phone},sysdate,#{mem_nick},3, #{mem_sex},0,'아니요')
 	</insert>
 	<select id="emailcheck" parameterType="String" resultType="members">
 		select * from members where mem_email=#{mem_email} and gra_num in(5,3,1)
@@ -92,4 +92,20 @@
 	<update id="pwdUpdate" parameterType="hashmap">
 		update members set mem_pwd=#{mem_pwd} where mem_email=#{mem_email} and gra_num in(5,3,1)
 	</update>
+	
+	
+	<!-- 이메일존재, sns가입 아님 1.alert창    0. insert -->
+	<select id="email_snsX" parameterType="String" resultType="int">
+		select NVL(count(*),0) cnt from members where mem_email=#{mem_email} and mem_sns='아니요'
+	</select>
+	
+	<!-- 이메일 미존재, sns가입아님  -->
+	<insert id="snsInsert" parameterType="String">
+		insert into members values(0,#{mem_email},' ',' ',sysdate,' ',' ',sysdate,' ',3,'미지정',0,'예')
+	</insert>
+	
+	<!-- 이메일 존재, SNS가입, 주소없음 1. 회원정보수정   0. main창으로-->
+	<select id="Kemail_snsO" parameterType="String" resultType="int">
+		select NVL(count(*),0) cnt from members where  mem_email=#{mem_email} and mem_sns='예' and mem_addr=' '
+	</select>
 </mapper>

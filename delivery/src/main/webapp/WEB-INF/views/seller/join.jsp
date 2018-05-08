@@ -33,7 +33,7 @@
 						<input type="email" class="form-control" id="inputEmail"
 							placeholder="Email" name="sel_email"> <span
 							class="input-group-btn">
-							<button class="btn btn-success" onclick="email_check()">
+							<button class="btn btn-success" onclick="email_check()" id="btnSendEmail">
 								인증번호 전송<i class="fa fa-mail-forward spaceLeft"></i>
 							</button>
 						</span>
@@ -431,6 +431,7 @@
 		//////////////////////이메일 체크+전송
 		function email_check() {
 			email_num = Math.floor(Math.random() * 899999 + 100000);
+			$("#btnSendEmail").prop("disabled", true);
 			var sel_email = $("#inputEmail").val(); //이메일값
 			var emailcheckP=$("#emailcheckP");
 
@@ -450,9 +451,11 @@
 						//alert("메일 전송이 실패했습니다.");
 						emailcheckP.html("이미 사용중인 이메일입니다.").css({color: "#AA1212"});
 					}
+					$("#btnSendEmail").prop("disabled", false);
 				},
 				error : function() {
 					alert("이메일 중복 오류");
+					$("#btnSendEmail").prop("disabled", false);
 				}
 			});
 			
