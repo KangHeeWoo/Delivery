@@ -4,7 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-<h4>즐겨찾기</h4>
+
+<div class="wrap_subContent">
+<h2 class="subTitle">즐겨찾기</h2>
 <table class="table" style="width:1000px; margin: auto; ">
 	<thead>
 		<tr>
@@ -13,7 +15,7 @@
 		<c:forEach var="book" items="${booklist }">
 		<fmt:formatDate value="${book.sto_open}" var="open" pattern="HH:mm"/>
 		<fmt:formatDate value="${book.sto_close}" var="close" pattern="HH:mm"/>
-		<tr >
+		<tr>
 			<td onclick="bookpage(${book.sto_num})">${book.sto_name}</td>
 			<td onclick="bookpage(${book.sto_num})">${book.sto_addr}</td>
 			<td onclick="bookpage(${book.sto_num})">${book.sto_phone}</td>
@@ -35,6 +37,7 @@
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
+</div>
 </div><br><br><br><br><br><br><br><br><br><br><br>
 <%-- <div  style="width:1000px; margin: auto; ">
 <table id="table_id" class="display" >
