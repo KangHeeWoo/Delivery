@@ -9,8 +9,35 @@
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/bootstrap-theme.min.css'/>"
 	media="screen" title="no title" ><!-- charset="utf-8" -->
+<script
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=00c0bb384860705065e4de2f7b7b454&libraries=services"></script>
+	<script>
+		function deleteM(){
+			location.href="<c:url value='/members/delete'/>";
+		}
+		$(function(){
+			$("#btn_success").click(function(){
+				nickCheck1();
+			});
+		});
+	
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+		mapOption = {
+			//center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+			level : 5
+		// 지도의 확대 레벨
+		};
 
-
+		//지도를 미리 생성
+		var map = new daum.maps.Map(mapContainer, mapOption);
+		//주소-좌표 변환 객체를 생성
+		var geocoder = new daum.maps.services.Geocoder();
+		//마커를 미리 생성
+		var marker = new daum.maps.Marker({
+			position : new daum.maps.LatLng(37.537187, 127.005476),
+			map : map
+		});
+</script>
 </head>
 <body>
 	<div class="col-md-12">
@@ -68,11 +95,11 @@
 				<label class="col-sm-3 control-label" for="inputNumber">닉네임</label>
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="text" class="form-control" id="inputNick" placeholder="Nickname" name="mem_nick" value="${memDetail.mem_nick }"> 
+						<input type="text" class="form-control" id="inputNick" placeholder="Nickname" name="mem_nick" value="${memDetail.mem_nick }" onkeyup="changeNick()"> 
 						<span	class="input-group-btn">
-							<button class="btn btn-success" id="btn_success">
-								중복확인<i class="fa fa-mail-forward spaceLeft"></i>
-							</button>
+							<input type="button" class="btn btn-success" id="btn_success" value="중복확인">
+							
+						
 						</span>
 					</div>
 					<p class="help-block" id="nickcheckP"></p>
@@ -109,7 +136,7 @@
 			<div class="form-group" align="center">
 				<label class="col-sm-3 control-label" for="inputAddr"> </label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputPhone" type="text" name="mem_addr2" placeholder="Detailed address" >
+					<input class="form-control"  type="text" name="mem_addr2" placeholder="Detailed address" >
 				</div>
 			</div>
 
@@ -129,7 +156,7 @@
 						취소<i class="fa fa-check spaceLeft"></i>
 					</button>
 					<button class="btn btn-danger" onclick="deleteM()">
-						탈퇴하기</i>
+						탈퇴하기
 					</button>
 				</div>
 			</div>
@@ -146,47 +173,32 @@
 		style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
 
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=00c0bb384860705065e4de2f7b7b454&libraries=services"></script>
 	<script>
-		function deleteM(){
-			location.href="<c:url value='/members/delete'/>";
-		}
-		$(function(){
-			$("#btn_success").click(function(){
-				nickCheck1();
-			});
-		});
-	
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-		mapOption = {
-			center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-			level : 5
-		// 지도의 확대 레벨
-		};
-
-		//지도를 미리 생성
-		var map = new daum.maps.Map(mapContainer, mapOption);
-		//주소-좌표 변환 객체를 생성
-		var geocoder = new daum.maps.services.Geocoder();
-		//마커를 미리 생성
-		var marker = new daum.maps.Marker({
-			position : new daum.maps.LatLng(37.537187, 127.005476),
-			map : map
-		});
-		var email_num; //이메일 인증번호
-		var emailCheck = false;
-		var nickCheck = false;
-		var pwdCheck = false;
-		var phoneCheck = false;
-		var password =false;
 		
+		
+		var nickCheck = true;
+		var pwdCheck = false;
+		var phoneCheck1 =true;
+		var password =false;
+		$(function(){
+			nickCheck = true;
+			 pwdCheck = false;
+			 phoneCheck1 = true;
+			 password =false;
+		});
+		function changeNick(){
+			nickCheck = false;
+			console.log("keyp:" + nickCheck)
+			console.log("111111111111111:"+nickCheck+","+pwdCheck+","+password+","+phoneCheck1)
+		}
 		///////////////////////Ok///////////////////////////////////////
 		function updateOk() {
+			console.log(nickCheck+","+pwdCheck+","+password+","+phoneCheck1)
 			if (!nickCheck) return false;
 			if (!pwdCheck) return false;
 			if (!password) return false;
-			//추가로 달아요
+			if (!phoneCheck1) return false;
+			
 
 			return true;
 		}
@@ -199,9 +211,10 @@
 			
 			if(inputPhone.match(reg)){
 				phonecheckP.html("");
-				phoneCheck = true;
+				phoneCheck1 = true;
 			}else{
 				phonecheckP.html("전화번호는 숫자로만 입력해주세요.").css({color: "#AA1212"});
+				phoneCheck1 = false;
 			}
 		}
 		//현재사용중인번호 일치체크
@@ -250,7 +263,7 @@
 		}
 		////////////////////////닉네임 체크
 		function nickCheck1(){
-			console.log("재히바보");
+
 			nickCheck = false;
 			
 			var inputNick=$("#inputNick").val(); //입력한 닉네임
