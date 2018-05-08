@@ -1,15 +1,17 @@
 package com.jhta.delivery.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jhta.delivery.service.StoresService;
+import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.StoresVo;
 
 @Controller
@@ -51,5 +53,17 @@ public class AdminStController {
 	public String adstDelOk(int sto_num) {
 		service.adstDelOk(sto_num);
 		return "redirect:/adstDel";
+	}
+	@RequestMapping("/adstList")
+	public String adstList(@RequestParam(value="pageNum",defaultValue="1")int pageNum, Model model) {
+		int totalRowCount=service.adstListCnt();
+		PageUtil pu=new PageUtil(pageNum,10,10,totalRowCount);
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("startRow", pu.getStartRow());
+		map.put("endRow",pu.getEndRow());
+		List<StoresVo> list=service.adstList(map);
+		model.addAttribute("list",list);
+		model.addAttribute("pu",pu);
+		return ".admin.stList";
 	}
 }

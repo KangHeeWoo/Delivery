@@ -89,4 +89,10 @@ public class StoresService {
 	public int adstDelOk(int sto_num) {
 		return dao.adstDelOk(sto_num);
 	}
+	public int adstListCnt() {
+		return dao.adstListCnt();
+	}
+	public List<StoresVo> adstList(HashMap<String, Object> map){
+		return dao.adstList(map);
+	}
 }

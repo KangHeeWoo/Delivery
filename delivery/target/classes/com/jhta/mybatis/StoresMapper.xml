@@ -86,4 +86,17 @@
 	<update id="adstDelOk" parameterType="int">
 		update stores set sto_state='삭제' where sto_num=#{sto_num}
 	</update>
+	<select id="adstListCnt" resultType="int">
+		select NVL(count(*),0) cnt from stores
+	</select>
+	<select id="adstList" parameterType="hashmap" resultType="com.jhta.delivery.vo.StoresVo">
+	  select * from
+	  (
+		  select aa.*,rownum rnum from
+		  (
+		    select * from stores order by sto_regd desc
+		  )aa
+	  )
+	 <![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow}  ]]> 
+	</select>
 </mapper>

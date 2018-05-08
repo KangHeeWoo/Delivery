@@ -90,4 +90,10 @@ public class StoresDao {
 	public int adstDelOk(int sto_num) {
 		return session.update(NAMESPACE+".adstDelOk",sto_num);
 	}
+	public int adstListCnt() {
+		return session.selectOne(NAMESPACE+".adstListCnt");
+	}
+	public List<StoresVo> adstList(HashMap<String, Object> map) {
+		return session.selectList(NAMESPACE+".adstList",map);
+	}
 }
