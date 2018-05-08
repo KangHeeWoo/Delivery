@@ -108,6 +108,7 @@ public class HomeController {
 				
 				if(email.equals("admin@admin")) return ".admin";
 				
+				//어드민 로그인 아닐경우 닉네임 세션 추가 - 채팅용
 				session.setAttribute("nick", vo.getMem_nick());
 				
 				List<MainAdsVo> list = adsService.mainAdsSelected();
