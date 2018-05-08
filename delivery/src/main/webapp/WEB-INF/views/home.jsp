@@ -587,16 +587,20 @@
                 });
          
          $("#goMenu").on('click', function(e) {
-        	 e.preventDefault();
-        	 var offset = $("#sample5_address").offset();
-        	 console.log(offset.top);
+        	e.preventDefault();
+        	var offset = $("#sample5_address").offset().top;
+        	console.log(offset);
         	 
-        	 console.log($(window).scrollTop());
-
-              $('html body').stop().animate({
-                   scrollTop : offset.top + 'px'
-                }, 400);
-            });
+        	console.log($(window).scrollTop());
+        	 
+        	//$("body").stop().animate({
+        	/* $(window).stop().animate({
+        		scrollTop : offset	
+        	}, 400); */	 
+        	
+        	$(window).scrollTop(offset - 100);
+        	//$(window).scrollTop(0);
+         });
       });
       
 
