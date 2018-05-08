@@ -30,7 +30,7 @@
              <a class="admin-menu" href="#">1:1문의&nbsp;</a>
            </li>
            <li class="nav-item">
-             <a class="admin-menu" href="#">자유게시판&nbsp;</a>
+             <a class="admin-menu" href="<c:url value='/board/list' />">자유게시판&nbsp;</a>
            </li>
            <li class="nav-item">
              <a class="admin-menu" href="<c:url value='/logout'/>">로그아웃&nbsp;</a>
