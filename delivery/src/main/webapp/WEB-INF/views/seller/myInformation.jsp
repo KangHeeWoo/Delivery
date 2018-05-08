@@ -19,13 +19,13 @@
 				회원정보 변경
 			</h1>
 		</div>
-		<form class="form-horizontal" action="<c:url value='/members/memUpdate'/>"
+		<form class="form-horizontal" action="<c:url value='/seller/selUpdate'/>"
 			method="post" onsubmit="return updateOk()">
 
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputNumber">이메일</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputEmail" type="text" name="mem_email" readonly="readonly" value="${memDetail.mem_email }">
+					<input class="form-control" id="inputEmail" type="text" name="sel_email" readonly="readonly" value="${selDetail.sel_email }">
 				</div>
 			</div>
 
@@ -33,7 +33,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputName">이름</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputName" type="text" name="mem_name" value="${memDetail.mem_name }">
+					<input class="form-control" id="inputName" type="text" name="sel_name" value="${selDetail.sel_name }">
 				</div>
 			</div>
 			
@@ -59,37 +59,17 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputPasswordCheck">비밀번호 확인</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputPasswordCheck" type="password" placeholder="Password Check" name="mem_pwd" onkeyup="pwd1()" >
+					<input class="form-control" id="inputPasswordCheck" type="password" placeholder="Password Check" name="sel_pwd" onkeyup="pwd1()" >
 					<p class="help-block" id="pwd2">비밀번호를 한번 더 입력해주세요.</p>
 				</div>
 			</div>
 
-			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputNumber">닉네임</label>
-				<div class="col-sm-6">
-					<div class="input-group">
-						<input type="text" class="form-control" id="inputNick" placeholder="Nickname" name="mem_nick" value="${memDetail.mem_nick }"> 
-						<span	class="input-group-btn">
-							<button class="btn btn-success" id="btn_success">
-								중복확인<i class="fa fa-mail-forward spaceLeft"></i>
-							</button>
-						</span>
-					</div>
-					<p class="help-block" id="nickcheckP"></p>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputBirth">생년월일</label>
-				<div class="col-sm-6">
-					<input class="form-control" id="inputBirth" type="date"name="mem_birth" value="<fmt:formatDate value="${memDetail.mem_birth }" pattern="yyyy-MM-dd"/>" readonly="readonly">
-				</div>
-			</div>
+			
 
 			<div class="form-group">
 				<label class="col-sm-3 control-label" for="inputPhone">전화번호</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputPhone" type="text" name="mem_phone" placeholder="-를 빼고 입력해주시기 바랍니다." onkeyup="phonecheck()" value="${memDetail.mem_phone }">
+					<input class="form-control" id="inputPhone" type="text" name="sel_phone" placeholder="-를 빼고 입력해주시기 바랍니다." onkeyup="phonecheck()" value="${selDetail.sel_phone }">
 					<p class="help-block" id="phonecheckP"></p>
 				</div>
 			</div>
@@ -99,7 +79,7 @@
 				<label class="col-sm-3 control-label" for="inputAddr">주소</label>
 				<div class="col-sm-6">
 					<div class="input-group">
-						<input type="text" class="form-control" id="sample5_address" placeholder="Address" width="100" readonly="readonly" name="mem_addr" value="${memDetail.mem_addr }">
+						<input type="text" class="form-control" id="sample5_address" placeholder="Address" width="100" readonly="readonly" name="sel_addr" value="${selDetail.sel_addr }">
 						<span class="input-group-btn">
 							<input type="button" class="btn btn-success" onclick="sample5_execDaumPostcode()" value="주소검색">
 						</span>
@@ -109,7 +89,7 @@
 			<div class="form-group" align="center">
 				<label class="col-sm-3 control-label" for="inputAddr"> </label>
 				<div class="col-sm-6">
-					<input class="form-control" id="inputPhone" type="text" name="mem_addr2" placeholder="Detailed address" >
+					<input class="form-control" id="inputPhone" type="text" name="sel_addr2" placeholder="Detailed address" >
 				</div>
 			</div>
 
@@ -129,7 +109,7 @@
 						취소<i class="fa fa-check spaceLeft"></i>
 					</button>
 					<button class="btn btn-danger" onclick="deleteM()">
-						탈퇴하기</i>
+						탈퇴하기
 					</button>
 				</div>
 			</div>
@@ -150,13 +130,9 @@
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=00c0bb384860705065e4de2f7b7b454&libraries=services"></script>
 	<script>
 		function deleteM(){
-			location.href="<c:url value='/members/delete'/>";
+			location.href="<c:url value='/seller/delete'/>";
 		}
-		$(function(){
-			$("#btn_success").click(function(){
-				nickCheck1();
-			});
-		});
+		
 	
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 		mapOption = {
@@ -174,16 +150,18 @@
 			position : new daum.maps.LatLng(37.537187, 127.005476),
 			map : map
 		});
-		var email_num; //이메일 인증번호
-		var emailCheck = false;
-		var nickCheck = false;
+		
+		
+		
+		//var email_num; //이메일 인증번호
+		//var emailCheck = false;
 		var pwdCheck = false;
 		var phoneCheck = false;
-		var password =false;
+		var password= false;
 		
 		///////////////////////Ok///////////////////////////////////////
 		function updateOk() {
-			if (!nickCheck) return false;
+			console.log("dhsl");
 			if (!pwdCheck) return false;
 			if (!password) return false;
 			//추가로 달아요
@@ -210,7 +188,7 @@
 			var pwd=$("#pwd");
 			password = false;
 			$.ajax({
-				url : "<c:url value='/member/password'/>",
+				url : "<c:url value='/seller/password'/>",
 				data: {Password :Password},
 				dataType : "json",
 				success : function(data){
@@ -248,34 +226,7 @@
 			}
 			else  pwd1.html("숫자, 특수문자 포함 8자 이상으로 입력하세요").css({color: "#AA1212"});			
 		}
-		////////////////////////닉네임 체크
-		function nickCheck1(){
-			console.log("재히바보");
-			nickCheck = false;
-			
-			var inputNick=$("#inputNick").val(); //입력한 닉네임
-			var nickcheckP=$("#nickcheckP"); //가능여부
-			$.ajax({
-				url : "<c:url value='/member/nick'/>",
-				data: {inputNick :inputNick},
-				dataType : "json",
-				success : function(data){
-					if(data.result){
-						nickcheckP.html("");
-						nickcheckP.html("사용 가능한 닉네임입니다.").css({color: "#003399"}); 
-						nickCheck = true;
-					}else {
-						nickcheckP.html("");
-						nickcheckP.html("사용 불가능한 닉네임입니다.").css({color: "#AA1212"});
-					}
-				},
-				error : function(){
-					alert("닉네임 중복 오류");
-				}
-				
-			});
-		}
-
+		
 
 		function sample5_execDaumPostcode() {
 			new daum.Postcode(

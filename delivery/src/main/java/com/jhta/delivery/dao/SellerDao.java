@@ -33,5 +33,19 @@ public class SellerDao {
 	public int getSel_num(String email) {
 		return session.selectOne(NAMESPACE+".getSel_num",email);
 	}
-
+	public SellerVo sel_num(String sel_email) {
+		return session.selectOne(NAMESPACE+".sel_num", sel_email);
+	}
+	public SellerVo searchSelNum(int sel_num) {
+		return session.selectOne(NAMESPACE + ".searchSelNum", sel_num);
+	}
+	public int Password(HashMap<String, Object> map) {
+		return session.selectOne(NAMESPACE+".Password", map);
+	}
+	public int selGra(HashMap<String, Object> map) {
+		return session.update(NAMESPACE+".SelGra", map);
+	}
+	public int selUpdate(SellerVo vo) {
+		return session.update(NAMESPACE+".selUPdate", vo);
+	}
 }

@@ -42,5 +42,19 @@ public class SellerService {
 	public int getSel_num(String email) {
 		return dao.getSel_num(email);
 	}
-	
+	public SellerVo sel_num(String sel_email) {
+		return dao.sel_num(sel_email);
+	}
+	public SellerVo searchMemNum(int sel_num) {
+		return dao.searchSelNum(sel_num);
+	}
+	public int Password(HashMap<String, Object> map) {
+		return dao.Password(map);
+	}
+	public int selGra(HashMap<String, Object> map) {
+		return dao.selGra(map);
+	}
+	public int selUpdate(SellerVo vo) {
+		return dao.selUpdate(vo);
+	}
 }

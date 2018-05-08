@@ -25,14 +25,15 @@
 				회원 탈퇴
 			</h1>
 		</div>
-		<form class="form-horizontal" action="<c:url value='/members/Mdelete'/>"
-			method="post" onsubmit="return updateOk()">
-		<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPasswordCheck">비밀번호</label>
-				<div class="col-sm-6">
-					<input class="form-control" id="PasswordCheck" type="password" placeholder="Password Check" name="mem_pwd">
-					<p class="help-block" id="pwd">${pwdNo} </p>
+		<form class="form-horizontal" action="<c:url value='/seller/Sdelete'/>"
+				method="post" onsubmit="return updateOk()">
+			<div class="form-group">
+					<label class="col-sm-3 control-label" for="inputPasswordCheck">비밀번호</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="PasswordCheck" type="password" placeholder="Password Check" name="sel_pwd">
+						<p class="help-block" id="pwd">${pwdNo}</p>
+					</div>
 				</div>
-			</div>
-<div align="center"><button class="btn btn-danger" type="submit">탈퇴하기</button></div>
-</form></div>
+			<div align="center"><button class="btn btn-danger" type="submit">탈퇴하기</button></div>
+		</form>
+</div>

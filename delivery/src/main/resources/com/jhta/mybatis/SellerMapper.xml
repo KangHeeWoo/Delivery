@@ -19,5 +19,19 @@
 	<select id="getSel_num" parameterType="String" resultType="int">
 		select sel_num from seller where sel_email=#{email}
 	</select>
-
+	<select id="sel_num" parameterType="String" resultType="seller">
+		select sel_num from seller where sel_email=#{sel_email} and gra_num=6
+	</select>
+	<select id="searchSelNum" parameterType="int" resultType="seller">
+		select * from seller where sel_num = #{val} and gra_num = 6
+	</select>
+	<select id="Password" parameterType="hashmap" resultType="int">
+		select count(*)cnt from seller where sel_pwd=#{sel_pwd} and sel_num=#{sel_num} and gra_num=6
+	</select>
+	<update id="SelGra" parameterType="hashmap">
+		update seller set gra_num=4 where sel_num=#{sel_num} and sel_pwd=#{sel_pwd}
+	</update>
+	<update id="selUPdate" parameterType="members">
+		update seller set sel_name=#{sel_name},sel_pwd=#{sel_pwd},sel_addr=#{sel_addr},sel_phone=#{sel_phone} where sel_num=#{sel_num} and gra_num =6
+	</update>
 </mapper>    

@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.SellerService;
 import com.jhta.delivery.service.StoresService;
+import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.SellerVo;
 import com.jhta.delivery.vo.StoresVo;
@@ -248,5 +249,82 @@ public class SellerController {
 	public String stDelete(int sto_num) {
 		service1.stDelete(sto_num);
 		return "redirect:/stList";
+	}
+	@RequestMapping(value="/seller/information")
+	public String information(HttpSession session,Model model) {
+		String sel_email=(String)session.getAttribute("email");
+		SellerVo vo=service.sel_num(sel_email);
+		int sel_num=vo.getSel_num();
+		SellerVo selDetail=service.searchMemNum(sel_num);
+		model.addAttribute("selDetail", selDetail);
+		
+		return ".seller.myInformation";
+	}
+	@RequestMapping(value="/seller/password",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String password(HttpSession session,String Password) {
+		System.out.println("ºñ¹øjson¿À´Ï");
+		String sel_email=(String)session.getAttribute("email");
+		SellerVo vo=service.sel_num(sel_email);
+		int sel_num=vo.getSel_num();
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("sel_pwd", Password);
+		map.put("sel_num", sel_num);
+		
+		JSONObject ob=new JSONObject();
+		int n=service.Password(map);
+		System.out.println(n);
+		//
+		if(n>0) {
+			ob.put("result", true);
+			
+		}else {
+			ob.put("result", false);
+		}
+		return ob.toString();
+	}
+	//»çÀå´Ô Å»Åð
+	@RequestMapping(value="/seller/delete")
+	public String memDelete(HttpSession session,Model model) {
+		String sel_email=(String)session.getAttribute("email");
+		SellerVo vo=service.sel_num(sel_email);
+		int sel_num=vo.getSel_num();
+		model.addAttribute("sel_num", sel_num);
+		
+		return ".seller.selDelete";
+	}
+	//Å»Åð µî±Þ¼öÁ¤
+	@RequestMapping(value="/seller/Sdelete")
+	public String mDelete(HttpSession session,Model model,String sel_pwd) {
+		String sel_email=(String)session.getAttribute("email");
+		SellerVo vo=service.sel_num(sel_email);
+		int sel_num=vo.getSel_num();
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("sel_num", sel_num);
+		map.put("sel_pwd", sel_pwd);
+		int n=service.selGra(map);
+		System.out.println("??"+n);
+		if(n>0) {
+			session.invalidate();
+			return ".main";
+		}else {
+			String DD="pwdNo";
+			return "redirect:/seller/delete?DD="+DD;
+		}
+	}
+	//»çÀå´Ô ¾÷µ«
+	@RequestMapping(value="/seller/selUpdate")
+	public String memUpdate(HttpSession session,Model model,String sel_name,String sel_pwd,String sel_phone,String sel_addr,String sel_addr2 ) {
+		System.out.println("¾÷µ«¿À´Ï?"+","+sel_name+","+sel_pwd+","+sel_phone+","+sel_addr+sel_addr2);
+		String sel_addr3=sel_addr+sel_addr2;
+		String sel_email=(String)session.getAttribute("email");
+		SellerVo vo=service.sel_num(sel_email);
+		int sel_num=vo.getSel_num();
+		SellerVo Svo=new SellerVo(sel_num, null, sel_name, sel_pwd, sel_addr3, sel_phone, null, 0);
+	
+		int n=service.selUpdate(Svo);
+		System.out.println("n"+n);
+		
+		return ".main";
 	}
 }

@@ -26,6 +26,9 @@
            <li class="nav-item">
              <a class="admin-menu" href="#">광고신청&nbsp;</a>
            </li>
+           <li class="nav-item">
+             <a class="admin-menu" href="<c:url value='/seller/information'/>">사장님 정보&nbsp;</a>
+           </li>
            <li class="nav-item" style="margin-left: 500px;">
              <a class="admin-menu" href="<c:url value='/logout'/>">로그아웃&nbsp;</a>
            </li>
