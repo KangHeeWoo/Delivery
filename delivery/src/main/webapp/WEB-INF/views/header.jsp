@@ -17,10 +17,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="margin-left: 40px;">
-             메뉴
-          <i class="fa fa-bars"></i>
-        </button>
+        
                 
                 <!-- 로그인 여부 -->
                 <c:choose>
@@ -44,22 +41,22 @@
 		                  }
 		               %>
                    <!-- 아이디가 없을때 -->
-                      <div align="right" style="display: inline-block; margin-left: 850px;">
-                     <a href="<c:url value='/join'/>" style="margin: 10px;color:#fed136;">회원가입</a>
+                     <div align="right" style="display: inline-block; margin-left: 850px;">
+                     <a href="<c:url value='/join'/>" style="margin: 10px;color:#fed136;  font-family: baemin1">회원가입</a>
                
-                        <a href="<c:url value='/login'/>" class="dropdown-toggle" data-toggle="dropdown" style="color:#fed136;">로그인</a>
-                        <span class="caret"></span>
+                        <a href="<c:url value='/login'/>" class="dropdown-toggle" data-toggle="dropdown" style="color:#fed136;  font-family: baemin1">로그인</a>
+                       
                         <ul id="login-dp" class="dropdown-menu" >
                            <li>
                               <div class="row" style="width: 250px; padding: 10px; ">
                                  <div class="col-md-12">
-                                    <h4 align="center">로그인</h4>
+                                    <h4 align="center" style="font-family: baemin">로그인</h4>
                                     
                                     <!-- 라디오 첵크값에 따른 아이디 검사 -->
                                     <form class="form" role="form" method="post" action="<c:url value='/login'/>" id="login-nav" onsubmit="return loginOk()">
                                     <div align="center">
-                                     <input type="radio" name="joinradio" value="mem_email" checked="checked"> 우리민족  
-                                    <input type="radio" name="joinradio" value="sel_email"> 사장님
+                                     <input type="radio" name="joinradio" value="mem_email" checked="checked">&nbsp;&nbsp; <span class="font4" style="font-size: 18px;">우리민족&nbsp;&nbsp; &nbsp;&nbsp;  </span>
+                                    <input type="radio" name="joinradio" value="sel_email" >&nbsp;&nbsp; <span class="font4" style="font-size: 18px;">사장님</span>
                                     </div>
                                     <br>
                                        <div class="form-group">
@@ -72,17 +69,17 @@
                                           <label class="sr-only" for="exampleInputPassword2">비밀번호</label>
                                           <input type="password" class="form-control"   id="exampleInputPassword2" placeholder="비밀번호" required name="pwd" value="<%=mem_pwd %>">
                                           
-                                          <div class="help-block text-right">
-                                             <a href="<c:url value='/members/Find_pwd'/>">비밀번호 찾기</a>
+                                          <div >
+                                             <a href="<c:url value='/members/Find_pwd'/>" style="font-size: 18px; margin-left: 120px;" class="font4">비밀번호 찾기</a>
                                           </div>
                                           
                                        </div>
                                        <div class="form-group">
-                                          <button type="submit" class="btn btn-primary btn-block">로그인</button>
+                                          <button type="submit" class="btn btn-primary btn-block"><i class="subTitle" style="font-size: 20px;" >로그인</i></button>
                                        </div>
                                        
                                        <div class="checkbox">
-                                          <label> <input type="checkbox" id="idcheckBox" name="idcheckBox" <%=checked %>>자동로그인</label><br>
+                                          <label> <input type="checkbox" id="idcheckBox" name="idcheckBox" <%=checked %>><span class="font4" style="font-size: 18px;">자동로그인</span></label><br>
                                        </div>
                                     
                                     </form>
@@ -97,23 +94,23 @@
                    </c:when>
                    <c:otherwise>
                    <!--  로그인 했을때 -->
-                      <a href="<c:url value='/logout'/>" style="display: inline-block;color:#fed136; margin-left: 850px;">로그아웃</a>
-                      <a href="javascript:toggleChatOrder()" style="margin: 10px;color:#fed136;" >채팅주문</a>
+                      <a href="<c:url value='/logout'/>" style="display: inline-block;color:#fed136; margin-left: 850px;  font-family: baemin1" >로그아웃</a>
+                      <a href="javascript:toggleChatOrder()" style="margin: 10px;color:#fed136;  font-family: baemin1" >채팅주문</a>
                    </c:otherwise>
                 </c:choose>
-        <div class="collapse navbar-collapse" id="navbarResponsive" style="display: inline-block; margin-left: 70px;">
-          <ul class="navbar-nav text-uppercase ml-auto">
+        <div  id="navbarResponsive" style="display: inline-block; margin-left: 70px;">
+          <ul class="navbar-nav text-uppercase ml-auto" style="margin-bottom: 10px;">
             <li class="nav-item" style="list-style: none;">
-              <a class="nav-link js-scroll-trigger" href="<c:url value='/event/eventlist' />">이벤트팡팡</a>
+              <a class="nav-link js-scroll-trigger" href="<c:url value='/event/eventlist' />"  style="font-family: baemin1; font-size: 15px;">이벤트팡팡</a>
+            </li>
+            <li class="nav-item" style="list-style: none; ">
+              <a class="nav-link js-scroll-trigger" href="<c:url value='/members/bookmark' />"  style="font-family: baemin1; font-size: 15px;">단골매장</a>
             </li>
             <li class="nav-item" style="list-style: none;">
-              <a class="nav-link js-scroll-trigger" href="<c:url value='/members/bookmark' />">단골매장</a>
+              <a class="nav-link js-scroll-trigger" href="<c:url value='/mypage' />"  style="font-family: baemin1; font-size: 15px;">My배맥</a>
             </li>
-            <li class="nav-item" style="list-style: none;">
-              <a class="nav-link js-scroll-trigger" href="<c:url value='/mypage' />">My배맥</a>
-            </li>
-            <li class="nav-item" style="list-style: none;">
-              <a class="nav-link js-scroll-trigger" href="<c:url value='/board/list' />">게시판</a>
+            <li class="nav-item" style="list-style: none; ">
+              <a class="nav-link js-scroll-trigger" href="<c:url value='/board/list' />" style="font-family: baemin1; font-size: 15px;">게시판</a>
             </li>
           </ul>
         </div>

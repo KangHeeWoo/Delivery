@@ -13,7 +13,6 @@
  
 
 
-
  
   <div id="page-top">
  
@@ -22,11 +21,6 @@
     <header class="masthead">
       <div class="container" >
 
-          <div>
-              <img alt="백성로고" src="<c:url value='/resources/images/백성백성.png'/>" style="margin-bottom: 50px;" >
-              <a id="goMenu"><img alt="백성로고" src="<c:url value='/resources/images/주문버튼.png'/>" style="margin-bottom: 50px;"></a>
-              
-          </div>
          
          <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel" style="width:1000px;">
           <div class="slides">
@@ -45,21 +39,27 @@
           <ol class="indicator"></ol>
         </div>
          
+          <div>
+ 
+              <a id="goMenu"><img alt="백성로고" src="<c:url value='/resources/images/주문버튼.png'/>" style="margin-bottom: 50px;"></a>
+              
+          </div>
          
-
+   <br><br><br><br>
         <div class="form-group">
          <div class="col-sm-8">
             <div class="input-group">
                <input type="text" class="form-control" id="sample5_address"
                   placeholder="주소검색을 눌러 주소를 입력해 주세요" style="width:350px;" readonly="readonly" name="mem_addr">
                <span class="input-group-btn">                     
-               <input type="button" class="btn btn-success"
+               <input type="button" class="btn btn-success" style="font-family: baemin1"
                   onclick="sample5_execDaumPostcode()" value="주소검색">
                </span>
                <input type="text" class="form-control" id="detail_address" placeholder="상세 주소를 입력해 주세요" style="width:300px;" >
             </div>
          </div>
       </div>
+      <br><br>
       <br>
       <br>
         <div class="map_wrap">
@@ -71,7 +71,7 @@
          </div>
          <br>
          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-            href="#services" onclick="saveAddr()">이 주소가 확실합니다!</a>
+            href="#services" onclick="saveAddr()" style="font-family: baemin1; font-size: 25px;">이 주소가 확실합니다!</a>
       </div>
       </div>
     </header>
@@ -81,17 +81,12 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">ORDER</h2>
+            <h2 class="font2" style="font-size: 50px;">ORDER</h2><br><br>
           </div>
         </div>
         <div class="row text-center">
           <div class="col-md-4" onclick="getlist(1)">
-             <input type="hidden" class="cat" value="0">
-            <span class="fa-stack fa-4x">
-              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-            </span>
-            <h4 class="service-heading">한식</h4>           
+            <h4 class="font1" style="font-size: 18px;">한식</h4>           
           </div>
         
           <div class="col-md-4" onclick="getlist(2)">
@@ -100,7 +95,7 @@
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">분식</h4>            
+            <h4 class="font1" style="font-size: 18px;">분식</h4>            
           </div>
           <div class="col-md-4" onclick="getlist(3)">
              <input type="hidden" class="cat" value="일식">
@@ -108,15 +103,16 @@
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">일식</h4>           
+            <h4 class="font1" style="font-size: 18px;">일식</h4>           
           </div>
+   
           <div class="col-md-4" onclick="getlist(4)">
              <input type="hidden" class="cat" value="치킨">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">치킨</h4>           
+            <h4 class="font1" style="font-size: 18px;">치킨</h4>           
           </div>
           <div class="col-md-4" onclick="getlist(5)">
              <input type="hidden" class="cat" value="피자">
@@ -124,7 +120,7 @@
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">피자</h4>           
+            <h4 class="font1" style="font-size: 18px;">피자</h4>           
           </div>
           <div class="col-md-4" onclick="getlist(6)">
             <input type="hidden" class="cat" value="중국집">
@@ -132,15 +128,16 @@
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">중국집</h4>           
+            <h4 class="font1" style="font-size: 18px;">중국집</h4>           
           </div>
+
           <div class="col-md-4" onclick="getlist(7)">
              <input type="hidden" class="cat" value="족발·보쌈">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">족발·보쌈</h4>            
+            <h4 class="font1" style="font-size: 18px;">족발·보쌈</h4>            
           </div>
           <div class="col-md-4" onclick="getlist(8)">
              <input type="hidden" class="cat" value="야식">
@@ -148,7 +145,7 @@
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">야식</h4>            
+            <h4 class="font1" style="font-size: 18px;">야식</h4>            
           </div>
           <div class="col-md-4" onclick="getlist(9)">
              <input type="hidden" class="cat" value="카페·디저트">
@@ -156,15 +153,16 @@
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">카페·디저트</h4>       
+            <h4 class="font1" style="font-size: 18px;">카페·디저트</h4>       
           </div>
+
           <div class="col-md-4" onclick="getlist(10)">
              <input type="hidden" class="cat" value="도시락">
             <span class="fa-stack fa-4x">
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">도시락</h4>
+            <h4 class="font1" style="font-size: 18px;">도시락</h4>
           </div>
           <div class="col-md-4" onclick="getlist(11)">
              <input type="hidden" class="cat" value="패스트푸드">
@@ -172,7 +170,7 @@
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">패스트푸드</h4>     
+            <h4 class="font1" style="font-size: 18px;">패스트푸드</h4>     
           </div>
           <div class="col-md-4" onclick="getlist(12)">
              <input type="hidden" class="cat" value="찜,탕">
@@ -180,7 +178,7 @@
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">찜·탕</h4>     
+            <h4 class="font1" style="font-size: 18px;">찜·탕</h4>     
           </div>
         </div>
       </div>
@@ -194,7 +192,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">회사연혁</h2>
+            <h2 class="font4" style="font-size: 50px;">회사연혁</h2>
             <h3 class="section-subheading text-muted">우리가 배달을 시작한 이유.</h3>
           </div>
         </div>
@@ -202,66 +200,75 @@
           <div class="col-lg-12">
             <ul class="timeline">
               <li>
-                <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
-                </div>
+                
+                  <img class="rounded-circle img-fluid" src="<c:url value='resources/images/main_img/2.png'/>" alt="" style="width: 200px; height: 200px;">
+                
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h4>2009-2011</h4>
-                    <h4 class="subheading">Our Humble Beginnings</h4>
+                    <h4 style="font-family: baemin; font-size: 20px;">2010 ~ 2011</h4>
+                    <h4 class="subheading" style="font-family: baemin; font-size: 20px;">남매의 시작</h4>
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                    <p class="text-muted">배달의 백성은 초라하고 심플하지만 개성넘치는 모습으로 시작했습니다. 우리는 정보기술을 활용하여 배달산업을 발전시키고 싶었습니다. 그리하여 2011년네 (주)개발한 남매들 법인을 설립했습니다. 벤처인증도 받고 3억 원의 투자도 받고 누적 다운로드는 200만건이 넘었으며, 한국 인터넷 전문가협회에서 대상도 받았습니다.</p>
                   </div>
                 </div>
               </li>
               <li class="timeline-inverted">
-                <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/about/2.jpg" alt="">
-                </div>
+                
+                  <img class="rounded-circle img-fluid" src="<c:url value='resources/images/main_img/3.png'/>" alt="" style="width: 200px; height: 200px; margin-left: 470px;">
+               
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h4>March 2011</h4>
-                    <h4 class="subheading">An Agency is Born</h4>
+                    <h4 style="font-family: baemin; font-size: 20px;">2012</h4>
+                    <h4 class="subheading" style="font-family: baemin; font-size: 20px;">남매의 반란</h4>
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                    <p class="text-muted" >결제서비스를 오픈하고 바로 결제는 배달음식도 모바일로 주문할 수 있는 시대를 열었습니다. 실리콘 밸리의 투자사로부터 20억원의 투자를 받았으며, 대한민국 인터넷 대상 국무총리상도 받았습니다.</p>
                   </div>
                 </div>
               </li>
               <li>
-                <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/about/3.jpg" alt="">
-                </div>
+            
+                  <img class="rounded-circle img-fluid" src="<c:url value='resources/images/main_img/4.png'/>" alt="" style="width: 200px; height: 200px;">
+          
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h4>December 2012</h4>
-                    <h4 class="subheading">Transition to Full Service</h4>
+                    <h4 style="font-family: baemin; font-size: 20px;">2013</h4>
+                    <h4 class="subheading" style="font-family: baemin; font-size: 20px;">남매 성공하다</h4>
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                    <p class="text-muted">석촌호수가 내려다보이는 네버랜드 사무실에 자리를 잡고 첫 서체인 한나체를 만들어 무료로 배포했습니다. IOS 9001인증도 획득하고 구글 세계 개발자 컨퍼런스도 다녀왔습니다. KDA(코리아디자인어워드) 마이덴티티 부문에서 수상을 했고, 2013년을 빛낸 
+                          스타트업 톱 100에 선정되었습니다.</p>
                   </div>
                 </div>
               </li>
               <li class="timeline-inverted">
-                <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/about/4.jpg" alt="">
-                </div>
+             
+                  <img class="rounded-circle img-fluid" src="<c:url value='resources/images/main_img/5.png'/>" alt="" style="width: 200px; height: 200px; margin-left: 470px;" >
+              
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h4>July 2014</h4>
-                    <h4 class="subheading">Phase Two Expansion</h4>
+                    <h4 style="font-family: baemin; font-size: 20px;">2014</h4>
+                    <h4 class="subheading" style="font-family: baemin; font-size: 20px;">승승장구</h4>
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                    <p class="text-muted" >업계 최초로 누적 다운로드 1.000만 건을 돌파했습닏. 기념으로 시원하게 쐈습니다. 원간 주문 수는 500만 건을 훌쩍 넘었습니다. TV광고를 만들어 전국을 떠들썩하게 만들었습니다. '우리가 어떤 민족입니까!'
+                    </p>
                   </div>
                 </div>
               </li>
-              <li class="timeline-inverted">
-                <div class="timeline-image">
-                  <h4>Be Part
-                    <br>Of Our
-                    <br>Story!</h4>
+              <li>
+              
+                  <img class="rounded-circle img-fluid" src="<c:url value='resources/images/main_img/6.png'/>" alt="" style="width: 200px; height: 200px;">
+               
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4 style="font-family: baemin; font-size: 20px;">2015</h4>
+                    <h4 class="subheading" style="font-family: baemin; font-size: 20px;">노력하는 남매</h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-muted">바로결제 수수료를 없애고 밖에서 사먹던 음식도 배달되는 외식배달서비스 '배민라이더스'를 오픈했습니다. 모바일 넘버원 반찬가게 '배민찬'도 오픈했습니다. 대한민국 광고대상, 에피어워드, 서울 영상 광고제, 대한민국 마케팅 대상 등 주요 시상식을 휩쓸며 1년동안 13개의 트로피를 받았습니다.</p>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -274,8 +281,8 @@
     <section class="bg-light" id="team">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">개발한 남매들</h2>
+          <div align="center">
+            <h2 class="font4" style="font-size: 60px;">개발한 남매들</h2>
             <h3 class="section-subheading text-muted">Developed siblings.</h3>
           </div>
         </div>
@@ -283,25 +290,25 @@
           <div class="col-sm-3">
             <div class="team-member">
               <img style="width: 300px; height: auto;" src="<c:url value='/resources/images/member/강1.png'/>" alt="">
-              <h4 style="margin-left: 40px;">Woo Kanghee</h4>           
+              <h4 style="margin-left: 40px;" class="font2">Woo Kanghee</h4>           
             </div>
           </div>
           <div class="col-sm-3">
             <div class="team-member">
               <img class="mx-auto rounded-circle" style="width: 300px; height: auto;" src="<c:url value='/resources/images/member/민1.png'/>" alt="">
-              <h4 style="margin-left: 40px;">Park Mina</h4>              
+              <h4 style="margin-left: 40px;"  class="font2">Park Mina</h4>              
             </div>
           </div>
           <div class="col-sm-3">
             <div class="team-member">
               <img class="mx-auto rounded-circle" style="width: 300px; height: auto;" src="<c:url value='/resources/images/member/재1.png'/>" alt="">
-              <h4 style="margin-left: 40px;">Yoo Jaehee</h4>              
+              <h4 style="margin-left: 40px;"  class="font2">Yoo Jaehee</h4>              
             </div>
           </div>
           <div class="col-sm-3">
             <div class="team-member">
               <img class="mx-auto rounded-circle" style="width: 300px; height: auto;" src="<c:url value='/resources/images/member/성1.png'/>" alt="">
-              <h4 style="margin-left: 40px;">Kim Minsung</h4>              
+              <h4 style="margin-left: 40px;" class="font2">Kim Minsung</h4>              
             </div>
           </div>
         </div>
@@ -587,20 +594,20 @@
                 });
          
          $("#goMenu").on('click', function(e) {
-        	e.preventDefault();
-        	var offset = $("#sample5_address").offset().top;
-        	console.log(offset);
-        	 
-        	console.log($(window).scrollTop());
-        	 
-        	//$("body").stop().animate({
-        	/* $(window).stop().animate({
-        		scrollTop : offset	
-        	}, 400); */	 
-        	
-        	$(window).scrollTop(offset - 100);
-        	//$(window).scrollTop(0);
-         });
+         	e.preventDefault();
+         	var offset = $("#sample5_address").offset().top;
+         	console.log(offset-100+"...............");
+         	 
+         	console.log($(window).scrollTop());
+         	 
+         	// $("body").animate({
+         	$('html').animate({
+         		scrollTop : (offset - 40)+"px"
+         	}, 400);	  
+         	
+         	//$(window).scrollTop(offset - 100);
+         	//$(window).scrollTop(0);
+          }); 
       });
       
 

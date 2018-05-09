@@ -23,8 +23,34 @@
 	font-family: 'baemin';
 	src:url(<c:url value="/resources/fonts/BMHANNA_11YRS_TTF.TTF"/>) format('truetype');
 }
+@font-face{
+	font-family: 'baemin1';
+	src:url(<c:url value="/resources/fonts/BMDOHYEON_TTF.TTF"/>) format('truetype');
+}
+@font-face{
+	font-family: 'baemin2';
+	src:url(<c:url value="/resources/fonts/BMJUA_TTF.TTF"/>) format('truetype');
+}
+@font-face{
+	font-family: 'baemin3';
+	src:url(<c:url value="/resources/fonts/BMKIRANGHAERANG-TTF.TTF"/>) format('truetype');
+}
+@font-face{
+	font-family: 'baemin4';
+	src:url(<c:url value="/resources/fonts/BMYEONSUNG_TTF.TTF"/>) format('truetype');
+}
+@font-face{
+	font-family: 'baemin5';
+	src:url(<c:url value="/resources/fonts/glyphicons-halflings-regular.ttf"/>) format('truetype');
+}
 .subTitle {
     font-family: baemin;
+}
+.font2{
+	font-family: baemin2;
+}
+.font4{
+	font-family: baemin4;
 }
 .wrap_subContent{
 	width: 1000px;
