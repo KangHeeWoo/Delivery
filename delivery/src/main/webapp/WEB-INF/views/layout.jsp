@@ -88,6 +88,7 @@
 .boardul li a{
 	color : black;
 	text-decoration:none;	
+	text-shadow: 1px 1px 2px #000000;
 }
 #detailspan a{
 	color : black;
@@ -97,6 +98,11 @@
 	color : #34bdb9;
 	text-decoration:none;
 	
+}
+.mylista{
+	color:#fec503;
+	text-decoration:none;
+	font-size: 18px;
 }
 .boardul li a:hover{
 	color : #34bdb9;

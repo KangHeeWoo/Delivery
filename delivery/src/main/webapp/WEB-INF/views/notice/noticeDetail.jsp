@@ -11,10 +11,15 @@
 		width : 150px;
 	}
 </style>
+<div align="left"><h2 class="subTitle" style=" color:#212529; width:1100px; height: 60px; margin-left: 520px; padding-top: 5px; padding-bottom: -20px;"><span>&lt;&nbsp;공지사항 내용&nbsp;&gt;</span></h2>
+<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 250px; margin-left: 500px; margin-top: -80px;" ></div>
+
+<span style="font-family: baemin3; margin-left:1250px; padding-bottom:10ps; font-size: 21px; padding-top: -10px;" id="detailspan"><a href="<c:url value='/notice/noticeList' />">목록으로 가기</a></span>
+
 <div id="notice_detail">
 	<table class="table">
-		<tr><th>제목</th><td>${notice.not_title }</td></tr>
-		<tr><th>내용</th><td>${notice.not_cont }</td></tr>
+		<tr><td class="font1" style="font-size:18px; margin-left: 12px; margin-left: 10px; width: 150px;">제목</td><td>${notice.not_title }</td></tr>
+		<tr><td class="font1" style="font-size:18px; margin-left: 12px; margin-left: 10px; width: 150px;">내용</td><td>${notice.not_cont }</td></tr>
 	</table>
 	<br><br>
 	<table class="table">
@@ -34,9 +39,9 @@
 				<tr><th>다음글</th><td onclick="detail(${next.not_num})">${next.not_title }</td></tr>
 			</c:otherwise>
 		</c:choose>
-		<tr><td colspan="2"><a href="<c:url value='/notice/noticeList' />">목록으로 가기</a></td></tr>
 	</table>
 </div>
+<br><br><br><br><br>
 <script>
 	function detail(num){
 		location.href = "<c:url value='/notice/noticeDetail?num=" + num + "' />";

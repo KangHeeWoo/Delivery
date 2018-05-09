@@ -27,8 +27,8 @@
 <div id="store_list">
 <table class="table" >
 	<thead>
-		<tr style="background-color: #ffcd28">
-			<th colspan="7" style="text-align: center;">☆★☆★☆★슈퍼리스트 광고업소☆★☆★☆★</th>
+		<tr class="font1" style="font-size:20px; margin-left: 12px; margin-left: 10px; width: 150px; background-color: #34bdb9">
+			<th colspan="7" style="text-align: center;">☆&nbsp;★&nbsp;☆&nbsp;★&nbsp;☆&nbsp;★&nbsp;슈퍼리스트 광고업소&nbsp;☆&nbsp;★&nbsp;☆&nbsp;★&nbsp;☆&nbsp;★</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -42,14 +42,15 @@
 				<td onclick="storedetail(${vo.sto_num })">${vo.sto_phone }</td>
 				<td onclick="storedetail(${vo.sto_num })">${open }</td>
 				<td onclick="storedetail(${vo.sto_num })">${close }</td>
-				<td><a href="javascript:setChatId('${vo.sel_email }')">사장님과 채팅하기</a></td>
+				<td class="font4"><a href="javascript:setChatId('${vo.sel_email }')" class="mylista" >사장님과 채팅하기</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>
 </table>
+<br><br>
 <table class="table">
 	<thead>
-		<tr>
+		<tr class="font2" style="font-size: 17px;">
 			<th>로고</th><th>매장이름</th><th>매장주소</th><th>매장전화번호</th><th>오픈시간</th><th>마감시간</th><th>채팅하기</th>
 		</tr>
 	</thead>
@@ -64,24 +65,24 @@
 				<td onclick="storedetail(${vo.sto_num })">${vo.sto_phone }</td>
 				<td onclick="storedetail(${vo.sto_num })">${open }</td>
 				<td onclick="storedetail(${vo.sto_num })">${close }</td>
-				<td><a href="javascript:setChatId('${vo.sel_email }')">사장님과 채팅하기</a></td>
+				<td class="font4"><a href="javascript:setChatId('${vo.sel_email }')" class="mylista" >사장님과 채팅하기</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>
 </table>
-<div>
+<div align="center" style="width: 100%">
 	<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 		<c:choose>
 			<c:when test="${i==pu.pageNum }"> 
-				<a href="<c:url value='/myposition?pageNum=${i }&cat_num=${cat_num }&able_loc=${able_loc }'/>"><span style='color:blue'>[${i }]</span></a>
+				<a href="<c:url value='/myposition?pageNum=${i }&cat_num=${cat_num }&able_loc=${able_loc }'/>"><span style='color:#34bdb9'>[${i }]</span></a>
 			</c:when>
 			<c:otherwise>
-				<a href="<c:url value='/myposition?pageNum=${i }&cat_num=${cat_num }&able_loc=${able_loc }'/>"><span style='color:#555'>[${i }]</span></a>
+				<a href="<c:url value='/myposition?pageNum=${i }&cat_num=${cat_num }&able_loc=${able_loc }'/>"><span style='color:black'>[${i }]</span></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 </div>
-</div>
+</div><br><br><br><br><br>
 <script>
 	function storedetail(num){
 		location.href="<c:url value='/menu/menu?sto_num="+num+"'/>";

@@ -45,7 +45,7 @@
 <script type="text/javascript">window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s20206.pcdn.co\/shop-isle\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.5"}};
 			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);</script>
 <style type="text/css">
-img.wp-smiley, img.emoji {
+img.wp-smiley {
 	display: inline !important;
 	border: none !important;
 	box-shadow: none !important;
@@ -153,7 +153,7 @@ img#wpstats {
 		<section class="module module-super-small">
 			<div class="container product-main-content">
 				<nav class="woocommerce-breadcrumb">
-					<a href="#">카테고리</a>&nbsp;&#47;&nbsp;<a href="#">${stovo.sto_name}</a>
+					<span class="font4" style="font-size: 20px; margin-left: -10px;">카테고리</span>&nbsp;&#47;&nbsp;<span class="font4" style="font-size: 20px;">${stovo.sto_name}</span>
 				</nav>
 				<div id="product-70"
 					class="post-70 product type-product status-publish has-post-thumbnail product_cat-clothing product_cat-tshirt first instock sale shipping-taxable purchasable product-type-simple">
@@ -168,14 +168,12 @@ img#wpstats {
 								<a href="#"> <img width="600" height="800"
 									src="<c:url value='/resources/images/stores/${stovo.sto_img}'/>"
 									class="wp-post-image" alt="" title="Shop_Isle_2" /></a>
-								<!-- data-src="https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2.jpg"
-									data-large_image="<c:url value='/resources/images/stores/죽이야기.jpg'/>"	data-large_image_width="900" data-large_image_height="1350"	srcset="https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2.jpg 900w, https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2-200x300.jpg 200w, https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2-768x1152.jpg 768w, https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2-683x1024.jpg 683w, https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2-600x900.jpg 600w"
-									sizes="(max-width: 600px) 100vw, 600px" -->
+								
 							</div>
 						</figure>
 					</div>
 					<div class="summary entry-summary">
-						<h1 class="product_title entry-title">${stovo.sto_name}</h1>
+						<h1 class="subTitle" style="margin-botton:10px;">${stovo.sto_name}</h1>
 						<div class="woocommerce-product-rating">
 							<div class="star-rating">
 								<span style="width: 30%">Rated <strong class="rating">1.50</strong>
@@ -204,23 +202,23 @@ img#wpstats {
 							<div class="quantity">
 								<div class="screen-reader-text">
 									<div class="yith-wcwl-add-button show" style="display: block">
-										<a href="#" rel="nofollow" data-product-id="70" data-product-type="simple" class="add_to_wishlist" onclick="bookmark(${stovo.sto_num})"> 즐겨찾기</a>
+										<a href="#" rel="nofollow" data-product-id="70" data-product-type="simple" class="add_to_wishlist" onclick="bookmark(${stovo.sto_num})"><span class="font1" style="font-size:14px;">즐겨찾기</span></a>
 									</div>
 								</div>
 								
 							</div>
 							<!-- 결제시 필요한 목록 = 해당 아이디, 쿠폰, 포인트, 결제금액, 주문목록 -->
-							<button type="submit" name="add-to-cart" value="70"	class="single_add_to_cart_button button alt">배달 시작하기</button>
+							<button type="submit" name="add-to-cart" value="70"	class="single_add_to_cart_button button alt"><span class="font1" style="font-size:16px;">배달시작</span></button>
 					</form>
 					</div>
 
 					<div class="woocommerce-tabs wc-tabs-wrapper">
 						<ul class="tabs wc-tabs" role="tablist">
 							<li class="description_tab" id="tab-title-description" role="tab"
-								aria-controls="tab-description"><a href="#tab-description">메뉴</a></li>
+								aria-controls="tab-description"><a href="#tab-description"><span class="font3" style="font-size:22px;">메뉴</span></a></li>
 							<li class="reviews_tab" id="tab-title-reviews" role="tab"
-								aria-controls="tab-reviews"><a href="#tab-reviews">리 뷰</a></li>
-						</ul>
+								aria-controls="tab-reviews"><a href="#tab-reviews"><span class="font3" style="font-size:22px;">리뷰</span></a></li>
+						</ul><br><br><br>
 						<!-- 메뉴 list
 
 							  -->
@@ -228,12 +226,12 @@ img#wpstats {
 							class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab"
 							id="tab-description" role="tabpanel"
 							aria-labelledby="tab-title-description">
-							<h2>MENU</h2>
 							<p>${stovo.sto_intro}</p>
+							<br><br>
 							<div class="portlet-body">
 								<div class="mt-element-list">
 									<ul>
-										<li class="main_menu"><h4 id="menu_title">메뉴</h4>
+										<li class="font2"><h4 id="menu_title">메뉴</h4>
 											<div>
 												<ul>
 													<c:forEach var="menu" items="${menulist }">
@@ -648,7 +646,7 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 		
 		$("#cart").html(html);
 		
-		$("#total").html("<br><h4>총 액 : " + sum+" 원</h4>");
+		$("#total").html("<br><h4 class='font1'>총 액 : " + sum+" 원</h4>");
 		$("#total_value").val(sum);
 	}
 	//메뉴 삭제하는곳
