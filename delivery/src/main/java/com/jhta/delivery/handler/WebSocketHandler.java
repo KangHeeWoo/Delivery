@@ -16,11 +16,6 @@ public class WebSocketHandler extends TextWebSocketHandler{
 	
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		for(WebSocketSession wss : sessionList) {
-			if(wss.getId().equals(session.getId())) {
-				sessionList.remove(wss);
-			}
-		}
 		System.out.println("¼ÒÄÏ ²÷±è : " + session.getId());
 	}
 	

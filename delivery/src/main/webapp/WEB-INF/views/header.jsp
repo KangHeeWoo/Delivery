@@ -44,9 +44,9 @@
                      <div align="right" style="display: inline-block; margin-left: 850px;">
                      <a href="<c:url value='/join'/>" style="margin: 10px;color:#fed136;  font-family: baemin1">회원가입</a>
                
-                        <a href="<c:url value='/login'/>" class="dropdown-toggle" data-toggle="dropdown" style="color:#fed136;  font-family: baemin1">로그인</a>
+                        <a href="javascript:toggleLoginModal()" style="color:#fed136;  font-family: baemin1">로그인</a>
                        
-                        <ul id="login-dp" class="dropdown-menu" >
+                        <ul id="login-dp" class="dropdown-login" >
                            <li>
                               <div class="row" style="width: 250px; padding: 10px; ">
                                  <div class="col-md-12">
@@ -352,5 +352,9 @@
          popupName : 'findAddr',
          autoClose : true
       });
+   }
+   
+   function toggleLoginModal(){
+	   $(".dropdown-login").toggle();
    }
   </script>
