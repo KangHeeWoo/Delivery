@@ -10,13 +10,13 @@
 	<definition name=".admin" template="/WEB-INF/views/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/admin/header.jsp"/>
 		<put-attribute name="main" value="/WEB-INF/views/admin/home.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/admin/footer.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 	</definition>
 	
 	<definition name=".seller" template="/WEB-INF/views/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/seller/header.jsp"/>
 		<put-attribute name="main" value="/WEB-INF/views/seller/home.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/seller/footer.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 	</definition>
 	
 	<definition name=".menu.*" extends=".main">
