@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jhta.delivery.vo.AbleLocationVo;
+import com.jhta.delivery.vo.MainAdsVo;
 import com.jhta.delivery.vo.SellerVo;
 import com.jhta.delivery.vo.TopAdsVo;
 
@@ -67,5 +68,14 @@ public class SellerDao {
 	}
 	public List<TopAdsVo> topList(HashMap<String, Object> map){
 		return session.selectList(NAMESPACE+".topList",map);
+	}
+	public int mainAdsInsertOk(HashMap<String, Object> map) {
+		return session.insert(NAMESPACE+".mainAdsInsertOk",map);
+	}
+	public int getMainCount(int sto_num) {
+		return session.selectOne(NAMESPACE+".getMainCount",sto_num);
+	}
+	public List<MainAdsVo> mainList(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE+".mainList",map);
 	}
 }

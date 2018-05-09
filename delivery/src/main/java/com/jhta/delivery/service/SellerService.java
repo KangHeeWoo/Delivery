@@ -6,10 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jhta.delivery.dao.MembersDao;
 import com.jhta.delivery.dao.SellerDao;
 import com.jhta.delivery.vo.AbleLocationVo;
-import com.jhta.delivery.vo.MembersVo;
+import com.jhta.delivery.vo.MainAdsVo;
 import com.jhta.delivery.vo.SellerVo;
 import com.jhta.delivery.vo.TopAdsVo;
 
@@ -77,5 +76,14 @@ public class SellerService {
 	}
 	public List<TopAdsVo> topList(HashMap<String, Object> map){
 		return dao.topList(map);
+	}
+	public int mainAdsInsertOk(HashMap<String, Object> map) {
+		return dao.mainAdsInsertOk(map);
+	}
+	public int getMainCount(int sto_num) {
+		return dao.getMainCount(sto_num);
+	}
+	public List<MainAdsVo> mainList(HashMap<String, Object> map){
+		return dao.mainList(map);
 	}
 }
