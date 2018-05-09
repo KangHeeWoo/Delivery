@@ -11,6 +11,7 @@ import com.jhta.delivery.dao.SellerDao;
 import com.jhta.delivery.vo.AbleLocationVo;
 import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.SellerVo;
+import com.jhta.delivery.vo.TopAdsVo;
 
 
 
@@ -67,5 +68,14 @@ public class SellerService {
 	}
 	public int selUpdate(SellerVo vo) {
 		return dao.selUpdate(vo);
+	}
+	public int topAdsInsertOk(HashMap<String, Object> map) {
+		return dao.topAdsInsertOk(map);
+	}
+	public int getTopCount(int sto_num) {
+		return dao.getTopCount(sto_num);
+	}
+	public List<TopAdsVo> topList(HashMap<String, Object> map){
+		return dao.topList(map);
 	}
 }

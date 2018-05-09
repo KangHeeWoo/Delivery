@@ -43,4 +43,16 @@
 	<update id="selUPdate" parameterType="members">
 		update seller set sel_name=#{sel_name},sel_pwd=#{sel_pwd},sel_addr=#{sel_addr},sel_phone=#{sel_phone} where sel_num=#{sel_num} and gra_num =6
 	</update>
+	<insert id="topAdsInsertOk" parameterType="hashmap">
+		insert into top_ads_entry values(0,to_date(#{startDay}||'00:00','yyyymmdd hh24:mi'),to_date(#{endDay}||'23:59','yyyymmdd hh24:mi'),500000,'신청',#{topAds_img},sysdate,#{sto_num})
+	</insert>
+	<select id="getTopCount" resultType="int" parameterType="int">
+		select NVL(count(*),0) cnt from top_ads_entry where sto_num=#{sto_num}
+	</select>
+	<select id="topList" parameterType="hashmap" resultType="com.jhta.delivery.vo.TopAdsVo">
+		select * from
+		(select n.*, rownum rnum from
+		(select * from top_ads_entry where sto_num=#{sto_num} order by top_ads_regd desc)n)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>	
+	</select>
 </mapper>    

@@ -41,6 +41,8 @@
 <ul>
 <li><a href="<c:url value='/stMenuList'/>">메뉴관리</a></li>
 <li><a href="<c:url value='/stLocation'/>">배달가능지역 관리</a></li>
+<li><a href="<c:url value='/topAds'/>">상단광고 신청</a></li>
+<li><a href="<c:url value='/mainAds'/>">메인광고 신청</a></li>
 <li><a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>">수정</a></li>
 <li><a href="<c:url value='/stDelete?sto_num=${vo.sto_num }'/>">삭제요청</a></li>
 </ul>

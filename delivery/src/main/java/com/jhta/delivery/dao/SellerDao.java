@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.jhta.delivery.vo.AbleLocationVo;
 import com.jhta.delivery.vo.SellerVo;
+import com.jhta.delivery.vo.TopAdsVo;
 
 @Repository
 public class SellerDao {
@@ -57,5 +58,14 @@ public class SellerDao {
 	}
 	public int selUpdate(SellerVo vo) {
 		return session.update(NAMESPACE+".selUPdate", vo);
+	}
+	public int topAdsInsertOk(HashMap<String, Object> map) {
+		return session.insert(NAMESPACE+".topAdsInsertOk",map);
+	}
+	public int getTopCount(int sto_num) {
+		return session.selectOne(NAMESPACE+".getTopCount",sto_num);
+	}
+	public List<TopAdsVo> topList(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE+".topList",map);
 	}
 }
