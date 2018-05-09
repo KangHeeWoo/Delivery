@@ -145,11 +145,9 @@ public class BoardController {
 		try {
 			
 			List<MultipartFile> fileList = mhsr.getFiles("boa_img");  
-			System.out.println("111 " + fileList);
 			
 			if(!fileList.isEmpty()) {
 				service.updateImg(boa_num);
-				System.out.println("222 " + fileList);
 				for(int i=0;i<fileList.size();i++) {
 					String orgFileName = fileList.get(i).getOriginalFilename();
 					String saveFileName = UUID.randomUUID() + "_" + orgFileName;
@@ -162,9 +160,6 @@ public class BoardController {
 					int num = service.insertNum();
 					service.insertImg(new BoardImgVo(0, saveFileName, num));
 				}
-			}else {
-				
-				System.out.println("333 " + fileList);
 			}
 			
 			service.update(vo);
