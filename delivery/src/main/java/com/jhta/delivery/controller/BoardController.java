@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -80,6 +81,7 @@ public class BoardController {
 					String orgFileName = fileList.get(i).getOriginalFilename();
 					String saveFileName = UUID.randomUUID() + "_" + orgFileName;
 					InputStream is = fileList.get(i).getInputStream();
+					System.out.println("uploadPath : " + uploadPath + "saveFileName : " + saveFileName );
 					FileOutputStream fos = new FileOutputStream(uploadPath + "\\" + saveFileName);
 					FileCopyUtils.copy(is, fos);
 					fos.close();
@@ -90,7 +92,7 @@ public class BoardController {
 			}
 			
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			return "error";
 		}
 		
@@ -132,13 +134,39 @@ public class BoardController {
 		MembersVo vo = mservice.getinfo(email);
 		model.addAttribute("boa_writer",vo.getMem_nick());
 		BoardVo vo1 = service.detail(boa_num);
+		
 		model.addAttribute("vo",vo1);
 		model.addAttribute("boa_num",boa_num);
 		return ".board.update";
 	}
 	@RequestMapping("/board/updateOk")
-	public String updateOk(BoardVo vo) {
+	public String updateOk(BoardVo vo, int boa_num, HttpSession session,MultipartHttpServletRequest mhsr) {
+		String uploadPath = session.getServletContext().getRealPath("/resources/images/board");
 		try {
+			
+			List<MultipartFile> fileList = mhsr.getFiles("boa_img");  
+			System.out.println("111 " + fileList);
+			
+			if(!fileList.isEmpty()) {
+				service.updateImg(boa_num);
+				System.out.println("222 " + fileList);
+				for(int i=0;i<fileList.size();i++) {
+					String orgFileName = fileList.get(i).getOriginalFilename();
+					String saveFileName = UUID.randomUUID() + "_" + orgFileName;
+					InputStream is = fileList.get(i).getInputStream();
+					System.out.println("uploadPath : " + uploadPath + "saveFileName : " + saveFileName );
+					FileOutputStream fos = new FileOutputStream(uploadPath + "\\" + saveFileName);
+					FileCopyUtils.copy(is, fos);
+					fos.close();
+					is.close();		
+					int num = service.insertNum();
+					service.insertImg(new BoardImgVo(0, saveFileName, num));
+				}
+			}else {
+				
+				System.out.println("333 " + fileList);
+			}
+			
 			service.update(vo);
 			return "redirect:/board/list";
 		}catch(Exception e) {

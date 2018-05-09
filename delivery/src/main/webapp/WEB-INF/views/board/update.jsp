@@ -23,7 +23,7 @@
 				자유게시판 <small>BOARD</small>
 			</h1>
 		</div>
-		<form class="form-horizontal" action="<c:url value='/board/updateOk'/>" method="post">
+		<form class="form-horizontal" action="<c:url value='/board/updateOk'/>" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="boa_writer" value="${boa_writer}">
 			<input type="hidden" name="boa_num" value="${boa_num }">
 			<div class="form-group">
@@ -38,12 +38,13 @@
 					<textarea rows="6" cols="128" overflow="scroll" name="boa_cont">${vo.boa_cont}</textarea>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label" for="input">이미지</label>
+			<div style="width: 800px; margin-left: 400px;">
+				<p class="font1" style="font-size:20px; margin-left: 15px;">이미지 개수</p>
 				<div class="col-sm-6">
-					<input class="form-control" id="boa_img" type="file" name="boa_img" value="${vo.boa_img}">
+					<input id="fileCnt" type="number" min="0" max="5" width="200px" style="width: 200px;" placeholder="이미지는 최대 5장입니다.">&nbsp;<button type="button" onclick="uploadCnt()">적용</button>
 				</div>
-			</div>
+			</div><br><br>
+			<div id="fileupload" style="display: block"></div><br>
 			<div class="form-group">
 				<div class="col-sm-12 text-center">
 					<button class="btn btn-primary" type="submit">
@@ -69,4 +70,27 @@
 	<script src="js/bootstrap.min.js"></script>
 
 </body>
+<script type="text/javascript">
+	function uploadCnt(){
+		var cnt = $("#fileCnt").val();
+		var fileupload = $("#fileupload");
+		
+		if(cnt == ''){
+			alert("첨부할 파일 개수를 입력해주세요.");
+			return;
+		}
+		if(5<cnt || 0>cnt){
+			alert("파일첨부는 5개 이하로 가능합니다.");
+			return;
+		}
+		
+		$(fileupload).html("");
+		
+		for(var i=0;i<cnt;i++){
+			var inputFile = $("	<div><div style='width:300px; margin-left:515px;'><input class='form-control' id='boa_img' type='file' name='boa_img' required='required'></div></div>");
+			fileupload.append(inputFile);
+		}
+		
+	}
+</script>
 </html>

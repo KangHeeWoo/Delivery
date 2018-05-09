@@ -45,4 +45,8 @@
 		update board set boa_title=#{boa_title},boa_cont=#{boa_cont},boa_regd=sysdate
 		where boa_num=#{boa_num}
 	</update>
+	<delete id="updateImg" parameterType="int">
+		delete from boa_img where boa_num=#{value}
+	</delete>
+	
 </mapper>

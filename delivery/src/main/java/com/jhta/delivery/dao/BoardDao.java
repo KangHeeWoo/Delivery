@@ -51,4 +51,7 @@ public class BoardDao {
 	public List<BoardImgVo> detailImg(int boa_num) {
 		return session.selectList(NAMESPACE + ".detailImg",boa_num);
 	}
+	public int updateImg(int boa_num) {
+		return session.delete(NAMESPACE + ".updateImg",boa_num);
+	}
 }

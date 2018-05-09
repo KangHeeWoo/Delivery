@@ -50,4 +50,7 @@ public class BoardService {
 	public List<BoardImgVo> detailImg(int boa_num) {
 		return dao.detailImg(boa_num);
 	}
+	public int updateImg(int boa_num) {
+		return dao.updateImg(boa_num);
+	}
 }
