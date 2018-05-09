@@ -2,6 +2,49 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<style>
+.store-manage-menu{
+	position: absolute;
+	left : 300px;
+}
+</style>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+  // alert("test1");
+   
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+    	var sto_num=${vo.sto_num};
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['주문량', 55]
+        ]);
+        var options = {
+          width: 400, height: 120,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+        chart.draw(data, options);
+         
+        $.ajax({
+			url:"<c:url value='/Sungjoon'/>",
+			dataType:"json",
+			data:{sto_num:sto_num},
+			success:function(data1){
+				var a=data1.a;
+          data.setValue(0, 1, a);
+          chart.draw(data, options);
+  		 	 },error:function(){
+  		 		 alert("error");
+  		 	 }
+  		});
+      }
+    </script>
+    <div class="store-manage-menu" id="chart_div" style="width: 400px; height: 120px;"></div>
 <table class="table" style="width: 800px;margin: auto;">
 	<tr>
 	<th>매장명</th><td>${vo.sto_name }</td>

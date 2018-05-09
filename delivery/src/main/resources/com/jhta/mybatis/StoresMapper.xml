@@ -127,4 +127,7 @@
 	  )
 	 <![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow}  ]]>
 	</select>
+	<select id="Sungjoon" parameterType="int" resultType="int">
+		select NVL(count(*),0) cnt from (select * from orders where ord_state='주문접수' or ord_state='조리중') where sto_num=#{sto_num}
+	</select>
 </mapper>

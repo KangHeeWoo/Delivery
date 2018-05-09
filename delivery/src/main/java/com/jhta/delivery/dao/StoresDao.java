@@ -102,4 +102,7 @@ public class StoresDao {
 	public List<StoresVo> adstSearchList(HashMap<String, Object> map){
 		return session.selectList(NAMESPACE+".adstSearchList",map);
 	}
+	public int Sungjoon(int sto_num) {
+		return session.selectOne(NAMESPACE+".Sungjoon",sto_num);
+	}
 }

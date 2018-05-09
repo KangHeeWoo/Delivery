@@ -3,12 +3,15 @@ package com.jhta.delivery.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.delivery.service.StoresService;
 import com.jhta.delivery.util.PageUtil;
@@ -83,5 +86,13 @@ public class AdminStController {
 		model.addAttribute("pu",pu);
 		model.addAttribute("map",map);
 		return ".admin.stSearchList";
+	}
+	@RequestMapping(value="/Sungjoon",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public HashMap<String, Object> Sungjoon(HttpSession session,int sto_num) {
+		int a=(service.Sungjoon(sto_num))*8;
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("a", a);
+		return map;
 	}
 }

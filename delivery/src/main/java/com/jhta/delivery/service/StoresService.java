@@ -101,4 +101,7 @@ public class StoresService {
 	public List<StoresVo> adstSearchList(HashMap<String, Object> map){
 		return dao.adstSearchList(map);
 	}
+	public int Sungjoon(int sto_num) {
+		return dao.Sungjoon(sto_num);
+	}
 }
