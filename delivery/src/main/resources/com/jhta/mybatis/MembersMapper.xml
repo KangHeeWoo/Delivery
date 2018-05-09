@@ -104,5 +104,8 @@
 		insert into members values(0,#{mem_email},' ',#{mem_email},sysdate,' ',' ',sysdate,' ',3,'미지정',0,'예')
 	</insert>
 	
+	<update id="graUp" parameterType="hashmap">
+		update members set gra_num=#{gra_num} where mem_num=#{mem_num}
+	</update>
 	
 </mapper>

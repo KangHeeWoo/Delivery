@@ -75,4 +75,7 @@ public class MembersDao {
 	public int snsInsert(String mem_email) {
 		return session.insert(NAMESPACE+".snsInsert", mem_email);
 	}
+	public int graUp(HashMap<String, Object> map){
+		return session.update(NAMESPACE+".graUp", map);
+	}
 }

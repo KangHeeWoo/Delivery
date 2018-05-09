@@ -4,9 +4,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div style="width: 800px; margin: auto;">
 <h1>회원 정보</h1>
+<form method="post" action="<c:url value='/graUp'/>">
 <table class="table">
 <tr>
-<td>회원번호</td><td>${mgv.mem_num }</td>
+<td>회원번호</td><td>${mgv.mem_num }<input type="hidden" name="mem_num" value="${mgv.mem_num }"></td>
 </tr>
 <tr>
 <td>이름</td><td>${mgv.mem_name }</td>
@@ -31,13 +32,33 @@
 <td>전화번호</td><td>${mgv.mem_phone }</td>
 </tr>
 <tr>
-<td>회원등급</td><td>${mgv.gra_name }</td>
+<td>회원등급</td>
+<td>
+<select name="gra_num" size="1">
+	<option value="1">꼬끼오</option>
+	<option value="2">삐약</option>
+	<option value="3">알</option>
+	<option value="4">계란후라이</option>
+</select>
+</td>
 </tr>
 <tr>
 <fmt:formatDate value="${mgv.mem_regd }" type="date" var="regd" pattern="yyyy-MM-dd"/>
 <td>가입일</td><td>${regd }</td>
 </tr>
 </table>
+<div align="center">
+<input type="submit" value="확인">
+</div>
+</form>
+<script type="text/javascript">
+	var select=document.getElementsByName("gra_num")[0];
+	for(var i=0; i<select.options.length;i++){
+		if(select.options[i].value=='${mgv.gra_num }'){
+			select.options[i].selected=true;
+		}
+	}
+</script>
 <%-- <h1>채팅 기록</h1>
 <table class="table">
 <tr>

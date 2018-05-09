@@ -100,4 +100,12 @@ public class AdminMembersController {
 		mv.addObject("ordersPage",ordersPage);
 		return mv;
 	}
+	@RequestMapping("/graUp")
+	public String graUp(int gra_num, int mem_num) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("gra_num", gra_num);
+		map.put("mem_num", mem_num);
+		service.graUp(map);
+		return "redirect:/memberslist";
+	}
 }

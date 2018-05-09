@@ -87,4 +87,8 @@ public class MembersService {
 	public int snsInsert(String mem_email) {
 		return dao.snsInsert(mem_email);
 	}
+	public int graUp(HashMap<String, Object> map) {
+		return dao.graUp(map);
+		
+	}
 }
