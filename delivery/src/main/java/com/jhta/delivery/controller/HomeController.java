@@ -126,7 +126,7 @@ public class HomeController {
 			}
 		}
 		
-		return ".login";
+		return "redirect:/?errorPwd=errorPwd";
 	}
 	@RequestMapping(value="/aa",method=RequestMethod.GET)
 	public String loginOk1() {

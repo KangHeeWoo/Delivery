@@ -107,7 +107,7 @@
 			chatList.append(chat);
 		}
 
-		ul.scrollTop(ul.prop('scrollHeight'));
+		$('#chatlist').scrollTop($('#chatlist').height());
 		//스크롤 하단이동 확인
 	}
 

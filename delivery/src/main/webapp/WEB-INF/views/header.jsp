@@ -165,6 +165,10 @@
 	  if('${param.loginCheck}'=='loginCheck'){
 		  alert("로그인해야 우리백성");
 	  }
+	  
+	  if('${param.errorPwd}' == 'errorPwd'){
+     	 alert('아이디 비밀번호를 확인해주세요');
+      }
   })
   
    $("#mainlogo").click(function(){

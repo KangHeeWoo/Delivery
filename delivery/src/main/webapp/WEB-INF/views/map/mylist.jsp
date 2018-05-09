@@ -109,6 +109,7 @@
 		var ul = $(".chat_ul");
 		var addMsg = insertChat(sendMember, sendMsg);
 		ul.append(addMsg);
+		$('.chat_ul').scrollTop($('.chat_ul').height());
 	}
 	
 	function formatAMPM(date) {
