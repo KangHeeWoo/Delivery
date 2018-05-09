@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.BookMarkService;
@@ -34,12 +33,10 @@ import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.CouponIssueVo;
 import com.jhta.delivery.vo.EventListVo;
 import com.jhta.delivery.vo.MembersVo;
-import com.jhta.delivery.vo.OrderListVo;
 import com.jhta.delivery.vo.OrdersUsePointVo;
 import com.jhta.delivery.vo.OrdersVo;
 import com.jhta.delivery.vo.SellerVo;
 import com.jhta.delivery.vo.StoresVo;
-import com.jhta.delivery.vo.UsePointVo;
 
 @Controller
 public class MembersController {

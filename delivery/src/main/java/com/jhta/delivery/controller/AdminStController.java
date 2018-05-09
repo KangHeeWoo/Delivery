@@ -9,11 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.jhta.delivery.service.StoresService;
 import com.jhta.delivery.util.PageUtil;
-import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.StoresVo;
 
 @Controller

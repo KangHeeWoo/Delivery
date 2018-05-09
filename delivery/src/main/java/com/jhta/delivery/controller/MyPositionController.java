@@ -18,7 +18,6 @@ import com.jhta.delivery.service.TopAdsService;
 import com.jhta.delivery.util.PageUtil;
 import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.StoreslistVo;
-import com.jhta.delivery.vo.TopAdsVo;
 
 @Controller
 public class MyPositionController {

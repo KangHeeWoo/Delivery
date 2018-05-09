@@ -31,7 +31,6 @@ import com.jhta.delivery.mail.SimpleMailSender;
 import com.jhta.delivery.service.SellerService;
 import com.jhta.delivery.service.StoresService;
 import com.jhta.delivery.vo.AbleLocationVo;
-import com.jhta.delivery.vo.MembersVo;
 import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.SellerVo;
 import com.jhta.delivery.vo.StoresVo;

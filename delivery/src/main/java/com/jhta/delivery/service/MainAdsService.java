@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.delivery.dao.MainAdsDao;
-import com.jhta.delivery.vo.MainAdsSelectedVo;
 import com.jhta.delivery.vo.MainAdsVo;
 
 @Service

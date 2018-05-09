@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jhta.delivery.service.EventService;
 import com.jhta.delivery.util.PageUtil;
-import com.jhta.delivery.vo.CouponVo;
-import com.jhta.delivery.vo.EventEntryVo;
 import com.jhta.delivery.vo.EventVo;
 
 @Controller

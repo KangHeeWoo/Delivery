@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jhta.delivery.vo.BookMarkVo;
-import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.StoresVo;
 
 @Repository
