@@ -62,7 +62,7 @@
 			<a href="<c:url value='/board/delete?boa_num=${vo.boa_num }' />">삭제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 			<a href="<c:url value='/board/update?boa_num=${vo.boa_num }' />">수정</a>	</span>
 
-<div id="board_detail" ">
+<div id="board_detail" >
 	<fmt:formatDate value="${vo.boa_regd }" var="date" pattern="yyyy-MM-dd HH:mm"/>
 	<table class="table">
 	<thead>
