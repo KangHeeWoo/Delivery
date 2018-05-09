@@ -78,4 +78,7 @@ public class SellerDao {
 	public List<MainAdsVo> mainList(HashMap<String, Object> map){
 		return session.selectList(NAMESPACE+".mainList",map);
 	}
+	public int getSal(HashMap<String, Object> map1) {
+		return session.selectOne(NAMESPACE+".getSal",map1);
+	}
 }

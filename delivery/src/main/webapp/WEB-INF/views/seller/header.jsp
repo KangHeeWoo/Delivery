@@ -30,9 +30,6 @@
              <a class="admin-menu" href="<c:url value='/seller/orderlist' />">주문관리&nbsp;</a>
            </li>
            <li class="nav-item" style="list-style: none;">
-             <a class="admin-menu" href="#">광고신청&nbsp;</a>
-           </li>
-           <li class="nav-item" style="list-style: none;">
              <a class="admin-menu" href="<c:url value='/seller/information'/>">사장님 정보&nbsp;</a>
            </li>
            <li class="nav-item" style="margin-left: 500px;list-style: none;">

@@ -86,4 +86,7 @@ public class SellerService {
 	public List<MainAdsVo> mainList(HashMap<String, Object> map){
 		return dao.mainList(map);
 	}
+	public int getSal(HashMap<String, Object> map1) {
+		return dao.getSal(map1);
+	}
 }

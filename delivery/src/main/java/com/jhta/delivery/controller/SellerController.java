@@ -7,6 +7,7 @@ package com.jhta.delivery.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -20,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -343,5 +345,52 @@ public class SellerController {
 		System.out.println("n"+n);
 		
 		return ".main";
+	}
+	@RequestMapping(value="/sellerChart",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public HashMap<String, Object> sellerChart(int selyear,int selmonth,int md, HttpSession session, Model model) {
+		int sto_num=(Integer)session.getAttribute("sto_num");
+		int selyear1=selyear*10000;
+		int selmonth1=selmonth*100;
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		int date=0;
+		int []a=new int[md+1];
+		int []b=new int[md+1];
+		int []c=new int[md+1];
+	
+		for(int i=1;i<=md;i++) {
+			HashMap<String, Object> map1=new HashMap<String, Object>();
+				date=(selyear1+selmonth1)+i;
+				map1.put("date", date);
+				map1.put("sto_num", sto_num);
+				a[i]=service.getSal(map1);
+		}
+		map.put("a", a);
+		map.put("b", b);
+		map.put("c", c);
+		map.put("year", selyear);
+		map.put("month", selmonth);
+		return map;
+	}
+	@RequestMapping("/stSal")
+	public String stSal(@RequestParam(defaultValue="0")int year,@RequestParam(defaultValue="0")int month,HttpSession session, Model model) {
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		Calendar cd = Calendar.getInstance();
+		int md=0;
+		if(year == 0 || month == 0) {
+			year = cd.get(Calendar.YEAR);
+			month = cd.get(Calendar.MONTH);
+			md=cd.getActualMaximum(Calendar.DAY_OF_MONTH);
+			month=month+1;
+		}else {
+		cd.set(Calendar.YEAR, year);
+		cd.set(Calendar.MONTH, month-1);
+		md=cd.getActualMaximum(Calendar.DAY_OF_MONTH);
+		}
+		map.put("selyear", year);
+		map.put("selmonth", month);
+		map.put("md",md);
+		model.addAttribute("map",map);
+		return".seller.stSal";
 	}
 }

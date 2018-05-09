@@ -67,4 +67,8 @@
 		(select * from main_ads_entry where sto_num=#{sto_num} order by main_ads_regd desc)n)
 		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>	
 	</select>
+	<select id="getSal" parameterType="hashmap" resultType="int">
+ 		select NVL(SUM(ord_comm),0) from orders 
+ 		<![CDATA[where ord_time >= to_date(#{date} || ' 00:00', 'yyyymmdd hh24:mi') and ord_time <= to_date(#{date} || ' 23:59', 'yyyymmdd hh24:mi') and sto_num=#{sto_num}]]>
+	</select>
 </mapper>    
