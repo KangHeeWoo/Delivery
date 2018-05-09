@@ -50,7 +50,7 @@
                            <li>
                               <div class="row" style="width: 250px; padding: 10px; ">
                                  <div class="col-md-12">
-                                    <h4 align="center" style="font-family: baemin">로그인</h4>
+                                    <h4 align="center" style="font-family: baemin; font-size: 25px;">로그인</h4>
                                     
                                     <!-- 라디오 첵크값에 따른 아이디 검사 -->
                                     <form class="form" role="form" method="post" action="<c:url value='/login'/>" id="login-nav" onsubmit="return loginOk()">
@@ -68,10 +68,7 @@
                                        <div class="form-group">
                                           <label class="sr-only" for="exampleInputPassword2">비밀번호</label>
                                           <input type="password" class="form-control"   id="exampleInputPassword2" placeholder="비밀번호" required name="pwd" value="<%=mem_pwd %>">
-                                          
-                                          <div >
-                                             <a href="<c:url value='/members/Find_pwd'/>" style="font-size: 18px; margin-left: 120px;" class="font4">비밀번호 찾기</a>
-                                          </div>
+                               
                                           
                                        </div>
                                        <div class="form-group">
@@ -84,8 +81,9 @@
                                     
                                     </form>
                               </div>
-                                 <div class="social-buttons" align="right">
-                                    <a href="<c:url value='/members/kakao_login'/>" class="btn btn-tw"><i class="fa fa-twitter"></i> SNS_LOGIN</a>
+                                 <div class="social-buttons" align="center">
+                                 	 <a href="<c:url value='/members/Find_pwd'/>" style="font-size: 17px;  " class="font4">비밀번호 찾기</a>
+                                    <a href="<c:url value='/members/kakao_login'/>" class="btn btn-tw"><i class="font4"></i> SNS_LOGIN</a>
                                  </div>
                               </div>
                            </li>
