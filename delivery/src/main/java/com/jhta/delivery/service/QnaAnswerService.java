@@ -24,4 +24,7 @@ public class QnaAnswerService {
 	public int insert(HashMap<String, Object> map) {
 		return dao.insert(map);
 	}
+	public String getEmail(int qna_num) {
+		return dao.getEmail(qna_num);
+	}
 }

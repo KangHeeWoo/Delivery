@@ -25,4 +25,7 @@ public class QnaAnswerDao {
 	public int insert(HashMap<String, Object> map) {
 		return session.insert(NAMESPACE+".insert",map);
 	}
+	public String getEmail(int qna_num) {
+		return session.selectOne(NAMESPACE+".getEmail",qna_num);
+	}
 }

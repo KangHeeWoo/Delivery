@@ -41,7 +41,7 @@
 <br><br>
 <select name="payType">
 	<option value="1">카드</option>
-	<option value="2">만나서결제</option>
+	<option value="2">현장결제</option>
 	<option value="3">휴대폰결제</option>
 	<option value="4">페이코</option>
 	<option value="5">kakao페이</option>
