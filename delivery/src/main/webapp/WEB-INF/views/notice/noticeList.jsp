@@ -8,14 +8,19 @@
 		margin : auto;
 	}
 </style>
+
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;자유 게시판&nbsp;&gt;</span></h2></div><br>
 <div id="notice_list">
-	<ul>
-		<li><a href="<c:url value='/board/list' />">게시판</a></li>
-		<li><a href="<c:url value='/notice/noticeList' />">공지사항</a></li>
+	<ul class="boardul">
+		<li><a href="<c:url value='/board/list' />" style="font-family: baemin4; font-size: 25px; margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;1. 자유 게시판</a></li>
+		<li><a href="<c:url value='/notice/noticeList' />" style="font-family: baemin4; font-size: 25px; margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		2. 공지사항 게시판</a></li>
 	</ul>
+	<br><br><br>
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="font2" style="font-size: 18px;">
 				<th>공지번호</th>
 				<th>제목</th>
 				<th>작성자</th>
@@ -35,20 +40,20 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-	</table>
+	</table><br>
 	<div align="center" style="width: 100%">
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i == pu.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/notice/noticeList?pageNum=${i }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/notice/noticeList?pageNum=${i }' />"><span style="color: black;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 	</div>
-</div>
+</div><br><br><br><br><br>
 <script>
 	function noticeDetail(num){
 		location.href = "<c:url value='/notice/noticeDetail?num=" + num + "' />";

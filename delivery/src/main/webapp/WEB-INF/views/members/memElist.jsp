@@ -19,10 +19,10 @@
 	<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 		<c:choose>
 			<c:when test="${i==pu.pageNum }"><!-- 현재페이지 색상 다르게 표시하기 -->
-				<a href="<c:url value='/members/mycoupon?CpageNum=${i }'/>"><span style='color:#34bdb9'>${i }</span></a>
+				<span style="color: #34bdb9;">[${i }]</span>
 			</c:when>
 			<c:otherwise>
-				<a href="<c:url value='/members/mycoupon?CpageNum=${i }'/>"><span style='color:black'>${i }</span></a>
+				<a href="<c:url value='/members/mycoupon?CpageNum=${i }'/>"><span style='color:black'>[${i }]</span></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>

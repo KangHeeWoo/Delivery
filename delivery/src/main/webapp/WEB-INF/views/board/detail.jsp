@@ -53,15 +53,24 @@
 		height: 200px;
 	}
 </style>
-<div id="board_detail">
+
+<div align="left"><h2 class="subTitle" style=" color:#212529; width:1100px; height: 60px; margin-left: 520px; padding-top: 5px;"><span>&lt;&nbsp;게시판 내용&nbsp;&gt;</span></h2>
+<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 250px; margin-left: 495px; margin-top: -80px;" ></div>
+
+
+			<span style="font-family: baemin3; margin-left:1100px; margin-bottom:10ps; font-size: 21px;" id="detailspan"><a href="<c:url value='/board/list' />">목록으로 가기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			<a href="<c:url value='/board/delete?boa_num=${vo.boa_num }' />">삭제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			<a href="<c:url value='/board/update?boa_num=${vo.boa_num }' />">수정</a>	</span>
+
+<div id="board_detail" ">
 	<fmt:formatDate value="${vo.boa_regd }" var="date" pattern="yyyy-MM-dd HH:mm"/>
 	<table class="table">
 	<thead>
-		<tr><th colspan="2">제목 : ${vo.boa_title }</th></tr>
+		<tr><td class="font1" style="font-size:20px; margin-left: 12px; margin-left: 10px; width: 150px;">제목 </td><td> ${vo.boa_title }</td></tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>작성일 : ${date }</td>
+			<td class="font1" style="font-size:20px; margin-left: 12px; margin-left: 10px; width: 150px;">작성일</td><td> ${date }</td>
 		</tr>
 		<tr>
 			<td>
@@ -75,10 +84,14 @@
 	</table>
 	
 	<div id="comment_list">
-		<div class="comment_title">
-			<span class="comment_writer">작성자</span>
-			<span class="comment_content">내용</span>
-			<span class="comment_re">답글</span>
+		<div class="font2" style="font-size: 18px;">
+			<span >작성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+			 내용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;답글</span>
+
 		</div>
 		<c:forEach var="vo" items="${clist }">
 			<div>
@@ -116,7 +129,7 @@
 	<br>
 	<form action="<c:url value='/comment/insertOk'/>" method="post" onsubmit="return idcheck('${email}')">
 		<input type="hidden" name="boa_num" value="${vo.boa_num }">
-		댓글 <input id="boa_cont" type="text" name="boa_cont">
+		<span  class="font2" style="font-size: 18px;">댓글 </span><input id="boa_cont" type="text" name="boa_cont">
 		<input type="submit" value="등록">
 	</form>
 	<br><br>
@@ -137,11 +150,9 @@
 				<tr><th>다음글</th><td onclick="detail(${next.boa_num})">${next.boa_title }</td></tr>
 			</c:otherwise>
 		</c:choose>
-		<tr>
-			<td colspan="2"><a href="<c:url value='/board/list' />">목록으로 가기</a></td>
-			<td><a href="<c:url value='/board/delete?boa_num=${vo.boa_num }' />">삭제</a></td>
-			<td><a href="<c:url value='/board/update?boa_num=${vo.boa_num }' />">수정</a></td>			
-		</tr>
+		
+			
+		
 	</table>
 </div>
 <script>

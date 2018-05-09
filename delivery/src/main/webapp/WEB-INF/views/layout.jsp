@@ -78,6 +78,31 @@
 	text-decoration:none;
 	
 }
+.boardul li{
+	margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border : 0;
+    float: left;
+  	list-style-type: none;
+}
+.boardul li a{
+	color : black;
+	text-decoration:none;	
+}
+#detailspan a{
+	color : black;
+	text-decoration:none;	
+}
+#detailspan a:hover{
+	color : #34bdb9;
+	text-decoration:none;
+	
+}
+.boardul li a:hover{
+	color : #34bdb9;
+	text-decoration:none;
+	
+}
 .wrap_subContent{
 	width: 1000px;
 	margin: auto;

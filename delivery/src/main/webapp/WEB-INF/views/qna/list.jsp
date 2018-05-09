@@ -48,7 +48,7 @@
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i==pu.pageNum }"> 
-					<a href="<c:url value='/qna/list?pageNum=${i }'/>"><span style='color: #34bdb9'>[${i }]</span></a>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
 					<a href="<c:url value='/qna/list?pageNum=${i }'/>"><span style='color: black'>[${i }]</span></a>

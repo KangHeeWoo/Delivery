@@ -68,34 +68,18 @@
 	</c:forEach>
 	<hr>
 	<div align="center">
-		<c:choose>
-			<c:when test="${pu.startPageNum > pu.pageBlockCount }">
-				<a href="<c:url value='/menu/menu?pageNum=${pu.startPageNum -1 }&sto_num=${stovo.sto_num}' />">
-				<span style="color: #555;">&lt; 이전 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 이전 &gt;</span>
-			</c:otherwise>
-		</c:choose>
+	
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i == pu.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
 					<a href="<c:url value='/menu/menu?pageNum=${i }&sto_num=${stovo.sto_num}' />">
-					<span style="color: #555;">[${i }]</span></a>
+					<span style="color: black;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<c:choose>
-			<c:when test="${pu.endPageNum < pu.totalPageCount }">
-				<a href="<c:url value='/menu/menu?pageNum=${pu.endPageNum + 1 }&sto_num=${stovo.sto_num}' />">
-				<span style="color: #555;">&lt; 다음 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 다음 &gt;</span>
-			</c:otherwise>
-		</c:choose>
+	
 	</div>
 </div>
