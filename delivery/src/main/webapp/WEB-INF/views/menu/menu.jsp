@@ -176,7 +176,7 @@ img#wpstats {
 						<h1 class="subTitle" style="margin-botton:10px;">${stovo.sto_name}</h1>
 						<div class="woocommerce-product-rating">
 							<div class="star-rating">
-								<span style="width: 30%">Rated <strong class="rating">1.50</strong>
+								<span style="width: ${avgScore * 20 }%">Rated <strong class="rating">${avgScore }</strong>
 									out of 5 based on
 								</span>
 							</div>
@@ -190,7 +190,7 @@ img#wpstats {
 						
 
 
-					<form class="cart"	action="<c:url value='/menu/cart'/>"	method="post">
+					<form class="cart"	action="<c:url value='/menu/cart'/>" method="post" onsubmit="return checkCart()">
 						<span id="cart"></span>
 						<div id="cart_list" style="display : none;"></div>
 
@@ -748,4 +748,11 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 		});
 	});
 	*/
+	
+	function checkCart(){
+		if(sum == 0){
+			alert('메뉴를 추가해주세요.');
+			return false;
+		}
+	}
 </script>

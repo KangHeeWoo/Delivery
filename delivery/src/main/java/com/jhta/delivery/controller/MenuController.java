@@ -56,12 +56,26 @@ public class MenuController {
 		
 		List<ReviewVo> review = rservice.getList(map);
 		
+		double avgScore = 0;
+		
+		if(review.size() != 0) {
+			double sumScore = 0.0;
+			for(ReviewVo vo : review) {
+				sumScore += vo.getRev_sco();
+			}
+			
+			avgScore = sumScore / review.size();
+		}
+		
+		System.out.println(avgScore);
+		
 		System.out.println(sto_num);
 		
 		model.addAttribute("stovo", stovo);
 		model.addAttribute("menulist", menulist);
 		model.addAttribute("review", review);
 		model.addAttribute("pu", pu);
+		model.addAttribute("avgScore", avgScore);
 		System.out.println(stovo.getSto_name()+"메뉴리스트:"+menulist);
 		return ".menu.menu";
 	}
