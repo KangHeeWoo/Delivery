@@ -2,6 +2,23 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<style>
+.store-manage-menu{
+	position: absolute;
+	left : 300px;
+}
+</style>
+<div class="store-manage-menu">
+<ul>
+<li><a href="<c:url value='/stMenuList'/>">메뉴관리</a></li>
+<li><a href="<c:url value='/stLocation'/>">배달가능지역 관리</a></li>
+<li><a href="<c:url value='/topAds'/>">상단광고 신청</a></li>
+<li><a href="<c:url value='/mainAds'/>">메인광고 신청</a></li>
+<li><a href="<c:url value='/stSal'/>">수익정산</a></li>
+<li><a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>">수정</a></li>
+<li><a href="<c:url value='/stDelete?sto_num=${vo.sto_num }'/>">삭제요청</a></li>
+</ul>
+</div>
 <table class="table" style="width: 800px;margin: auto;">
 	<tr>
 	<th>매장명</th><td>${vo.sto_name }</td>
@@ -37,15 +54,5 @@
 	<th>상태</th><td>${vo.sto_state }</td>
 	</tr>
 </table>
-<div style="width: 800px; margin: auto;">
-<ul>
-<li><a href="<c:url value='/stMenuList'/>">메뉴관리</a></li>
-<li><a href="<c:url value='/stLocation'/>">배달가능지역 관리</a></li>
-<li><a href="<c:url value='/topAds'/>">상단광고 신청</a></li>
-<li><a href="<c:url value='/mainAds'/>">메인광고 신청</a></li>
-<li><a href="<c:url value='/stSal'/>">수익정산</a></li>
-<li><a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>">수정</a></li>
-<li><a href="<c:url value='/stDelete?sto_num=${vo.sto_num }'/>">삭제요청</a></li>
-</ul>
-</div>
+
 
