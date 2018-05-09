@@ -5,14 +5,14 @@
 	<fmt:formatDate value="${event.eve_start }" var="start" pattern="yyyy-MM-dd "/>
 	<fmt:formatDate value="${event.eve_end }" var="end" pattern="yyyy-MM-dd "/>
 	<fmt:formatDate value="${event.eve_regd }" var="regd" pattern="yyyy-MM-dd"/>
-<h1>이벤트 팡팡</h1>
-<div align="right" style="padding-right: 300px;">등록일 : ${regd }</div>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;이벤트 팡팡&gt;</span></h2></div>
+<div align="right" style="padding-right: 410px; font-size: 15px;" class="font2" >등록일 : ${regd }</div>
 <div align="center">
 	<img src="<c:url value='/resources/images/event/${event.eve_img }' />">
-	<p>${event.eve_cont }</p>
-	제목 : ${event.eve_title }<br><br>
+	<p class="font2" style="font-size: 18px;">${event.eve_cont }<br><br></p>
+	<p class="font2" style="font-size: 25px;">제목 : ${event.eve_title }<br><br></p>
 		
-	 ${start } &sim; ${end }<br><br><br>
+	 <p class="font2" style="font-size: 18px;">${start } ~ ${end }<br><br><br></p>
 	 <img src="<c:url value='/resources/images/event/참쉬운-방법.png' />" style="width:900px;height:auto;"><br><br><br>
 	 <img src="<c:url value='/resources/images/버튼.png' />" style="width:514px;height:189px;" onclick="eventMem(${event.eve_num})">
 </div>

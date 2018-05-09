@@ -51,6 +51,33 @@
 .font4{
 	font-family: baemin4;
 }
+.font1{
+	font-family: baemin1;
+}
+.font3{
+	font-family: baemin3;
+}
+.font5{
+	font-family: baemin5;
+}
+
+#mypageul li{
+	 margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border : 0;
+    float: left;
+    list-style-type: none;
+}
+#mypageul li a{
+	color : black;
+	text-decoration:none;
+	
+}
+#mypageul li a:hover{
+	color : #34bdb9;
+	text-decoration:none;
+	
+}
 .wrap_subContent{
 	width: 1000px;
 	margin: auto;

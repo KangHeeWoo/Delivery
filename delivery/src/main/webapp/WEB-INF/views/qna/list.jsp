@@ -10,11 +10,15 @@
 	}
 	
 </style>
-
-<div id="qna_list">
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;Q&amp;A&nbsp;&gt;</span></h2></div><br>
+	<div id="insert" align="right" style="margin-right: 455px; margin-bottom: -10px;">	
+		<a href="<c:url value='/qna/insert'/>" id="listA" style="font-family: baemin3; font-size: 21px; ">글쓰기</a>
+	</div>
+<div id="qna_list" class="wrap_subContent">
+	<br>
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="font2" style="font-size: 18px;">
 				<th>제목</th><th>작성날짜</th><th>삭제</th>
 			</tr>
 		</thead>
@@ -36,22 +40,24 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<div>
+	<br>
+	
+
+	
+	<div align="center" style="width: 100%">
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i==pu.pageNum }"> 
-					<a href="<c:url value='/qna/list?pageNum=${i }'/>"><span style='color:blue'>[${i }]</span></a>
+					<a href="<c:url value='/qna/list?pageNum=${i }'/>"><span style='color: #34bdb9'>[${i }]</span></a>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/qna/list?pageNum=${i }'/>"><span style='color:#555'>[${i }]</span></a>
+					<a href="<c:url value='/qna/list?pageNum=${i }'/>"><span style='color: black'>[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 	</div>
 </div>
-	<div id="insert" align="right" style="margin-right: 500px;">	
-		<a href="<c:url value='/qna/insert'/>">글쓰기</a>
-	</div>
+<br><br><br><br><br>	
 <script>
 function getDetail(qna_num){
 	  console.log(qna_num);

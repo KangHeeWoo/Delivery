@@ -1,55 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
-<!-- Bootstrap -->
-<link href="<c:url value='/resources/css/bootstrap.min.css'/>"
-	rel="stylesheet">
-<!-- Custom style -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/bootstrap-theme.min.css'/>"
-	media="screen" title="no title" ><!-- charset="utf-8" -->
 
 
-</head>
-<body>
-	<div class="col-md-12">
-		<div class="page-header">
-			<h1>
-				1:1 질문 <small>QnA</small>
-			</h1>
-		</div>
-		<form class="form-horizontal" action="<c:url value='/qna/insertOk'/>" method="post">
+<div align="left"><h2 class="subTitle" style=" color:#212529; width:1100px; height: 60px; margin-left: 490px;"><span>&lt;&nbsp; 1:1 Q&A &nbsp;&gt;</span></h2>
+<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 230px; margin-left: 470px; margin-top: -80px;" ></div>
+	<form class="form-horizontal" action="<c:url value='/qna/insertOk'/>" method="post">
 			<input type="hidden" name="mem_num" value="${mem_num}">
-			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputtitle">제목</label>
-				<div class="col-sm-6">
-					<input class="form-control" id="qna_title" type="text" name="qna_title">
+			<div style="width: 800px; margin-left: 500px;">
+				<p class="font1" style="font-size:20px; margin-left: 15px;" >제목</p>
+				<div align="center">
+					<input style="width:920px; height:35px; margin-left:14px;" id="qna_title" type="text" name="qna_title">
 				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label" for="input">내용</label>
+			</div><br>
+			<div style="width: 800px; margin-left: 500px;">
+				<p class="font1" style="font-size:20px; margin-left: 15px;">내용</p>
 				<div class="col-sm-6">
-					<textarea rows="6" cols="128" overflow="scroll" name="qna_cont"></textarea>
+					<textarea rows="10" cols="128" overflow="scroll" name="qna_cont"></textarea>
 				</div>
-			</div>
-			<div class="form-group">
+			</div><br>
+			<div class="form-group" style="margin-top: 20px;">
 				<div class="col-sm-12 text-center">
 					<button class="btn btn-primary" type="submit">
-						질문하기<i class="fa fa-check spaceLeft"></i>
+						<span class="font1" style="font-size:18px;">질문할래요</span><i class="fa fa-check spaceLeft"></i>
 					</button>
 					<button class="btn btn-danger" type="reset">
-						질문취소<i class="fa fa-times spaceLeft"></i>
+						<span class="font1" style="font-size:18px;">취소할래요</span><i class="fa fa-times spaceLeft"></i>
 					</button>
 				</div>
 			</div>
 		</form>
 		<hr>
-	</div>
 
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script
@@ -61,5 +43,3 @@
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
 
-</body>
-</html>

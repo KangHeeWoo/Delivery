@@ -14,10 +14,11 @@
 	 	margin : auto;
 	}
 </style>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;주문내역&gt;</span></h2></div><br>
 <div id="order_list">
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="font2" style="font-size: 18px;">
 				<th>주문번호</th>
 				<th>주문매장</th>
 				<th>접수시간</th>
@@ -43,41 +44,29 @@
 			</c:forEach>
 		</tbody>
 	</table>
+
+	
 	<div align="center" style="width: 100%">
-		<c:choose>
-			<c:when test="${pu.startPageNum > pu.pageBlockCount }">
-				<a href="<c:url value='/members/orderlist?pageNum=${pu.startPageNum -1 }' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 이전 &gt;</span>
-			</c:otherwise>
-		</c:choose>
+		
 		
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i == pu.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<a href="<c:url value='/members/orderlist?pageNum=${i }' />"><span style="color: #34bdb9;">[${i }]</span></a>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/members/orderlist?pageNum=${i }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/members/orderlist?pageNum=${i }' />"><span style="color: blick;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 		
-		<c:choose>
-			<c:when test="${pu.endPageNum < pu.totalPageCount }">
-				<a href="<c:url value='/members/orderlist?pageNum=${pu.endPageNum + 1 }' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 다음 &gt;</span>
-			</c:otherwise>
-		</c:choose>
+
 	</div>
 	<br><br>
 	<div align="center" id="orderList">
 		<table class="table">
 			<thead>
-				<tr>
+				<tr class="font2" style="font-size: 18px;">
 					<th>주문 메뉴</th>
 					<th>주문 개수</th>
 				</tr>
@@ -86,7 +75,7 @@
 			</tbody>
 		</table>
 	</div>
-</div>
+</div><br><br><br><br><br>
 <script>
 	function getOrderInfo(n){		
 		$.ajax({

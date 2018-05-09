@@ -7,13 +7,14 @@
 		align-content: center;
 	}
 </style>
+	<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;이벤트 팡팡&gt;</span></h2></div>
 <div class="wrap_subContent">
-	<h2 class="subTitle">이벤트 팡팡</h2>
+	<br>
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="font2" style="font-size: 18px;">
 				<th>번호</th>
-				<th>제목</th>
+				<th >제목</th>
 				<th>시작일</th>
 				<th>종료일</th>
 				<th>등록일</th>
@@ -24,7 +25,7 @@
 			<fmt:formatDate value="${event.eve_start }" var="start" pattern="yyyy-MM-dd HH:mm"/>
 			<fmt:formatDate value="${event.eve_end }" var="end" pattern="yyyy-MM-dd HH:mm"/>
 			<fmt:formatDate value="${event.eve_regd }" var="regd" pattern="yyyy-MM-dd HH:mm"/>
-				<tr onclick="eventDetail(${event.eve_num})">
+				<tr onclick="eventDetail(${event.eve_num})"   >
 					<td>${event.eve_num }</td>
 					<td>${event.eve_title }</td>
 					<td>${start }</td>
@@ -34,36 +35,23 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	
+	
+	<br>
 	<div align="center" style="width: 100%">
-		<c:choose>
-			<c:when test="${pu.startPageNum > pu.pageBlockCount }">
-				<a href="<c:url value='/seller/orderlist?pageNum=${pu.startPageNum - 1 }&stoNum=${sto_num }' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 이전 &gt;</span>
-			</c:otherwise>
-		</c:choose>
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i == pu.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<a href="<c:url value='/admin/event?pageNum=${i }' />"><span style="color: #34bdb9;">[${i }]</span></a>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/admin/event?pageNum=${i }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/admin/event?pageNum=${i }' />"><span style="color: black;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<c:choose>
-			<c:when test="${pu.endPageNum < pu.totalPageCount }">
-				<a href="<c:url value='/seller/orderlist?pageNum=${pu.endPageNum + 1 }&stoNum=${sto_num }' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 다음 &gt;</span>
-			</c:otherwise>
-		</c:choose>
 	</div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
 <script>
 	function eventDetail(num){
 		location.href = "<c:url value='/event/eventdetail?eve_num=" + num + "'/>";

@@ -5,11 +5,11 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;즐겨찾기&gt;</span></h2></div><br>
 <div class="wrap_subContent">
-<h2 class="subTitle">즐겨찾기</h2>
-<table class="table" style="width:1000px; margin: auto; ">
+<table class="table" >
 	<thead>
-		<tr>
+		<tr class="font2" style="font-size: 18px;">
 			<th>매장명</th><th>주소</th><th>전화번호</th><th>영업시간</th><th>해제</th>
 		</tr>
 		<c:forEach var="book" items="${booklist }">
@@ -30,10 +30,10 @@
 	<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 		<c:choose>
 			<c:when test="${i==pu.pageNum }"><!-- 현재페이지 색상 다르게 표시하기 -->
-				<a href="<c:url value='/members/bookmark?pageNum=${i }&field=${field }&search=${search }'/>"><span style='color:blue'>${i }</span></a>
+				<a href="<c:url value='/members/bookmark?pageNum=${i }&field=${field }&search=${search }'/>"><span style='color:#34bdb9'>[${i }]</span></a>
 			</c:when>
 			<c:otherwise>
-				<a href="<c:url value='/members/bookmark?pageNum=${i }&field=${field }&search=${search }'/>"><span style='color:#555'>${i }</span></a>
+				<a href="<c:url value='/members/bookmark?pageNum=${i }&field=${field }&search=${search }'/>"><span style='color:black'>[${i }]</span></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>

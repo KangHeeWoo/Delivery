@@ -29,8 +29,9 @@
 		color: #dddd22;
 	}
 </style>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;리뷰&gt;</span></h2></div>
 <div id="members_review_list">
-	<h3>리뷰</h3>
+	
 	<br>
 	<c:forEach var="review" items="${review }">
 		<fmt:formatDate type="date" value="${review.rev_regd }" var="regd" pattern="MM dd, yyyy" />

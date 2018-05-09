@@ -38,19 +38,15 @@
 			map : map
 		});
 </script>
-</head>
-<body>
+
 	<div class="col-md-12">
-		<div class="page-header">
-			<h1>
-				회원정보 변경
-			</h1>
-		</div>
+		<div align="left"><h2 class="subTitle" style=" color:#212529; width:1100px; height: 60px; margin-left: 320px;"><span>&lt;&nbsp;내 정보 변경&nbsp;&gt;</span></h2>
+		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 230px; margin-left: 370px; margin-top: -80px;" ></div>
 		<form class="form-horizontal" action="<c:url value='/members/memUpdate'/>"
 			method="post" onsubmit="return updateOk()">
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputNumber">이메일</label>
+				<label class="col-sm-3 control-label" for="inputNumber" style="font-size:20px; margin-left: 14px; font-family: baemin1">이메일</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputEmail" type="text" name="mem_email" readonly="readonly" value="${memDetail.mem_email }">
 				</div>
@@ -58,7 +54,7 @@
 
 		
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputName">이름</label>
+				<label class="col-sm-3 control-label" for="inputName" style="font-size:20px; margin-left: 14px; font-family: baemin1">이름</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputName" type="text" name="mem_name" value="${memDetail.mem_name }">
 				</div>
@@ -67,7 +63,7 @@
 			
 			<!-- 현재비밀번호 일치여부확인  -->
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPasswordCheck">현재 비밀번호</label>
+				<label class="col-sm-3 control-label" for="inputPasswordCheck" style="font-size:20px; margin-left: 14px; font-family: baemin1">현재 비밀번호</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="PasswordCheck" type="password" placeholder="Password Check"  onkeyup="pwd()" >
 					<p class="help-block" id="pwd">현재 사용중인 비밀번호를 입력해주세요.</p>
@@ -76,7 +72,7 @@
 			
 			
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPassword">변경할 비밀번호</label>
+				<label class="col-sm-3 control-label" for="inputPassword" style="font-size:20px; margin-left: 14px; font-family: baemin1">변경할 비밀번호</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputPassword" type="password"
 						placeholder="Password" onkeyup="pwd1()">
@@ -84,7 +80,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPasswordCheck">비밀번호 확인</label>
+				<label class="col-sm-3 control-label" for="inputPasswordCheck" style="font-size:20px; margin-left: 14px; font-family: baemin1">비밀번호 확인</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputPasswordCheck" type="password" placeholder="Password Check" name="mem_pwd" onkeyup="pwd1()" >
 					<p class="help-block" id="pwd2">비밀번호를 한번 더 입력해주세요.</p>
@@ -92,7 +88,7 @@
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputNumber">닉네임</label>
+				<label class="col-sm-3 control-label" for="inputNumber" style="font-size:20px; margin-left: 14px; font-family: baemin1">닉네임</label>
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="text" class="form-control" id="inputNick" placeholder="Nickname" name="mem_nick" value="${memDetail.mem_nick }" onkeyup="changeNick()"> 
@@ -107,14 +103,14 @@
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputBirth">생년월일</label>
+				<label class="col-sm-3 control-label" for="inputBirth" style="font-size:20px; margin-left: 14px; font-family: baemin1">생년월일</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputBirth" type="date"name="mem_birth" value="<fmt:formatDate value="${memDetail.mem_birth }" pattern="yyyy-MM-dd"/>" readonly="readonly">
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPhone">전화번호</label>
+				<label class="col-sm-3 control-label" for="inputPhone" style="font-size:20px; margin-left: 14px; font-family: baemin1">전화번호</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputPhone" type="text" name="mem_phone" placeholder="-를 빼고 입력해주시기 바랍니다." onkeyup="phonecheck()" value="${memDetail.mem_phone }">
 					<p class="help-block" id="phonecheckP"></p>
@@ -123,7 +119,7 @@
 
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputAddr">주소</label>
+				<label class="col-sm-3 control-label" for="inputAddr" style="font-size:20px; margin-left: 14px; font-family: baemin1">주소</label>
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="text" class="form-control" id="sample5_address" placeholder="Address" width="100" readonly="readonly" name="mem_addr" value="${memDetail.mem_addr }">
@@ -150,13 +146,13 @@
 			<div class="form-group">
 				<div class="col-sm-12 text-center">
 					<button class="btn btn-primary" type="submit">
-						수정하기<i class="fa fa-check spaceLeft"></i>
+						<span class="font1" style="font-size:18px;">저장할래요</span><i class="fa fa-check spaceLeft"></i>
 					</button>
 					<button class="btn btn-primary" type="reset">
-						취소<i class="fa fa-check spaceLeft"></i>
+						<span class="font1" style="font-size:18px;">취소할래요</span><i class="fa fa-check spaceLeft"></i>
 					</button>
 					<button class="btn btn-danger" onclick="deleteM()">
-						탈퇴하기
+						<span class="font1" style="font-size:18px;">정말..탈퇴하나요</span>
 					</button>
 				</div>
 			</div>
