@@ -61,19 +61,19 @@
 	font-family: baemin5;
 }
 
-#mypageul li{
+.mypageul li{
 	 margin: 0 0 0 0;
     padding: 0 0 0 0;
     border : 0;
     float: left;
     list-style-type: none;
 }
-#mypageul li a{
+.mypageul li a{
 	color : black;
 	text-decoration:none;
 	
 }
-#mypageul li a:hover{
+.mypageul li a:hover{
 	color : #34bdb9;
 	text-decoration:none;
 	

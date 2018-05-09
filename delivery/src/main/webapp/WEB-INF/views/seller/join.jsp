@@ -1,24 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<link href="<c:url value='/resources/css/bootstrap.min.css'/>"
-	rel="stylesheet">
-<!-- Custom style -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/bootstrap-theme.min.css'/>"
-	media="screen" title="no title" ><!-- charset="utf-8" -->
-
+<br>
 	<div>
-		<div class="page-header">
-			<h1>
-				회원가입 <small>Seller</small>
-			</h1>
-		</div>
+		<div align="left"><h2 class="font4" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 320px; font-size: 40px;"><span>&lt;&nbsp;사장님 가입&nbsp;&gt;</span></h2>
+		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 250px; margin-left: 300px; margin-top: -70px;" ></div>
 		<form class="form-horizontal" action="<c:url value='/seller/join'/>"
 			method="post" onsubmit="return joinOk()">
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputNumber">이메일</label>
+				<label class="col-sm-3 control-label" for="inputNumber" style="font-size:16px; margin-left: 14px; font-family: baemin1">이메일</label>
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="email" class="form-control" id="inputEmail"
@@ -34,8 +25,7 @@
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputNumberCheck">인증번호
-					확인</label>
+				<label class="col-sm-3 control-label" for="inputNumber" style="font-size:16px; margin-left: 14px; font-family: baemin1">인증번호 확인</label>
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input class="form-control" id="inputNumberCheck" type="text"
@@ -49,20 +39,20 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputName">이름</label>
+				<label class="col-sm-3 control-label" for="inputNumber" style="font-size:16px; margin-left: 14px; font-family: baemin1">이름</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputName" type="text" name="sel_name" placeholder="Name">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPassword">비밀번호</label>
+				<label class="col-sm-3 control-label" for="inputNumber" style="font-size:16px; margin-left: 14px; font-family: baemin1">비밀번호</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputPassword" type="password" 	placeholder="Password" onkeyup="pwd1()">
 					<p class="help-block" id="pwd1">영문, 숫자, 특수문자 포함 8자 이상</p>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPasswordCheck">비밀번호 확인</label>
+				<label class="col-sm-3 control-label" for="inputNumber" style="font-size:16px; margin-left: 14px; font-family: baemin1">비밀번호 확인</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputPasswordCheck" type="password" placeholder="Password Check" name="sel_pwd" onkeyup="pwd1()" >
 					<p class="help-block" id="pwd2">비밀번호를 한번 더 입력해주세요.</p>
@@ -71,7 +61,7 @@
 
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPhone">전화번호</label>
+				<label class="col-sm-3 control-label" for="inputNumber" style="font-size:16px; margin-left: 14px; font-family: baemin1">전화번호</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputPhone" type="text" name="sel_phone" placeholder="-를 빼고 입력해주시기 바랍니다." onkeyup="phonecheck()">
 					<p class="help-block" id="phonecheckP"></p>
@@ -79,7 +69,7 @@
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputAddr">주소</label>
+				<label class="col-sm-3 control-label" for="inputNumber" style="font-size:16px; margin-left: 14px; font-family: baemin1">주소</label>
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="text" class="form-control" id="sample5_address" placeholder="Address" width="100" readonly="readonly" name="sel_addr">
@@ -103,7 +93,7 @@
 
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="input">약관동의</label>
+				<label class="col-sm-3 control-label" for="inputNumber" style="font-size:16px; margin-left: 14px; font-family: baemin1">가입동의</label>
 				<div class="col-sm-6">
 					<textarea rows="6" cols="128" overflow="scroll">제 1 조 (목적)
 이 약관은 주식회사 우아한형제들(이하 "회사”라 합니다)이 제공하는 배달의민족 서비스(이하 "서비스”라 합니다)와 관련하여, 회사와 이용 고객간에 서비스의 이용조건 및 절차, 회사와 회원간의 권리, 의무 및 기타 필요한 사항을 규정함을 목적으로 합니다. 본 약관은 PC통신, 스마트폰(안드로이드폰, 아이폰 등) 앱 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 준용됩니다. 
