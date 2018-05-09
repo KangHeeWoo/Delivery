@@ -7,10 +7,7 @@
 <!-- Custom style -->
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap-theme.min.css'/>" media="screen" title="no title" ><!-- charset="utf-8" -->
 
-
-</head>
-<body>
-	<div class="col-md-12">
+	<div>
 		<div class="page-header">
 			<h1>
 				회원가입 <small>Membership</small>
@@ -366,30 +363,28 @@
 2. 서비스 이용 중 발생한 회원과 회사간의 소송은 민사소송법에 의한 관할법원에 제소합니다. 
 
 					</textarea>
-					<input type="checkbox" required="required"> 회원가입 동의
+					<br><input type="checkbox" required="required"> 회원가입 동의
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-12 text-center">
+					<input type="submit" value="저장할래요" class="btn btn-primary font1" style="font-size:18px;">
+					<input type="reset" value="취소할래요" class="btn btn-danger font1" style="font-size:18px;">
+					<!-- 
 					<button class="btn btn-primary" type="submit">
 						회원가입<i class="fa fa-check spaceLeft"></i>
 					</button>
 					<button class="btn btn-danger" type="reset">
 						가입취소<i class="fa fa-times spaceLeft"></i>
 					</button>
+					 -->
 				</div>
 			</div>
 		</form>
 		<hr>
 	</div>
 
-
-
-
-
-
-	<div id="map"
-		style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
+	<div id="map" style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
 
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script

@@ -39,7 +39,7 @@
 		});
 </script>
 
-	<div class="col-md-12">
+	<div>
 		<div align="left"><h2 class="subTitle" style=" color:#212529; width:1100px; height: 60px; margin-left: 320px;"><span>&lt;&nbsp;내 정보 변경&nbsp;&gt;</span></h2>
 		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 230px; margin-left: 300px; margin-top: -80px;" ></div>
 		<form class="form-horizontal" action="<c:url value='/members/memUpdate'/>"
@@ -145,12 +145,16 @@
 	
 			<div class="form-group">
 				<div class="col-sm-12 text-center">
+					<input type="submit" value="저장할래요" class="btn btn-primary font1" style="font-size:18px;">
+					<input type="reset" value="취소할래요" class="btn btn-primary font1" style="font-size:18px;">
+					<!-- 
 					<button class="btn btn-primary" type="submit">
 						<span class="font1" style="font-size:18px;">저장할래요</span><i class="fa fa-check spaceLeft"></i>
 					</button>
 					<button class="btn btn-primary" type="reset">
 						<span class="font1" style="font-size:18px;">취소할래요</span><i class="fa fa-check spaceLeft"></i>
 					</button>
+					 -->
 					<button class="btn btn-danger" onclick="deleteM()">
 						<span class="font1" style="font-size:18px;">정말..탈퇴하나요</span>
 					</button>

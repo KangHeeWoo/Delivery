@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.delivery_footer{
+	position: relative;
+	top : 250px;
+	width : 100%;
+	height : 465px;
+	background-image: url('../images/푸터터.png');
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.delivery_sns_link{
+	position : relative;
+	top : 60px;
+	left : 260px;
+}
+
+.delivery_sns_link>a>img{
+	margin-right : 20px;
+	width : 55px;
+}

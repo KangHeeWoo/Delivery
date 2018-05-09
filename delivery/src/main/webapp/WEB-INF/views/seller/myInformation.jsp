@@ -13,7 +13,7 @@
 
 </head>
 <body>
-	<div class="col-md-12">
+	<div>
 		<div class="page-header">
 			<h1>
 				회원정보 변경
@@ -102,14 +102,18 @@
 	
 			<div class="form-group">
 				<div class="col-sm-12 text-center">
+					<input type="submit" value="저장할래요" class="btn btn-primary font1" style="font-size:18px;">
+					<input type="reset" value="취소할래요" class="btn btn-primary font1" style="font-size:18px;">
+					<!-- 
 					<button class="btn btn-primary" type="submit">
-						수정하기<i class="fa fa-check spaceLeft"></i>
+						<span class="font1" style="font-size:18px;">저장할래요</span><i class="fa fa-check spaceLeft"></i>
 					</button>
 					<button class="btn btn-primary" type="reset">
-						취소<i class="fa fa-check spaceLeft"></i>
+						<span class="font1" style="font-size:18px;">취소할래요</span><i class="fa fa-check spaceLeft"></i>
 					</button>
+					 -->
 					<button class="btn btn-danger" onclick="deleteM()">
-						탈퇴하기
+						<span class="font1" style="font-size:18px;">정말..탈퇴하나요</span>
 					</button>
 				</div>
 			</div>
