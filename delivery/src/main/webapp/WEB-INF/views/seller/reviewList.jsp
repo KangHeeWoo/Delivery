@@ -29,22 +29,23 @@
 		color: #dddd22;
 	}
 </style>
-
-<div id="store_review_list">
-	<h4>매장 선택</h4>
-	<select onchange="selStore(event)">
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;리뷰 관리&nbsp;&gt;</span></h2></div>
+<br><br>
+<div id="store_review_list" style="width: 1000px; margin: auto;">
+<label class="col-sm-3 control-label" for="input" style="font-size:20px; margin-left: 10px; font-family: baemin1">매장선택</label>
+<select onchange="selStore(event)" style="width: 300px; margin-left: -80px;">
 		<c:forEach var="store" items="${sto_list }">
-			<option value="${store.sto_num }"
-				${store.sto_num == sto_num?"selected='selected'":"" }>${store.sto_name }</option>
+			<option value="${store.sto_num }" ${store.sto_num == sto_num?"selected='selected'":"" }>${store.sto_name }</option>
 		</c:forEach>
-	</select>
-	<h3>리뷰</h3>
+</select>
+<br><br><br><br>
+<label class="col-sm-3 control-label" for="input" style="font-size:25px; margin-left:-10px;  font-family: baemin3;" >&lt;&nbsp;리뷰&nbsp;&gt;</label>
 	<br>
 	<c:forEach var="review" items="${review }">
 		<fmt:formatDate type="date" value="${review.rev_regd }" var="regd" pattern="MM dd, yyyy" />
 		<div>
-			<hr>
-			<p>${review.mem_nick }&ndash; ${regd }</p>
+			<hr style="border:dashed 0.5px #212529;">
+			<p class="font1" style="font-size: 20px;">${review.mem_nick }&ndash; ${regd }</p>
 			<p>${review.rev_cont }</p>
 			<c:if test="${review.reviewImage != null }">
 				<div class="revImage_wrapper">
@@ -73,7 +74,7 @@
 					</div>
 				</c:when>
 				<c:otherwise>
-					<h4>답글 달기</h4>
+					<h3 class="font2" style="font-size: 18px; color:#34bdb9">답글 달기</h3>
 					<form method="post" action="<c:url value='/review/insertReviewComment' />">
 						<input type="hidden" name="sto_num" value="${sto_num }">
 						<input type="hidden" name="rev_num" value="${review.rev_num }">
@@ -84,40 +85,24 @@
 			</c:choose>
 		</div>
 	</c:forEach>
-	<hr>
+	<br><br><br>
 	<div align="center">
-		<c:choose>
-			<c:when test="${pu.startPageNum > pu.pageBlockCount }">
-				<a href="<c:url value='/seller/reviewlist?pageNum=${pu.startPageNum -1 }&sto_num=${stovo.sto_num}' />">
-				<span style="color: #555;">&lt; 이전 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 이전 &gt;</span>
-			</c:otherwise>
-		</c:choose>
+	
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i == pu.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
 					<a href="<c:url value='/seller/reviewlist?pageNum=${i }&sto_num=${stovo.sto_num}' />">
-					<span style="color: #555;">[${i }]</span></a>
+					<span style="color: black;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<c:choose>
-			<c:when test="${pu.endPageNum < pu.totalPageCount }">
-				<a href="<c:url value='/seller/reviewlist?pageNum=${pu.endPageNum + 1 }&sto_num=${stovo.sto_num}' />">
-				<span style="color: #555;">&lt; 다음 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 다음 &gt;</span>
-			</c:otherwise>
-		</c:choose>
+
 	</div>
 </div>
-
+<br><br><br><br><br>
 <script>
 	function selStore(e){
 		var stoNum = $(e.target).val(); 

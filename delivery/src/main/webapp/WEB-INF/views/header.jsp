@@ -55,7 +55,7 @@
                                     <!-- 라디오 첵크값에 따른 아이디 검사 -->
                                     <form class="form" role="form" method="post" action="<c:url value='/login'/>" id="login-nav" onsubmit="return loginOk()">
                                     <div align="center">
-                                     <input type="radio" name="joinradio" value="mem_email" checked="checked">&nbsp;&nbsp; <span class="font4" style="font-size: 18px;">우리민족&nbsp;&nbsp; &nbsp;&nbsp;  </span>
+                                     <input type="radio" name="joinradio" value="mem_email" checked="checked">&nbsp;&nbsp; <span class="font4" style="font-size: 18px;">우리백성&nbsp;&nbsp; &nbsp;&nbsp;  </span>
                                     <input type="radio" name="joinradio" value="sel_email" >&nbsp;&nbsp; <span class="font4" style="font-size: 18px;">사장님</span>
                                     </div>
                                     <br>

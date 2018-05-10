@@ -47,9 +47,11 @@
 <td class="font1" style="font-size:15px;">가입일</td><td>${regd }</td>
 </tr>
 </table>
+<br>
 <div align="center">
-<input type="submit" value="확인">
+	<input type="submit" value="확인" class="btn btn-primary font1" style="font-size:18px;">
 </div>
+<br><br><br>
 </form>
 </div>
 <script type="text/javascript">
@@ -85,7 +87,8 @@
 			</c:choose>
 		</c:forEach>
 	</div>
-</div>
+</div><br><br><br><br>
+
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;포인트 사용 내역&nbsp;&gt;</span></h2></div><br>
 <div style="width: 800px; margin: auto;">
 <table class="table">
@@ -110,7 +113,7 @@
 			</c:choose>
 		</c:forEach>
 	</div>
-</div>
+</div><br><br><br><br>
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;주문 내역&nbsp;&gt;</span></h2></div><br>
 <div style="width: 800px; margin: auto;">
 <table class="table">

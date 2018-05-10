@@ -14,18 +14,31 @@
 	 	margin : auto;
 	}
 </style>
-<div id="order_list">
+
+
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;주문 관리&nbsp;&gt;</span></h2></div>
+<br><br><br>
+<div id="order_list" style="width: 1000px; margin: auto;">
+<label class="col-sm-3 control-label" for="input" style="font-size:20px; margin-left: 10px; font-family: baemin1">매장선택</label>
+<select onchange="selStore(event)" style="width: 300px; margin-left: -80px;">
+		<c:forEach var="store" items="${sto_list }">
+			<option value="${store.sto_num }" ${store.sto_num == sto_num?"selected='selected'":"" }>${store.sto_name }</option>
+		</c:forEach>
+</select>
+
+
+<br><br><br><br><br>
 	<!-- 판매자 매장 리스트중 선택 기능 필요 -->
-	<h4>매장 선택</h4>
+	<%-- <h4>매장 선택</h4>
 	<select onchange="selStore(event)">
 		<c:forEach var="store" items="${sto_list }">
 			<option value="${store.sto_num }" ${store.sto_num == sto_num?"selected='selected'":"" }>${store.sto_name }</option>
 		</c:forEach>
-	</select>
+	</select> --%>
 	<table class="table">
 		<thead>
-			<tr>
-				<th>주문번호</th>
+			<tr class="font2" style="font-size: 18px;">
+				<th style="padding-left: 30px;">주문번호</th>
 				<th>접수시간</th>
 				<th>배달예정시간</th>
 				<th>주문가격</th>
@@ -39,7 +52,7 @@
 				<fmt:formatDate value="${order.ord_time }" var="ord_time" pattern="yyyy-MM-dd HH:mm"/>
 				<fmt:formatDate value="${order.ord_deli_time }" var="ord_deli_time" pattern="yyyy-MM-dd HH:mm"/>
 				<tr>
-					<td><a href="javascript:getOrderInfo(${order.ord_num })">${order.ord_num }</a></td>
+					<td  style="padding-left: 30px;"><a href="javascript:getOrderInfo(${order.ord_num })">${order.ord_num }</a></td>
 					<td>${ord_time }</td>
 					<td>${ord_deli_time }</td>
 					<td>${order.ord_price }</td>
@@ -56,40 +69,26 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-	</table>
+	</table><br><br>
 	<div align="center" style="width: 100%">
-		<c:choose>
-			<c:when test="${pu.startPageNum > pu.pageBlockCount }">
-				<a href="<c:url value='/seller/orderlist?pageNum=${pu.startPageNum - 1 }&stoNum=${sto_num }' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 이전 &gt;</span>
-			</c:otherwise>
-		</c:choose>
+
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i == pu.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/seller/orderlist?pageNum=${i }&stoNum=${sto_num }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/seller/orderlist?pageNum=${i }&stoNum=${sto_num }' />"><span style="color: black;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<c:choose>
-			<c:when test="${pu.endPageNum < pu.totalPageCount }">
-				<a href="<c:url value='/seller/orderlist?pageNum=${pu.endPageNum + 1 }&stoNum=${sto_num }' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 다음 &gt;</span>
-			</c:otherwise>
-		</c:choose>
+
 	</div>
 	<br><br>
 	<div align="center" id="orderList">
 		<table class="table">
 			<thead>
-				<tr>
+				<tr class="font2" style="font-size: 18px;">
 					<th>주문 메뉴</th>
 					<th>주문 개수</th>
 				</tr>
@@ -99,6 +98,7 @@
 		</table>
 	</div>
 </div>
+<br><br><br><br><br>
 <script>
 	function selStore(e){
 		var stoNum = $(e.target).val(); 

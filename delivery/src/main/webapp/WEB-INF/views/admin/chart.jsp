@@ -5,7 +5,7 @@
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <!-- google charts -->
        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<div align="left"><h2 class="subTitle" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 150px;"><span>&lt;&nbsp;매출 통계&nbsp;&gt;</span></h2>
+<div align="left"><h2 class="subTitle" style=" color:#212529; width:1100px; height: 60px; margin-left: 150px;"><span>&lt;&nbsp;매출 통계&nbsp;&gt;</span></h2>
 		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 230px; margin-left: 130px; margin-top: -80px;" ></div>
 <div style="margin-left: 150px;">
     <form method="get" action="<c:url value='/chart'/>">
@@ -102,7 +102,7 @@
 		}
 	}
 </script>
-<input type="submit" value="적용">
+<input type="submit" value="적용" class="btn btn-primary font1" style="font-size:18px;">
 </form>
 </div>
  	

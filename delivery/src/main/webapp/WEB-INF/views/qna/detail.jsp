@@ -7,16 +7,16 @@
 		margin : auto;
 	}
 </style>
-<div align="left"><h2 class="subTitle" style=" color:#212529; width:1100px; height: 60px; margin-left: 490px;"><span>&lt;&nbsp;Q&A 자세히보기&nbsp;&gt;</span></h2>
+<div align="left"><h2 class="subTitle" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 490px;"><span>&lt;&nbsp;Q&A 자세히보기&nbsp;&gt;</span></h2>
 <img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 260px; margin-left: 470px; margin-top: -80px;" ></div>
-<div id="qna_detail" style="width: 900px;">
+<div id="qna_detail" style="width: 1000px;">
 <table class="table">
 		<tr>
-			<td class="font1" style="font-size:20px; margin-left: 12px; margin-left: 10px; width: 150px;">제목</td>
+			<td class="font1" style="font-size:18px; padding-left: 50px; width: 150px;">제목</td>
 			<td>${vo.qna_title }</td>
 		</tr>
 		<tr>
-			<td class="font1" style="font-size:20px; margin-left: 12px; margin-left: 10px; width: 150px;">내용</td>
+			<td class="font1" style="font-size:18px; padding-left: 50px; width: 150px;">내용</td>
 			<td>${vo.qna_cont }</td>
 		</tr>
 </table>
