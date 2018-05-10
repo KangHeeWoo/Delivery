@@ -9,4 +9,10 @@
 	<select id="getinfo" parameterType="String" resultType="int">
 		select gra_bene from grade where gra_name=#{gra_name}
 	</select>
+	<select id="getAdm" resultType="int">
+		select adm_value from administration
+	</select>
+	<update id="updateAdm" parameterType="int">
+		update administration set adm_value=#{value}
+	</update>
 </mapper>

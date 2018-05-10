@@ -47,7 +47,7 @@
 </script>
  	<div align="right" style="margin-right: 150px;">
  	<h4 class="font1" style="font-size:18px;">등급별 적립포인트</h4>
- 	<form method="get" action="<c:url value='/chart'/>">
+ 	<form method="post" action="<c:url value='/chart'/>">
 꼬끼오등급 적립포인트 :
 <select name="goggio">
 <option value="0">0%</option>
@@ -93,12 +93,28 @@
 <option value="10">10%</option>
 <option value="20">20%</option>
 <option value="50">50%</option>
-</select><br><br>
+</select><br>
 <script type="text/javascript">
 	var select4=document.getElementsByName("al")[0];
 	for(var i=0; i<select4.options.length;i++){
 		if(select4.options[i].value=='${map.al1}'){
 			select4.options[i].selected=true;
+		}
+	}
+</script>
+주문 수수료 :
+<select name="ordFee">
+<option value="0">0%</option>
+<option value="1">1%</option>
+<option value="2">2%</option>
+<option value="3">4%</option>
+<option value="5">5%</option>
+</select><br><br>
+<script type="text/javascript">
+	var select5=document.getElementsByName("ordFee")[0];
+	for(var i=0; i<select5.options.length;i++){
+		if(select5.options[i].value=='${map.ordFee1}'){
+			select5.options[i].selected=true;
 		}
 	}
 </script>

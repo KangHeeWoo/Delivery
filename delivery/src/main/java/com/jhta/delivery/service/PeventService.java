@@ -20,4 +20,10 @@ public class PeventService {
 	public int getinfo(String gra_name) {
 		return dao.getinfo(gra_name);
 	}
+	public int getAdm() {
+		return dao.getAdm();
+	}
+	public int updateAdm(int ordFee) {
+		return dao.updateAdm(ordFee);
+	}
 }

@@ -43,15 +43,17 @@ public class AdminChartController {
 	}
 	@RequestMapping("/chart")
 	public ModelAndView Chart1(@RequestParam(defaultValue="0")int year,@RequestParam(defaultValue="0")int month,
-			@RequestParam(defaultValue="-1")int goggio, @RequestParam(defaultValue="-1")int biyack, @RequestParam(defaultValue="-1")int al) {
+			@RequestParam(defaultValue="-1")int goggio, @RequestParam(defaultValue="-1")int biyack, @RequestParam(defaultValue="-1")int al,@RequestParam(defaultValue="-1")int ordFee) {
 		if(goggio == -1) {
 			goggio=service1.getinfo("²¿³¢¿À");
 			biyack=service1.getinfo("»ß¾à");
 			al=service1.getinfo("¾Ë");
+			ordFee=service1.getAdm();
 		}else {
 			service1.update(goggio, "²¿³¢¿À");
 			service1.update(biyack, "»ß¾à");
 			service1.update(al, "¾Ë");
+			service1.updateAdm(ordFee);
 		}
 		ModelAndView mv=new ModelAndView(".admin.chart");
 		HashMap<String, Object> map=new HashMap<String, Object>();
@@ -73,6 +75,7 @@ public class AdminChartController {
 		map.put("goggio1",goggio);
 		map.put("biyack1",biyack);
 		map.put("al1",al);
+		map.put("ordFee1", ordFee);
 		mv.addObject("map",map);
 		return mv;
 	}

@@ -18,4 +18,10 @@ public class PeventDao {
 		public int getinfo(String gra_name) {
 			return sqlSession.selectOne(NAMESPACE+".getinfo",gra_name);
 		}
+		public int getAdm() {
+			return sqlSession.selectOne(NAMESPACE+".getAdm");
+		}
+		public int updateAdm(int ordFee) {
+			return sqlSession.update(NAMESPACE+".updateAdm",ordFee);
+		}
 }

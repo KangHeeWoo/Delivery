@@ -21,25 +21,25 @@
 	<select id="chat_log" parameterType="hashmap" resultType="com.jhta.delivery.vo.ChatLogVo">
 		select * from
 			(select b.*, rownum rnum from
-				(select * from chat_log order by chat_regd desc)b)
-		<![CDATA[where mem_num=#{mem_num} and rnum >= #{ch_startRow} and rnum <= #{ch_endRow}]]>
+				(select * from chat_log where mem_num=#{mem_num} order by chat_regd desc)b)
+		<![CDATA[where rnum >= #{ch_startRow} and rnum <= #{ch_endRow}]]>
 	</select>
 	<select id="coupon" parameterType="hashmap" resultType="com.jhta.delivery.vo.CouponUseVo">
 		select * from
 			(select b.*, rownum rnum from
-				(select * from coupon_uselist order by cou_use_num desc)b)
-		<![CDATA[where cou_iss_num in (select cou_iss_num from coupon_uselist) and rnum >= #{c_startRow} and rnum <= #{c_endRow}]]>
+				(select * from coupon_uselist where cou_iss_num in (select cou_iss_num from coupon_uselist) order by cou_use_num desc)b)
+		<![CDATA[where rnum >= #{c_startRow} and rnum <= #{c_endRow}]]>
 	</select>
 	<select id="point" parameterType="hashmap" resultType="com.jhta.delivery.vo.UsePointVo">
 		select * from
 			(select b.*, rownum rnum from
-				(select * from use_point order by use_num desc)b)
-		<![CDATA[where mem_num=#{mem_num} and rnum >= #{p_startRow} and rnum <= #{p_endRow}]]>
+				(select * from use_point where mem_num=#{mem_num} order by use_num desc)b)
+		<![CDATA[where rnum >= #{p_startRow} and rnum <= #{p_endRow}]]>
 	</select>
 	<select id="orders" parameterType="hashmap" resultType="com.jhta.delivery.vo.OrdersVo">
 		select * from
 			(select b.*, rownum rnum from
-				(select * from orders order by ord_time desc)b)
-		<![CDATA[where mem_num=#{mem_num} and rnum >= #{o_startRow} and rnum <= #{o_endRow}]]>
+				(select * from orders where mem_num=#{mem_num} order by ord_time desc)b)
+		<![CDATA[where rnum >= #{o_startRow} and rnum <= #{o_endRow}]]>
 	</select>
 </mapper>
