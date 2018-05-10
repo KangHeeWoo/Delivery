@@ -6,33 +6,33 @@
 <div>
 <table class="table" style="width: 800px; margin: auto;">
 	<tr>
-		<th class="font2" style="font-size: 18px;">제목</th><td>${vo.qna_title }</td>
+		<th class="font1" style="font-size: 15px; width:93px;">제목</th>
+		<td>${vo.qna_title }</td>
 	</tr>
 	<tr>
-		<th class="font2" style="font-size: 18px;">문의 내용</th><td>${vo.qna_cont }</td>
+		<th class="font1" style="font-size: 15px; width:93px;">문의 내용</th>
+		<td>${vo.qna_cont }</td>
 	</tr>
 </table>
 </div>
-<br><br><br>
+<br><br><br><br>
 <div>
 <form method="post" action="<c:url value='/admin/qnaAnswerInsert'/>">
+<input type="hidden" value=${vo.qna_num } name="qna_num">
 <table class="table" style="width: 800px; margin: auto;">
-<tr>
-<th></th><td><input type="hidden" value=${vo.qna_num } name="qna_num"></td>
-</tr>
-<tr>
-<th class="font2" style="font-size: 18px;">답변 제목</th>
-<td><input type="text" name="qna_ans_title"></td>
-</tr>
-<tr>
-<th class="font2" style="font-size: 18px;">답변 내용</th>
-<td><textarea rows="20" cols="80" name="qna_ans_cont"></textarea></td>
-</tr>
-<tr>
-	<td colspan="2" align="center">
-		<input type="submit" value="등록할래요" class="btn btn-primary font1" style="font-size:18px;">
-	</td>
-</tr>
+	<tr>
+		<th class="font1" style="font-size: 15px;">답변 제목</th>
+		<td><input type="text" name="qna_ans_title"></td>
+	</tr>
+	<tr>
+		<th class="font1" style="font-size: 15px;">답변 내용</th>
+		<td><textarea rows="20" cols="80" name="qna_ans_cont"></textarea></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<input type="submit" value="등록할래요" class="btn btn-primary font1" style="font-size:18px;">
+		</td>
+	</tr>
 </table>
 </form>
 <br><br><br><br><br>
