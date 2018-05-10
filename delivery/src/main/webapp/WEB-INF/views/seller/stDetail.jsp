@@ -3,8 +3,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-
+<script>
+function del(num){
+	var person = prompt("정말 삭제하시려면 '삭제' 라고 써주세요.");
+    if (person == '삭제') {
+        alert("삭제요청이 완료 되었습니다.");
+        location.href="<c:url value='/stDelete?sto_num="+ num +"'/>";
+    }
+}
+</script>
 <div align="center" style="width: 1100px; margin: auto"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;MY 매장관리&nbsp;&gt;</span></h2></div><br>
 
 
@@ -16,7 +23,7 @@
 <li><a href="<c:url value='/mainAds'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;메인광고 신청 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 <li><a href="<c:url value='/stSal'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;수익정산 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 <li><a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;수정 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-<li><a href="<c:url value='/stDelete?sto_num=${vo.sto_num }'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;삭제요청</a></li>
+<li><a href="javascript:del('${vo.sto_num }')" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;삭제요청</a></li>
 </ul>
 </div><br><br>
 <br><br><br>
