@@ -128,7 +128,7 @@ public class ReviewController {
 		
 		ob.put("result", false);
 		
-		if(list != null) {
+		if(list.size() != 0) {
 			ob.put("result", true);
 			ob.put("ord_num", list.get(list.size()-1).getOrd_num());
 		}

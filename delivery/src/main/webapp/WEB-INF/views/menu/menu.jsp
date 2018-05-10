@@ -173,6 +173,7 @@ img#wpstats {
 							</div>
 						</figure>
 						 -->
+
 						 <a href="#"> <img width="600" height="800"
 									src="<c:url value='/resources/images/stores/${stovo.sto_img}'/>"
 									class="wp-post-image" alt="" title="Shop_Isle_2" /></a>
@@ -313,32 +314,16 @@ img#wpstats {
 											</c:forEach>
 											<li>
 												<div align="center">
-													<c:choose>
-														<c:when test="${pu.startPageNum > pu.pageBlockCount }">
-															<a href="<c:url value='/menu/menu?pageNum=${pu.startPageNum -1 }&sto_num=${stovo.sto_num}' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
-														</c:when>
-														<c:otherwise>
-															<span style="color: black;">&lt; 이전 &gt;</span>
-														</c:otherwise>
-													</c:choose>
 													<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 														<c:choose>
 															<c:when test="${i == pu.pageNum }">
-																<span style="color: black;">[${i }]</span>
+																<span style="color: #34bdb9;">[${i }]</span>
 															</c:when>
 															<c:otherwise>
-																<a href="<c:url value='/menu/menu?pageNum=${i }&sto_num=${stovo.sto_num}' />"><span style="color: #555;">[${i }]</span></a>
+																<a href="<c:url value='/menu/menu?pageNum=${i }&sto_num=${stovo.sto_num}' />"><span style="color: black;">[${i }]</span></a>
 															</c:otherwise>
 														</c:choose>
 													</c:forEach>
-													<c:choose>
-														<c:when test="${pu.endPageNum < pu.totalPageCount }">
-															<a href="<c:url value='/menu/menu?pageNum=${pu.endPageNum + 1 }&sto_num=${stovo.sto_num}' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
-														</c:when>
-														<c:otherwise>
-															<span style="color: black;">&lt; 다음 &gt;</span>
-														</c:otherwise>
-													</c:choose>
 												</div>
 											</li>
 										</ol>
@@ -583,7 +568,8 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 	
 	
 	$("#menu_title").on('click', function(){
-		$(".main_menu").children("div").stop().slideToggle();
+		console.log('메뉴 토글');
+		$("#menu_title").next().stop().slideToggle();
 	}); 
 	
 	
@@ -718,13 +704,14 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 	}
 	
 	function checkOrderList(){
+		var result = false;
 		$.ajax({
 			url : "<c:url value='/review/checkOrderList' />",
 			data : {sto_num : '${stovo.sto_num}'},
 			dataType : "json",
 			async : false,
 			success : function(data){
-				var result = data.result;
+				result = data.result;
 				
 				if(result){
 					var ord_num = data.ord_num;
@@ -741,6 +728,8 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 				return false;
 			}
 		});	
+		
+		return result;
 	}
 	/*
 	$(function(){
@@ -753,6 +742,7 @@ window.addEventListener('LazyLoad::Initialized', function (e) {
 		});
 	});
 	*/
+	
 	
 	function checkCart(){
 		if(sum == 0){
