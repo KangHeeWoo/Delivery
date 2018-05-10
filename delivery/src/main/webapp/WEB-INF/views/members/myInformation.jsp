@@ -34,8 +34,8 @@
 </script>
 
 	<div>
-		<div align="left"><h2 class="subTitle" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 320px;"><span>&lt;&nbsp;내 정보 변경&nbsp;&gt;</span></h2>
-		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 230px; margin-left: 300px; margin-top: -80px;" ></div>
+		<div align="left"><h2 class="font1" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 320px;"><span>&lt;&nbsp;내 정보 변경&nbsp;&gt;</span></h2>
+		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 240px; margin-left: 300px; margin-top: -80px;" ></div>
 		<form class="form-horizontal" action="<c:url value='/members/memUpdate'/>"
 			method="post" onsubmit="return updateOk()">
 
@@ -135,6 +135,7 @@
   	 <tr><td><input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"></td></tr>
   	 <tr><td>상세주소<input type="text" width="50" name="mem_addr2"></td></tr>  -->
 
+<br><br>
 
 	
 			<div class="form-group">
@@ -165,7 +166,7 @@
 
 	<div id="map"
 		style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-
+<br><br><br><br><br>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
 		

@@ -2,23 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<style>
-.store-manage-menu{
-	position: absolute;
-	left : 300px;
-}
-</style>
-<div class="store-manage-menu">
+
+
+
+<div align="center" style="width: 1100px; margin: auto"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;MY 매장관리&nbsp;&gt;</span></h2></div><br>
+
+
+<div class="mypageul" align="center" style="width: 1000px; margin: auto;">
 <ul>
-<li><a href="<c:url value='/stMenuList'/>">메뉴관리</a></li>
-<li><a href="<c:url value='/stLocation'/>">배달가능지역 관리</a></li>
-<li><a href="<c:url value='/topAds'/>">상단광고 신청</a></li>
-<li><a href="<c:url value='/mainAds'/>">메인광고 신청</a></li>
-<li><a href="<c:url value='/stSal'/>">수익정산</a></li>
-<li><a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>">수정</a></li>
-<li><a href="<c:url value='/stDelete?sto_num=${vo.sto_num }'/>">삭제요청</a></li>
+<li><a href="<c:url value='/stMenuList'/>" style="font-family: baemin4; font-size: 20px; margin-left: 50px;">메뉴관리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+<li><a href="<c:url value='/stLocation'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;배달가능지역 관리&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+<li><a href="<c:url value='/topAds'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;상단광고 신청&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+<li><a href="<c:url value='/mainAds'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;메인광고 신청 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+<li><a href="<c:url value='/stSal'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;수익정산 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+<li><a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;수정 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+<li><a href="<c:url value='/stDelete?sto_num=${vo.sto_num }'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;삭제요청</a></li>
 </ul>
 </div>
+<br><br><br>
 <table class="table" style="width: 800px;margin: auto;">
 	<tr>
 	<th>매장명</th><td>${vo.sto_name }</td>

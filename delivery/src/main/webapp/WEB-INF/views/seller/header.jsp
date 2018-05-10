@@ -18,19 +18,19 @@
        <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav text-uppercase ml-auto" >
            <li class="nav-item" style="list-style: none;">
-             <a class="admin-menu" href="<c:url value='/stList'/>" >매장관리&nbsp;</a>
+             <a class="admin-menu" href="<c:url value='/stList'/>"  style="font-family: baemin1; font-size: 15px; " >매장관리&nbsp;</a>
            </li>
            <li class="nav-item" style="list-style: none;">
-             <a class="admin-menu" href="<c:url value='/seller/reviewlist' />">리뷰관리&nbsp;</a>
+             <a class="admin-menu" href="<c:url value='/seller/reviewlist' />"  style="font-family: baemin1; font-size: 15px; ">리뷰관리&nbsp;</a>
            </li>
            <li class="nav-item" style="list-style: none;">
-             <a class="admin-menu" href="<c:url value='/seller/orderlist' />">주문관리&nbsp;</a>
+             <a class="admin-menu" href="<c:url value='/seller/orderlist' />"  style="font-family: baemin1; font-size: 15px; ">주문관리&nbsp;</a>
            </li>
            <li class="nav-item" style="list-style: none;">
-             <a class="admin-menu" href="<c:url value='/seller/information'/>">사장님 정보&nbsp;</a>
+             <a class="admin-menu" href="<c:url value='/seller/information'/>"  style="font-family: baemin1; font-size: 15px; ">사장님 정보&nbsp;</a>
            </li>
            <li class="nav-item" style="margin-left: 500px;list-style: none;">
-             <a class="admin-menu" href="<c:url value='/logout'/>">로그아웃&nbsp;</a>
+             <a class="admin-menu" href="<c:url value='/logout'/>" style="color:#fed136;  font-family: baemin1">로그아웃&nbsp;</a>
            </li>
          </ul>
        </div>

@@ -3,18 +3,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
+<br>
 	<div>
-		<div class="page-header">
-			<h1>
-				회원정보 변경
-			</h1>
-		</div>
+		<div align="left"><h2 class="font1" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 320px;"><span>&lt;&nbsp;내 정보 변경&nbsp;&gt;</span></h2>
+		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 240px; margin-left: 300px; margin-top: -80px;" ></div>
 		<form class="form-horizontal" action="<c:url value='/seller/selUpdate'/>"
 			method="post" onsubmit="return updateOk()">
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputNumber">이메일</label>
+				<label class="col-sm-3 control-label" for="inputNumber" style="font-size:16px; margin-left: 14px; font-family: baemin1">이메일</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputEmail" type="text" name="sel_email" readonly="readonly" value="${selDetail.sel_email }">
 				</div>
@@ -22,7 +19,7 @@
 
 		
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputName">이름</label>
+				<label class="col-sm-3 control-label" for="inputName" style="font-size:16px; margin-left: 14px; font-family: baemin1">이름</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputName" type="text" name="sel_name" value="${selDetail.sel_name }">
 				</div>
@@ -31,7 +28,7 @@
 			
 			<!-- 현재비밀번호 일치여부확인  -->
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPasswordCheck">현재 비밀번호</label>
+				<label class="col-sm-3 control-label" for="inputPasswordCheck" style="font-size:16px; margin-left: 14px; font-family: baemin1">현재 비밀번호</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="PasswordCheck" type="password" placeholder="Password Check"  onkeyup="pwd()" >
 					<p class="help-block" id="pwd">현재 사용중인 비밀번호를 입력해주세요.</p>
@@ -40,7 +37,7 @@
 			
 			
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPassword">변경할 비밀번호</label>
+				<label class="col-sm-3 control-label" for="inputPassword" style="font-size:16px; margin-left: 14px; font-family: baemin1">변경할 비밀번호</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputPassword" type="password"
 						placeholder="Password" onkeyup="pwd1()">
@@ -48,7 +45,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPasswordCheck">비밀번호 확인</label>
+				<label class="col-sm-3 control-label" for="inputPasswordCheck" style="font-size:16px; margin-left: 14px; font-family: baemin1">비밀번호 확인</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputPasswordCheck" type="password" placeholder="Password Check" name="sel_pwd" onkeyup="pwd1()" >
 					<p class="help-block" id="pwd2">비밀번호를 한번 더 입력해주세요.</p>
@@ -58,7 +55,7 @@
 			
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputPhone">전화번호</label>
+				<label class="col-sm-3 control-label" for="inputPhone" style="font-size:16px; margin-left: 14px; font-family: baemin1">전화번호</label>
 				<div class="col-sm-6">
 					<input class="form-control" id="inputPhone" type="text" name="sel_phone" placeholder="-를 빼고 입력해주시기 바랍니다." onkeyup="phonecheck()" value="${selDetail.sel_phone }">
 					<p class="help-block" id="phonecheckP"></p>
@@ -67,7 +64,7 @@
 
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label" for="inputAddr">주소</label>
+				<label class="col-sm-3 control-label" for="inputAddr" style="font-size:16px; margin-left: 14px; font-family: baemin1">주소</label>
 				<div class="col-sm-6">
 					<div class="input-group">
 						<input type="text" class="form-control" id="sample5_address" placeholder="Address" width="100" readonly="readonly" name="sel_addr" value="${selDetail.sel_addr }">
@@ -88,7 +85,7 @@
 			<!--    <tr><td><input type="text" id="sample5_address" placeholder="주소" width="100" readonly="readonly" name="mem_addr"></td></tr>
   	 <tr><td><input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"></td></tr>
   	 <tr><td>상세주소<input type="text" width="50" name="mem_addr2"></td></tr>  -->
-
+<br><br>
 
 	
 			<div class="form-group">
@@ -119,6 +116,9 @@
 
 	<div id="map"
 		style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
+
+
+<br><br><br><br><br>
 
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script

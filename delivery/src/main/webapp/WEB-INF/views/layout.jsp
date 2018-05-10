@@ -61,6 +61,16 @@
 .font5{
 	font-family: baemin5;
 }
+.nav-item a{
+	color : white;
+	text-decoration:none;
+	
+}
+.nav-item a:hover{
+	color : #fec503;
+	text-decoration:none;
+	
+}
 .mypageul li{
 	 margin: 0 0 0 0;
     padding: 0 0 0 0;
