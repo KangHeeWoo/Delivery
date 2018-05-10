@@ -16,7 +16,7 @@
 		select nvl(min(sto_num), 0) from stores where sel_num = #{sel_num} and sto_state='승인'
 	</select>
 	<select id="stoList" parameterType="int" resultType="stores">
-		select * from stores where sel_num = #{sel_num} and sto_state='승인'
+		select * from stores where sel_num = #{sel_num} and sto_state='승인' order by sto_regd desc
 	</select>
 	<select id="stoName" parameterType="int" resultType="stores">
 		select s.*,s.sto_num,i.sto_img from (select * from stores where sto_state='승인' and sto_num=#{sto_num})s, sto_image i where s.sto_num=i.sto_num
@@ -33,7 +33,7 @@
 		#{sto_holiday},#{sto_intro},'대기',#{sel_num},#{cat_num})
 	</insert>
 	<select id="stList" parameterType="int" resultType="com.jhta.delivery.vo.StoresVo">
-		select * from stores where sel_num=#{sel_num}
+		select * from stores where sel_num=#{sel_num} order by sto_regd desc
 	</select>
 	<select id="stDetail" parameterType="int" resultType="com.jhta.delivery.vo.StoresVo">
 		select * from stores where sto_num=#{sto_num}
