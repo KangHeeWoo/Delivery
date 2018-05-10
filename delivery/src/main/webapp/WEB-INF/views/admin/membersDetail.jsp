@@ -87,7 +87,8 @@
 			</c:choose>
 		</c:forEach>
 	</div>
-</div>
+</div><br><br><br><br>
+
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;포인트 사용 내역&nbsp;&gt;</span></h2></div><br>
 <div style="width: 800px; margin: auto;">
 <table class="table">
@@ -112,7 +113,7 @@
 			</c:choose>
 		</c:forEach>
 	</div>
-</div>
+</div><br><br><br><br>
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;주문 내역&nbsp;&gt;</span></h2></div><br>
 <div style="width: 800px; margin: auto;">
 <table class="table">

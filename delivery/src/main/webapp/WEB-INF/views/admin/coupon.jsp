@@ -60,7 +60,7 @@
 			</c:choose>
 		</c:forEach>
 	</div>
-
+<br><br><br><br>
 	<div id="addcoupon">
 		<table class="table">
 			<tr>
@@ -119,7 +119,7 @@
 			</c:choose>
 		</c:forEach>
 	</div>
-
+<br><br><br><br>
 	<div id="issuecoupon">
 		<table class="table">
 			<tr>
