@@ -13,7 +13,7 @@
 </style>
 <div align="left"><h2 class="subTitle" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 520px; padding-top: 5px;"><span>&lt;&nbsp;공지사항&nbsp;&gt;</span></h2>
 <img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 250px; margin-left: 495px; margin-top: -80px;" ></div>
-<span style="font-family: baemin3; margin-left:1100px; margin-bottom:10px; font-size: 21px;" id="detailspan"><a href="<c:url value='/board/list' />">목록으로 가기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+<span style="font-family: baemin3; margin-left:1100px; margin-bottom:10px; font-size: 21px;" id="detailspan"><a href="<c:url value='/admin/noticeList' />">목록으로 가기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 <a href="<c:url value='/admin/noticeDelete?not_num=${notice.not_num }' />">삭제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 <a href="<c:url value='/admin/noticeUpdate?not_num=${notice.not_num }' />">수정</a>	</span>
 <div id="notice_detail">
