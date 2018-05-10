@@ -44,6 +44,49 @@ public class MyPositionController {
       session.setAttribute("able_loc", able_loc);
       session.setAttribute("myDetail", myDetail);
       
+      String category = null;
+      
+      switch(cat_num) {
+      case 1:
+    	  category = "한식";
+    	  break;
+      case 2:
+    	  category = "분식";
+    	  break;
+      case 3:
+    	  category = "일식";
+    	  break;
+      case 4:
+    	  category = "치킨";
+    	  break;
+      case 5:
+    	  category = "피자";
+    	  break;
+      case 6:
+    	  category = "중국집";
+    	  break;
+      case 7:
+    	  category = "족발,보쌈";
+    	  break;
+      case 8:
+    	  category = "야식";
+    	  break;
+      case 9:
+    	  category = "카페,디저트";
+    	  break;
+      case 10:
+    	  category = "도시락";
+    	  break;
+      case 11:
+    	  category = "패스트푸드";
+    	  break;
+      case 12:
+    	  category = "찜,탕";
+    	  break;
+      }
+      
+      session.setAttribute("category", category);
+      
       HashMap<String, Object> map1 = new HashMap<String, Object>();
       map1.put("able_loc", able_loc);
       map1.put("cat_num", cat_num);

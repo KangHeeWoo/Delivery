@@ -153,7 +153,7 @@ img#wpstats {
 		<section class="module module-super-small">
 			<div class="container product-main-content">
 				<nav class="woocommerce-breadcrumb">
-					<span class="font4" style="font-size: 20px; margin-left: -10px;">카테고리</span>&nbsp;&#47;&nbsp;<span class="font4" style="font-size: 20px;">${stovo.sto_name}</span>
+					<span class="font4" style="font-size: 20px; margin-left: -10px;">${sessionScope.category }</span>&nbsp;&#47;&nbsp;<span class="font4" style="font-size: 20px;">${stovo.sto_name}</span>
 				</nav>
 				<div id="product-70"
 					class="post-70 product type-product status-publish has-post-thumbnail product_cat-clothing product_cat-tshirt first instock sale shipping-taxable purchasable product-type-simple">
@@ -161,6 +161,7 @@ img#wpstats {
 						class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-6 images"
 						data-columns="6"
 						style="opacity: 0; transition: opacity .25s ease-in-out;">
+						<!-- 
 						<figure class="woocommerce-product-gallery__wrapper">
 							<div
 								data-thumb="https://demot-vertigostudio.netdna-ssl.com/shop-isle/wp-content/uploads/sites/48/2013/06/Shop_Isle_2-150x150.jpg"
@@ -171,6 +172,10 @@ img#wpstats {
 								
 							</div>
 						</figure>
+						 -->
+						 <a href="#"> <img width="600" height="800"
+									src="<c:url value='/resources/images/stores/${stovo.sto_img}'/>"
+									class="wp-post-image" alt="" title="Shop_Isle_2" /></a>
 					</div>
 					<div class="summary entry-summary">
 						<h1 class="subTitle" style="margin-botton:10px;">${stovo.sto_name}</h1>
