@@ -9,7 +9,7 @@
 	}
 	
 	#members_review_list {
-		width: 800px;
+		width: 1000px;
 		margin: auto;
 	}
 	
@@ -30,14 +30,15 @@
 	}
 </style>
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;리뷰&gt;</span></h2></div>
+<br><br>
 <div id="members_review_list">
-	
+	<label class="col-sm-3 control-label" for="input" style="font-size:25px; margin-left:-10px;  font-family: baemin3;" >&lt;&nbsp;리뷰&nbsp;&gt;</label>
 	<br>
 	<c:forEach var="review" items="${review }">
 		<fmt:formatDate type="date" value="${review.rev_regd }" var="regd" pattern="MM dd, yyyy" />
 		<div>
-			<hr>
-			<p>${review.mem_nick }&ndash; ${regd }</p>
+			<hr style="border:dashed 0.5px #212529;">
+			<p class="font1" style="font-size: 20px;">${review.mem_nick }&ndash; ${regd }</p>
 			<p>${review.rev_cont }</p>
 			<c:if test="${review.reviewImage != null }">
 				<div class="revImage_wrapper">
@@ -66,7 +67,7 @@
 			</c:if>
 		</div>
 	</c:forEach>
-	<hr>
+	<br><br>
 	<div align="center">
 	
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
@@ -80,6 +81,6 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-	
 	</div>
 </div>
+<br><br><br><br><br>
