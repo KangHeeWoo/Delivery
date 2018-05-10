@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-   <!DOCTYPE html>
+
    
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -9,13 +9,24 @@
 
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
- 	<h1>이메일 약관에 동의해야 이용가능합니다.</h1>
-    <a id="kakao-login-btn"></a>
-    <a href="http://developers.kakao.com/logout">로그아웃</a>
+<div align="center" style="width: 1000px; margin: auto;">
+
+<h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;SNS로그인&nbsp;&gt;</span></h2><br>
+
+
+<div align="left"><h2 class="font4" style=" color:black; width:1100px; height: 60px; margin-left: 260px; font-size: 40px;"><span>"&nbsp;이메일 약관에 동의해야 이용가능합니다.&nbsp;"</span></h2>
+		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 600px; margin-left: 250px; margin-top: -50px;" ></div>
+
+<br><br>
+    <div align="center" style="margin-left: 100px;"><a id="kakao-login-btn"></a>
+	<a id="kakao-login-btn" style="float: left; margin-left: 50px;"></a></div><br><br>
+    <div style="margin-left: 750px;"><label class="col-sm-3 control-label" for="inputNumber" style="font-size:20px; font-family: baemin3; width: 300px;"  onsubmit="return emailOK()">다른 SNS도 만들고 있어요....</label></div>
+   <!--  <a href="http://developers.kakao.com/logout">로그아웃</a> -->
 
     <!-- 카톡 페이스북 네이버 로그인 -->
-<a id="kakao-login-btn" style="float: left; margin-left: 50px;"></a>
 
+</div>
+<br><br><br><br><br>
 
 <script type='text/javascript'>
    //<![CDATA[

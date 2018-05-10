@@ -54,7 +54,7 @@
 	}
 </style>
 
-<div align="left"><h2 class="subTitle" style=" color:#212529; width:1100px; height: 60px; margin-left: 520px; padding-top: 5px;"><span>&lt;&nbsp;게시판 내용&nbsp;&gt;</span></h2>
+<div align="left"><h2 class="subTitle" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 520px; padding-top: 5px;"><span>&lt;&nbsp;게시판 내용&nbsp;&gt;</span></h2>
 <img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 250px; margin-left: 495px; margin-top: -80px;" ></div>
 
 

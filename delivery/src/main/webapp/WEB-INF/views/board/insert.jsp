@@ -5,7 +5,7 @@
 
 
 <br>
-<div align="left"><h2 class="subTitle" style=" color:#212529; width:1100px; height: 60px; margin-left: 490px;"><span>&lt;&nbsp; 자유 게시판 &nbsp;&gt;</span></h2>
+<div align="left"><h2 class="subTitle" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 490px;"><span>&lt;&nbsp; 자유 게시판 &nbsp;&gt;</span></h2>
 <img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 230px; margin-left: 470px; margin-top: -80px;" ></div>
 
 		<form class="form-horizontal" action="<c:url value='/board/insertOk'/>" method="post" enctype="multipart/form-data">

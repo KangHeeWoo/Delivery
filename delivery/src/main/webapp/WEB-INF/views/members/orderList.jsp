@@ -14,7 +14,7 @@
 	 	margin : auto;
 	}
 </style>
-<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;주문내역&gt;</span></h2></div><br>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;주문내역&nbsp;&gt;</span></h2></div><br>
 <div id="order_list">
 	<table class="table">
 		<thead>

@@ -3,15 +3,23 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<form class="form-horizontal" action="<c:url value='/members/Pwd'/>" method="post" id="mem_selPwd">
+<div class="wrap_subContent" style="height : 158px;">
+	<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;비밀번호 찾기&nbsp;&gt;</span></h2></div><br>
+</div>
 
+<div align="center" style="margin: auto; width: 1000px; margin-top: -80px;">
+<form class="form-horizontal" action="<c:url value='/members/Pwd'/>" method="post" id="mem_selPwd">
+	<ul class="mypageul">
+		<li><input type="radio" name="joinradio" value="mem_email" checked="checked"><span style="margin-left:80px; font-family: baemin4; font-size: 40px; margin-left: 50px;">우리 백성 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+		<li><input type="radio" name="joinradio" value="sel_email" ><span style="font-family: baemin4; font-size: 40px; margin-left: 50px;">사장님</span></li>
+	</ul>
+<br><br><br><br><br><br>
+		
 	<div class="form-group">
-		<div align="center">
-        	<input type="radio" name="joinradio" value="mem_email" checked="checked"> 우리민족  
-        	<input type="radio" name="joinradio" value="sel_email"> 사장님
-        </div><br><br>
-		<label class="col-sm-3 control-label" for="inputNumber"
-			onsubmit="return emailOK()">이메일</label>
+	     
+		<label class="col-sm-3 control-label" for="inputNumber" style="font-size:16px; margin-left: 14px; font-family: baemin1" onsubmit="return emailOK()">이메일</label>
+		
 		<div class="col-sm-6">
 			<div class="input-group">
 				<input type="email" class="form-control" id="inputEmail"
@@ -23,17 +31,17 @@
 		</div>
 	</div>
 
-
+<br><br>
 		
 	<div class="form-group">
 		<div class="col-sm-12 text-center">
-			<button class="btn btn-primary" type="submit">
-				임시번호 전송<i class="fa fa-check spaceLeft"></i>
-			</button>
+			<input type="submit" value="임시번호 전송" class="btn btn-primary font1" style="font-size:18px; ">
 
 		</div>
 	</div>
 </form>
+<br><br><br><br><br>
+</div>
 
 <script>
 	

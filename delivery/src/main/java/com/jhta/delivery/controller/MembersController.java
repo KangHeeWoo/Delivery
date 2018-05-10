@@ -323,7 +323,7 @@ public class MembersController {
 		String DD="pwdNo";
 		if(n>=0) {
 			session.invalidate();
-			return ".main";
+			return "redirect:/";
 		}else {
 			return "redirect:/members/delete?DD="+DD;
 		}

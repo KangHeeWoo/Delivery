@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div align="left"><h2 class="subTitle" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 690px; padding-top: 5px; font-size: 40px;"><span >&lt;&nbsp;${stovo.sto_name }&nbsp;&gt;</span></h2>
+<div align="left"><h2 class="subTitle" style=" color:#333; width:1100px; height: 60px; margin-left: 690px; padding-top: 5px; font-size: 40px;"><span >&lt;&nbsp;${stovo.sto_name }&nbsp;&gt;</span></h2>
 <img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 350px; margin-left: 670px; margin-top: -60px;" ></div>
 
 

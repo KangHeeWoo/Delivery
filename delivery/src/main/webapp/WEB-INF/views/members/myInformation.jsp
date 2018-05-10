@@ -2,13 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!-- Bootstrap -->
-<link href="<c:url value='/resources/css/bootstrap.min.css'/>"
-	rel="stylesheet">
-<!-- Custom style -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/bootstrap-theme.min.css'/>"
-	media="screen" title="no title" ><!-- charset="utf-8" -->
+
 <script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=00c0bb384860705065e4de2f7b7b454&libraries=services"></script>
 	<script>
@@ -40,7 +34,7 @@
 </script>
 
 	<div>
-		<div align="left"><h2 class="subTitle" style=" color:#212529; width:1100px; height: 60px; margin-left: 320px;"><span>&lt;&nbsp;내 정보 변경&nbsp;&gt;</span></h2>
+		<div align="left"><h2 class="subTitle" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 320px;"><span>&lt;&nbsp;내 정보 변경&nbsp;&gt;</span></h2>
 		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 230px; margin-left: 300px; margin-top: -80px;" ></div>
 		<form class="form-horizontal" action="<c:url value='/members/memUpdate'/>"
 			method="post" onsubmit="return updateOk()">

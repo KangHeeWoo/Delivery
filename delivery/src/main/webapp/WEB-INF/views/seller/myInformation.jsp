@@ -2,17 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!-- Bootstrap -->
-<link href="<c:url value='/resources/css/bootstrap.min.css'/>"
-	rel="stylesheet">
-<!-- Custom style -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/bootstrap-theme.min.css'/>"
-	media="screen" title="no title" ><!-- charset="utf-8" -->
 
 
-</head>
-<body>
 	<div>
 		<div class="page-header">
 			<h1>
@@ -118,7 +109,7 @@
 				</div>
 			</div>
 		</form>
-		<hr>
+
 	</div>
 
 
