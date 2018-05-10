@@ -5,11 +5,10 @@
 <script src="<c:url value="/"/>resources/js/bootstrap-timepicker.min.js"></script>
 
 
-<br>
 
 <div style="width: 1000px; margin: auto;">
-<div align="left"><h2 class="font1" style=" color:#34bdb9; width:1100px; height: 60px;"><span>&lt;&nbsp;내 가게 변경&nbsp;&gt;</span></h2>
-		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 240px; margin-left: -10px; margin-top: -80px;" ></div>
+<div align="left"><h2 class="font1" style=" color:#34bdb9; width:1100px; height: 60px; padding-top: 10px;"><span>&lt;&nbsp;내 가게 변경&nbsp;&gt;</span></h2>
+		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 240px; margin-left: -10px; margin-top: -70px;" ></div>
 
 <form method="post" action="<c:url value='/stUpdateOk'/>" onsubmit="add();" enctype="multipart/form-data">
 <table class="table">
@@ -20,26 +19,26 @@
 	<th class="font2" style="font-size: 18px;">사업자 등록번호</th><td>${vo.sto_regnum }</td>
 	</tr>
 	<tr>
-	<th class="font2" style="font-size: 18px;">주소</th><td><input type="text" id="sample5_address" placeholder="Address" width="100" readonly="readonly" value="${vo.sto_addr }">
+	<th class="font2" style="font-size: 18px;">주소</th><td><input type="text" id="sample5_address" placeholder="Address" width="100" readonly="readonly"  style="width:367px" value="${vo.sto_addr }">
 							<input type="button" onclick="sample5_execDaumPostcode()" value="주소검색">
 						</td>
 	</tr>
 	<tr>
-	<th class="font2" style="font-size: 18px;">상세주소</th><td><input type="text" id="addr2"><input type="hidden" id="sto_addr" name="sto_addr"></td>
+	<th class="font2" style="font-size: 18px;">상세주소</th><td><input type="text" id="addr2" style="width: 442px;"><input type="hidden" id="sto_addr" name="sto_addr"  ></td>
 	</tr>
 	<tr>
-	<th class="font2" style="font-size: 18px;">전화번호</th><td><input type="text" name="sto_phone" value="${vo.sto_phone }"></td>
+	<th class="font2" style="font-size: 18px;">전화번호</th><td><input type="text" name="sto_phone" value="${vo.sto_phone }"  style="width: 442px;"></td>
 	</tr>
 	<tr>
 	<fmt:formatDate value="${vo.sto_open }" var="regd1" pattern="kk:mm"/>
-	<th class="font2" style="font-size: 18px;">오픈시간</th><td><input type="time" name="sto_open" value="${regd1 }"></td>
+	<th class="font2" style="font-size: 18px;">오픈시간</th><td><input type="time" name="sto_open" value="${regd1 }"  style="width: 442px;"></td>
 	</tr>
 	<tr>
 	<fmt:formatDate value="${vo.sto_close }" var="regd2" pattern="kk:mm"/>
-	<th class="font2" style="font-size: 18px;">마감시간</th><td><input type="time" name="sto_close" id="myTime" value="${regd2 }"></td>
+	<th class="font2" style="font-size: 18px;">마감시간</th><td><input type="time" name="sto_close" id="myTime" value="${regd2 }"  style="width: 442px;"></td>
 	</tr>
 	<tr>
-	<th class="font2" style="font-size: 18px;">휴무일</th><td><input type="text" name="sto_holiday" value="${vo.sto_holiday }"></td>
+	<th class="font2" style="font-size: 18px;">휴무일</th><td><input type="text" name="sto_holiday" value="${vo.sto_holiday }"  style="width: 442px;"></td>
 	</tr>
 	<tr>
 	<th class="font2" style="font-size: 18px;">소개 및 안내</th><td><textarea cols="60" rows="10" name="sto_intro">${vo.sto_intro }</textarea></td>
@@ -48,7 +47,7 @@
 		<th class="font2" style="font-size: 18px;">이미지 등록</th><td><input type='file' name='sto_img'></td>
 	</tr>
 	<tr>
-		<th class="font2" style="font-size: 18px;">카테고리</th><td><select name="cat_num" size="1">
+		<th class="font2" style="font-size: 18px;">카테고리</th><td><select name="cat_num" size="1"   style="width: 442px;">
 <option value="1">한식</option>
 <option value="2">분식</option>
 <option value="3">일식</option>
