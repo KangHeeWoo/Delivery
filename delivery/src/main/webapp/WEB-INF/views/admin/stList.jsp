@@ -35,7 +35,7 @@
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
-	<br>
+	<br><br><br>
 <form method="post" action="<c:url value='/adList/search'/>">
    <select name="search" id="search" size="1">
    <option value="name">매장명</option>

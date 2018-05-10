@@ -27,6 +27,9 @@
 </style>
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;쿠폰 관리&nbsp;&gt;</span></h2></div><br>
 <div class="wrap_subContent">
+	<div id="insert" align="right" style="margin-botton:5px;">	
+		<a href="javascript:addCoupon()" style="font-family: baemin3; font-size: 21px;">쿠폰 등록</a>
+	</div>
 	<table class="table">
 		<thead>
 			<tr class="font2" style="font-size: 18px;">
@@ -57,9 +60,6 @@
 			</c:choose>
 		</c:forEach>
 	</div>
-	<div align="right" style="width: 100%">
-		<a href="javascript:addCoupon()">신규 쿠폰 등록</a>
-	</div>
 
 	<div id="addcoupon">
 		<table class="table">
@@ -79,6 +79,9 @@
 </div>
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;쿠폰 발급 내역&nbsp;&gt;</span></h2></div><br>
 <div class="wrap_subContent">
+	<div id="insert" align="right" style="margin-botton:5px;">	
+		<a href="javascript:issueCoupon()" style="font-family: baemin3; font-size: 21px;">쿠폰 발급</a>
+	</div>
 	<table class="table">
 		<thead>
 			<tr class="font2" style="font-size: 18px;">
@@ -115,9 +118,6 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-	</div>
-	<div align="right" style="width: 100%">
-		<a href="javascript:issueCoupon()">신규 쿠폰 발급</a>
 	</div>
 
 	<div id="issuecoupon">

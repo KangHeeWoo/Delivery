@@ -12,8 +12,7 @@
 		font-size: 15px;
 	}
 </style>
-<div align="left"><h2 class="subTitle" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 520px; padding-top: 5px;"><span>&lt;&nbsp;이벤트&nbsp;&gt;</span></h2>
-<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 180px; margin-left: 495px; margin-top: -80px;" ></div>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;이벤트&nbsp;&gt;</span></h2></div><br>
 <div id="detail_event">
 	<fmt:formatDate value="${event.eve_start }" var="start" pattern="yyyy-MM-dd HH:mm"/>
 	<fmt:formatDate value="${event.eve_end }" var="end" pattern="yyyy-MM-dd HH:mm"/>
@@ -64,10 +63,10 @@
 	</div>
 	<br><br>
 	<!-- 당첨처리 추가 : 몇명, 어떤거 지급  -->
-	<div>
+	<div style="width : 100%;">
 		<form method="post" action="<c:url value='/admin/winpro' />" onsubmit="return checkEntCnt(${pu.totalRowCount})">
 			<input type="hidden" name="num" value="${event.eve_num }">
-			<h4>추첨하기</h4>
+			<h4 class="font2" style="font-size:18px;" >추첨하기</h4>
 			<div id="win_row">
 				<span>지급 쿠폰 :  
 					<select name="win_pro">
@@ -77,13 +76,19 @@
 					</select>
 				</span>
 				<span>당첨 인원 : <input type="number" id="win_cnt" name="win_cnt" value="10"></span>
-				<input type="submit" value="추첨">
+				<br><br><br><br><br>
+				<div style="width : 100%" align="center">
+					<a href="javascript:submitWinpro()"><img src="<c:url value='/resources/images/추첨.png' />" style="width:514px;height:189px;"></a>
+				</div>
 			</div>
 		</form>
 	</div>
 </div>
 <br><br><br><br><br>
 <script>
+	function submitWinpro(){
+		console.log('submit');
+	}
 	function checkEntCnt(entCnt){
 		var winCnt = $("#win_cnt").val();
 		

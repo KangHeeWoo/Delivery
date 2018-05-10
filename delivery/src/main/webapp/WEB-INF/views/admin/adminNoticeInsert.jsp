@@ -7,11 +7,11 @@
 <form method="post" action="<c:url value='/admin/noticeInsertOk'/>">
 <table class="table">
 <tr>
-<td>제목</td>
+<td class="font1" style="font-size:20px;">제목</td>
 <td><input type="text" name="not_title"></td>
 </tr>
 <tr>
-<td>내용</td>
+<td class="font1" style="font-size:20px;">내용</td>
 <td><textarea rows="20" cols="80" name="not_cont"></textarea></td>
 </tr>
 <tr>

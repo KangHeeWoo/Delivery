@@ -47,9 +47,11 @@
 <td class="font1" style="font-size:15px;">가입일</td><td>${regd }</td>
 </tr>
 </table>
+<br>
 <div align="center">
-<input type="submit" value="확인">
+	<input type="submit" value="확인" class="btn btn-primary font1" style="font-size:18px;">
 </div>
+<br><br><br>
 </form>
 </div>
 <script type="text/javascript">
