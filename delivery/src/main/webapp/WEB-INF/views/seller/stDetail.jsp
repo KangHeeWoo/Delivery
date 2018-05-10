@@ -18,42 +18,43 @@
 <li><a href="<c:url value='/stUpdate?sto_num=${vo.sto_num }'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;수정 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 <li><a href="<c:url value='/stDelete?sto_num=${vo.sto_num }'/>" style="font-family: baemin4; font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;삭제요청</a></li>
 </ul>
-</div>
+</div><br><br>
 <br><br><br>
-<table class="table" style="width: 800px;margin: auto;">
+<table class="table" style="width: 1000px;margin: auto;">
 	<tr>
-	<th>매장명</th><td>${vo.sto_name }</td>
+	<th  class="font1" style="font-size:16px; margin-left: 12px; margin-left: 10px; width: 200px;">매&nbsp;&nbsp;장&nbsp;&nbsp;명</th><td>${vo.sto_name }</td>
 	</tr>
 	<tr>
-	<th>사업자 등록번호</th><td>${vo.sto_regnum }</td>
+	<th  class="font1" style="font-size:16px; margin-left: 12px; margin-left: 10px; ">사업자 등록번호</th><td>${vo.sto_regnum }</td>
 	</tr>
 	<tr>
-	<th>주소</th><td>${vo.sto_addr }</td>
+	<th  class="font1" style="font-size:16px; margin-left: 12px; margin-left: 10px;">주&nbsp;&nbsp;&nbsp;&nbsp;소</th><td>${vo.sto_addr }</td>
 	</tr>
 	<tr>
-	<th>전화번호</th><td>${vo.sto_phone }</td>
+	<th  class="font1" style="font-size:16px; margin-left: 12px; margin-left: 10px; ">전&nbsp;화&nbsp;번&nbsp;호</th><td>${vo.sto_phone }</td>
 	</tr>
 	<fmt:formatDate value="${vo.sto_regd }" var="regd1" pattern="yyyy-MM-dd"/>
 	<tr>
-	<th>등록일</th><td>${regd1 }</td>
+	<th  class="font1" style="font-size:16px; margin-left: 12px; margin-left: 10px; ">등&nbsp;&nbsp;록&nbsp;&nbsp;일</th><td>${regd1 }</td>
 	</tr>
 	<tr>
 	<fmt:formatDate value="${vo.sto_open }" var="regd2" pattern="kk:mm"/>
-	<th>오픈시간</th><td>${regd2 }</td>
+	<th  class="font1" style="font-size:16px; margin-left: 12px; margin-left: 10px;">오&nbsp;픈&nbsp;시&nbsp;간</th><td>${regd2 }</td>
 	</tr>
 	<fmt:formatDate value="${vo.sto_close }" var="regd3" pattern="kk:mm"/>
 	<tr>
-	<th>마감시간</th><td>${regd3 }</td>
+	<th  class="font1" style="font-size:16px; margin-left: 12px; margin-left: 10px;">마&nbsp;감&nbsp;시&nbsp;간</th><td>${regd3 }</td>
 	</tr>
 	<tr>
-	<th>휴무일</th><td>${vo.sto_holiday }</td>
+	<th class="font1" style="font-size:16px; margin-left: 12px; margin-left: 10px; ;">휴&nbsp;&nbsp;무&nbsp;&nbsp;일</th><td>${vo.sto_holiday }</td>
 	</tr>
 	<tr>
-	<th>소개</th><td><textarea cols="60" rows="10" name="sto_intro" readonly="readonly">${vo.sto_intro }</textarea></td>
+	<th class="font1" style="font-size:16px; margin-left: 12px; margin-left: 10px;">소&nbsp;&nbsp;&nbsp;&nbsp;개</th><td><textarea cols="60" rows="10" name="sto_intro" readonly="readonly">${vo.sto_intro }</textarea></td>
 	</tr>
 	<tr>
-	<th>상태</th><td>${vo.sto_state }</td>
+	<th class="font1" style="font-size:16px; margin-left: 12px; margin-left: 10px;">상&nbsp;&nbsp;&nbsp;&nbsp;태</th><td>${vo.sto_state }</td>
 	</tr>
 </table>
+<br><br><br><br><br>
 
 
