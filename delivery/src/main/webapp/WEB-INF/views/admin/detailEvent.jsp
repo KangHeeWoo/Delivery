@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<img src="<c:url value='/resources/images/event/${event.eve_img }' />">
+					<img style="width: 100%; height: auto;" src="<c:url value='/resources/images/event/${event.eve_img }' />">
 					<p>${event.eve_cont }</p>
 				</td>
 			</tr>
