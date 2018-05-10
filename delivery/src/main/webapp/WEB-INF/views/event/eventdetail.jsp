@@ -10,7 +10,7 @@
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;이벤트 팡팡&nbsp;&gt;</span></h2></div>
 <div align="right" style="padding-right: 410px; font-size: 15px;" class="font2" >등록일 : ${regd }</div>
 <div align="center">
-	<img src="<c:url value='/resources/images/event/${event.eve_img }' />">
+	<img style="width : 1100px; height : auto;" src="<c:url value='/resources/images/event/${event.eve_img }' />">
 	<p class="font2" style="font-size: 18px;">${event.eve_cont }<br><br></p>
 	<p class="font2" style="font-size: 25px;">제목 : ${event.eve_title }<br><br></p>
 		
