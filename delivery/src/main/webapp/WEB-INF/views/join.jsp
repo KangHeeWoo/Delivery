@@ -3,12 +3,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<body>
+<div>
 <ul>
 	<li><a href="<c:url value='/members'/>">일반회원</a></li>
 	<li><a href="<c:url value='/seller'/>">사장님</a></li>
 </ul>
+</div>
 
-
-
-</body>

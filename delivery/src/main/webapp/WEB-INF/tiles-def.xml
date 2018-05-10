@@ -13,6 +13,12 @@
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 	</definition>
 	
+	<definition name=".seller.join" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/views/seller/join.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	
 	<definition name=".seller" template="/WEB-INF/views/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/seller/header.jsp"/>
 		<put-attribute name="main" value="/WEB-INF/views/seller/home.jsp"/>
