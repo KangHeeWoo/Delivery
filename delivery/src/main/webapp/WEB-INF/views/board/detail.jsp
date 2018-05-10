@@ -59,8 +59,8 @@
 
 
 			<span style="font-family: baemin3; margin-left:1100px; margin-bottom:10ps; font-size: 21px;" id="detailspan"><a href="<c:url value='/board/list' />">목록으로 가기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-			<a href="<c:url value='/board/delete?boa_num=${vo.boa_num }' />">삭제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-			<a href="<c:url value='/board/update?boa_num=${vo.boa_num }' />">수정</a>	</span>
+			<a href="javascript:deleteOk('${vo.boa_num }', '${vo.boa_writer }')">삭제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			<a href="javascript:updateOk('${vo.boa_num }', '${vo.boa_writer }')">수정</a>	</span>
 
 <div id="board_detail" >
 	<fmt:formatDate value="${vo.boa_regd }" var="date" pattern="yyyy-MM-dd HH:mm"/>
@@ -173,6 +173,22 @@
 		if(email==""){
 			alert("로그인 후 이용해 주세요.");
 			return false;
+		}
+	}
+	function deleteOk(num,writer){
+		//<c:url value='/board/delete?boa_num=${vo.boa_num }&boa_writer=${vo.boa_writer }'/>
+		if(writer == '${sessionScope.nick}'){
+			alert("삭제되었습니다.");
+			location.href = "<c:url value='/board/delete?boa_num=" + num + "&boa_writer=" + writer + "'/>";
+		}else{
+			alert("본인의 글만 삭제 가능합니다.");
+		}
+	}
+	function updateOk(num,writer){
+		if(writer == '${sessionScope.nick}'){
+			location.href = "<c:url value='/board/update?boa_num=" + num +"'/>";
+		}else{
+			alert("본인의 글만 수정 가능합니다.");
 		}
 	}
 </script>
