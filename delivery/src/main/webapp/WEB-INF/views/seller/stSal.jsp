@@ -1,20 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Line_Controls_Chart</title>
+
  
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <!-- google charts -->
        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  </head>
-  <body>
+
 <div style="margin-left: 150px;">
-    <h2 class="subTitle">매장매출 통계</h2>
+    <h2 class="subTitle">매장매출 통계</h2><br>
     <form method="post" action="<c:url value='/stSal'/>">
     <select name="year" size="1">
  		<option value="2017">2017년</option>
@@ -36,7 +31,7 @@
  		<option value="12">12월</option>
  	</select>
  	<input type="submit" value="조회">
- 	</form>
+ 	</form><br><br><br><br>
  	</div>
  	<script type="text/javascript">
 	var select=document.getElementsByName("year")[0];
@@ -60,7 +55,7 @@
           <div id="controlsArea" style="padding:0px 20px 0px 0px;"></div>
         </div>
  
-  </body>
+
  
   <script>
  
@@ -173,4 +168,3 @@ $(document).ready(function(){
   chartDrowFun.chartDrow();
 });
   </script>
-</html>
