@@ -13,14 +13,16 @@
 		margin : auto;
 	}
 </style>
-
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;상단 광고&nbsp;&gt;</span></h2></div><br>
 <div class="wrap_subContent">
-<div id="selectBox">
-	<h2 class="subTitle">상단광고</h2>
-	<ul>
-		<li><a href="<c:url value='/admin/topAdsList' />">상단광고</a></li>
-		<li><a href="<c:url value='/admin/mainAdsList' />">메인광고</a></li>
+	<ul class="boardul">
+		<li><a href="<c:url value='/admin/topAdsList' />" style="font-family: baemin4; font-size: 25px; margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;1. 상단 광고</a></li>
+		<li><a href="<c:url value='/admin/mainAdsList' />" style="font-family: baemin4; font-size: 25px; margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		2. 메인광고</a></li>
 	</ul>
+<br><br><br><br>
+<div id="selectBox">
 	<form action="<c:url value='/admin/topAdsList'/>" method="post">
 		<select name="year" size="1">
 			<option value="2018">2018년</option>
@@ -43,11 +45,11 @@
 		<input type="submit" value="조회">
 	</form>
 </div>
-<br><br>
+<br>
 <div id="top_list">
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="font2" style="font-size: 18px;">
 				<td>신청번호</td><td>시작잘짜</td><td>종료날짜</td><td>가격</td><td>신청날짜</td><td>가게번호</td>
 			</tr>
 		</thead>
@@ -67,20 +69,21 @@
 		</c:forEach>
 		</tbody>
 	</table>
-	<div>
+	<div align="center" style="width: 100%">
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i==pu.pageNum }">
-					<a href="<c:url value='/admin/topAdsList?pageNum=${i }'/>"><span style='color:blue'>[${i }]</span></a>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/admin/topAdsList?pageNum=${i }'/>"><span style='color:#555'>[${i }]</span></a>
+					<a href="<c:url value='/admin/topAdsList?pageNum=${i }'/>"><span style='color:black'>[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 	</div>
 </div>
 </div>
+<br><br><br><br><br>
 <script>
 
 	

@@ -2,15 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;공지 관리&nbsp;&gt;</span></h2></div><br>
 <div class="wrap_subContent">
-	<h2 class="subTitle">공지 관리</h2>
-	<ul style="list-style: none;">
-		<li><a href="<c:url value='/admin/noticeInsert' />" style="margin-left: 850px;">공지 등록</a></li>
-	</ul>
+	<div id="insert" align="right" style="margin-botton:5px;">	
+		<a href="<c:url value='/admin/noticeInsert'/>" style="font-family: baemin3; font-size: 21px;">공지 등록</a>
+	</div>
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="font1" style="font-size: 18px;">
 				<th>공지번호</th>
 				<th>제목</th>
 				<th>작성자</th>
@@ -35,15 +34,16 @@
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i == pu.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/notice/noticeList?pageNum=${i }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/notice/noticeList?pageNum=${i }' />"><span style="color: black">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 	</div>
 </div>
+<br><br><br><br><br>
 <script>
 	function noticeDetail(num){
 		location.href = "<c:url value='/admin/noticeDetail?num=" + num + "' />";

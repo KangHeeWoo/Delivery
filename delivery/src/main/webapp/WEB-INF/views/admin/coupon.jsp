@@ -25,11 +25,11 @@
 		display: none;
 	}
 </style>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;쿠폰 관리&nbsp;&gt;</span></h2></div><br>
 <div class="wrap_subContent">
-	<h2 class="subTitle">쿠폰 관리</h2>
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="font2" style="font-size: 18px;">
 				<th>쿠폰 번호</th>
 				<th>쿠폰 종류</th>
 				<th>할인가격</th>
@@ -46,32 +46,16 @@
 		</tbody>
 	</table>
 	<div align="center" style="width: 100%">
-		<c:choose>
-			<c:when test="${couPage.startPageNum > couPage.pageBlockCount }">
-				<a href="<c:url value='/admin/coupon?cNum=${couPage.startPageNum -1 }&iNum=${isuPage.pageNum }&uNum=${usePage.pageNum }' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 이전 &gt;</span>
-			</c:otherwise>
-		</c:choose>
 		<c:forEach var="i" begin="${couPage.startPageNum }" end="${couPage.endPageNum }">
 			<c:choose>
 				<c:when test="${i == couPage.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/admin/coupon?cNum=${i }&iNum=${isuPage.pageNum }&uNum=${usePage.pageNum }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/admin/coupon?cNum=${i }&iNum=${isuPage.pageNum }&uNum=${usePage.pageNum }' />"><span style="color: black">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<c:choose>
-			<c:when test="${couPage.endPageNum < couPage.totalPageCount }">
-				<a href="<c:url value='/admin/coupon?cNum=${couPage.endPageNum + 1 }&iNum=${isuPage.pageNum }&uNum=${usePage.pageNum }' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 다음 &gt;</span>
-			</c:otherwise>
-		</c:choose>
 	</div>
 	<div align="right" style="width: 100%">
 		<a href="javascript:addCoupon()">신규 쿠폰 등록</a>
@@ -80,22 +64,24 @@
 	<div id="addcoupon">
 		<table class="table">
 			<tr>
-				<th>쿠폰종류</th>
+				<th class="font1" style="font-size:15px;">쿠폰종류</th>
 				<td><input type="text" id="cou_type"></td>
 			</tr>
 			<tr>
-				<th>할인가격</th>
+				<th class="font1" style="font-size:15px;">할인가격</th>
 				<td><input type="number" id="dis_price"></td>
 			</tr>
 			<tr>
 				<th colspan="2" style="text-align: center"><input type="button" id="btnadd" value="등록"></th>
 			</tr>
 		</table>
-	</div>
-
+	</div>	
+</div>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;쿠폰 발급 내역&nbsp;&gt;</span></h2></div><br>
+<div class="wrap_subContent">
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="font2" style="font-size: 18px;">
 				<th>쿠폰 발급 번호</th>
 				<th>쿠폰 종류</th>
 				<th>사용자</th>
@@ -118,33 +104,17 @@
 		</tbody>
 	</table>
 	<div align="center" style="width: 100%">
-		<c:choose>
-			<c:when test="${isuPage.startPageNum > isuPage.pageBlockCount }">
-				<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${isuPage.startPageNum - 1 }&uNum=${usePage.pageNum }' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 이전 &gt;</span>
-			</c:otherwise>
-		</c:choose>
 		<c:forEach var="i" begin="${isuPage.startPageNum }"
 			end="${isuPage.endPageNum }">
 			<c:choose>
 				<c:when test="${i == isuPage.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${i }&uNum=${usePage.pageNum }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${i }&uNum=${usePage.pageNum }' />"><span style="color: black;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<c:choose>
-			<c:when test="${isuPage.endPageNum < isuPage.totalPageCount }">
-				<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${isuPage.endPageNum + 1 }&uNum=${usePage.pageNum }' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 다음 &gt;</span>
-			</c:otherwise>
-		</c:choose>
 	</div>
 	<div align="right" style="width: 100%">
 		<a href="javascript:issueCoupon()">신규 쿠폰 발급</a>
@@ -153,7 +123,7 @@
 	<div id="issuecoupon">
 		<table class="table">
 			<tr>
-				<th>쿠폰종류</th>
+				<th class="font1" style="font-size:15px;">쿠폰종류</th>
 				<td><select id="iss_cou_type">
 						<c:forEach var="cou" items="${allCouList }">
 							<option value="${cou.cou_num }">${cou.cou_type }</option>
@@ -161,17 +131,17 @@
 				</select></td>
 			</tr>
 			<tr>
-				<th>사용자</th>
+				<th class="font1" style="font-size:15px;">사용자</th>
 				<td><input type="text" id="mem_email">&nbsp;&nbsp;<input type="button" value="검색" id="mem_search">
 					<p id="searchMsg"></p>
 				</td>
 			</tr>
 			<tr>
-				<th>시작일</th>
+				<th class="font1" style="font-size:15px;">시작일</th>
 				<td><input type="date" id="cou_start"></td>
 			</tr>
 			<tr>
-				<th>종료일</th>
+				<th class="font1" style="font-size:15px;">종료일</th>
 				<td><input type="date" id="cou_end"></td>
 			</tr>
 			<tr>
@@ -179,10 +149,12 @@
 			</tr>
 		</table>
 	</div>
-
+</div>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;쿠폰 사용 내역&nbsp;&gt;</span></h2></div><br>
+<div class="wrap_subContent">
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="font2" style="font-size: 18px;">
 				<th>쿠폰 사용 번호</th>
 				<th>쿠폰 발급 번호</th>
 				<th>주문 번호</th>
@@ -199,35 +171,20 @@
 		</tbody>
 	</table>
 	<div align="center" style="width: 100%">
-		<c:choose>
-			<c:when test="${usePage.startPageNum > usePage.pageBlockCount }">
-				<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${isuPage.pageNum }&uNum=${usePage.startPageNum -1 }' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 이전 &gt;</span>
-			</c:otherwise>
-		</c:choose>
 		<c:forEach var="i" begin="${usePage.startPageNum }"
 			end="${usePage.endPageNum }">
 			<c:choose>
 				<c:when test="${i == usePage.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${isuPage.pageNum }&uNum=${i }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${isuPage.pageNum }&uNum=${i }' />"><span style="color: black;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<c:choose>
-			<c:when test="${usePage.endPageNum < usePage.totalPageCount }">
-				<a href="<c:url value='/admin/coupon?cNum=${couPage.pageNum }&iNum=${isuPage.pageNum }&uNum=${usePage.endPageNum + 1 }' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 다음 &gt;</span>
-			</c:otherwise>
-		</c:choose>
 	</div>
 </div>
+<br><br><br><br><br>
 <script type="text/javascript">
 	var mem = null;
 

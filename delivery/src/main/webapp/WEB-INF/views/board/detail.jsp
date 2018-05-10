@@ -58,7 +58,7 @@
 <img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 250px; margin-left: 495px; margin-top: -80px;" ></div>
 
 
-			<span style="font-family: baemin3; margin-left:1100px; margin-bottom:10ps; font-size: 21px;" id="detailspan"><a href="<c:url value='/board/list' />">목록으로 가기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			<span style="font-family: baemin3; margin-left:1100px; margin-bottom:10px; font-size: 21px;" id="detailspan"><a href="<c:url value='/board/list' />">목록으로 가기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 			<a href="javascript:deleteOk('${vo.boa_num }', '${vo.boa_writer }')">삭제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 			<a href="javascript:updateOk('${vo.boa_num }', '${vo.boa_writer }')">수정</a>	</span>
 

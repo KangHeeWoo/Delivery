@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;문의답변 대기 리스트&nbsp;&gt;</span></h2></div><br>
 <div class="wrap_subContent">
-<h2 class="subTitle">문의답변 대기 리스트</h2>
 <table class="table">
-<tr>
+<tr class="font2" style="font-size: 18px;">
 <td>번호</td><td>제목</td><td>작성일</td>
 </tr>
 <c:forEach var="vo" items="${list }">
@@ -22,12 +21,13 @@
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i == pu.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/admin/qnaAnswer?pageNum=${i }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/admin/qnaAnswer?pageNum=${i }' />"><span style="color: black">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 	</div>
 </div>
+<br><br><br><br><br>

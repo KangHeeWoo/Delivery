@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div style="width: 800px; margin: auto;">
-<form method="post" action="<c:url value='/topAdsInsertOk'/>" enctype="multipart/form-data">
-	<table class="table">
+
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;상단 광고 신청 &nbsp;&gt;</span></h2></div><br>
+
+<div style="width: 1000px; margin: auto;">
+<br><br>
+
+<form method="post" action="<c:url value='/topAdsInsertOk'/>" enctype="multipart/form-data" id="formTOP">
+	<table class="table" >
 	<tr>
-	<th>광고 희망달</th>
+	<th class="font2" style="font-size: 18px;">광고 희망 월</th>
 	<td>
 	<select size="1" name="adsMonth">
 		<option value="0">1</option>
@@ -24,20 +29,25 @@
 	</td>
 	</tr>
 	<tr>
-	<th>광고 이미지</th>
+	<th class="font2" style="font-size: 18px;">광고 이미지</th>
 	<td>
 	<input type='file' name='topAds_img' required='required'>
 	</td>
 	</tr>
 	<tr>
-	<th>금액</th>
+	<th class="font2" style="font-size: 18px;">금액</th>
 	<td>
 	500,000 원
 	</td>
 	</tr>
 	</table>
 	<div align="center">
-	<input type="submit" value="신청">
+	 <div align="center"><a href="javascript:gostTop()"><img alt="로고" src="<c:url value='/resources/images/등록.png'/>" style="margin-bottom: 50px; width: 250px;" ></a></div>
 	</div>
 </form>
-</div>
+</div><br><br><br><br><br>
+<script>
+	function gostTop(){
+		 $("#formTOP").submit(); 
+	}
+</script>

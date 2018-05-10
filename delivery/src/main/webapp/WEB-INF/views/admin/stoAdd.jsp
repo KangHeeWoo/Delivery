@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;매장 신청 승인 대기&nbsp;&gt;</span></h2></div><br>
 <div style="width: 800px; margin: auto;">
-<h1>매장신청 승인대기</h1>
  <table class="table">
- <tr>
+ <tr class="font2" style="font-size: 18px;">
  <th>매장 번호</th><th>매장명</th><th>매장신청일</th><th>매장 상태</th><th>처리</th>
  </tr>
  <c:forEach var="vo" items="${list }">
@@ -17,3 +17,4 @@
  </c:forEach>
  </table>
  </div>
+ <br><br><br><br><br>
