@@ -102,7 +102,7 @@
 		}
 	}
 </script>
-<input type="submit" value="적용">
+<input type="submit" value="적용" class="btn btn-primary font1" style="font-size:18px;">
 </form>
 </div>
  	
