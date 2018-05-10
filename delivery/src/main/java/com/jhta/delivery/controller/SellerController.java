@@ -31,7 +31,6 @@ import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.SellerVo;
 import com.jhta.delivery.vo.StoresVo;
 
-
 @Controller
 public class SellerController {
 	@Autowired private SimpleMailSender simpleMailSender;
