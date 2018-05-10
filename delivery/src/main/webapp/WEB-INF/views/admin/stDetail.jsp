@@ -44,42 +44,42 @@
   		});
       }
     </script>
+    <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;매장 정보&nbsp;&gt;</span></h2></div><br>
     <div class="store-manage-menu" id="chart_div" style="width: 400px; height: 120px;"></div>
 <table class="table" style="width: 800px;margin: auto;">
 	<tr>
-	<th>매장명</th><td>${vo.sto_name }</td>
+	<th class="font1" style="font-size:15px;">매장명</th><td>${vo.sto_name }</td>
 	</tr>
 	<tr>
-	<th>사업자 등록번호</th><td>${vo.sto_regnum }</td>
+	<th class="font1" style="font-size:15px;">사업자 등록번호</th><td>${vo.sto_regnum }</td>
 	</tr>
 	<tr>
-	<th>주소</th><td>${vo.sto_addr }</td>
+	<th class="font1" style="font-size:15px;">주소</th><td>${vo.sto_addr }</td>
 	</tr>
 	<tr>
-	<th>전화번호</th><td>${vo.sto_phone }</td>
+	<th class="font1" style="font-size:15px;">전화번호</th><td>${vo.sto_phone }</td>
 	</tr>
 	<fmt:formatDate value="${vo.sto_regd }" var="regd1" pattern="yyyy-MM-dd"/>
 	<tr>
-	<th>등록일</th><td>${regd1 }</td>
+	<th class="font1" style="font-size:15px;">등록일</th><td>${regd1 }</td>
 	</tr>
 	<tr>
 	<fmt:formatDate value="${vo.sto_open }" var="regd2" pattern="kk:mm"/>
-	<th>오픈시간</th><td>${regd2 }</td>
+	<th class="font1" style="font-size:15px;">오픈시간</th><td>${regd2 }</td>
 	</tr>
 	<fmt:formatDate value="${vo.sto_close }" var="regd3" pattern="kk:mm"/>
 	<tr>
-	<th>마감시간</th><td>${regd3 }</td>
+	<th class="font1" style="font-size:15px;">마감시간</th><td>${regd3 }</td>
 	</tr>
 	<tr>
-	<th>휴무일</th><td>${vo.sto_holiday }</td>
+	<th class="font1" style="font-size:15px;">휴무일</th><td>${vo.sto_holiday }</td>
 	</tr>
 	<tr>
-	<th>소개</th><td><textarea cols="60" rows="10" name="sto_intro" readonly="readonly">${vo.sto_intro }</textarea></td>
+	<th class="font1" style="font-size:15px;">소개</th><td><textarea cols="60" rows="10" name="sto_intro" readonly="readonly">${vo.sto_intro }</textarea></td>
 	</tr>
 	<tr>
-	<th>상태</th><td>${vo.sto_state }</td>
+	<th class="font1" style="font-size:15px;">상태</th><td>${vo.sto_state }</td>
 	</tr>
 </table>
-<div style="width: 800px; margin: auto;">
-</div>
+<br><br><br><br><br>
 

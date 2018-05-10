@@ -1,20 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Line_Controls_Chart</title>
- 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <!-- google charts -->
        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  </head>
-  <body>
+<div align="left"><h2 class="subTitle" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 150px;"><span>&lt;&nbsp;매출 통계&nbsp;&gt;</span></h2>
+		<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 230px; margin-left: 130px; margin-top: -80px;" ></div>
 <div style="margin-left: 150px;">
-    <h2 class="subTitle">매출 통계</h2>
     <form method="get" action="<c:url value='/chart'/>">
     <select name="year" size="1">
  		<option value="2017">2017년</option>
@@ -53,7 +46,7 @@
 	}
 </script>
  	<div align="right" style="margin-right: 150px;">
- 	<h4>등급별 적립포인트</h4>
+ 	<h4 class="font1" style="font-size:18px;">등급별 적립포인트</h4>
  	<form method="get" action="<c:url value='/chart'/>">
 꼬끼오등급 적립포인트 :
 <select name="goggio">
@@ -119,8 +112,6 @@
       <!-- 컨트롤바를 생성할 영역 -->
           <div id="controlsArea" style="padding:0px 20px 0px 0px;"></div>
         </div>
- 
-  </body>
  
   <script>
  
@@ -241,4 +232,3 @@ $(document).ready(function(){
   chartDrowFun.chartDrow();
 });
   </script>
-</html>

@@ -2,37 +2,37 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;회원정보&nbsp;&gt;</span></h2></div><br>
 <div style="width: 800px; margin: auto;">
-<h1>회원 정보</h1>
 <form method="post" action="<c:url value='/graUp'/>">
 <table class="table">
 <tr>
-<td>회원번호</td><td>${mgv.mem_num }<input type="hidden" name="mem_num" value="${mgv.mem_num }"></td>
+<td class="font1" style="font-size:15px;">회원번호</td><td>${mgv.mem_num }<input type="hidden" name="mem_num" value="${mgv.mem_num }"></td>
 </tr>
 <tr>
-<td>이름</td><td>${mgv.mem_name }</td>
+<td class="font1" style="font-size:15px;">이름</td><td>${mgv.mem_name }</td>
 </tr>
 <tr>
-<td>닉네임</td><td>${mgv.mem_nick }</td>
+<td class="font1" style="font-size:15px;">닉네임</td><td>${mgv.mem_nick }</td>
 </tr>
 <tr>
-<td>이메일</td><td>${mgv.mem_email }</td>
+<td class="font1" style="font-size:15px;">이메일</td><td>${mgv.mem_email }</td>
 </tr>
 <tr>
 <fmt:formatDate value="${mgv.mem_birth }" type="date" var="regd1" pattern="yyyy-MM-dd"/>
-<td>생년월일</td><td>${regd1 }</td>
+<td class="font1" style="font-size:15px;">생년월일</td><td>${regd1 }</td>
 </tr>
 <tr>
-<td>성별</td><td>${mgv.mem_sex }</td>
+<td class="font1" style="font-size:15px;">성별</td><td>${mgv.mem_sex }</td>
 </tr>
 <tr>
-<td>주소</td><td>${mgv.mem_addr }</td>
+<td class="font1" style="font-size:15px;">주소</td><td>${mgv.mem_addr }</td>
 </tr>
 <tr>
-<td>전화번호</td><td>${mgv.mem_phone }</td>
+<td class="font1" style="font-size:15px;">전화번호</td><td>${mgv.mem_phone }</td>
 </tr>
 <tr>
-<td>회원등급</td>
+<td class="font1" style="font-size:15px;">회원등급</td>
 <td>
 <select name="gra_num" size="1">
 	<option value="1">꼬끼오</option>
@@ -44,13 +44,14 @@
 </tr>
 <tr>
 <fmt:formatDate value="${mgv.mem_regd }" type="date" var="regd" pattern="yyyy-MM-dd"/>
-<td>가입일</td><td>${regd }</td>
+<td class="font1" style="font-size:15px;">가입일</td><td>${regd }</td>
 </tr>
 </table>
 <div align="center">
 <input type="submit" value="확인">
 </div>
 </form>
+</div>
 <script type="text/javascript">
 	var select=document.getElementsByName("gra_num")[0];
 	for(var i=0; i<select.options.length;i++){
@@ -59,32 +60,11 @@
 		}
 	}
 </script>
-<%-- <h1>채팅 기록</h1>
+
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;쿠폰 사용 내역&nbsp;&gt;</span></h2></div><br>
+<div style="width: 800px; margin: auto;">
 <table class="table">
-<tr>
-<th>번호</th><th>파일명</th><th>저장시간</th>
-</tr>
-<c:forEach var="vo" items="${clv }">
-<tr>
-<td>${vo.chat_num }</td><td>${vo.chat_name }</td><td>${vo.chat_regd }</td>
-</tr>
-</c:forEach>
-</table>
-<div align="center" style="width: 100%">
-		<c:forEach var="i" begin="${chatPage.startPageNum }" end="${chatPage.endPageNum }">
-			<c:choose>
-				<c:when test="${i == chatPage.pageNum }">
-					<span style="color: black;">[${i }]</span>
-				</c:when>
-				<c:otherwise>
-					<a href="<c:url value='/members/detail?chNum=${i }&cNum=${couponPage.pageNum }&pNum=${pointPage.pageNum }&oNum=${ordersPage.pageNum }&mem_num=${mgv.mem_num }' />"><span style="color: #555;">[${i }]</span></a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-	</div> --%>
-<h1>쿠폰 사용 내역</h1>
-<table class="table">
-<tr>
+<tr class="font2" style="font-size: 18px;">
 <th>번호</th><th>발급번호</th><th>주문번호</th>
 </tr>
 <c:forEach var="vo1" items="${cuv }">
@@ -97,17 +77,19 @@
 		<c:forEach var="i" begin="${couponPage.startPageNum }" end="${couponPage.endPageNum }">
 			<c:choose>
 				<c:when test="${i == couponPage.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/members/detail?cNum=${i }&chNum=${chatPage.pageNum }&pNum=${pointPage.pageNum }&oNum=${ordersPage.pageNum }&mem_num=${mgv.mem_num }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/members/detail?cNum=${i }&chNum=${chatPage.pageNum }&pNum=${pointPage.pageNum }&oNum=${ordersPage.pageNum }&mem_num=${mgv.mem_num }' />"><span style="color: black;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 	</div>
-<h1>포인트 사용 내역</h1>
+</div>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;포인트 사용 내역&nbsp;&gt;</span></h2></div><br>
+<div style="width: 800px; margin: auto;">
 <table class="table">
-<tr>
+<tr class="font2" style="font-size: 18px;">
 <th>번호</th><th>사용량</th><th>주문번호</th>
 </tr>
 <c:forEach var="vo2" items="${upv }">
@@ -120,17 +102,19 @@
 		<c:forEach var="i" begin="${pointPage.startPageNum }" end="${pointPage.endPageNum }">
 			<c:choose>
 				<c:when test="${i == pointPage.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/members/detail?pNum=${i }&cNum=${couponPage.pageNum }&chNum=${chatPage.pageNum }&oNum=${ordersPage.pageNum }&mem_num=${mgv.mem_num }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/members/detail?pNum=${i }&cNum=${couponPage.pageNum }&chNum=${chatPage.pageNum }&oNum=${ordersPage.pageNum }&mem_num=${mgv.mem_num }' />"><span style="color: black;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 	</div>
-<h1>주문 내역</h1>
+</div>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;주문 내역&nbsp;&gt;</span></h2></div><br>
+<div style="width: 800px; margin: auto;">
 <table class="table">
-<tr>
+<tr class="font2" style="font-size: 18px;">
 <th>번호</th><th>주문시간</th><th>배달예정시간</th><th>상태</th><th>결제금액</th><th>배달지</th><th>매장번호</th>
 </tr>
 <c:forEach var="vo3" items="${ov }">
@@ -145,12 +129,13 @@
 		<c:forEach var="i" begin="${ordersPage.startPageNum }" end="${ordersPage.endPageNum }">
 			<c:choose>
 				<c:when test="${i == ordersPage.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/members/detail?oNum=${i }&cNum=${couponPage.pageNum }&pNum=${pointPage.pageNum }&chNum=${chatPage.pageNum }&mem_num=${mgv.mem_num }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/members/detail?oNum=${i }&cNum=${couponPage.pageNum }&pNum=${pointPage.pageNum }&chNum=${chatPage.pageNum }&mem_num=${mgv.mem_num }' />"><span style="color: black;">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 	</div>
 </div>
+<br><br><br><br><br>

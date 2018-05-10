@@ -2,16 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1 align="center">회원 리스트</h1><br>
-<table class="table" style="align-content: center; width: 800px; margin: auto;">
-	<tr>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;회원 리스트&nbsp;&gt;</span></h2></div><br>
+<div class="wrap_subContent">
+<table class="table">
+	<tr class="font2" style="font-size: 18px;">
 		<th>번호</th><th>이름</th><th>닉네임</th><th>이메일</th><th>가입일</th>
 	</tr>
 	<c:forEach var="vo" items="${list }">
@@ -31,10 +25,10 @@
 	<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 		<c:choose>
 			<c:when test="${i==pu.pageNum }"> <!-- 현재페이지 색상 다르게 표시하기 -->
-				<a href="<c:url value='/members/search?pageNum=${i }&word=${map.word }&search=${map.search }'/>">${i }</a>
+				<span style="color: #34bdb9;">[${i }]</span>
 			</c:when>
 			<c:otherwise>
-				<a href="<c:url value='/members/search?pageNum=${i }&word=${map.word }&search=${map.search }'/>">${i }</a>
+				<a href="<c:url value='/members/search?pageNum=${i }&word=${map.word }&search=${map.search }' />"><span style="color: black;">[${i }]</span></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
@@ -49,6 +43,7 @@
 <input type="submit" value="검색">
 </form>
 </div>
+</div>
 <script type="text/javascript">
 	var select=document.getElementsByName("search")[0];
 	for(var i=0; i<select.options.length;i++){
@@ -57,5 +52,3 @@
 		}
 	}
 </script>
-</body>
-</html>

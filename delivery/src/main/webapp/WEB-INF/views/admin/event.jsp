@@ -7,11 +7,14 @@
 		align-content: center;
 	}
 </style>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;이벤트 관리&nbsp;&gt;</span></h2></div><br>
 <div class="wrap_subContent">
-	<h2 class="subTitle">이벤트 관리</h2>
+	<div id="insert" align="right" style="margin-botton:5px;">	
+		<a href="<c:url value='/admin/addEvent'/>" style="font-family: baemin3; font-size: 21px;">이벤트 등록</a>
+	</div>
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="font2" style="font-size: 18px;">
 				<th>번호</th>
 				<th>제목</th>
 				<th>시작일</th>
@@ -35,37 +38,19 @@
 		</tbody>
 	</table>
 	<div align="center" style="width: 100%">
-		<c:choose>
-			<c:when test="${pu.startPageNum > pu.pageBlockCount }">
-				<a href="<c:url value='/seller/orderlist?pageNum=${pu.startPageNum - 1 }&stoNum=${sto_num }' />"><span style="color: #555;">&lt; 이전 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 이전 &gt;</span>
-			</c:otherwise>
-		</c:choose>
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${i == pu.pageNum }">
-					<span style="color: black;">[${i }]</span>
+					<span style="color: #34bdb9;">[${i }]</span>
 				</c:when>
 				<c:otherwise>
-					<a href="<c:url value='/admin/event?pageNum=${i }' />"><span style="color: #555;">[${i }]</span></a>
+					<a href="<c:url value='/admin/event?pageNum=${i }' />"><span style="color: black">[${i }]</span></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<c:choose>
-			<c:when test="${pu.endPageNum < pu.totalPageCount }">
-				<a href="<c:url value='/seller/orderlist?pageNum=${pu.endPageNum + 1 }&stoNum=${sto_num }' />"><span style="color: #555;">&lt; 다음 &gt;</span></a>
-			</c:when>
-			<c:otherwise>
-				<span style="color: black;">&lt; 다음 &gt;</span>
-			</c:otherwise>
-		</c:choose>
-	</div>
-	<div align="right">
-		<a href="<c:url value='/admin/addEvent' />">신규 이벤트 등록</a>
 	</div>
 </div>
+<br><br><br><br><br>
 <script>
 	function detailEvent(num){
 		location.href = "<c:url value='/admin/detailevent?num=" + num + "'/>";

@@ -16,31 +16,31 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item" style="list-style: none;">
-              <a class="admin-menu" href="<c:url value='/memberslist' />" style="color:#fed136;">회원관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/memberslist' />" style="font-family: baemin1; font-size: 15px;">회원관리&nbsp;</a>
             </li>
             <li class="nav-item" style="list-style: none;"> 
-              <a class="admin-menu" href="<c:url value='/adstList' />" style="color:#fed136;">매장관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/adstList' />" style="font-family: baemin1; font-size: 15px;">매장관리&nbsp;</a>
             </li>
             <li class="nav-item" style="list-style: none;">
-              <a class="admin-menu" href="<c:url value='/chart' />" style="color:#fed136;">매출관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/chart' />" style="font-family: baemin1; font-size: 15px;">매출관리&nbsp;</a>
             </li>
             <li class="nav-item" style="list-style: none;">
-              <a class="admin-menu" href="<c:url value='/admin/coupon' />" style="color:#fed136;">쿠폰관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/admin/coupon' />" style="font-family: baemin1; font-size: 15px;">쿠폰관리&nbsp;</a>
             </li>
             <li class="nav-item" style="list-style: none;">
-              <a class="admin-menu" href="<c:url value='/admin/topAdsList' />" style="color:#fed136;">광고관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/admin/topAdsList' />" style="font-family: baemin1; font-size: 15px;">광고관리&nbsp;</a>
             </li>
             <li class="nav-item" style="list-style: none;">
-              <a class="admin-menu" href="<c:url value='/admin/qnaAnswer' />" style="color:#fed136;">QnA관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/admin/qnaAnswer' />" style="font-family: baemin1; font-size: 15px;">QnA관리&nbsp;</a>
             </li>
             <li class="nav-item" style="list-style: none;">
-              <a class="admin-menu" href="<c:url value='/admin/noticeList' />" style="color:#fed136;">공지관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/admin/noticeList' />" style="font-family: baemin1; font-size: 15px;">공지관리&nbsp;</a>
             </li>
             <li class="nav-item" style="list-style: none;">
-              <a class="admin-menu" href="<c:url value='/admin/event'/>" style="color:#fed136;">이벤트관리&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/admin/event'/>" style="font-family: baemin1; font-size: 15px;">이벤트관리&nbsp;</a>
             </li>
              <li class="nav-item" style="margin-left: 250px;" style="list-style: none;">
-              <a class="admin-menu" href="<c:url value='/logout'/>" style="color:#fed136;">로그아웃&nbsp;</a>
+              <a class="admin-menu" href="<c:url value='/logout'/>" style="color:#fed136; font-family: baemin1; font-size: 15px;">로그아웃&nbsp;</a>
             </li>
           </ul>
         </div>

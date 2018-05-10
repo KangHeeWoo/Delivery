@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
 	#detail_event{
-		width : 800px;
+		width : 900px;
 		margin : auto;
 	}
 	#win_row span{
@@ -12,13 +12,15 @@
 		font-size: 15px;
 	}
 </style>
+<div align="left"><h2 class="subTitle" style=" color:#34bdb9; width:1100px; height: 60px; margin-left: 520px; padding-top: 5px;"><span>&lt;&nbsp;이벤트&nbsp;&gt;</span></h2>
+<img src="<c:url value='/resources/images/밑줄쫙.png'/>" style="width: 180px; margin-left: 495px; margin-top: -80px;" ></div>
 <div id="detail_event">
 	<fmt:formatDate value="${event.eve_start }" var="start" pattern="yyyy-MM-dd HH:mm"/>
 	<fmt:formatDate value="${event.eve_end }" var="end" pattern="yyyy-MM-dd HH:mm"/>
 	<fmt:formatDate value="${event.eve_regd }" var="regd" pattern="yyyy-MM-dd HH:mm"/>
 	<table class="table">
 		<thead>
-			<tr><th colspan="2">제목 : ${event.eve_title }</th></tr>
+			<tr><th colspan="2" class="font1" style="font-size:20px;">제목 : ${event.eve_title }</th></tr>
 		</thead>
 		<tbody>
 			<tr>
@@ -35,7 +37,7 @@
 	<br><br>
 	<table class="table">
 		<thead>
-			<tr>
+			<tr class="font2" style="font-size:18px;">
 				<th>응모번호</th><th>당첨여부</th><th>응모 아이디</th>
 			</tr>
 		</thead>
@@ -65,7 +67,7 @@
 	<div>
 		<form method="post" action="<c:url value='/admin/winpro' />" onsubmit="return checkEntCnt(${pu.totalRowCount})">
 			<input type="hidden" name="num" value="${event.eve_num }">
-			<h4>이벤트 추첨하기</h4>
+			<h4>추첨하기</h4>
 			<div id="win_row">
 				<span>지급 쿠폰 :  
 					<select name="win_pro">
@@ -80,7 +82,7 @@
 		</form>
 	</div>
 </div>
-
+<br><br><br><br><br>
 <script>
 	function checkEntCnt(entCnt){
 		var winCnt = $("#win_cnt").val();
