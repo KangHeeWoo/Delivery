@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;회원정보&nbsp;&gt;</span></h2></div><br>
-<div style="width: 800px; margin: auto;">
+<div style="width: 1000px; margin: auto;">
 <form method="post" action="<c:url value='/graUp'/>">
 <table class="table">
 <tr>
@@ -64,7 +64,7 @@
 </script>
 
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;쿠폰 사용 내역&nbsp;&gt;</span></h2></div><br>
-<div style="width: 800px; margin: auto;">
+<div style="width: 1000px; margin: auto;">
 <table class="table">
 <tr class="font2" style="font-size: 18px;">
 <th>번호</th><th>발급번호</th><th>주문번호</th>
@@ -90,7 +90,7 @@
 </div><br><br><br><br>
 
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;포인트 사용 내역&nbsp;&gt;</span></h2></div><br>
-<div style="width: 800px; margin: auto;">
+<div style="width: 1000px; margin: auto;">
 <table class="table">
 <tr class="font2" style="font-size: 18px;">
 <th>번호</th><th>사용량</th><th>주문번호</th>
@@ -115,7 +115,7 @@
 	</div>
 </div><br><br><br><br>
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;주문 내역&nbsp;&gt;</span></h2></div><br>
-<div style="width: 800px; margin: auto;">
+<div style="width: 1000px; margin: auto;">
 <table class="table">
 <tr class="font2" style="font-size: 18px;">
 <th>번호</th><th>주문시간</th><th>배달예정시간</th><th>상태</th><th>결제금액</th><th>배달지</th><th>매장번호</th>
