@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.delivery.dao.StoresDao;
+import com.jhta.delivery.vo.AbleLocationVo;
 import com.jhta.delivery.vo.MenuVo;
 import com.jhta.delivery.vo.StoresVo;
 import com.jhta.delivery.vo.StoreslistVo;
@@ -17,6 +18,10 @@ public class StoresService {
 	
 	public List<StoreslistVo> myPositionList(HashMap<String, Object> map){
 		return dao.myPositionList(map);
+	}
+	
+	public AbleLocationVo checkAbleLocation(HashMap<String, Object> map) {
+		return dao.checkAbleLocation(map);
 	}
 	
 	public int minStoNum(int sel_num) {

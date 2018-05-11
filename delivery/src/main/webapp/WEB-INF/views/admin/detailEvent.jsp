@@ -64,7 +64,7 @@
 	<br><br>
 	<!-- 당첨처리 추가 : 몇명, 어떤거 지급  -->
 	<div style="width : 100%;">
-		<form method="post" action="<c:url value='/admin/winpro' />" onsubmit="return checkEntCnt(${pu.totalRowCount})">
+		<form id="form_winpro" method="post" action="<c:url value='/admin/winpro' />" onsubmit="return checkEntCnt(${pu.totalRowCount})">
 			<input type="hidden" name="num" value="${event.eve_num }">
 			<h4 class="font2" style="font-size:18px;" >추첨하기</h4>
 			<div id="win_row">
@@ -87,7 +87,7 @@
 <br><br><br><br><br>
 <script>
 	function submitWinpro(){
-		console.log('submit');
+		$("#form_winpro").submit();
 	}
 	function checkEntCnt(entCnt){
 		var winCnt = $("#win_cnt").val();

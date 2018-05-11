@@ -34,6 +34,7 @@
 		<typeAlias type="com.jhta.delivery.vo.MainAdsVo" alias="mainAds"/>
 		<typeAlias type="com.jhta.delivery.vo.EventListVo" alias="eventlist"/>
 		<typeAlias type="com.jhta.delivery.vo.MainAdsSelectedVo" alias="mainAdsSelected"/>
+		<typeAlias type="com.jhta.delivery.vo.AbleLocationVo" alias="ableLocationVo"/>
 	</typeAliases>
 	
 

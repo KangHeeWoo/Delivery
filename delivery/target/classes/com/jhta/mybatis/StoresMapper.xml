@@ -12,6 +12,9 @@
 			and s.sto_num in(select sto_num from able_location where able_loc=#{able_loc}))aa)
 		    <![CDATA[where rnum>=${startRow} and rnum <= ${endRow}]]>
 	</select>
+	<select id="checkAbleLocation" parameterType="hashmap" resultType="ableLocationVo">
+		select * from able_location where able_loc = #{able_loc} and sto_num = #{sto_num}
+	</select>
 	<select id="minStoNum" parameterType="int" resultType="int">
 		select nvl(min(sto_num), 0) from stores where sel_num = #{sel_num} and sto_state='승인'
 	</select>

@@ -21,7 +21,7 @@
 				<span style="color: #34bdb9;">[${i }]</span>
 			</c:when>
 			<c:otherwise>
-				<a href="<c:url value='/members/pointlist?pageNum=${i }'/>"><span style='color:black'>[${i }]</span></a>
+				<a href="<c:url value='/members/pointlist?pageNum=${i }&use_pageNum=${usepu.pageNum }'/>"><span style='color:black'>[${i }]</span></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
@@ -47,7 +47,7 @@
 				<span style="color: #34bdb9;">[${i }]</span>
 			</c:when>
 			<c:otherwise>
-				<a href="<c:url value='/members/pointlist?use_pageNum=${i }'/>"><span style='color:black'>[${i }]</span></a>
+				<a href="<c:url value='/members/pointlist?pageNum=${pu.pageNum }&use_pageNum=${i }'/>"><span style='color:black'>[${i }]</span></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>

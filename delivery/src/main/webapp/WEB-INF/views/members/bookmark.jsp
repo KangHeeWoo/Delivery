@@ -19,8 +19,7 @@
 			<td onclick="bookpage(${book.sto_num})">${book.sto_name}</td>
 			<td onclick="bookpage(${book.sto_num})">${book.sto_addr}</td>
 			<td onclick="bookpage(${book.sto_num})">${book.sto_phone}</td>
-			<td onclick="bookpage(${book.sto_num})">${open} &sim; ${close }
-			</td>
+			<td onclick="bookpage(${book.sto_num})">${open} &sim; ${close }</td>
 			<td><input type="button" value="즐겨찾기 해제" onclick="bookDel(${book.sto_num})"></td>
 		</tr>
 		</c:forEach>

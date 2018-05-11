@@ -153,7 +153,7 @@ img#wpstats {
 		<section class="module module-super-small">
 			<div class="container product-main-content">
 				<nav class="woocommerce-breadcrumb">
-					<span class="font4" style="font-size: 20px; margin-left: -10px;">${sessionScope.category }</span>&nbsp;&#47;&nbsp;<span class="font4" style="font-size: 20px;">${stovo.sto_name}</span>
+					<span class="font4" style="font-size: 20px; margin-left: -10px;">${category }</span>&nbsp;&#47;&nbsp;<span class="font4" style="font-size: 20px;">${stovo.sto_name}</span>
 				</nav>
 				<div id="product-70"
 					class="post-70 product type-product status-publish has-post-thumbnail product_cat-clothing product_cat-tshirt first instock sale shipping-taxable purchasable product-type-simple">

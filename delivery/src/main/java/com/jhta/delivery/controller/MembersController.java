@@ -190,7 +190,7 @@ public class MembersController {
 		int usegetCount= usePservice.usegetCount(mem_num); 
 		
 		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
-		PageUtil usepu = new PageUtil(pageNum, 10, 10, usegetCount);
+		PageUtil usepu = new PageUtil(use_pageNum, 10, 10, usegetCount);
 		
 		map.put("mem_num", mem_num);
 		map.put("startRow", pu.getStartRow());
@@ -201,8 +201,10 @@ public class MembersController {
 		//List<UsePointVo> useVo=usePservice.usePoint(map);
 		
 		List<OrdersVo> pointlist=oservice.pointlist(map);
-		//System.out.println(pointlist+"pointlilst");
 		List<OrdersUsePointVo> usepointlist=usePservice.ordUsePoint(map);
+		
+		System.out.println("pointlist : " + pointlist);
+		System.out.println("usepointlist : " + usepointlist);
 		
 		int mypoint=usePservice.mypoint(mem_num);
 		

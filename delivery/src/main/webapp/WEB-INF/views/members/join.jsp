@@ -38,7 +38,7 @@
 							</button>
 						</span>
 					</div>
-					<p class="help-block" id="emailP">전송된 인증번호를 입력해주세요.</p>
+					<p class="help-block" id="checkEmailNum">전송된 인증번호를 입력해주세요.</p>
 				</div>
 			</div>
 			<div class="form-group">
@@ -506,17 +506,15 @@
 		}
 		function emailNum_check() {
 			var inputNumberCheck = $("#inputNumberCheck").val();
-			var emailP = $("#emailP");
+			var emailP = $("#checkEmailNum");
 			console.log("되는가");
 			emailCheck = false;
 			if (email_num == inputNumberCheck) {
-				console.log("되는가1");
 				emailP.html("인증완료").css({
 					color : "#003399"
 				});
 				emailCheck = true;
 			} else {
-				console.log("되는가2");
 				emailP.html("인증실패").css({
 					color : "#AA1212"
 				});

@@ -90,8 +90,13 @@
 	
 	$(function(){
 		var c = new Date();
-		
-		$("#ord_deli_time").val(c.getHours() + ":" + c.getMinutes());
+		var hour = c.getHours();
+		var min = c.getMinutes();
+		console.log(hour + ":" + min);
+		if(min < 10){
+			min = "0" + min;
+		}
+		$("#ord_deli_time").val(hour + ":" + min);
 	});
 	
 	function submitA(){
