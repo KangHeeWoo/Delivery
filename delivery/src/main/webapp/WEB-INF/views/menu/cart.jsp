@@ -133,10 +133,9 @@
 		var disprice = 	checkCouponValue();	
 		
 		var payPrice = total - usepoint - disprice;
-		
-		$("#payPrice").html("합계 : " + payPrice + "원");
+	
 		$("#total").val(payPrice);
-		$("#showTotal").val("합계 :&nbsp;  \""+payPrice+"원\"");
+		$("#showTotal").html("합계 :&nbsp;  \""+payPrice+"원\"");
 	}
 	
 	function checkCouponValue(){
