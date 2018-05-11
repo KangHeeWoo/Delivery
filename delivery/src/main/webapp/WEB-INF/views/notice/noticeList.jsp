@@ -9,7 +9,7 @@
 	}
 </style>
 
-<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;자유 게시판&nbsp;&gt;</span></h2></div><br>
+<div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;공지사항&nbsp;&gt;</span></h2></div><br>
 <div id="notice_list">
 	<ul class="boardul">
 		<li><a href="<c:url value='/board/list' />" style="font-family: baemin4; font-size: 25px; margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;1. 자유 게시판</a></li>
