@@ -253,6 +253,8 @@ public class SellerController {
 	}
 	@RequestMapping("/stLocInsert")
 	public String stLocInsert(String able_loc,HttpSession session) {
+		System.out.println("testtest");
+		System.out.println("dd:"+able_loc);
 		int sto_num=(Integer)session.getAttribute("sto_num");
 		AbleLocationVo vo=new AbleLocationVo(0,able_loc,sto_num);
 		service.stLocInsert(vo);
@@ -349,9 +351,6 @@ public class SellerController {
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		int date=0;
 		int []a=new int[md+1];
-		int []b=new int[md+1];
-		int []c=new int[md+1];
-	
 		for(int i=1;i<=md;i++) {
 			HashMap<String, Object> map1=new HashMap<String, Object>();
 				date=(selyear1+selmonth1)+i;
@@ -360,8 +359,6 @@ public class SellerController {
 				a[i]=service.getSal(map1);
 		}
 		map.put("a", a);
-		map.put("b", b);
-		map.put("c", c);
 		map.put("year", selyear);
 		map.put("month", selmonth);
 		return map;

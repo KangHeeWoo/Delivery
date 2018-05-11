@@ -1,17 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<script>
+function tt(){
+	var a=$("#sample5_address").val();
+	if(a == '클릭 해주세요'){
+		alert("주소를 입력해 주세요.");
+		return false;
+	}else{
+		$("#formA").submit();
+	}
+};
+</script>
 <div align="center"><h2 class="subTitle" style="background-color:#34bdb9; color:white; width:1100px; height: 60px; padding: 15px;"><span>&lt;&nbsp;배달가능 지역&nbsp;&gt;</span></h2></div>
 <div style="width: 1000px; margin: auto;">
 <br><br>
 
-
-<form method="post" action="<c:url value='/stLocInsert'/>">
-
+<form method="post" action="<c:url value='/stLocInsert'/>" id="formA">
 				<label class="col-sm-3 control-label" for="input" style="font-size:20px; margin-left: 10px; font-family: baemin1">주소</label>
-						<input type="text" id="sample5_address" onclick="sample5_execDaumPostcode()" placeholder="Click" width="100" readonly="readonly" name="able_loc" style="width: 200px; margin-left: -100px;">
-			<input type="submit" value="등록">
+						<input type="text" id="sample5_address" onclick="sample5_execDaumPostcode()" value="클릭 해주세요" width="100" readonly="readonly" name="able_loc" style="width: 200px; margin-left: -100px;">
+			<input type="button" value="등록" onclick="tt();">
 </form><br><br>
 <table class="table">
 	<tr class="font2" style="font-size: 18px; ">
