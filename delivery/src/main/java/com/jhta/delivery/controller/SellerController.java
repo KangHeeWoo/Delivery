@@ -126,7 +126,7 @@ public class SellerController {
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return ".seller.manageIndex";
+		return "redirect:/stList";
 	}
 	@RequestMapping("/stList")
 	public ModelAndView stList(HttpSession session) {
