@@ -33,8 +33,8 @@
 	</thead>
 	<tbody>
 		<c:forEach var="vo" items="${adsList }">
-		<fmt:formatDate value="${vo.sto_open }" type="date" var="open" pattern="hh:mm"/>
-		<fmt:formatDate value="${vo.sto_close }" type="date" var="close" pattern="hh:mm"/>
+		<fmt:formatDate value="${vo.sto_open }" type="date" var="open" pattern="HH:mm"/>
+		<fmt:formatDate value="${vo.sto_close }" type="date" var="close" pattern="HH:mm"/>
 			<tr>
 				<td onclick="storedetail(${vo.sto_num })"><img id="ads_img" src="<c:url value='/resources/images/stores/${vo.sto_img }'/>"></td>
 				<td onclick="storedetail(${vo.sto_num })">${vo.sto_name }</td>

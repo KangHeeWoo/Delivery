@@ -69,7 +69,7 @@
 
 	<input type="hidden" name="total" id="total" value="${total}" >
 <div align="center">
-	<span class="font1" style="font-size: 50px; color:#34bdb9;"> 합계 :&nbsp;  "${total}원"</span> 
+	<span class="font1" style="font-size: 50px; color:#34bdb9;" id="showTotal"> 합계 :&nbsp;  "${total}원"</span> 
 </div>
 <br><br><br>
 
@@ -136,6 +136,7 @@
 		
 		$("#payPrice").html("합계 : " + payPrice + "원");
 		$("#total").val(payPrice);
+		$("#showTotal").val("합계 :&nbsp;  \""+payPrice+"원\"");
 	}
 	
 	function checkCouponValue(){
