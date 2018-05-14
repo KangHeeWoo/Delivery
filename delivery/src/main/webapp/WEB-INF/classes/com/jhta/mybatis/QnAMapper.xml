@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.QnAMapper">
+	<resultMap type="qna" id="qnalist">
+		<result property="qna_num" column="qna_num"/>
+		<result property="qna_title" column="qna_title"/>
+		<result property="qna_cont" column="qna_cont"/>
+		<result property="qna_date" column="qna_date"/>
+		<result property="mem_num" column="mem_num"/>
+		<collection property="answers" ofType="answer">
+			<result property="qna_ans_num" column="qna_ans_num"/>
+			<result property="qna_ans_title" column="qna_ans_title"/>
+			<result property="qna_ans_cont" column="qna_ans_cont"/>
+			<result property="qna_ans_regd" column="qna_ans_regd"/>
+			<result property="qna_num" column="qna_num"/>
+		</collection>
+	</resultMap>
+
+	<insert id="insert" parameterType="qna">
+		insert into qna values(0,#{qna_title},#{qna_cont},sysdate,#{mem_num})
+	</insert>
+	
+	<select id="count" resultType="int" parameterType="int">
+		select NVL(count(*),0) cnt from qna where mem_num=#{mem_num}
+	</select>
+	
+	<select id="myqna" resultMap="qnalist" parameterType="hashmap">	
+		select * from         
+		(select q.*, rownum rnum from 
+		(select q.qna_title, q.qna_date, a.qna_ans_title, a.qna_ans_regd, q.qna_num, a.qna_ans_num
+		from qna q,qna_answer a
+		where q.qna_num=a.qna_num(+) and q.mem_num=#{mem_num}
+		order by qna_num desc)q)
+		<![CDATA[where rnum >= ${startRow} and rnum <= ${endRow}]]>
+	</select>
+	
+	<select id="adetail" parameterType="int" resultType="answer">
+		select * from qna_answer where qna_ans_num=#{qna_ans_num}
+	</select>
+	
+	<select id="detail" parameterType="int" resultType="qna">
+		select * from qna where qna_num=#{qna_num}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from qna where qna_num=#{qna_num}
+	</delete>
+</mapper>

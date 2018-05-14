@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.TopAdsMapper">
+	<select id="topAdsList" parameterType="hashmap" resultType="stores">
+		select * from
+		(select ss.*, rownum rnum from
+		(select s.*, top_ads_price,i.sto_img, se.sel_email from stores s, seller se, (select sto_num, top_ads_price 
+		from top_ads_entry where to_char(top_ads_start,'yyyy-mm')=to_char(sysdate,'yyyy-mm')) a, category c, sto_image i
+		where s.sto_num = a.sto_num and s.sto_num in (select sto_num from able_location where able_loc=#{able_loc})
+		and s.cat_num=c.cat_num and s.sto_num=i.sto_num and c.cat_num=#{cat_num} and s.sel_num = se.sel_num
+		order by top_ads_price desc)ss)
+		<![CDATA[where rnum>=1 and rnum<=5]]>
+	</select>
+	<select id="topAdsEntry" parameterType="hashmap" resultType="topAds">	
+		select * from
+    		(select aa.*, rownum rnum from
+			(select *
+			from top_ads_entry 
+			where to_char(top_ads_start,'yyyy-mm') = to_char(#{top_ads_start},'yyyy-mm') 
+			order by top_ads_price)aa)
+       		<![CDATA[where rnum>=#{startRow} and rnum<=#{endRow}]]>
+	</select>
+	<select id="count" resultType="int" parameterType="date">
+		select NVL(count(*),0) cnt 
+		from top_ads_entry 
+		where to_char(top_ads_start,'yyyy-mm') = to_char(#{value},'yyyy-mm') 
+	</select>
+</mapper>

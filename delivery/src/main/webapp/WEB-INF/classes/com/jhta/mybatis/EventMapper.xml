@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.EventMapper">
+	<select id="eventList" parameterType="hashmap" resultType="event">
+		select * from
+			(select e.*, rownum rnum from
+				(select * from event order by eve_num desc)e)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow} and to_date(eve_start,'yyyy-mm-dd') <= to_date(sysdate, 'yyyy-mm-dd') and to_date(eve_end,'yyyy-mm-dd') >= to_date(sysdate, 'yyyy-mm-dd')]]>
+	</select>
+	<select id="adminEventList" parameterType="hashmap" resultType="event">
+		select * from
+			(select e.*, rownum rnum from
+				(select * from event order by eve_num desc)e)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
+	</select>
+	<select id="getCount" resultType="int">
+		select nvl(count(*), 0) from event
+	</select>
+	<select id="getEntCount" parameterType="int" resultType="int">
+		select nvl(count(*), 0) from event_entry where eve_num = #{num}
+	</select>
+	<select id="detailEvent" parameterType="int" resultType="event">
+		select * from event where eve_num = #{num}
+	</select>
+	<select id="entryList" parameterType="hashmap" resultType="eventEntry">
+		select * from
+			(select e.*, rownum rnum from
+				(select e.*, m.mem_email from event_entry e, members m 
+				where e.mem_num=m.mem_num and eve_num = #{num}
+				order by eve_win)e)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
+	</select>
+	<insert id="addEvent" parameterType="event">
+		insert into event
+		values(0, #{eve_title}, #{eve_cont}, #{eve_img}, #{eve_start}, #{eve_end}, sysdate)
+	</insert>
+	<update id="win_prosess" parameterType="hashmap">
+		update event_entry set eve_win = '당첨'
+		where eve_num=#{eve_num} and eve_ent_num in
+		<foreach collection="winNum" item="winNum" index="index"
+		open="(" separator="," close=")">
+			#{winNum}		
+		</foreach>
+	</update>
+	<update id="lose_prosess" parameterType="hashmap">
+		update event_entry set eve_win = '탈락'
+		where eve_num=#{eve_num} and eve_ent_num not in
+		<foreach collection="winNum" item="winNum" index="index"
+		open="(" separator="," close=")">
+			#{winNum}		
+		</foreach>
+	</update>
+	<insert id="eventEntry" parameterType="hashmap" >
+		insert into event_entry values(0,'응모',#{eve_num},#{mem_num})
+	</insert>
+</mapper>

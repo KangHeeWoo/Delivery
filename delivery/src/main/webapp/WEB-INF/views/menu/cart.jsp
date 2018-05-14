@@ -15,7 +15,7 @@
 	
 		<span class="font2" style="font-size: 18px;"> 주소&nbsp;&nbsp; </span>
 		<input type="text" name="able_loc" value="${searchAddr }" readonly="readonly" style="width: 250px;"> &nbsp;&nbsp;&nbsp;
-		<span class="font2" style="font-size: 18px;"> 상세 주소&nbsp;&nbsp;</span><input type="text" name="myDetail" value=" ${myDetail  }" style="width: 250px;">
+		<span class="font2" style="font-size: 18px;"> 상세 주소&nbsp;&nbsp;</span><input type="text" name="myDetail" id="detail_address" value=" ${myDetail  }" style="width: 250px;">
 		 <br><br>
 
 	<c:forEach var="menu" items="${array}">
@@ -100,56 +100,68 @@
 	});
 	
 	function submitA(){
+		var detail_address = $("#detail_address").val();
+		
+		if (detail_address == null || detail_address == '') {
+			alert('상세주소를 입력해주세요');
+			return false;
+		}
+
 		$("#formA").submit();
 	}
-	
-	function pay(){
+
+	function pay() {
 		var open = '${open}'.split(":");
 		var close = '${close}'.split(":");
-		
+
 		var reseTime = $("#ord_deli_time").val();
 
 		var currTime = new Date();
-		if($("#reseChk").prop("checked")){
+		if ($("#reseChk").prop("checked")) {
 			var rese = reseTime.split(":");
-			currTime = new Date(currTime.getFullYear(), currTime.getMonth(), currTime.getDate(), rese[0].trim(), rese[1].trim(), 0,0);
+			currTime = new Date(currTime.getFullYear(), currTime.getMonth(),
+					currTime.getDate(), rese[0].trim(), rese[1].trim(), 0, 0);
 		}
-		var openTime = new Date(currTime.getFullYear(), currTime.getMonth(), currTime.getDate(), open[0].trim(), open[1].trim(), 0,0);
-		var closeTime = new Date(currTime.getFullYear(), currTime.getMonth(), currTime.getDate(), close[0].trim(), close[1].trim(), 0,0);
-		
+		var openTime = new Date(currTime.getFullYear(), currTime.getMonth(),
+				currTime.getDate(), open[0].trim(), open[1].trim(), 0, 0);
+		var closeTime = new Date(currTime.getFullYear(), currTime.getMonth(),
+				currTime.getDate(), close[0].trim(), close[1].trim(), 0, 0);
+
 		console.log(currTime);
-		
-		if(currTime < openTime){
+
+		if (currTime < openTime) {
 			alert("아직 오픈시간 전입니다");
 			return false;
-		}else if(closeTime < currTime ){
+		} else if (closeTime < currTime) {
 			alert("마감되었습니다");
 			return false;
 		}
 	}
 
-	function setPayPrice(){
+	function setPayPrice() {
 		var usepoint = $("#usePoint").val();
-		if(usepoint > parseInt(mem_point)){
+		if (usepoint > parseInt(mem_point)) {
 			alert("포인트 한도를 초과하였습니다.");
-			return ;
+			return;
 		}
-		
-		var disprice = 	checkCouponValue();	
-		
+
+		var disprice = checkCouponValue();
+
 		var payPrice = total - usepoint - disprice;
-	
+
 		$("#total").val(payPrice);
-		$("#showTotal").html("합계 :&nbsp;  \""+payPrice+"원\"");
+		$("#showTotal").html("합계 :&nbsp;  \"" + payPrice + "원\"");
 	}
-	
-	function checkCouponValue(){
+
+	function checkCouponValue() {
 		var coupon = $("#coupon");
-		
-		if($(coupon).val() == -1){
+
+		if ($(coupon).val() == -1) {
 			return 0;
-		}else{
-			var disprice = $(coupon).find("option[value=" + $(coupon).val() + "]").html().split(":")[1].trim();
+		} else {
+			var disprice = $(coupon).find(
+					"option[value=" + $(coupon).val() + "]").html().split(":")[1]
+					.trim();
 			return disprice;
 		}
 	}

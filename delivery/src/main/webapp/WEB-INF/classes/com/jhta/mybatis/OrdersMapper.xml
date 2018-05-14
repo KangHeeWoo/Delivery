@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.OrdersMapper">
+	<select id="getOrderCnt" parameterType="int" resultType="int">
+		select nvl(count(*), 0) from orders where sto_num=#{sto_num}
+	</select>
+	<select id="order" parameterType="hashmap" resultType="orders">
+		select * from 
+		(select o.*, rownum rnum from
+		(select o.*, p.PAY_TYPE_NAME  from orders o, pay_type p 
+		where o.sto_num=#{stoNum} and o.pay_type_num = p.pay_type_num
+		order by ord_num desc)o)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
+	</select>
+	<select id="orderList" parameterType="int" resultType="orderlist">
+		select o.*, m.MEN_NAME from order_list o, menu m 
+		where o.ord_num=#{val} and o.men_num = m.men_num
+	</select>
+	<update id="setOrdState" parameterType="hashmap">
+		update orders set ord_state=#{ord_state} where ord_num=#{ord_num}
+	</update>
+	<select id="getMembersOrderCnt" parameterType="int" resultType="int">
+		select nvl(count(*), 0) from orders where mem_num=#{mem_num}
+	</select>
+	<select id="getOrderInfo" parameterType="int" resultType="orders">
+		select * from orders where ord_num = #{val}
+	</select>
+	<select id="membersOrder" parameterType="hashmap" resultType="orders">
+		select * from 
+		(select o.*, rownum rnum from
+		(select o.*, p.PAY_TYPE_NAME, s.sto_name from orders o, pay_type p, stores s 
+		where o.mem_num=#{memNum} and o.pay_type_num = p.pay_type_num and o.sto_num = s.sto_num
+		order by ord_num desc)o)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
+	</select>
+	<select id="pointlist" parameterType="hashmap" resultType="orders">
+		select o.* from(select rownum rnum ,ord_point, ord_num,ord_deli_time from orders where mem_num=#{mem_num} order by ord_num desc)o <![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>
+	</select>
+	<select id="ordNumList" parameterType="hashmap" resultType="orders">
+		select o.*, p.PAY_TYPE_NAME, s.sto_name from orders o, pay_type p, stores s 
+		where o.mem_num=#{mem_num} and o.pay_type_num = p.pay_type_num and o.sto_num = s.sto_num and ord_num=#{ord_num}
+	</select>
+</mapper>

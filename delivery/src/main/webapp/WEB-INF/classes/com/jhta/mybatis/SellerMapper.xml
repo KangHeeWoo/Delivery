@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.SellerMapper">
+	<select id="emailcheck" parameterType="String" resultType="seller">
+		select * from seller where sel_email=#{value} and gra_num =6
+	</select>
+	<select id="logincheck" parameterType="hashmap" resultType="seller">
+		select * from seller where sel_email=#{sel_email} and sel_pwd=#{sel_pwd}
+	</select>
+	<insert id="insert" parameterType="seller">
+		insert into seller values(0,#{sel_email},#{sel_name},#{sel_pwd},#{sel_addr},#{sel_phone},sysdate,6)
+	</insert>
+	<select id="getSellerInfo" parameterType="int" resultType="seller">
+		select * from seller where sel_num in(
+		select sel_num from stores where sto_num = #{num})
+	</select>
+	<select id="getSel_num" parameterType="String" resultType="int">
+		select sel_num from seller where sel_email=#{email}
+	</select>
+	<select id="stLocList" parameterType="int" resultType="com.jhta.delivery.vo.AbleLocationVo">
+		select * from able_location where sto_num=#{sto_num}
+	</select>
+	<insert id="stLocInsert" parameterType="com.jhta.delivery.vo.AbleLocationVo">
+		insert into able_location values(0,#{able_loc},#{sto_num})
+	</insert>
+	<delete id="stLocDelete" parameterType="int">
+		delete from able_location where able_loc_num=#{able_loc_num}
+	</delete>
+	<select id="sel_num" parameterType="String" resultType="seller">
+		select sel_num from seller where sel_email=#{sel_email} and gra_num=6
+	</select>
+	<select id="searchSelNum" parameterType="int" resultType="seller">
+		select * from seller where sel_num = #{val} and gra_num = 6
+	</select>
+	<select id="Password" parameterType="hashmap" resultType="int">
+		select count(*)cnt from seller where sel_pwd=#{sel_pwd} and sel_num=#{sel_num} and gra_num=6
+	</select>
+	<update id="SelGra" parameterType="hashmap">
+		update seller set gra_num=4 where sel_num=#{sel_num} and sel_pwd=#{sel_pwd}
+	</update>
+	<update id="selUPdate" parameterType="members">
+		update seller set sel_name=#{sel_name},sel_pwd=#{sel_pwd},sel_addr=#{sel_addr},sel_phone=#{sel_phone} where sel_num=#{sel_num} and gra_num =6
+	</update>
+	<insert id="topAdsInsertOk" parameterType="hashmap">
+		insert into top_ads_entry values(0,to_date(#{startDay}||'00:00','yyyymmdd hh24:mi'),to_date(#{endDay}||'23:59','yyyymmdd hh24:mi'),500000,'신청',#{topAds_img},sysdate,#{sto_num})
+	</insert>
+	<select id="getTopCount" resultType="int" parameterType="int">
+		select NVL(count(*),0) cnt from top_ads_entry where sto_num=#{sto_num}
+	</select>
+	<select id="topList" parameterType="hashmap" resultType="com.jhta.delivery.vo.TopAdsVo">
+		select * from
+		(select n.*, rownum rnum from
+		(select * from top_ads_entry where sto_num=#{sto_num} order by top_ads_regd desc)n)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>	
+	</select>
+	<insert id="mainAdsInsertOk" parameterType="hashmap">
+		insert into main_ads_entry values(0,to_date(#{startDay}||'00:00','yyyymmdd hh24:mi'),to_date(#{endDay}||'23:59','yyyymmdd hh24:mi'),#{main_ads_price},'신청',#{mainAds_img},sysdate,#{sto_num})
+	</insert>
+	<select id="getMainCount" resultType="int" parameterType="int">
+		select NVL(count(*),0) cnt from main_ads_entry where sto_num=#{sto_num}
+	</select>
+	<select id="mainList" parameterType="hashmap" resultType="com.jhta.delivery.vo.MainAdsVo">
+		select * from
+		(select n.*, rownum rnum from
+		(select * from main_ads_entry where sto_num=#{sto_num} order by main_ads_regd desc)n)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>	
+	</select>
+	<select id="getSal" parameterType="hashmap" resultType="int">
+ 		select NVL(SUM(ord_price-ord_comm),0) from orders 
+ 		<![CDATA[where ord_time >= to_date(#{date} || ' 00:00', 'yyyymmdd hh24:mi') and ord_time <= to_date(#{date} || ' 23:59', 'yyyymmdd hh24:mi') and sto_num=#{sto_num}]]>
+	</select>
+</mapper>    

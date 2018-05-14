@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.PointMapper">
+	
+	<select id="usegetCount" parameterType="int" resultType="int">
+		select count(*) cnt from use_point u,orders o where u.ord_num=o.ord_num and u.mem_num=#{mem_num} 
+	</select>
+	<select id="ordUsePoint" parameterType="hashmap" resultType="ordusepoint">
+		<![CDATA[select * from
+		(select aa.*,rownum rnum from
+		(select u.use_amount,s.sto_addr,o.ord_num,o.ord_time,s.sto_name from use_point u,orders o,stores s where u.ord_num=o.ord_num and s.sto_num=o.sto_num and u.mem_num=#{mem_num} order by o.ord_num desc)aa) where rnum>=#{use_startRow} and rnum<=#{use_endRow}]]>
+	</select>
+	<select id="mypoint" resultType="int" parameterType="int">
+		select sum(mem_point) mypoint from members where mem_num=#{mem_num}
+	</select>
+</mapper>

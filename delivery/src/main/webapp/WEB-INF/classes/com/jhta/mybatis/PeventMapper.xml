@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.PeventMapper">
+	<update id="update" parameterType="hashmap">
+		update grade set gra_bene=#{grade} where gra_name=#{gra_name}
+	</update>
+	<select id="getinfo" parameterType="String" resultType="int">
+		select gra_bene from grade where gra_name=#{gra_name}
+	</select>
+	<select id="getAdm" resultType="int">
+		select adm_value from administration
+	</select>
+	<update id="updateAdm" parameterType="int">
+		update administration set adm_value=#{value}
+	</update>
+</mapper>
