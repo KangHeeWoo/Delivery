@@ -78,7 +78,6 @@ public class BoardController {
 		String uploadPath = session.getServletContext().getRealPath("/resources/images/board");
 
 		try {
-
 			List<MultipartFile> fileList = mhsr.getFiles("boa_img");
 
 			if (!fileList.isEmpty()) {
