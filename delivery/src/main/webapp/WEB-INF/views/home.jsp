@@ -487,13 +487,7 @@
       }
    }
    
-   function getlist(n){
-	   var detail_address = $("#detail_address").val();
-	   if(detail_address == null || detail_address == ''){
-		   alert('상세주소를 입력해주세요');
-		   return false;
-	   }
-	   
+   function getlist(n){	   
       searchAddr=sido+" "+sigungu+" "+bname;
       if(sido != null && sigungu != null && bname != null ){
          location.href ="<c:url value='/myposition?cat_num="+n+"&able_loc="+searchAddr+"&myDetail="+myDetail+"'/>";

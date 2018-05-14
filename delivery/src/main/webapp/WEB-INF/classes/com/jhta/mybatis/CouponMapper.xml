@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.CoupunMapper">
+	<insert id="addcoupon" parameterType="coupon">
+		insert into coupon values(0, #{cou_type}, ${dis_price})
+	</insert>
+	<insert id="issuecoupon" parameterType="c_issue">
+		insert into coupon_issue values(0, #{cou_num}, #{mem_num}, #{cou_start}, #{cou_end})
+	</insert>
+	<insert id="usecoupon" parameterType="c_use">
+		insert into coupon_uselist values(0, #{cou_iss_num}, #{ord_num})
+	</insert>
+	
+	<select id="all_cou_list" resultType="coupon">
+		select * from coupon order by cou_num desc
+	</select>
+	
+	<select id="cou_list" resultType="coupon" parameterType="hashmap">
+		select * from
+			(select b.*, rownum rnum from
+				(select * from coupon order by cou_num desc)b)
+		<![CDATA[where rnum >= #{c_startRow} and rnum <= #{c_endRow}]]>
+	</select>
+	<select id="cou_isu_list" resultType="c_issue" parameterType="hashmap">
+		select * from
+			(select b.*, rownum rnum from
+				(select i.*, m.mem_email, c.cou_type from coupon_issue i, members m, coupon c 
+				where i.mem_num=m.mem_num and c.cou_num=i.cou_num order by cou_iss_num desc)b)
+		<![CDATA[where rnum >= #{i_startRow} and rnum <= #{i_endRow}]]>
+	</select>
+	<select id="cou_use_list" resultType="c_use" parameterType="hashmap">
+		select * from
+			(select b.*, rownum rnum from
+				(select * from coupon_uselist order by cou_use_num desc)b)
+		<![CDATA[where rnum >= #{u_startRow} and rnum <= #{u_endRow}]]>
+	</select>
+	
+	<select id="getCouCount" resultType="int">
+		select NVL(count(*), 0) from coupon
+	</select>
+	<select id="getIsuCount"  resultType="int">
+		select NVL(count(*), 0) from coupon_issue
+	</select>
+	<select id="getUseCount"  resultType="int">
+		select NVL(count(*), 0) from coupon_uselist
+	</select>
+	
+	<select id="searchMem" resultType="members" parameterType="string">
+		select * from members where mem_email = #{val}
+	</select>
+	<select id="memCoupon" resultType="memCoupon" parameterType="int">
+		select c.*,i.cou_num,i.* from coupon c,
+		(select * from coupon_issue <![CDATA[where to_date(cou_start,'yyyy-mm-dd') <= to_date(sysdate, 'yyyy-mm-dd') 
+		and to_date(cou_end,'yyyy-mm-dd') >= to_date(sysdate, 'yyyy-mm-dd')]]>
+		and COU_ISS_NUM not in (select COU_ISS_NUM from coupon_uselist))i 
+		where i.cou_num=c.cou_num  and mem_num=#{mem_num}
+	</select>
+	<select id="mycoupon" resultType="c_issue" parameterType="hashmap">
+	select * from
+    (select a.*,rownum rnum from
+        (select ci.*,c.cou_type,c.dis_price from coupon c,coupon_issue ci where c.cou_num=ci.cou_num and ci.mem_num=#{mem_num}
+            <![CDATA[and to_date(ci.cou_start,'yyyy-mm-dd') <= to_date(sysdate, 'yyyy-mm-dd') and to_date(ci.cou_end,'yyyy-mm-dd') >= to_date(sysdate, 'yyyy-mm-dd'))a ) ]]>
+           <![CDATA[ where rnum>=#{CstartRow} and rnum<=#{CendRow} and COU_ISS_NUM not in (select COU_ISS_NUM from coupon_uselist)]]>
+	</select>
+	<select id="myCcount" resultType="int" parameterType="int">
+		select count(*) cnt from(select ci.*,c.cou_type,c.dis_price from coupon c,coupon_issue ci where c.cou_num=ci.cou_num and ci.mem_num=#{mem_num})
+	</select>
+</mapper>

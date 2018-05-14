@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- Aliases 추가 -->
+		<typeAlias type="com.jhta.delivery.vo.MembersVo" alias="members"/>
+		<typeAlias type="com.jhta.delivery.vo.SellerVo" alias="seller"/>
+		<typeAlias type="com.jhta.delivery.vo.CouponIssueVo" alias="c_issue"/>
+		<typeAlias type="com.jhta.delivery.vo.CouponVo" alias="coupon"/>
+		<typeAlias type="com.jhta.delivery.vo.CouponUseVo" alias="c_use"/>
+		<typeAlias type="com.jhta.delivery.vo.StoresVo" alias="stores"/>
+		<typeAlias type="com.jhta.delivery.vo.OrdersVo" alias="orders"/>
+		<typeAlias type="com.jhta.delivery.vo.OrderListVo" alias="orderlist"/>
+		<typeAlias type="com.jhta.delivery.vo.StoreslistVo" alias="storeslist"/>
+		<typeAlias type="com.jhta.delivery.vo.MenuVo" alias="menu"/>
+		<typeAlias type="com.jhta.delivery.vo.QnAVo" alias="qna"/>
+		<typeAlias type="com.jhta.delivery.vo.AnswerVo" alias="answer"/>
+		<typeAlias type="com.jhta.delivery.vo.EventVo" alias="event"/>
+		<typeAlias type="com.jhta.delivery.vo.EventEntryVo" alias="eventEntry"/>
+		<typeAlias type="com.jhta.delivery.vo.BookMarkVo" alias="bookmark"/>
+		<typeAlias type="com.jhta.delivery.vo.BoardVo" alias="board"/>
+		<typeAlias type="com.jhta.delivery.vo.BoardImgVo" alias="boa_img"/>
+		<typeAlias type="com.jhta.delivery.vo.NoticeVo" alias="notice"/>
+		<typeAlias type="com.jhta.delivery.vo.CommentVo" alias="comment"/>
+		<typeAlias type="com.jhta.delivery.vo.MemCouponVo" alias="memCoupon"/>
+		<typeAlias type="com.jhta.delivery.vo.UsePointVo" alias="usepoint"/>
+		<typeAlias type="com.jhta.delivery.vo.ReviewVo" alias="review"/>
+		<typeAlias type="com.jhta.delivery.vo.ReviewCommentVo" alias="reviewComment"/>
+		<typeAlias type="com.jhta.delivery.vo.OrdersUsePointVo" alias="ordusepoint"/>
+		<typeAlias type="com.jhta.delivery.vo.ReviewImageVo" alias="reviewImage"/>
+		<typeAlias type="com.jhta.delivery.vo.TopAdsVo" alias="topAds"/>
+		<typeAlias type="com.jhta.delivery.vo.MainAdsVo" alias="mainAds"/>
+		<typeAlias type="com.jhta.delivery.vo.EventListVo" alias="eventlist"/>
+		<typeAlias type="com.jhta.delivery.vo.MainAdsSelectedVo" alias="mainAdsSelected"/>
+		<typeAlias type="com.jhta.delivery.vo.AbleLocationVo" alias="ableLocationVo"/>
+	</typeAliases>
+	
+
+
+	<mappers>
+		<!-- Mapper 파일 추가 -->
+		<mapper resource="com/jhta/mybatis/MembersMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/CouponMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/SellerMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/StoresMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/OrdersMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/ChartMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/QnAMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/MenuMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/EventMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/PeventMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/BookMarkMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/BoardMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/MembersDetailMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/NoticeMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/CommentMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/PointMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/PayMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/QnaAnswerMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/ReviewMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/TopAdsMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/MainAdsMapper.xml"/>
+	</mappers>
+</configuration>

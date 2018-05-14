@@ -95,7 +95,7 @@
 	});
 	
 	function setWebsocket() {
-		var wsUri = 'ws://192.168.0.27:8090/delivery/socketRequest';
+		var wsUri = 'ws://52.78.184.148:8090/delivery/socketRequest';
 
 		websocket = new WebSocket(wsUri);
 		websocket.onopen = function(e) {

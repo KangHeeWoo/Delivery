@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.MembersMapper">
+	<insert id="insert" parameterType="members">
+		insert into members values(0,#{mem_email},#{mem_name},#{mem_pwd},#{mem_birth},#{mem_addr},#{mem_phone},sysdate,#{mem_nick},3, #{mem_sex},0,'아니요')
+	</insert>
+	<select id="emailcheck" parameterType="String" resultType="members">
+		select * from members where mem_email=#{mem_email} and gra_num in(1,2,3,100)
+	</select>
+	<select id="logincheck" parameterType="hashmap" resultType="members">
+		select * from members where mem_email=#{mem_email} and mem_pwd=#{mem_pwd} and gra_num!=4
+	</select>
+	<select id="nickcheck" parameterType="String" resultType="members">
+		select * from members where mem_nick=#{mem_nick} 
+	</select>
+	<select id="mem_num" parameterType="String" resultType="members">
+		select mem_num from members where mem_email=#{mem_email} and gra_num!=4
+	</select>
+	<select id="count" resultType="int">
+		select NVL(count(*),0) cnt from members where mem_num!=26
+	</select>
+	<select id="list" parameterType="hashmap" resultType="members">
+	  select * from
+	  (
+		  select aa.*,rownum rnum from
+		  (
+		    select * from members where mem_num!=26 order by mem_regd desc
+		  )aa
+	  )
+	 <![CDATA[ where mem_num!=26 and rnum>=#{startRow} and rnum<=#{endRow}  ]]> 
+	</select>
+	<select id="counts" resultType="int" parameterType="hashmap">
+		select NVL(count(*),0) cnt from members 
+		<where>
+		<if test="search=='name'">
+			mem_num!=26 and mem_name  like '%'||#{word}||'%' 
+		</if>
+		<if test="search=='nick'">
+			mem_num!=26 and mem_nick  like '%'||#{word}||'%' 
+		</if>
+		<if test="search=='email'">
+			mem_num!=26 and mem_email  like '%'||#{word}||'%' 
+		</if>
+		</where>
+	</select>
+	<select id="searchList" parameterType="hashmap" resultType="members">
+	  select * from
+	  (
+		  select aa.*,rownum rnum from
+		  (
+		  select * from members
+		  <if test="search=='name'">
+		    where mem_num!=26 and mem_name like '%'||#{word}||'%'
+		  </if>
+		  <if test="search=='nick'">
+		    where mem_num!=26 and mem_nick like '%'||#{word}||'%'
+		  </if>
+		  <if test="search=='email'">
+		    where mem_num!=26 and mem_email like '%'||#{word}||'%'
+		  </if>
+		  order by mem_regd desc
+		  )aa
+	  )
+	 <![CDATA[ where mem_num!=26 and rnum>=#{startRow} and rnum<=#{endRow}  ]]>
+	</select>
+	<select id="memPoint" parameterType="int" resultType="members">
+		select mem_point from members where mem_num=#{mem_num} and gra_num in(5,3,1)
+	</select>
+	<select id="searchMemNum" parameterType="int" resultType="members">
+		select * from members where mem_num = #{val} and gra_num in(5,3,1)
+	</select>
+	<select id="memElist" parameterType="hashmap" resultType="eventlist">
+		select * from (select a.*, rownum rnum from(select e.eve_num,e.eve_title,e.EVE_START,e.EVE_END,v.eve_win from event e,event_entry v where v.mem_num=#{mem_num} and e.eve_num=v.eve_num )a) <![CDATA[where rnum>=#{startRow} and rnum<=#{endRow}]]>
+	</select>
+	<select id="memEcount" parameterType="int" resultType="int">
+		select count(*) cnt from event e,event_entry v where v.mem_num=#{mem_num} and e.eve_num=v.eve_num 
+	</select>
+	<select id="eventMem" parameterType="hashmap" resultType="int">
+		select count(*) cnt from event_entry where mem_num=#{mem_num} and eve_num=#{eve_num}
+	</select>
+	<select id="Password" parameterType="hashmap" resultType="int">
+		select count(*)cnt from members where mem_pwd=#{mem_pwd} and mem_num=#{mem_num} and gra_num in(5,3,1)
+	</select>
+	<update id="memUPdate" parameterType="members">
+		update members set mem_name=#{mem_name},mem_pwd=#{mem_pwd},mem_addr=#{mem_addr},mem_phone=#{mem_phone},mem_nick=#{mem_nick} where mem_num=#{mem_num} and gra_num in(5,3,1)
+	</update>
+	<update id="MemGra" parameterType="hashmap">
+		update members set gra_num=4 where mem_num=#{mem_num} and mem_pwd=#{mem_pwd}
+	</update>
+	<update id="pwdUpdate" parameterType="hashmap">
+		update members set mem_pwd=#{mem_pwd} where mem_email=#{mem_email} and gra_num in(5,3,1)
+	</update>
+	
+	
+	<!-- 이메일존재, sns가입 아님 1.alert창    0. insert(정보수정) -->
+	<select id="email_snsX" parameterType="String" resultType="int">
+		select NVL(count(*),0) cnt from members where mem_email=#{mem_email} and mem_sns='아니요'
+	</select>
+	
+	<!-- 이메일 미존재, sns가입아님  -->
+	<insert id="snsInsert" parameterType="String">
+		insert into members values(0,#{mem_email},' ',#{mem_email},sysdate,' ',' ',sysdate,' ',3,'미지정',0,'예')
+	</insert>
+	
+	<update id="graUp" parameterType="hashmap">
+		update members set gra_num=#{gra_num} where mem_num=#{mem_num}
+	</update>
+	
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.MembersDetailMapper">
+	<select id="getChatCount" parameterType="int" resultType="int">
+		select NVL(count(*),0) from chat_log where mem_num=#{mem_num}
+	</select>
+	<select id="getCouponCount" parameterType="int" resultType="int">
+		select NVL(count(*),0) from coupon_issue where mem_num=#{mem_num}
+	</select>
+	<select id="getPointCount" parameterType="int" resultType="int">
+		select NVL(count(*),0) from use_point where mem_num=#{mem_num}
+	</select>
+	<select id="getOrdersCount" parameterType="int" resultType="int">
+		select NVL(count(*),0) from orders where mem_num=#{mem_num}
+	</select>
+	<select id="members_grade" parameterType="int" resultType="com.jhta.delivery.vo.MembersGradeVo">
+		select m.*,g.gra_name,g.gra_bene from members m, grade g where m.gra_num=g.gra_num and m.mem_num=#{mem_num}
+	</select>
+	<select id="chat_log" parameterType="hashmap" resultType="com.jhta.delivery.vo.ChatLogVo">
+		select * from
+			(select b.*, rownum rnum from
+				(select * from chat_log where mem_num=#{mem_num} order by chat_regd desc)b)
+		<![CDATA[where rnum >= #{ch_startRow} and rnum <= #{ch_endRow}]]>
+	</select>
+	<select id="coupon" parameterType="hashmap" resultType="com.jhta.delivery.vo.CouponUseVo">
+		select * from
+			(select b.*, rownum rnum from
+				(select * from coupon_uselist where cou_iss_num in (select cou_iss_num from coupon_uselist) order by cou_use_num desc)b)
+		<![CDATA[where rnum >= #{c_startRow} and rnum <= #{c_endRow}]]>
+	</select>
+	<select id="point" parameterType="hashmap" resultType="com.jhta.delivery.vo.UsePointVo">
+		select * from
+			(select b.*, rownum rnum from
+				(select * from use_point where mem_num=#{mem_num} order by use_num desc)b)
+		<![CDATA[where rnum >= #{p_startRow} and rnum <= #{p_endRow}]]>
+	</select>
+	<select id="orders" parameterType="hashmap" resultType="com.jhta.delivery.vo.OrdersVo">
+		select * from
+			(select b.*, rownum rnum from
+				(select * from orders where mem_num=#{mem_num} order by ord_time desc)b)
+		<![CDATA[where rnum >= #{o_startRow} and rnum <= #{o_endRow}]]>
+	</select>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.CommentMapper">
+	<insert id="insert" parameterType="comment">
+		insert into boa_comment values(SEQ_boa_comment_boa_com_num.nextval,#{boa_cont},sysdate,SEQ_boa_comment_boa_com_num.currval,0,0,#{boa_com_writer},#{boa_num})		
+	</insert>
+	<insert id="insertRe" parameterType="comment">
+		insert into boa_comment values(SEQ_boa_comment_boa_com_num.nextval,#{boa_cont},sysdate,#{boa_ref },#{boa_lev},#{boa_step},#{boa_com_writer},#{boa_num})
+	</insert>
+	<update id="updateRe" parameterType="hashmap">
+		<![CDATA[update boa_comment set boa_step=boa_step+1 where boa_ref=#{boa_ref} and boa_step>#{boa_step}]]>
+	</update>
+	<select id="list" parameterType="int" resultType="comment" >
+		 select * from boa_comment 
+		 where boa_num=#{boa_num}
+		 order by boa_ref desc, boa_step
+	</select>
+</mapper>

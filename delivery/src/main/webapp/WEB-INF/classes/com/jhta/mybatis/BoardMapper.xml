@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.BoardMapper">
+	<insert id="insert" parameterType="board">
+		insert into board values(0,#{boa_title},#{boa_cont},#{boa_hit},sysdate,#{boa_writer})
+	</insert>
+	<insert id="insertImg" parameterType="boa_img">	
+		insert into boa_img values(0,#{boa_img},#{boa_num})
+	</insert>
+	<select id="detailImg" parameterType="int" resultType="boa_img">
+		select * from boa_img where boa_num=#{boa_num}
+	</select>
+	<select id="insertNum" resultType="int">
+		select max(boa_num) from board
+	</select>
+	<select id="boardlist" parameterType="hashmap" resultType="board">
+		select * from
+		(select n.*, rownum rnum from
+		(select * from board order by boa_num desc)n)
+		<![CDATA[where rnum >= #{startRow} and rnum <= #{endRow}]]>		
+	</select>
+	<select id="getCount" resultType="int">
+		select nvl(count(*),0) from board
+	</select>
+	<update id="addHit" parameterType="int">
+		update board set boa_hit=boa_hit+1 where boa_num=#{boa_num}
+	</update>
+	<select id="detail" parameterType="int" resultType="board">
+		select * from board where boa_num=#{boa_num}
+	</select>
+	<select id="prev" parameterType="int" resultType="board">
+		select * from board where boa_num=
+		(select max(boa_num) from board <![CDATA[where boa_num < #{boa_num}]]>)
+	</select>
+	<select id="next" parameterType="int" resultType="board">
+		select * from board where boa_num=
+		(select min(boa_num) from board <![CDATA[where boa_num > #{boa_num}]]>)
+	</select>
+	<delete id="delete" parameterType="int">
+		delete from board where boa_num=#{boa_num}
+	</delete>
+	<update id="update" parameterType="board">
+		update board set boa_title=#{boa_title},boa_cont=#{boa_cont},boa_regd=sysdate
+		where boa_num=#{boa_num}
+	</update>
+	<delete id="updateImg" parameterType="int">
+		delete from boa_img where boa_num=#{value}
+	</delete>
+	
+</mapper>
