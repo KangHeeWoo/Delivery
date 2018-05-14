@@ -321,6 +321,7 @@
     </section>
    </div> 
    <script type="text/javascript">
+   $(function(){
    var latitude =  37.59922888910534;
    var longitude = 127.09409930015491 ;
 
@@ -334,65 +335,68 @@
    var bname=null;
    var myDetail=null;
 
-   function getMap() {
-      mapContainer = document.getElementById('map'); // 지도를 표시할 div 
-      mapOption = {
-         //center: new daum.maps.LatLng(latitude, longitude), // 지도의 중심좌표
-         center : new daum.maps.LatLng(latitude, longitude), // 지도의 중심좌표
-         level : 1
-      // 지도의 확대 레벨
-      
-      };
 
-      // 지도를 생성합니다    
-      map = new daum.maps.Map(mapContainer, mapOption);
+	   function getMap() {
+	      mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+	      mapOption = {
+	         //center: new daum.maps.LatLng(latitude, longitude), // 지도의 중심좌표
+	         center : new daum.maps.LatLng(latitude, longitude), // 지도의 중심좌표
+	         level : 1
+	      // 지도의 확대 레벨
+	      
+	      };
+	     
+	      // 지도를 생성합니다    
+	      map = new daum.maps.Map(mapContainer, mapOption);
+	      var marker = new daum.maps.Marker({
+	          position : new daum.maps.LatLng(latitude, longitude),
+	          map : map
+	       });
+	      // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+	      searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
-      // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-      searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+	      // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+	      daum.maps.event.addListener(map, 'click', function(mouseEvent) {
+	         searchDetailAddrFromCoords(mouseEvent.latLng, function(result,
+	               status) {
+	            if (status === daum.maps.services.Status.OK) {
+	               var detailAddr = !!result[0].road_address ? '<div>도로명주소 : '
+	                     + result[0].road_address.address_name + '</div>'
+	                     : '';
+	                  myAddr=result[0].road_address.address_name;
+	               detailAddr += '<div>지번 주소 : '
+	                     + result[0].address.address_name + '</div>';
 
-      // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
-      daum.maps.event.addListener(map, 'click', function(mouseEvent) {
-         searchDetailAddrFromCoords(mouseEvent.latLng, function(result,
-               status) {
-            if (status === daum.maps.services.Status.OK) {
-               var detailAddr = !!result[0].road_address ? '<div>도로명주소 : '
-                     + result[0].road_address.address_name + '</div>'
-                     : '';
-                  myAddr=result[0].road_address.address_name;
-               detailAddr += '<div>지번 주소 : '
-                     + result[0].address.address_name + '</div>';
+	               var content = '<div class="bAddr">'
+	                     + '<span class="title">법정동 주소정보</span>'
+	                     + detailAddr + '</div>';
+	                     
+	               /* console.log(result[0].address.region_1depth_name);
+	               console.log(result[0].address.region_2depth_name);
+	               console.log(result[0].address.region_3depth_name); */
+	               
+	               sido=result[0].address.region_1depth_name;
+	               sigungu=result[0].address.region_2depth_name;
+	               bname=result[0].address.region_3depth_name;
+	               
+	               // 마커를 클릭한 위치에 표시합니다 
+	               marker.setPosition(mouseEvent.latLng);
+	               marker.setMap(map);
 
-               var content = '<div class="bAddr">'
-                     + '<span class="title">법정동 주소정보</span>'
-                     + detailAddr + '</div>';
-                     
-               /* console.log(result[0].address.region_1depth_name);
-               console.log(result[0].address.region_2depth_name);
-               console.log(result[0].address.region_3depth_name); */
-               
-               sido=result[0].address.region_1depth_name;
-               sigungu=result[0].address.region_2depth_name;
-               bname=result[0].address.region_3depth_name;
-               
-               // 마커를 클릭한 위치에 표시합니다 
-               marker.setPosition(mouseEvent.latLng);
-               marker.setMap(map);
+	               // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+	               infowindow.setContent(content);
+	               infowindow.open(map, marker);
+	               
+	               $("#sample5_address").val(result[0].address.address_name);
+	            }
+	         });
+	      });
 
-               // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-               infowindow.setContent(content);
-               infowindow.open(map, marker);
-               
-               $("#sample5_address").val(result[0].address.address_name);
-            }
-         });
-      });
-
-      // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
-      daum.maps.event.addListener(map, 'idle', function() {
-         searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-      });
-   }
-
+	      // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+	      daum.maps.event.addListener(map, 'idle', function() {
+	         searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+	      });
+	   }
    function getPosition() {
       if (navigator.geolocation) {
          var startPos;
@@ -431,7 +435,10 @@
 
    // 주소-좌표 변환 객체를 생성합니다
    var geocoder = new daum.maps.services.Geocoder();
-
+   var marker = new daum.maps.Marker({
+       position : new daum.maps.LatLng(37.537187, 127.005476),
+       map : map
+    });
    var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
    infowindow = new daum.maps.InfoWindow({
       zindex : 1
@@ -502,12 +509,13 @@
          });   
       }
    }
+   });
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
    <script
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=00c0bb384860705065e4de2f7b7b454&libraries=services"></script>
    <script>
-      var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+      /* var mapContainer = document.getElementById('map'), // 지도를 표시할 div
       mapOption = {
          center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
          level : 5
@@ -522,7 +530,7 @@
       var marker = new daum.maps.Marker({
          position : new daum.maps.LatLng(37.537187, 127.005476),
          map : map
-      });
+      }); */
       function sample5_execDaumPostcode() {
          new daum.Postcode(
                {
