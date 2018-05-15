@@ -43,6 +43,8 @@ public class EventController {
 		
 		List<EventVo> list = service.eventList(map);
 		
+		System.out.println(list);
+		
 		model.addAttribute("pu", pu);
 		model.addAttribute("event", list);
 		
