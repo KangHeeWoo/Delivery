@@ -321,20 +321,20 @@
     </section>
    </div> 
    <script type="text/javascript">
-   $(function(){
-	   var latitude =  37.5728737695435;
-	   var longitude = 126.99165293534294;
-	
-	   var mapContainer = null;
-	   var mapOption = null;
-	   var map = null;
-	   var myAddr=null;
-	   var searchAddr=null;
-	   var sido=null;
-	   var sigungu=null;
-	   var bname=null;
-	   var myDetail=null;
+   var latitude =  37.5728737695435;
+   var longitude = 126.99165293534294;
 
+   var mapContainer = null;
+   var mapOption = null;
+   var map = null;
+   var myAddr=null;
+   var searchAddr=null;
+   var sido=null;
+   var sigungu=null;
+   var bname=null;
+   var myDetail=null;
+   
+   $(function(){
 
 	   function getMap() {
 	      mapContainer = document.getElementById('map'); // 지도를 표시할 div 
