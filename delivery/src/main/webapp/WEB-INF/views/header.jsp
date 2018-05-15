@@ -10,19 +10,27 @@
    <div align="center">
       <img src="<c:url value='/resources/images/백성민로고.png'/>" id="mainlogo" style="width:350px; height: auto; margin: 30px;">
    </div>
-
-
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
-        
-                
-                <!-- 로그인 여부 -->
-                <c:choose>
-                   <c:when test="${empty sessionScope.email }">
-		               <%
+   
+   <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+     <div class="container">		
+       <div class="collapse navbar-collapse" id="navbarResponsive">
+         <ul class="navbar-nav text-uppercase ml-auto" >
+           <li class="nav-item" style="list-style: none;">
+             <a class="nav-link js-scroll-trigger" href="<c:url value='/event/eventlist' />"  style="font-family: baemin1; font-size: 15px;">이벤트팡팡</a>
+           </li>
+           <li class="nav-item" style="list-style: none;">
+             <a class="nav-link js-scroll-trigger" href="<c:url value='/members/bookmark' />"  style="font-family: baemin1; font-size: 15px;">단골매장</a>
+           </li>
+           <li class="nav-item" style="list-style: none;">
+             <a class="nav-link js-scroll-trigger" href="<c:url value='/mypage' />"  style="font-family: baemin1; font-size: 15px;">My배맥</a>
+           </li>
+           <li class="nav-item" style="list-style: none;">
+             <a class="nav-link js-scroll-trigger" href="<c:url value='/board/list' />" style="font-family: baemin1; font-size: 15px;">게시판</a>
+           </li>
+           <c:choose>
+            	<c:when test="${empty sessionScope.email }">
+            		<%
 		               Cookie[] ck=request.getCookies();
 		                  String mem_email="";
 		                  String mem_pwd="";
@@ -40,11 +48,11 @@
 		                     }
 		                  }
 		               %>
-                   <!-- 아이디가 없을때 -->
-                     <div align="right" style="display: inline-block; margin-left: 850px;">
-                     <a href="<c:url value='/join'/>" style="margin: 10px;color:#fed136;  font-family: baemin1">회원가입</a>
-               
-                        <a href="javascript:toggleLoginModal()" style="color:#fed136;  font-family: baemin1">로그인</a>
+					<li class="nav-item" style="margin-left : 435px; list-style: none; ">
+		              <a href="<c:url value='/join'/>" style="margin: 10px;color:#fed136;  font-family: baemin1">회원가입</a>
+		            </li>
+		            <li class="nav-item" style="list-style: none; ">
+		              <a href="javascript:toggleLoginModal()" style="color:#fed136;  font-family: baemin1">로그인</a>
                        
                         <ul id="login-dp" class="dropdown-login" >
                            <li>
@@ -88,33 +96,21 @@
                               </div>
                            </li>
                         </ul>
-                       </div>
-                   </c:when>
-                   <c:otherwise>
-                   <!--  로그인 했을때 -->
-                      <a href="<c:url value='/logout'/>" style="display: inline-block;color:#fed136; margin-left: 850px;  font-family: baemin1" >로그아웃</a>
-                      <a href="javascript:toggleChatOrder()" style="margin: 10px;color:#fed136;  font-family: baemin1" >채팅주문</a>
-                   </c:otherwise>
-                </c:choose>
-        <div  id="navbarResponsive" style="display: inline-block; margin-left: 70px;">
-          <ul class="navbar-nav text-uppercase ml-auto" style="margin-bottom: 10px;">
-            <li class="nav-item" style="list-style: none;">
-              <a class="nav-link js-scroll-trigger" href="<c:url value='/event/eventlist' />"  style="font-family: baemin1; font-size: 15px;">이벤트팡팡</a>
-            </li>
-            <li class="nav-item" style="list-style: none; ">
-              <a class="nav-link js-scroll-trigger" href="<c:url value='/members/bookmark' />"  style="font-family: baemin1; font-size: 15px;">단골매장</a>
-            </li>
-            <li class="nav-item" style="list-style: none;">
-              <a class="nav-link js-scroll-trigger" href="<c:url value='/mypage' />"  style="font-family: baemin1; font-size: 15px;">My배맥</a>
-            </li>
-            <li class="nav-item" style="list-style: none; ">
-              <a class="nav-link js-scroll-trigger" href="<c:url value='/board/list' />" style="font-family: baemin1; font-size: 15px;">게시판</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    
+		            </li>
+				</c:when>
+            	<c:otherwise>
+            		<li class="nav-item" style="margin-left : 435px; list-style: none; ">
+		              <a href="<c:url value='/logout'/>" style="display: inline-block;color:#fed136; margin-left: 850px;  font-family: baemin1" >로그아웃</a>
+		            </li>
+		            <li class="nav-item" style="list-style: none; ">
+		              <a href="javascript:toggleChatOrder()" style="margin: 10px;color:#fed136;  font-family: baemin1" >채팅주문</a>
+		            </li>
+            	</c:otherwise>
+            </c:choose>
+         </ul>
+       </div>
+     </div>
+   </nav>
     <div class="chatOrder" style="display : none;">
        <div class="orderheader">
           <p>채팅으로 주문하기 <span class="orderclose" onclick="toggleChatOrder()">x</span></p>
