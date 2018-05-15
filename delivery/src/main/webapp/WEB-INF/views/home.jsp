@@ -322,18 +322,18 @@
    </div> 
    <script type="text/javascript">
    $(function(){
-   var latitude =  37.59922888910534;
-   var longitude = 127.09409930015491 ;
-
-   var mapContainer = null;
-   var mapOption = null;
-   var map = null;
-   var myAddr=null;
-   var searchAddr=null;
-   var sido=null;
-   var sigungu=null;
-   var bname=null;
-   var myDetail=null;
+	   var latitude =  37.5728737695435;
+	   var longitude = 126.99165293534294;
+	
+	   var mapContainer = null;
+	   var mapOption = null;
+	   var map = null;
+	   var myAddr=null;
+	   var searchAddr=null;
+	   var sido=null;
+	   var sigungu=null;
+	   var bname=null;
+	   var myDetail=null;
 
 
 	   function getMap() {
@@ -397,77 +397,79 @@
 	         searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 	      });
 	   }
-   function getPosition() {
-      if (navigator.geolocation) {
-         var startPos;
-         console.log("사용함");
-         var options = {
-            enableHighAccuracy : true,
-            timeout : 1000,
-            maximumAge : 0
-         };
-         //getCurrentPosition() 메서드를 이용하여 사용자의 현재 위치를 찾아낼 수 있다 이 것은 페이지 로드가 완료되는 시점에 실행된다.
-         //getCurrentPosition()의 호출은 페이지가 로드되고 난 다음 딱 한 번만 하면 된다
-         navigator.geolocation.getCurrentPosition(function(pos) {
-            //alert('받아옴');
-            startPos = pos;
-            latitude = pos.coords.latitude;//시작위도
-            longitude = pos.coords.longitude;//시작경도
-            console.log("시작위도 : " + latitude);
-            console.log("시작경도 : " + longitude);
-            getMap();
-
-         }, function(error) {
-            console.log('Error occurred. Error code: ' + error.code);
-            getMap();
-            // error.code는 다음을 의미함:
-            //   0: 알 수 없는 오류
-            //   1: 권한 거부
-            //   2: 위치를 사용할 수 없음 (이 오류는 위치 정보 공급자가 응답)
-            //   3: 시간 초과
-         }, options);
-      } else {
-         console.log("사용안함");
-      }
-   }
-
-   getPosition();
-
-   // 주소-좌표 변환 객체를 생성합니다
-   var geocoder = new daum.maps.services.Geocoder();
-   var marker = new daum.maps.Marker({
-       position : new daum.maps.LatLng(37.537187, 127.005476),
-       map : map
-    });
-   var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
-   infowindow = new daum.maps.InfoWindow({
-      zindex : 1
-   }); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
-
-   function searchAddrFromCoords(coords, callback) {
-      // 좌표로 행정동 주소 정보를 요청합니다
-      geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
-   }
-
-   function searchDetailAddrFromCoords(coords, callback) {
-      // 좌표로 법정동 상세 주소 정보를 요청합니다
-      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-   }
-
-   // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
-   function displayCenterInfo(result, status) {
-      if (status === daum.maps.services.Status.OK) {
-         var infoDiv = document.getElementById('centerAddr');
-
-         for (var i = 0; i < result.length; i++) {
-            // 행정동의 region_type 값은 'H' 이므로
-            if (result[i].region_type === 'H') {
-               infoDiv.innerHTML = result[i].address_name;
-               break;
-            }
-         }
-      }
-   }
+	   
+	   function getPosition() {
+	      if (navigator.geolocation) {
+	         var startPos;
+	         console.log("사용함");
+	         var options = {
+	            enableHighAccuracy : true,
+	            timeout : 1000,
+	            maximumAge : 0
+	         };
+	         //getCurrentPosition() 메서드를 이용하여 사용자의 현재 위치를 찾아낼 수 있다 이 것은 페이지 로드가 완료되는 시점에 실행된다.
+	         //getCurrentPosition()의 호출은 페이지가 로드되고 난 다음 딱 한 번만 하면 된다
+	         navigator.geolocation.getCurrentPosition(function(pos) {
+	            //alert('받아옴');
+	            startPos = pos;
+	            latitude = pos.coords.latitude;//시작위도
+	            longitude = pos.coords.longitude;//시작경도
+	            console.log("시작위도 : " + latitude);
+	            console.log("시작경도 : " + longitude);
+	            getMap();
+	
+	         }, function(error) {
+	            console.log('Error occurred. Error code: ' + error.code);
+	            getMap();
+	            // error.code는 다음을 의미함:
+	            //   0: 알 수 없는 오류
+	            //   1: 권한 거부
+	            //   2: 위치를 사용할 수 없음 (이 오류는 위치 정보 공급자가 응답)
+	            //   3: 시간 초과
+	         }, options);
+	      } else {
+	         console.log("사용안함");
+	      }
+	   }
+	
+	   getPosition();
+	
+	   // 주소-좌표 변환 객체를 생성합니다
+	   var geocoder = new daum.maps.services.Geocoder();
+	   var marker = new daum.maps.Marker({
+	       position : new daum.maps.LatLng(37.537187, 127.005476),
+	       map : map
+	    });
+	   var marker = new daum.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+	   infowindow = new daum.maps.InfoWindow({
+	      zindex : 1
+	   }); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+	
+	   function searchAddrFromCoords(coords, callback) {
+	      // 좌표로 행정동 주소 정보를 요청합니다
+	      geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
+	   }
+	
+	   function searchDetailAddrFromCoords(coords, callback) {
+	      // 좌표로 법정동 상세 주소 정보를 요청합니다
+	      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+	   }
+	
+	   // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+	   function displayCenterInfo(result, status) {
+	      if (status === daum.maps.services.Status.OK) {
+	         var infoDiv = document.getElementById('centerAddr');
+	
+	         for (var i = 0; i < result.length; i++) {
+	            // 행정동의 region_type 값은 'H' 이므로
+	            if (result[i].region_type === 'H') {
+	               infoDiv.innerHTML = result[i].address_name;
+	               break;
+	            }
+	         }
+	      }
+	   }
+   });
    function saveAddr(){
       searchAddr=document.getElementById("sample5_address").value;
       myDetail = " " + document.getElementById("detail_address").value;
@@ -503,7 +505,6 @@
          });   
       }
    }
-   });
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
    <script
