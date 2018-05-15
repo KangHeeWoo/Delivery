@@ -99,11 +99,11 @@
 		            </li>
 				</c:when>
             	<c:otherwise>
-            		<li class="nav-item" style="margin-left : 435px; list-style: none; ">
-		              <a href="<c:url value='/logout'/>" style="display: inline-block;color:#fed136; margin-left: 850px;  font-family: baemin1" >로그아웃</a>
+					<li class="nav-item" style="margin-left : 435px; list-style: none; ">
+		              <a href="<c:url value='/logout'/>" style="margin: 10px;color:#fed136;  font-family: baemin1">로그아웃</a>
 		            </li>
 		            <li class="nav-item" style="list-style: none; ">
-		              <a href="javascript:toggleChatOrder()" style="margin: 10px;color:#fed136;  font-family: baemin1" >채팅주문</a>
+		              <a href="javascript:toggleChatOrder()" style="color:#fed136;  font-family: baemin1">채팅주문</a>
 		            </li>
             	</c:otherwise>
             </c:choose>
