@@ -90,8 +90,8 @@
                                     </form>
                               </div>
                                  <div class="social-buttons" align="center">
-                                 	 <a href="<c:url value='/members/Find_pwd'/>" style="font-size: 17px;  " class="font4">비밀번호 찾기</a>
-                                    <a href="<c:url value='/members/kakao_login'/>" class="btn btn-tw"><i class="font4"></i> SNS_LOGIN</a>
+                                 	 <a href="<c:url value='/members/Find_pwd'/>" style="font-size: 17px; color:#fed136;" class="font4">비밀번호 찾기</a>
+                                    <a href="<c:url value='/members/kakao_login'/>" class="btn btn-tw" style="color:#fed136;" class="font4">SNS_LOGIN</a>
                                  </div>
                               </div>
                            </li>
