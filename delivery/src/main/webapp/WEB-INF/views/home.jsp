@@ -252,7 +252,7 @@
                     <h4 class="subheading" style="font-family: baemin; font-size: 20px;">승승장구</h4>
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted" >업계 최초로 누적 다운로드 1.000만 건을 돌파했습닏. 기념으로 시원하게 쐈습니다. 원간 주문 수는 500만 건을 훌쩍 넘었습니다. TV광고를 만들어 전국을 떠들썩하게 만들었습니다. '우리가 어떤 민족입니까!'
+                    <p class="text-muted" >업계 최초로 누적 다운로드 1.000만 건을 돌파했습다. 기념으로 시원하게 쐈습니다. 원간 주문 수는 500만 건을 훌쩍 넘었습니다. TV광고를 만들어 전국을 떠들썩하게 만들었습니다. '우리가 어떤 민족입니까!'
                     </p>
                   </div>
                 </div>
