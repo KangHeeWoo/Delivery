@@ -71,6 +71,7 @@ public class OrdersController {
 		
 		return list;
 	}
+	
 	@RequestMapping("/orders/myorder")
 	public String myoder(int ord_num,HttpSession session,Model model) {
 		String mem_email=(String)session.getAttribute("email");
