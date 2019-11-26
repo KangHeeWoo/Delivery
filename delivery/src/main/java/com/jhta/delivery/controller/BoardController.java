@@ -112,7 +112,6 @@ public class BoardController {
 		BoardVo next = service.next(boa_num);
 
 		vo.setBoa_cont(vo.getBoa_cont().replaceAll("\n", "<br>"));
-		// System.out.println(vo);
 		model.addAttribute("vo", vo);
 		model.addAttribute("vo1", vo1);
 		model.addAttribute("prev", prev);
