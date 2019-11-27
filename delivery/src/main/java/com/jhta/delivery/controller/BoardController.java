@@ -126,7 +126,6 @@ public class BoardController {
 	@RequestMapping("/board/delete")
 	public String delete(int boa_num, HttpSession session) {
 		try {
-			System.out.println("삭제삭제");
 			service.delete(boa_num);
 			return "redirect:/board/list";
 
