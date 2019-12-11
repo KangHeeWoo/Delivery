@@ -57,7 +57,6 @@ public class QnAController {
 	@RequestMapping("/qna/insertOk")
 	public String insertOk(QnAVo vo) {
 		try {
-			//System.out.println(vo);
 			service.insert(vo);
 			return "redirect:/qna/list";
 		}catch(Exception e) {
@@ -68,13 +67,11 @@ public class QnAController {
 	@RequestMapping("/qna/detail")
 	public String detail(int qna_num,Model model) {
 		QnAVo vo = service.detail(qna_num);
-		System.out.println("qna_num:" + qna_num);
 		model.addAttribute("vo",vo);
 		return ".qna.detail";
 	}
 	@RequestMapping("/qna/adetail")
 	public String adetail(int qna_ans_num, Model model) {
-		//System.out.println(qna_ans_num);
 		AnswerVo vo = service.adetail(qna_ans_num);
 		model.addAttribute("vo",vo);
 		return ".qna.adetail";

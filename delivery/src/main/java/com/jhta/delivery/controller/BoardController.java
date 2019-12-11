@@ -144,7 +144,6 @@ public class BoardController {
 
 		model.addAttribute("vo", vo1);
 		model.addAttribute("boa_num", boa_num);
-		System.out.println("오긴오느냐");
 		return ".board.update";
 	}
 

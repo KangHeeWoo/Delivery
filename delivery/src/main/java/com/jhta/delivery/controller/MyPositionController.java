@@ -33,7 +33,6 @@ public class MyPositionController {
 		try {
 			ob.put("result", true);
 			ob.put("able_loc", session.getAttribute("able_loc"));
-			// System.out.println("@.@"+session.getAttribute("able_loc"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			ob.put("result", false);
@@ -53,7 +52,6 @@ public class MyPositionController {
 		int getCount = service.getCount(map1);
 
 		PageUtil pu = new PageUtil(pageNum, 10, 10, getCount);
-		// System.out.println("pu.getEndRow():"+ pu.getEndRow());
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("cat_num", cat_num);
@@ -98,7 +96,6 @@ public class MyPositionController {
 	@ResponseBody
 	public String myAddr(String searchAddr, HttpSession session) {
 		JSONObject ob = new JSONObject();
-		// System.out.println("searchAddr:"+searchAddr);
 		try {
 			if (searchAddr != null && !searchAddr.equals("")) {
 				session.setAttribute("searchAddr", searchAddr);
