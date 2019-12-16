@@ -100,7 +100,6 @@ public class MyPositionController {
 			if (searchAddr != null && !searchAddr.equals("")) {
 				session.setAttribute("searchAddr", searchAddr);
 				ob.put("result", true);
-				System.out.println("myAddr技记技记");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

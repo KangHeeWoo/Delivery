@@ -34,14 +34,8 @@ public class CommentController {
 				map.put("boa_ref", vo.getBoa_ref());
 				map.put("boa_step", vo.getBoa_step());
 				
-				System.out.println("vo1 : " + vo);
-				System.out.println("map1 : " + map);
-				
 				vo.setBoa_lev(vo.getBoa_lev()+1);
 				vo.setBoa_step(vo.getBoa_step()+1);
-				
-				System.out.println("vo2 : " + vo);
-				System.out.println("map2 : " + map);
 				
 				service.updateRe(map);
 				service.insertRe(vo);

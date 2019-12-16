@@ -85,7 +85,7 @@ public class BoardController {
 					String orgFileName = fileList.get(i).getOriginalFilename();
 					String saveFileName = UUID.randomUUID() + "_" + orgFileName;
 					InputStream is = fileList.get(i).getInputStream();
-					System.out.println("uploadPath : " + uploadPath + "saveFileName : " + saveFileName);
+					//System.out.println("uploadPath : " + uploadPath + "saveFileName : " + saveFileName);
 					FileOutputStream fos = new FileOutputStream(uploadPath + "\\" + saveFileName);
 					FileCopyUtils.copy(is, fos);
 					fos.close();
@@ -160,7 +160,7 @@ public class BoardController {
 					String orgFileName = fileList.get(i).getOriginalFilename();
 					String saveFileName = UUID.randomUUID() + "_" + orgFileName;
 					InputStream is = fileList.get(i).getInputStream();
-					System.out.println("uploadPath : " + uploadPath + "saveFileName : " + saveFileName);
+					//System.out.println("uploadPath : " + uploadPath + "saveFileName : " + saveFileName);
 					FileOutputStream fos = new FileOutputStream(uploadPath + "\\" + saveFileName);
 					FileCopyUtils.copy(is, fos);
 					fos.close();
