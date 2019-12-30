@@ -54,6 +54,7 @@ public class QnAController {
 		model.addAttribute("mem_num",vo.getMem_num());
 		return ".qna.insert";
 	}
+	
 	@RequestMapping("/qna/insertOk")
 	public String insertOk(QnAVo vo) {
 		try {
