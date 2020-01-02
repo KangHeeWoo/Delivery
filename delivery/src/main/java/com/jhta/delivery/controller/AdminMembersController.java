@@ -69,13 +69,12 @@ public class AdminMembersController {
 		int getCouponCount=service1.getCouponCount(mem_num);
 		int getPointCount=service1.getPointCount(mem_num);
 		int getOrdersCount=service1.getOrdersCount(mem_num);
-		System.out.println("2:"+getOrdersCount);
 		
 		PageUtil chatPage=new PageUtil(chNum,5,5,getChatCount);
 		PageUtil couponPage=new PageUtil(cNum,5,5,getCouponCount);
 		PageUtil pointPage=new PageUtil(pNum,5,5,getPointCount);
 		PageUtil ordersPage=new PageUtil(oNum,5,5,getOrdersCount);
-		System.out.println("3:"+ordersPage);
+		
 		map.put("mem_num", mem_num);
 		map.put("ch_startRow",chatPage.getStartRow());
 		map.put("ch_endRow",chatPage.getEndRow());
@@ -85,13 +84,13 @@ public class AdminMembersController {
 		map.put("p_endRow",pointPage.getEndRow());
 		map.put("o_startRow",ordersPage.getStartRow());
 		map.put("o_endRow",ordersPage.getEndRow());
-		System.out.println(map);
+		
 		MembersGradeVo mgv=service1.members_grade(mem_num);
 		List<ChatLogVo> clv=service1.chat_log(map);
 		List<CouponUseVo> cuv=service1.coupon(map);
 		List<UsePointVo> upv=service1.point(map);
 		List<OrdersVo> ov=service1.orders(map);
-		System.out.println("4:"+ov);
+		
 		mv.addObject("mgv",mgv);
 		mv.addObject("clv",clv);
 		mv.addObject("cuv",cuv);

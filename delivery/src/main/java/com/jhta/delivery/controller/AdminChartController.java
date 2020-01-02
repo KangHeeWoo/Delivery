@@ -37,6 +37,7 @@ public class AdminChartController {
 			b[i] = service.getMainFee(date);
 			c[i] = service.getTopFee(date);
 		}
+		
 		map.put("a", a);
 		map.put("b", b);
 		map.put("c", c);

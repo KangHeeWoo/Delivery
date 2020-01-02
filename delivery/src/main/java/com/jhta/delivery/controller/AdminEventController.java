@@ -86,7 +86,7 @@ public class AdminEventController {
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "redirect:/admin/event";
-		}		
+		}
 	}
 	
 	@RequestMapping("/admin/detailevent")
