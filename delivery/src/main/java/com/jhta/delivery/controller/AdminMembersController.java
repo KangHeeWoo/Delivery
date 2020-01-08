@@ -36,6 +36,7 @@ public class AdminMembersController {
 		mv.addObject("pu",pu);
 		return mv;
 	}
+	
 	@RequestMapping("/members/search")
 	public ModelAndView search(@RequestParam(value="pageNum",defaultValue="1") int pageNum,String word,String search) {
 		
@@ -57,26 +58,27 @@ public class AdminMembersController {
 		mv.addObject("map",map);
 		return mv;
 	}
+	
 	@RequestMapping("/members/detail")
 	public ModelAndView detail(int mem_num, @RequestParam(value="chNum", defaultValue="1")int chNum, 
 			@RequestParam(value="cNum", defaultValue="1")int cNum, @RequestParam(value="pNum", defaultValue="1")int pNum,
 			@RequestParam(value="oNum", defaultValue="1")int oNum) {
-		System.out.println("1:"+oNum);
+		
 		ModelAndView mv=new ModelAndView(".admin.membersDetail");
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		
-		int getChatCount=service1.getChatCount(mem_num);
-		int getCouponCount=service1.getCouponCount(mem_num);
-		int getPointCount=service1.getPointCount(mem_num);
-		int getOrdersCount=service1.getOrdersCount(mem_num);
+		int getChatCount	=	service1.getChatCount(mem_num);
+		int getCouponCount	=	service1.getCouponCount(mem_num);
+		int getPointCount	=	service1.getPointCount(mem_num);
+		int getOrdersCount	=	service1.getOrdersCount(mem_num);
 		
-		PageUtil chatPage=new PageUtil(chNum,5,5,getChatCount);
-		PageUtil couponPage=new PageUtil(cNum,5,5,getCouponCount);
-		PageUtil pointPage=new PageUtil(pNum,5,5,getPointCount);
-		PageUtil ordersPage=new PageUtil(oNum,5,5,getOrdersCount);
+		PageUtil chatPage	=	new PageUtil(chNum,5,5,getChatCount);
+		PageUtil couponPage	=	new PageUtil(cNum,5,5,getCouponCount);
+		PageUtil pointPage	=	new PageUtil(pNum,5,5,getPointCount);
+		PageUtil ordersPage	=	new PageUtil(oNum,5,5,getOrdersCount);
 		
 		map.put("mem_num", mem_num);
-		map.put("ch_startRow",chatPage.getStartRow());
+		map.put("ch_startRow", chatPage.getStartRow());
 		map.put("ch_endRow",chatPage.getEndRow());
 		map.put("c_startRow",couponPage.getStartRow());
 		map.put("c_endRow",couponPage.getEndRow());
@@ -86,10 +88,10 @@ public class AdminMembersController {
 		map.put("o_endRow",ordersPage.getEndRow());
 		
 		MembersGradeVo mgv=service1.members_grade(mem_num);
-		List<ChatLogVo> clv=service1.chat_log(map);
-		List<CouponUseVo> cuv=service1.coupon(map);
-		List<UsePointVo> upv=service1.point(map);
-		List<OrdersVo> ov=service1.orders(map);
+		List<ChatLogVo> clv		=	service1.chat_log(map);
+		List<CouponUseVo> cuv	=	service1.coupon(map);
+		List<UsePointVo> upv	=	service1.point(map);
+		List<OrdersVo> ov		=	service1.orders(map);
 		
 		mv.addObject("mgv",mgv);
 		mv.addObject("clv",clv);
@@ -102,6 +104,7 @@ public class AdminMembersController {
 		mv.addObject("ordersPage",ordersPage);
 		return mv;
 	}
+	
 	@RequestMapping("/graUp")
 	public String graUp(int gra_num, int mem_num) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
