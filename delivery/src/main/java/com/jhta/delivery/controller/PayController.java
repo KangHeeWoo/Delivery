@@ -46,10 +46,6 @@ public class PayController {
 		
 		Calendar curr = Calendar.getInstance();
 		
-		System.out.println( "curr : " + curr.getTime());
-		System.out.println( "reseChk : " + reseChk);
-		System.out.println( "ord_deli_time : " + ord_deli_time);
-		
 		if(reseChk == false) {
 			ord_deli_time=curr.getTime();
 		}
