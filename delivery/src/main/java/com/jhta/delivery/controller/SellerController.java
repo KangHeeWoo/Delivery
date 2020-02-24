@@ -152,6 +152,7 @@ public class SellerController {
 	}
 	@RequestMapping("/stUpdateOk")
 	public String stUpdateOk(int sto_num,String sto_addr,String sto_phone,String sto_open,String sto_close,String sto_holiday,String sto_intro,int cat_num,HttpSession session,MultipartFile sto_img) {
+		
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		map.put("sto_num", sto_num);
 		map.put("sto_addr", sto_addr);
@@ -161,8 +162,10 @@ public class SellerController {
 		map.put("sto_holiday", sto_holiday);
 		map.put("sto_intro", sto_intro);
 		map.put("cat_num", cat_num);
+		
 		String orgFileName=sto_img.getOriginalFilename();
 		String saveFileName=service1.getImgName(sto_num);
+		
 		if(orgFileName.equals("")) {
 			service1.stUpdate(map);
 		}else {
@@ -318,7 +321,7 @@ public class SellerController {
 		map.put("sel_num", sel_num);
 		map.put("sel_pwd", sel_pwd);
 		int n=service.selGra(map);
-		System.out.println("??"+n);
+
 		if(n>0) {
 			session.invalidate();
 			return ".main";
